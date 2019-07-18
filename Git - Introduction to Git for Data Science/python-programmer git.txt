@@ -1,0 +1,32 @@
+
+	Git global setup
+
+git config --global user.name "Guillaume Ramelet"
+git config --global user.email "guillaume.ramelet@michelin.com"
+
+	Create a new repository
+
+git clone https://gitlab.michelin.com/datacamp-itp/python-programmer.git
+cd python-programmer
+touch README.md
+git add README.md
+git commit -m "add README"
+git push -u origin master
+
+	Push an existing folder
+
+cd existing_folder
+git init
+git remote add origin https://gitlab.michelin.com/datacamp-itp/python-programmer.git
+git add .
+git commit -m "Initial commit"
+git push -u origin master
+
+	Push an existing Git repository
+
+cd existing_repo
+git remote rename origin old-origin
+git remote add origin https://gitlab.michelin.com/datacamp-itp/python-programmer.git
+git push -u origin --all
+git push -u origin --tags
+
