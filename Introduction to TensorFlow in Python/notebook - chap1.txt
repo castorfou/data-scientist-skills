@@ -1,0 +1,193 @@
+from anaconda-navigator
+	install console_shortcut
+	(pour faire reapparaitre les menus de lancement de anaconda-prompt)
+	(%windir%\System32\cmd.exe "/K" C:\Users\N561507\AppData\Local\Continuum\miniconda3\Scripts\activate.bat C:\Users\N561507\AppData\Local\Continuum\miniconda3\envs\datacamp)
+
+from anaconda-prompt
+	conda install tensorflow
+	
+Exercice - Defining constants with convenience functions
+
+A constant is the simplest category of tensor. It can't be trained, which makes it a bad choice for a model's parameters, but a good choice for input data. Input data may be transformed after it is defined or loaded, but is typically not modified by the training process.
+
+In this exercise, we will practice defining constants using some of the operations discussed in the video. Note that we have not imported the entire tensorflow API and will not import it for most exercises. You can complete this exercise using the operations fill(), ones_like(), and constant(), which have been imported from tensorflow version 2.0 and are available in the IPython shell.
+
+		# Define a 3x4 tensor with all values equal to 9
+		A34 = fill([3, 4], 9)
+
+		# Define a tensor of ones with the same shape as A34
+		B34 = ones_like(A34)
+
+		# Define the one-dimensional vector, C1
+		C1 = constant([1, 2, 3, 4])
+
+		# Print C1 as a numpy array
+		print(C1.numpy())
+		
+Exercice - Defining variables
+
+Unlike a constant, a variable's value can be modified. This will be quite useful when we want to train a model by updating its parameters. Constants can't be used for this purpose, so variables are the natural choice.
+
+Let's try defining and working with a variable. Note that Variable(), which is used to create a variable tensor, has been imported from tensorflow and is available to use in the exercise.
+
+		# Define the 1-dimensional variable A1
+		A1 = Variable([1, 2, 3, 4])
+
+		# Print the variable A1
+		print(A1)
+
+		# Convert A1 to a numpy array and assign it to B1
+		B1 = A1.numpy()
+
+		# Print B1
+		print(B1)
+		
+Exercice - Checking properties of tensors
+
+In later chapters, you will make use of constants and variables to train models. Your datasets will be represented as constant tensors of type tf.Tensor() or numpy arrays. The model's parameters will be represented by variables that are updated during computation.
+
+In this exercise, you will examine the properties of two tensors: A1 and B1. Note that they have already been defined and are available in the Python shell. Use the print() function to determine which statement about A1 and B1 is true.
+
+		In [1]: print(A1)
+		tf.Tensor([1. 2. 3. 4.], shape=(4,), dtype=float32)
+
+		In [2]: print(B1)
+		<tf.Variable 'Variable:0' shape=(3,) dtype=float32, numpy=array([7., 3., 4.], dtype=float32)>
+		
+Excellent work! In the next lesson, you will put this knowledge to work by performing some basic operations with constants and variables.
+
+Exercice - Performing element-wise multiplication
+
+Element-wise multiplication in TensorFlow is performed using two tensors with identical shapes. This is because the operation multiplies elements in corresponding positions in the two tensors. An example of an element-wise multiplication, denoted by the ?
+
+symbol, is shown below:
+
+[1221]?[3215]=[3425]
+
+In this exercise, you will perform element-wise multiplication, paying careful attention to the shape of the tensors you multiply. Note that multiply(), constant(), and ones_like() have been imported for you.
+
+		# Define tensors A1 and A23 as constants
+		A1 = constant([1, 2, 3, 4])
+		A23 = constant([[1, 2, 3], [1, 6, 4]])
+
+		# Define B1 and B23 to have the correct shape
+		B1 = ones_like(A1)
+		B23 = ones_like(A23)
+
+		# Perform element-wise multiplication
+		C1 = multiply(A1, B1)
+		C23 = multiply(A23, B23)
+
+		# Print the tensors C1 and C23
+		print(C1.numpy())
+		print(C23.numpy())
+		
+Excellent work! Notice how performing element-wise multiplication with tensors of ones leaves the original tensors unchanged.
+
+Exercice - Making predictions with matrix multiplication
+
+In later chapters, you will learn to train linear regression models. This process will yield a vector of parameters that can be multiplied by the input data to generate a vector of predictions. In the exercise, we will use the following tensors:
+
+X=?????125621810?????
+, b=[12], y=?????642023?????
+
+X is the matrix of input data, b is the parameter vector, and y is the target vector. You will use matmul() to perform matrix multiplication of X by b to generate predictions, ypred, which you will compare with y. Note that we have imported matmul() and constant().
+
+		# Define X, b, and y as constants
+		X = constant([[1, 2], [2, 1], [5, 8], [6, 10]])
+		b = constant([[1], [2]])
+		y = constant([[6], [4], [20], [23]])
+
+		# Compute ypred using X and b
+		ypred = matmul(X,b)
+
+		# Compute and print the error
+		error = y - ypred
+		print(error.numpy())
+		
+Exercice - Summing over tensor dimensions
+
+You've been given a matrix, wealth. This contains the value of bond and stock wealth for five individuals. Note that this is given in thousands of dollars.
+
+wealth = [115072460302510]
+
+The first row corresponds to bonds and the second corresponds to stocks. Each column gives the stock and bond wealth for a single individual. Use wealth, reduce_sum(), and .numpy() to determine which statements are correct about wealth.
+
+		In [1]: print(wealth)
+		tf.Tensor(
+		[[11  7  4  3 25]
+		 [50  2 60  0 10]], shape=(2, 5), dtype=int32)
+
+		In [4]: print(reduce_sum(wealth))
+		tf.Tensor(172, shape=(), dtype=int32)
+
+		In [6]: print(reduce_sum(wealth,0))
+		tf.Tensor([61  9 64  3 35], shape=(5,), dtype=int32)
+
+		In [7]: print(reduce_sum(wealth,1))
+		tf.Tensor([ 50 122], shape=(2,), dtype=int32)
+
+Exercice - Reshaping tensors
+
+In many machine learning problems, you will need to reshape your input data. If, for instance, you loaded a 9-pixel, grayscale image of the letter H, it might have the following 2-dimensional representation:
+
+???25525525502550255255255???
+
+Some models are designed to use image data as an input. Many, however, require you to transform the data into a vector. In this exercise, we will use the reshape() operation to practice transforming tensors. Note that ones() and reshape() operations have been imported.
+
+		# Add three color channels
+		image = ones([16, 16, 3])
+
+		# Reshape image into a vector
+		image_vector = reshape(image, (768, 1))
+
+		# Reshape image into a higher dimensional tensor
+		image_tensor = reshape(image, (4, 4, 4, 4, 3))
+		
+Exercice - Optimizing with gradients
+
+You are given a loss function, y=x2
+
+, which you want to minimize. You can do this by computing the slope using the GradientTape() operation at different values of x. If the slope is positive, you can decrease the loss by lowering x. If it is negative, you can decrease it by increasing x. This is how gradient descent works.
+
+The image shows a plot of y equals x squared. It also shows the gradient at x equals -1, x equals 0, and x equals 1.
+
+In practice, you will use a high level tensorflow operation to perform gradient descent automatically. In this exercise, however, you will compute the slope at x values of -1, 1, and 0. The following operations are available: 
+
+		def compute_gradient(x0):
+			# Define x as a variable with an initial value of x0
+			x = Variable(x0)
+			with GradientTape() as tape:
+				tape.watch(x)
+				# Define y using the multiply operation
+				y = multiply(x, x)
+			# Return the gradient of y with respect to x
+			return tape.gradient(y, x).numpy()
+
+		# Compute and print gradients at x = -1, 1, and 0
+		print(compute_gradient(-1.0))
+		print(compute_gradient(1.0))
+		print(compute_gradient(0.0))		
+		
+Excellent work! Notice that the slope is positive at x = 1, which means that we can lower the loss by reducing x. The slope is negative at x = -1, which means that we can lower the loss by increasing x. The slope at x = 0 is 0, which means that we cannot lower the loss by either increasing or decreasing x. This is because the loss is minimized at x = 0.
+
+Exercice - Working with image data
+
+You are given a black-and-white image of a letter, which has been encoded as a tensor, letter. You want to determine whether the letter is an X or a K. You don't have a trained neural network, but you do have a simple model, model, which can be used to classify letter.
+
+The 3x3 tensor, letter, and the 1x3 tensor, model, are available in the Python shell. You can determine whether letter is a K by multiplying letter by model, summing over the result, and then checking if it is equal to 1. As with more complicated models, such as neural networks, model is a collection of weights, arranged in a tensor.
+
+Note that the functions reshape(), matmul(), and reduce_sum() have been imported from tensorflow and are available for use.
+
+		# Reshape model from a 1x3 to a 3x1 tensor
+		model = reshape(model, (3, 1))
+
+		# Multiply letter by model
+		output = matmul(letter, model)
+
+		# Sum over output and print prediction using the numpy method
+		prediction = reduce_sum(output)
+		print(prediction.numpy())
+		
+Excellent work! Your model found that prediction=1.0 and correctly classified the letter as a K. In the coming chapters, you will use data to train a model, model, and then combine this with matrix multiplication, matmul(letter, model), as we have done here, to make predictions about the classes of objects.
+
