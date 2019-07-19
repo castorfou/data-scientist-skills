@@ -1,0 +1,35 @@
+Install from https://docs.conda.io/en/latest/miniconda.html
+(download to c:\temp)
+
+setup proxy
+	create .condarc
+		N561507@L200LPC0L9W8W MINGW64 ~
+		$ vi .condarc
+	with this content
+		proxy_servers:
+			http: http://10.10.255.245:80
+			https: https://10.10.255.245:80
+
+Launch Anaconda prompt
+	conda install anaconda-navigator
+
+From anaconda-navigator
+	creation of datacamp environment (python 3.7)
+	installation jupyterlab, jupyter notebook
+	installation spyder
+
+From anaconda prompt
+	conda activate datacamp
+	conda install numpy=1.16.4
+	conda install pandas
+	conda install scipy matplotlib seaborn bokeh scikit-learn nltk
+
+Getting started anaconda-navigator
+	http://docs.anaconda.com/anaconda/navigator/getting-started/
+	
+Getting started with conda
+	User-Guide https://conda.io/projects/conda/en/latest/user-guide/getting-started.html
+	
+Getting started with spyder
+	https://docs.spyder-ide.org/
+	
