@@ -11,3 +11,10 @@ pip --proxy 10.10.255.245:80 freeze > "C:\Users\N561507\OneDrive - MFP Michelin\
 
 #coup de git
 
+#ajout conda prompt
+#sinon appel depuis %windir%\System32\cmd.exe "/K" C:\Users\N561507\AppData\Local\Continuum\miniconda3\Scripts\activate.bat C:\Users\N561507\AppData\Local\Continuum\miniconda3\envs\datacamp
+conda install console_shortcut
+pip --proxy 10.10.255.245:80 freeze > "C:\Users\N561507\OneDrive - MFP Michelin\data-scientist-skills\python-sandbox\environments\datacamp"\requirements.txt
+
+
+
