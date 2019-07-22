@@ -77,3 +77,170 @@ print(waterfront)
 #%% get version of tensorflow
 import tensorflow as tf
 print(tf.__version__)
+
+
+
+#%% copy paste variables
+import pandas as pd
+
+price_df = pd.DataFrame(price)
+price_df.to_clipboard()
+#predictions_df = pd.DataFrame(predictions)
+#predictions_df.to_excel('predictions.xls')
+#predictions_df.to_csv('predictions.csv')
+#!cat predictions.csv
+
+#%%read predictions numpy array from predictions.csv (got from datacamp)
+import pandas as pd
+predictions_df=pd.read_csv('predictions.csv')
+print(predictions_df.head())
+predictions=predictions_df.to_numpy()[:,1]
+
+#%% Loss functions in TensorFlow mse
+# Import the keras module from tensorflow
+from tensorflow import keras
+
+# Compute the mean squared error (mse)
+loss = keras.losses.mse(price, predictions)
+
+# Print the mean squared error (mse)
+print(loss.numpy())
+
+#%% Loss functions in TensorFlow mae
+# Import the keras module from tensorflow
+from tensorflow import keras
+
+# Compute the mean squared error (mse)
+loss = keras.losses.mae(price, predictions)
+
+# Print the mean squared error (mse)
+print(loss.numpy())
+
+#%% Exercise - Modifying the loss function
+import tensorflow as tf
+from tensorflow import Variable,  keras
+
+# Initialize a variable named scalar
+scalar = Variable(1.0, tf.float32)
+
+# Define the model
+def model(scalar, features = features):
+  	return scalar * features
+
+# Define a loss function
+def loss_function(scalar, features = features, targets = targets):
+	# Compute the predicted values
+	predictions = model(scalar, features)
+    
+	# Return the mean absolute error loss
+	return keras.losses.mae(targets, predictions)
+
+# Evaluate the loss function and print the loss
+print(loss_function(scalar).numpy())
+
+#%% Linear regression in TensorFlow
+# Define the targets and features
+price = np.array(housing['price'], np.float32)
+size = np.array(housing['sqft_living'], np.float32)
+# Define the intercept and slope
+intercept = tf.Variable(0.1, np.float32)
+slope = tf.Variable(0.1, np.float32)
+# Define a linear regression model
+def linear_regression(intercept, slope, features = size):
+	return intercept + features*slope
+# Compute the predicted values and loss
+def loss_function(intercept, slope, targets = price, features = size):
+	predictions = linear_regression(intercept, slope)
+	return tf.keras.losses.mse(targets, predictions)
+	
+# Define an optimization operation
+opt = tf.keras.optimizers.Adam()
+# Minimize the loss function and print the loss
+for j in range(1000):
+	opt.minimize(lambda: loss_function(intercept, slope),\
+	var_list=[intercept, slope])
+	print(loss_function(intercept, slope))
+    # Print the trained parameters
+	print(intercept.numpy(), slope.numpy())	
+
+#%% Exercise - load price_log and size_log from datacamp | datacamp part
+import pandas as pd
+size_log_df=pd.DataFrame(size_log)
+size_log_df.to_csv('size_log_df.csv')
+!cat size_log_df.csv
+#copy/paste to size_log.csv on my pc
+price_log_df=pd.DataFrame(price_log)
+price_log_df.to_csv('price_log_df.csv')
+!cat price_log_df.csv
+#copy/paste to price_log.csv on my pc
+
+#%% Exercise - load price_log and size_log from datacamp | local part
+import pandas as pd
+size_df=pd.read_csv('size_log.csv')
+size_log=size_df.to_numpy()[:,1]
+price_df=pd.read_csv('price_log.csv')
+price_log=price_df.to_numpy()[:,1]
+
+#%% Exercise - Set up a linear regression
+# Define a linear regression model
+def linear_regression(intercept, slope, features = size_log):
+	return intercept + features*slope
+
+# Set loss_function() to take the variables as arguments
+def loss_function(intercept, slope, features = size_log, targets = price_log):
+	# Set the predicted values
+	predictions = linear_regression(intercept, slope, features)
+    
+    # Return the mean squared error loss
+	return keras.losses.mse(targets, predictions)
+
+# Compute the loss for different slope and intercept values
+print(loss_function(0.1, 0.1).numpy())
+print(loss_function(0.1, 0.5).numpy())
+
+#%% Exercise - Train a linear model
+# Initialize an adam optimizer
+opt = keras.optimizers.Adam(0.5)
+
+for j in range(500):
+	# Apply minimize, pass the loss function, and supply the variables
+	opt.minimize(lambda: loss_function(intercept, slope), var_list=[intercept, slope])
+
+	# Print every 100th value of the loss    
+	if j % 100 == 0:
+		print(loss_function(intercept, slope).numpy())
+
+import matplotlib.pyplot as plt
+
+#retrieve source code from datacamp
+#import inspect
+#print(inspect.getsource(plot_results))
+def plot_results(intercept, slope):
+	size_range = np.linspace(6,14,100)
+	price_pred = [intercept+slope*s for s in size_range]
+	plt.scatter(size_log, price_log, color = 'black')
+	plt.plot(size_range, price_pred, linewidth=3.0, color='red')
+	plt.xlabel('log(size)')
+	plt.ylabel('log(price)')
+	plt.title('Scatterplot of data and fitted regression line')
+	plt.show()
+    
+# Plot data and regression line
+plot_results(intercept, slope)
+#I had to change options in spyder to vizualise
+#Select from the menu Tools > Preferences, then IPython console in the list of categories on the left, then the tab Graphics at the top, and change the Graphics backend from Inline to e.g. Automatic
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

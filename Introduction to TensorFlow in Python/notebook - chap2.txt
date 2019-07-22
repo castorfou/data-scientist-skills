@@ -59,3 +59,154 @@ In this exercise, you will both load data and set its type. Note that housing is
 		# Print price and waterfront
 		print(price)
 		print(waterfront)
+		
+Common loss functions in TensorFlow
+	TensorFlow has operations for common loss functions
+		Mean squared error (MSE)
+		Mean absolute error (MAE)
+		Huber error
+	Loss functions are accessible from tf.keras.losses()
+		tf.keras.losses.mse()
+		tf.keras.losses.mae()
+		tf.keras.losses.Huber()
+	MSE
+		Strongly penalizes outliers
+		High sensitivity near minimum
+	MAE
+		Scales linearly with size of error
+		Low sensitivity near minimum
+	Huber
+		Similar to MSE near minimum
+		Similar to MAE away from minimum
+
+Defining a loss function
+	# Import TensorFlow under standard alias
+	import tensorflow as tf
+	# Compute the MSE loss
+	loss = tf.keras.losses.mse(targets, predictions)
+	# Define a linear regression model
+	def linear_regression(intercept, slope = slope, features = features):
+		return intercept + features*slope	
+	# Define a loss function to compute the MSE
+	def loss_function(intercept, slope, targets = targets, features = features):
+		# Compute the predictions for a linear model
+		predictions = linear_regression(intercept, slope)
+		# Return the loss
+		return tf.keras.losses.mse(targets, predictions)		
+	# Compute the loss for test data inputs
+	loss_function(intercept, slope, test_targets, test_features)
+		10.77
+	# Compute the loss for default data inputs
+	loss_function(intercept, slope)		
+		5.43
+		
+Exercise - Loss functions in TensorFlow
+
+In this exercise, you will compute the loss using data from the King County housing dataset. You are given a target, price, which is a tensor of house prices, and predictions, which is a tensor of predicted house prices. You will evaluate the loss function and print out the value of the loss.
+
+		# Import the keras module from tensorflow
+		from tensorflow import keras
+
+		# Compute the mean squared error (mse)
+		loss = keras.losses.mse(price, predictions)
+
+		# Print the mean squared error (mse)
+		print(loss.numpy())
+<script.py> output:
+    141171604777.12717
+	
+		# Import the keras module from tensorflow
+		from tensorflow import keras
+
+		# Compute the mean absolute error (mae)
+		loss = keras.losses.mae(price, predictions)
+
+		# Print the mean absolute error (mae)
+		print(loss.numpy())	
+		
+<script.py> output:
+    268827.99302087986
+	
+Great work! You may have noticed that the MAE was much smaller than the MSE, even though price and predictions were the same. This is because the different loss functions penalize deviations of predictions from price differently. MSE does not like large deviations and punishes them harshly.
+
+Exercise - Modifying the loss function
+
+In the previous exercise, you defined a tensorflow loss function and then evaluated it once for a set of actual and predicted values. In this exercise, you will compute the loss within another function called loss_function(), which first generates predicted values from the data and variables. The purpose of this is to construct a function of the trainable model variables that returns the loss. You can then repeatedly evaluate this function for different variable values until you find the minimum. In practice, you will pass this function to an optimizer in tensorflow. Note that features and target have been defined and are available. Additionally, Variable, float32, and keras are available.
+
+		# Initialize a variable named scalar
+		scalar = Variable(1.0, tf.float32)
+
+		# Define the model
+		def model(scalar, features = features):
+			return scalar * features
+
+		# Define a loss function
+		def loss_function(scalar, features = features, targets = targets):
+			# Compute the predicted values
+			predictions = model(scalar, features)
+			
+			# Return the mean absolute error loss
+			return keras.losses.mae(targets, predictions)
+
+		# Evaluate the loss function and print the loss
+		print(loss_function(scalar, price, predictions).numpy())
+
+Great work! As you will see in the following lessons, this exercise was the equivalent of evaluating the loss function for a linear regression where the intercept is 0.
+
+Linear regression in TensorFlow
+	# Define the targets and features
+	price = np.array(housing['price'], np.float32)
+	size = np.array(housing['sqft_living'], np.float32)
+	# Define the intercept and slope
+	intercept = tf.Variable(0.1, np.float32)
+	slope = tf.Variable(0.1, np.float32)
+	# Define a linear regression model
+	def linear_regression(intercept, slope, features = size):
+		return intercept + features*slope
+	# Compute the predicted values and loss
+	def loss_function(intercept, slope, targets = price, features = size):
+		predictions = linear_regression(intercept, slope)
+		return tf.keras.losses.mse(targets, predictions)
+		
+	# Define an optimization operation
+	opt = tf.keras.optimizers.Adam()
+	# Minimize the loss function and print the loss
+	for j in range(1000):
+		opt.minimize(lambda: loss_function(intercept, slope),\
+		var_list=[intercept, slope])
+		print(loss_function(intercept, slope))
+			tf.Tensor(10.909373, shape=(), dtype=float32)
+			...
+			tf.Tensor(0.15479447, shape=(), dtype=float32)
+		# Print the trained parameters
+		print(intercept.numpy(), slope.numpy())	
+
+Exercise - Set up a linear regression
+
+A univariate linear regression identifies the relationship between a single feature and the target tensor. In this exercise, we will use a property's lot size and price. Just as we discussed in the video, we will take the natural logarithms of both tensors, which are available as price_log and size_log.
+
+In this exercise, you will define the model and the loss function. You will then evaluate the loss function for two different values of intercept and slope. Remember that the predicted values are given by intercept + features*slope. Additionally, note that keras.losses.mse() is available for you. Furthermore, slope and intercept have been defined as variables.
+
+		# Define a linear regression model
+		def linear_regression(intercept, slope, features = size_log):
+			return intercept + features*slope
+
+		# Set loss_function() to take the variables as arguments
+		def loss_function(intercept, slope, features = size_log, targets = price_log):
+			# Set the predicted values
+			predictions = linear_regression(intercept, slope, features)
+			
+			# Return the mean squared error loss
+			return keras.losses.mse(targets, predictions)
+
+		# Compute the loss for different slope and intercept values
+		print(loss_function(0.1, 0.1).numpy())
+		print(loss_function(0.1, 0.5).numpy())
+		
+Exercise - Train a linear model
+
+In this exercise, we will pick up where the previous exercise ended. The intercept and slope, intercept and slope, have been defined and initialized. Additionally, a function has been defined, loss_function(intercept, slope), which computes the loss using the data and model variables.
+
+You will now define an optimization operation as opt. You will then train a univariate linear model by minimizing the loss to find the optimal values of intercept and slope. Note that the opt operation will try to move closer to the optimum with each step, but will require many steps to find it. Thus, you must repeatedly execute the operation.
+
+
