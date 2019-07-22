@@ -261,11 +261,68 @@ for j in range(10):
 	print_results(params)
 
 
+#%% Training a linear model in batches
+# Import tensorflow, pandas, and numpy
+import tensorflow as tf
+import pandas as pd
+import numpy as np
+# Define trainable variables
+intercept = tf.Variable(0.1, tf.float32)
+slope = tf.Variable(0.1, tf.float32)
+# Define the model
+def linear_regression(intercept, slope, features):
+	return intercept + features*slope
+# Compute predicted values and return loss function
+def loss_function(intercept, slope, targets, features):
+	predictions = linear_regression(intercept, slope, features)
+	return tf.keras.losses.mse(targets, predictions)
+# Define optimization operation
+opt = tf.keras.optimizers.Adam()
+# Load the data in batches from pandas
+for batch in pd.read_csv('kc_house_data.csv', chunksize=100):
+	# Extract the target and feature columns
+	price_batch = np.array(batch['price'], np.float32)
+	size_batch = np.array(batch['sqft_lot'], np.float32)
+	# Minimize the loss function
+	opt.minimize(lambda: loss_function(intercept, slope, price_batch, size_batch), 		var_list=[intercept, slope])
+# Print parameter values
+print(intercept.numpy(), slope.numpy())
 
+#%% Exercise - Preparing to batch train
+from tensorflow import float32
+# Define the intercept and slope
+intercept = Variable(10.0, float32)
+slope = Variable(0.5, float32)
 
+# Define the model
+def linear_regression(intercept, slope, features):
+	# Define the predicted values
+	return intercept+slope*features
 
+# Define the loss function
+def loss_function(intercept, slope, targets, features):
+	# Define the predicted values
+	predictions = linear_regression(intercept, slope, features)
+			
+	# Define the MSE loss
+	return keras.losses.mse(targets, predictions)
 
+#%% Exercise - Training a linear model in batches
+# Initialize adam optimizer
+opt = keras.optimizers.Adam()
 
+# Load data in batches
+for batch in pd.read_csv('kc_house_data.csv', chunksize=100):
+	size_batch = np.array(batch['sqft_lot'], np.float32)
+    
+	# Extract the price values for the current batch
+	price_batch = np.array(batch['price'], np.float32)
+
+	# Complete the loss, fill in the variable list, and minimize
+	opt.minimize(lambda: loss_function(intercept, slope, price_batch, size_batch), var_list=[intercept, slope])
+
+# Print trained parameters
+print(intercept.numpy(), slope.numpy())
 
 
 

@@ -253,5 +253,94 @@ You will use price_log as your target and size_log and bedrooms as your features
 
 Great job! Note that params[2] tells us how much the price will increase in percentage terms if we add one more bedroom. You could train params[2] and the other model parameters by increasing the number of times we iterate over opt.
 
+The chunksize parameter
+	pd.read_csv() allows us to load data in batches
+		Avoid loading entire dataset
+		chunksize parameter provides batch size
+		
+	# Import pandas and numpy
+	import pandas as pd
+	import numpy as np
+	# Load data in batches
+	for batch in pd.read_csv('kc_housing.csv', chunksize=100):
+		# Extract price column
+		price = np.array(batch['price'], np.float32)
+		# Extract size column
+		size = np.array(batch['size'], np.float32)
+	
+Training a linear model in batches
+	# Import tensorflow, pandas, and numpy
+	import tensorflow as tf
+	import pandas as pd
+	import numpy as np
+	# Define trainable variables
+	intercept = tf.Variable(0.1, tf.float32)
+	slope = tf.Variable(0.1, tf.float32)
+	# Define the model
+	def linear_regression(intercept, slope, features):
+		return intercept + features*slope
+	# Compute predicted values and return loss function
+	def loss_function(intercept, slope, targets, features):
+		predictions = linear_regression(intercept, slope, features)
+		return tf.keras.losses.mse(targets, predictions)
+	# Define optimization operation
+	opt = tf.keras.optimizers.Adam()
+	# Load the data in batches from pandas
+	for batch in pd.read_csv('kc_housing.csv', chunksize=100):
+		# Extract the target and feature columns
+		price_batch = np.array(batch['price'], np.float32)
+		size_batch = np.array(batch['lot_size'], np.float32)
+		# Minimize the loss function
+		opt.minimize(lambda: loss_function(intercept, slope, price_batch, size_batch), 		var_list=[intercept, slope])
+	# Print parameter values
+	print(intercept.numpy(), slope.numpy())
+
+Exercise - Preparing to batch train
+
+Before we can train a linear model in batches, we must first define variables, a loss function, and an optimization operation. In this exercise, we will prepare to train a model that will predict price_batch, a batch of house prices, using size_batch, a batch of lot sizes in square feet. In contrast to the previous lesson, we will do this by loading batches of data using pandas, converting it to numpy arrays, and then using it to minimize the loss function in steps.
+
+Variable(), keras(), and float32 have been imported for you. Note that you should not set default argument values for either the model or loss function, since we will generate the data in batches during the training process.
+
+		# Define the intercept and slope
+		intercept = Variable(10.0, float32)
+		slope = Variable(0.5, float32)
+
+		# Define the model
+		def linear_regression(intercept, slope, features):
+			# Define the predicted values
+			return intercept+slope*features
+
+		# Define the loss function
+		def loss_function(intercept, slope, targets, features):
+			# Define the predicted values
+			predictions = linear_regression(intercept, slope, features)
+			
+			# Define the MSE loss
+			return keras.losses.mse(targets, predictions)
+	
+Excellent work! Notice that we did not use default argument values for the input data, features and targets. This is because the input data has not been defined in advance. Instead, with batch training, we will load it during the training process.
+
+Exercise - Training a linear model in batches
+
+In this exercise, we will train a linear regression model in batches, starting where we left off in the previous exercise. We will do this by stepping through the dataset in batches and updating the model's variables, intercept and slope, after each step. This approach will allow us to train with datasets that are otherwise too large to hold in memory.
+
+Note that the loss function,loss_function(intercept, slope, targets, features), has been defined for you. Additionally, keras has been imported for you and numpy is available as np. The trainable variables should be entered into var_list in the order in which they appear as loss function arguments.
+
+		# Initialize adam optimizer
+		opt = keras.optimizers.Adam()
+
+		# Load data in batches
+		for batch in pd.read_csv('kc_house_data.csv', chunksize=100):
+			size_batch = np.array(batch['sqft_lot'], np.float32)
+			
+			# Extract the price values for the current batch
+			price_batch = np.array(batch['price'], np.float32)
+
+			# Complete the loss, fill in the variable list, and minimize
+			opt.minimize(lambda: loss_function(intercept, slope, price_batch, size_batch), var_list=[intercept, slope])
+
+		# Print trained parameters
+		print(intercept.numpy(), slope.numpy())
+
 	
 	
