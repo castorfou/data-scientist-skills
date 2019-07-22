@@ -1,0 +1,115 @@
+A simple dense layer
+	import tensorflow as tf
+	# Define inputs (features)
+	inputs = tf.constant([[1, 35]])
+	# Define weights
+	weights = tf.Variable([[-0.05], [-0.01]])
+	# Define the bias
+	bias = tf.Variable([0.5])
+	# Multiply inputs (features) by the weights
+	product = tf.matmul(inputs, weights)
+	# Define dense layer
+	dense = tf.keras.activations.sigmoid(product+bias)
+
+Defining a complete model
+	import tensorflow as tf
+	# Define input (features) layer
+	inputs = tf.constant(data, tf.float32)
+	# Define first dense layer
+	dense1 = tf.keras.layers.Dense(10, activation='sigmoid')(inputs)
+	# Define second dense layer
+	dense2 = tf.keras.layers.Dense(5, activation='sigmoid')(dense1)
+	# Define output (predictions) layer
+	outputs = tf.keras.layers.Dense(1, activation='sigmoid')(dense2)
+
+High-level versus low-level approach
+	#high-level
+	dense = keras.layers.Dense(10, activation='sigmoid')
+	
+	#low-level
+	prod = matmul(inputs, weights)
+	dense = keras.activations.sigmoid(prod)
+	
+Exercise - 	The linear algebra of dense layers
+
+There are two ways to define a dense layer in tensorflow. The first involves the use of low-level, linear algebraic operations. The second makes use of high-level keras operations. In this exercise, we will use the first method to construct the network shown in the image below.
+
+This image depicts an neural network with 5 input nodes and 3 output nodes.
+
+The input layer contains 3 features -- education, marital status, and age -- which are available as borrower_features. The hidden layer contains 2 nodes and the output layer contains a single node.
+
+For each layer, you will take the previous layer as an input, initialize a set of weights, compute the product of the inputs and weights, and then apply an activation function. Note that Variable(), ones(), matmul(), and keras() have been imported from tensorflow.
+
+		bias1 = Variable(1.0)
+
+		# Initialize weights1 as 3x2 variable of ones
+		weights1 = Variable(ones((3, 2)))
+
+		# Perform matrix multiplication of borrower_features and weights1
+		product1 = matmul(borrower_features, weights1)
+
+		# Apply sigmoid activation function to product1 + bias1
+		dense1 = keras.activations.sigmoid(product1+ bias1)
+
+		# Print shape of dense1
+		print("\n dense1's output shape: {}".format(dense1.shape))
+		
+		# Initialize bias2 and weights2
+		bias2 = Variable(1.0)
+		weights2 = Variable(ones((2, 1)))
+
+		# Perform matrix multiplication of dense1 and weights2
+		product2 = matmul(dense1, weights2)
+
+		# Apply activation to product2 + bias2 and print the prediction
+		prediction = keras.activations.sigmoid(product2 + bias2)
+		print('\n prediction: {}'.format(prediction.numpy()[0,0]))
+		print('\n actual: 1')
+
+Excellent work! Our model produces predicted values in the interval between 0 and 1. For the example we considered, the actual value was 1 and the predicted value was a probability between 0 and 1. This, of course, is not meaningful, since we have not yet trained our model's parameters.	
+
+Exercise - The low-level approach with multiple examples
+
+In this exercise, we'll build further intuition for the low-level approach by constructing the first dense hidden layer for the case where we have multiple examples. We'll assume the model is trained and the first layer weights, weights1, and bias, bias1, are available. We'll then perform matrix multiplication of the borrower_features tensor by the weights1 variable. Recall that the borrower_features tensor includes education, marital status, and age. Finally, we'll apply the sigmoid function to the elements of products1 + bias1, yielding dense1.
+
+products1=⎡⎣⎢⎢⎢⎢⎢⎢32112311112324494929⎤⎦⎥⎥⎥⎥⎥⎥⎡⎣⎢−0.60.8−0.090.6−0.3−0.08⎤⎦⎥
+
+Note that matmul() and keras() have been imported from tensorflow.
+
+		# Compute the product of borrower_features and weights1
+		products1 = matmul(borrower_features, weights1)
+
+		# Apply a sigmoid activation function to products1
+		dense1 = keras.activations.sigmoid(products1+bias1)
+
+		# Print the shapes of borrower_features, weights1, bias1, and dense1
+		print('\n shape of borrower_features: ', borrower_features.shape)
+		print('\n shape of weights1: ', weights1.shape)
+		print('\n shape of bias1: ', bias1.shape)
+		print('\n shape of dense1: ', dense1.shape)
+		
+Good job! Note that our input data, borrower_features, is 5x3 because it consists of 5 examples for 3 features. The shape of weights1 is 3x2, as it was in the previous exercise, since it does not depend on the number of examples. Additionally, bias1 is a scalar. Finally, dense1 is 5x2, which means that we can multiply it by the following set of weights, weights2, which we defined to be 2x1 in the previous exercise.
+
+Exercise - Using the dense layer operation
+
+We've now seen how to define dense layers in tensorflow using linear algebra. In this exercise, we'll skip the linear algebra and let keras work out the details. This will allow us to construct the network below, which has 2 hidden layers and 10 features, using less code than we needed for the network with 1 hidden layer and 3 features.
+
+This image depicts an neural network with 10 inputs nodes and 1 output node.
+
+To construct this network, we'll need to define three dense layers, each of which takes the previous layer as an input, multiplies it by weights, and applies an activation function. Note that input data has been defined and is available as a 100x10 tensor: borrower_features. Additionally, the keras.layers module is available.
+
+		dense1 = keras.layers.Dense(7, activation='sigmoid')(borrower_features)
+
+		# Define a dense layer with 3 output nodes
+		dense2 = keras.layers.Dense(3, activation='sigmoid')(dense1)
+
+		# Define a dense layer with 1 output node
+		predictions = keras.layers.Dense(1, activation='sigmoid')(dense2)
+
+		# Print the shapes of dense1, dense2, and predictions
+		print('\n shape of dense1: ', dense1.shape)
+		print('\n shape of dense2: ', dense2.shape)
+		print('\n shape of predictions: ', predictions.shape)
+
+Great work! With just 8 lines of code, you were able to define 2 dense hidden layers and an output layer. This is the advantage of using high-level operations in tensorflow. Note that each layer has 100 rows because the input data contains 100 examples.
+	
