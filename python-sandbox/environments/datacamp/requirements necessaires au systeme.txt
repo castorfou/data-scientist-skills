@@ -1,0 +1,9 @@
+#certifi==2019.6.16
+#docutils==0.14
+#entrypoints==0.3
+#ipython-genutils==0.2.0
+#pyreadline==2.1
+#PyYAML==5.1.1
+#termcolor==1.1.0
+#terminado==0.8.2
+#wincertstore==0.2

@@ -1,0 +1,11 @@
+conda create -n tensorflow python
+conda activate tensorflow
+pip --proxy 10.10.255.245:80 install tensorflow==2.0.0-beta1 
+
+#garder la liste intiale des packages installes
+pip --proxy 10.10.255.245:80 freeze > "C:\Users\N561507\OneDrive - MFP Michelin\data-scientist-skills\python-sandbox\environments\tensorflow"\requirements.txt
+
+#commit dans git
+
+#ajout pandas
+conda install pandas

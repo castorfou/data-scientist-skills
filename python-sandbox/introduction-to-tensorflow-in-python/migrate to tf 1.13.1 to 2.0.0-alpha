@@ -1,0 +1,24 @@
+pip --proxy 10.10.255.245:80 install tf-nightly
+
+#marche mais pas capable d'obtenir la version, trop alpha?
+#desinstallation avec pip --proxy 10.10.255.245:80 uninstall tf-nightly
+
+
+pip --proxy 10.10.255.245:80 install tensorflow==2.0.0-beta1
+
+pip --proxy 10.10.255.245:80 install pip-autoremove
+
+
+Meilleure facon, recrer un environnement pour tf2
+
+ 
+#nettoyage de l'environnement datacamp
+pip --proxy 10.10.255.245:80 freeze > requirements.txt
+pip --proxy 10.10.255.245:80 uninstall -r requirements.txt -y
+
+et reinstallation a la main dans anaconda ou conda
+conda create -n tf-n python
+conda activate tf-n
+pip install tf-nightly
+
+
