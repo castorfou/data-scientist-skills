@@ -1,35 +1,13 @@
-Install from https://docs.conda.io/en/latest/miniconda.html
-(download to c:\temp)
+conda create -n datacamp python numpy pandas
+conda activate datacamp
 
-setup proxy
-	create .condarc
-		N561507@L200LPC0L9W8W MINGW64 ~
-		$ vi .condarc
-	with this content
-		proxy_servers:
-			http: http://10.10.255.245:80
-			https: https://10.10.255.245:80
+#garder la liste intiale des packages installes
+pip --proxy 10.10.255.245:80 freeze > "C:\Users\N561507\OneDrive - MFP Michelin\data-scientist-skills\python-sandbox\environments\datacamp"\requirements.txt
 
-Launch Anaconda prompt
-	conda install anaconda-navigator
+#coup de git
 
-From anaconda-navigator
-	creation of datacamp environment (python 3.7)
-	installation jupyterlab, jupyter notebook
-	installation spyder
+(installation jupyter et spyder depuis anaconda)
+pip --proxy 10.10.255.245:80 freeze > "C:\Users\N561507\OneDrive - MFP Michelin\data-scientist-skills\python-sandbox\environments\datacamp"\requirements.txt
 
-From anaconda prompt
-	conda activate datacamp
-	conda install numpy
-	conda install pandas
-	conda install scipy matplotlib seaborn bokeh scikit-learn nltk
+#coup de git
 
-Getting started anaconda-navigator
-	http://docs.anaconda.com/anaconda/navigator/getting-started/
-	
-Getting started with conda
-	User-Guide https://conda.io/projects/conda/en/latest/user-guide/getting-started.html
-	
-Getting started with spyder
-	https://docs.spyder-ide.org/
-	
