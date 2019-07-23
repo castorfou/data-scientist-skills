@@ -115,4 +115,236 @@ print('\n shape of dense1: ', dense1.shape)
 print('\n shape of dense2: ', dense2.shape)
 print('\n shape of predictions: ', predictions.shape)
 
+#%% Activation functions in neural networks
+import tensorflow as tf
+# Define input layer
+inputs = tf.constant(borrower_features, tf.float32)
+# Define dense layer 1
+dense1 = tf.keras.layers.Dense(16, activation='relu')(inputs)
+# Define dense layer 2
+dense2 = tf.keras.layers.Dense(8, activation='sigmoid')(dense1)
+# Define output layer
+outputs = tf.keras.layers.Dense(4, activation='softmax')(dense2)
 
+
+#get initial content from datacamp
+import numpy as np
+np.savetxt("default.txt",default)
+#!cat default.txt #and copy paste in a local file default.txt
+np.savetxt("bill_amounts.txt",bill_amounts)
+#!cat bill_amounts.txt #and copy paste in a local file bill_amounts.txt
+
+#%%load initial content from local file
+import numpy as np
+default=np.loadtxt("default.txt")
+bill_amounts=np.loadtxt("bill_amounts.txt")
+print(default.shape)
+print(bill_amounts.shape)
+
+#%% Exercise - Binary classification problems
+from tensorflow import constant, float32
+import tensorflow as tf
+
+# Construct input layer from features
+inputs = constant(bill_amounts, float32)
+
+# Define first dense layer
+dense1 = tf.keras.layers.Dense(3, activation='relu')(inputs)
+
+# Define second dense layer
+dense2 = tf.keras.layers.Dense(2, activation='relu')(dense1)
+
+# Define output layer
+outputs = tf.keras.layers.Dense(1, activation='sigmoid')(dense2)
+
+# Print error for first five examples
+error = default[:5].reshape(5,1) - outputs.numpy()[:5]
+print(error)
+
+#%% get initial content from datacamp
+print(borrower_features.shape) #(30000, 10)
+import numpy as np
+np.savetxt("borrower_features.txt", borrower_features)
+#!cat borrower_features.txt
+
+#%%load initial content from local file
+import numpy as np
+borrower_features=np.loadtxt("borrower_features.txt")
+print(borrower_features.shape)
+
+#%% Multiclass classification problems
+from tensorflow import constant, float32
+import tensorflow as tf
+# Construct input layer from borrower features
+inputs = constant(borrower_features, float32)
+
+# Define first dense layer
+dense1 = tf.keras.layers.Dense(10, activation='sigmoid')(inputs)
+
+# Define second dense layer
+dense2 = tf.keras.layers.Dense(8, activation='relu')(dense1)
+
+# Define output layer
+outputs = tf.keras.layers.Dense(6, activation='softmax')(dense2)
+
+# Print first five predictions
+print(outputs.numpy()[:5])
+
+#%% complete example of optimizer
+import tensorflow as tf
+# Define the model function
+def model(bias, weights, features = borrower_features):
+	product = tf.matmul(features, weights)
+	return tf.keras.activations.sigmoid(product+bias)
+# Compute the predicted values and loss
+def loss_function(bias, weights, targets = default, features = borrower_features):
+	predictions = model(bias, weights)
+	return tf.keras.losses.binary_crossentropy(targets, predictions)
+# Minimize the loss function with RMS propagation
+opt = tf.keras.optimizers.RMSprop(learning_rate=0.01, momentum=0.9)
+opt.minimize(lambda: loss_function(bias, weights), var_list=[bias, weights])
+
+#%% The dangers of local minima
+#got it from datacamp:
+#import inspect
+#print(inspect.getsource(loss_function))
+import numpy as np
+
+def loss_function(x):
+	return 4.0*np.cos(x-1)+np.divide(np.cos(2.0*np.pi*x),x)
+
+from tensorflow import Variable, float32
+import tensorflow as tf
+
+# Initialize x_1 and x_2
+x_1 = Variable(6.0,float32)
+x_2 = Variable(0.3,float32)
+
+# Define the optimization operation
+opt = tf.keras.optimizers.SGD(learning_rate=0.01)
+
+for j in range(100):
+    print(x_1.numpy(), x_2.numpy())
+    # Perform minimization using the loss function and x_1
+    opt.minimize(lambda: loss_function(x_1), var_list=[x_1])
+    # Perform minimization using the loss function and x_2
+    opt.minimize(lambda: loss_function(x_2), var_list=[x_2])
+
+# Print x_1 and x_2 as numpy arrays
+print(x_1.numpy(), x_2.numpy())
+
+#%% plot loos_function
+def loss_function(x):
+	return 4.0*np.cos(x-1)+np.divide(np.cos(2.0*np.pi*x),x)
+
+x= np.arange(0.05,6.0,0.05)
+y=loss_function(x)
+import matplotlib.pyplot as plt
+plt.plot(x,y)
+plt.title('Plot of input values against losses')
+plt.xlabel('x')
+plt.ylabel('loss_function(x)')
+plt.show()
+
+#%% Avoiding local minima
+# Initialize x_1 and x_2
+x_1 = Variable(0.05,float32)
+x_2 = Variable(0.05,float32)
+
+# Define the optimization operation for opt_1
+opt_1 = tf.keras.optimizers.RMSprop(learning_rate=0.01, momentum=0.99)
+opt_2 = tf.keras.optimizers.RMSprop(learning_rate=0.01, momentum=0.00)
+
+for j in range(100):
+	opt_1.minimize(lambda: loss_function(x_1), var_list=[x_1])
+    # Define the minimization operation for opt_2
+	opt_2.minimize(lambda: loss_function(x_2), var_list=[x_2])
+
+# Print x_1 and x_2 as numpy arrays
+print(x_1.numpy(), x_2.numpy())
+
+#%% Implementing dropout in a network
+import numpy as np
+import tensorflow as tf
+# Define input data
+inputs = np.array(borrower_features, np.float32)
+# Define dense layer 1
+dense1 = tf.keras.layers.Dense(32, activation='relu')(inputs)
+# Define dense layer 2
+dense2 = tf.keras.layers.Dense(16, activation='relu')(dense1)
+# Apply dropout operation
+dropout1 = tf.keras.layers.Dropout(0.25)(dense2)
+# Define output layer
+outputs = tf.layers.Dense(1, activation='sigmoid')(dropout1)
+
+#%% Initialization in TensorFlow
+from tensorflow import constant, float32, Variable, random
+import tensorflow as tf
+
+# Define the layer 1 weights
+w1 = Variable(random.normal([23, 7]))
+
+# Initialize the layer 1 bias
+b1 = Variable(tf.ones([7]))
+
+# Define the layer 2 weights
+w2 = Variable(random.normal([7, 1]))
+
+# Define the layer 2 bias
+b2 = Variable(0.0, float32)
+
+#%% initial data
+import numpy as np
+default=np.loadtxt("default.txt")
+borrower_features=np.loadtxt("borrower_features2.txt")
+print(borrower_features.shape)
+
+
+#%% Defining the model and loss function
+
+# Define the model
+def model(w1, b1, w2, b2, features = borrower_features):
+	# Apply relu activation functions to layer 1
+	layer1 = tf.keras.activations.relu(tf.matmul(features, w1) + b1)
+    # Apply dropout
+	dropout = keras.layers.Dropout(0.25)(layer1)
+	return keras.activations.sigmoid(tf.matmul(dropout, w2) + b2)
+
+# Define the loss function
+def loss_function(w1, b1, w2, b2, features = borrower_features, targets = default):
+	predictions = model(w1, b1, w2, b2)
+	# Pass targets and predictions to the cross entropy loss
+	return keras.losses.binary_crossentropy(targets, predictions)
+
+#%% get data from datacamp
+import numpy as np
+np.savetxt("test_features.txt",test_features)
+!cat test_features.txt #and copy paste in a local file default.txt
+np.savetxt("test_targets.txt",test_targets)
+!cat test_targets.txt
+
+#%% initial data
+import numpy as np
+test_features=np.loadtxt("test_features.txt")
+test_targets=np.loadtxt("test_targets.txt")
+print(test_features.shape, test_targets.shape)
+w1=tf.Variable([[ 2.4435377 ,  0.6532978 , -2.0876322 , -0.6465399 ,  0.50398946,        -0.6622369 ,  2.248099  ],       [-0.6057031 , -0.74135935,  2.5471828 ,  2.9152145 , -1.3031693 ,         0.8121961 , -0.06042745],       [-1.4342147 ,  1.987995  ,  0.46523282,  1.1759586 ,  0.43213284,        -0.3314867 ,  0.3673103 ],       [-2.0169213 ,  0.75370973,  2.0362077 , -0.9722697 , -0.90286547,        -0.46412855,  0.73538285],       [ 0.4028158 , -1.0634764 , -0.69183266,  1.0082972 , -0.1223945 ,        -0.67528254, -1.3772862 ],       [ 0.09137809, -0.7528797 , -0.16444235,  0.257028  , -0.81907284,         1.4698758 , -0.9347897 ],       [ 0.26381123, -0.9540834 ,  0.52078825, -0.8119896 ,  0.03201316,         2.0273645 , -1.6015768 ],       [-0.13008343,  0.75125885, -1.1612765 , -0.19919561, -0.10818551,         1.4675983 , -0.5593607 ],       [-0.63245237,  3.5221422 ,  0.51096684, -0.5864398 ,  0.9112978 ,         0.34698516,  0.68189377],       [ 0.41752422,  0.7064977 , -1.0978483 , -0.7023961 ,  0.79573596,         0.5765105 ,  0.5866237 ],       [ 0.44239658,  0.06016769,  1.5716101 ,  0.65556014,  0.76095665,         0.5687989 ,  1.1920937 ],       [-0.68715763, -0.1728628 ,  1.4736586 , -0.4240413 ,  0.48358986,         0.8436072 , -0.14853318],       [ 1.6009874 ,  0.41357717,  0.68890846,  0.83247167, -0.00393822,         0.29737377,  0.20552601],       [-1.137845  , -0.02462507,  0.7824456 ,  1.013908  ,  1.3491129 ,         1.552934  , -0.12183756],       [-0.3266763 ,  2.2627    ,  1.4670117 , -0.6878452 , -0.5917342 ,        -0.5329395 , -0.20593391],       [ 0.55576605,  2.364314  ,  1.6994927 , -0.724152  , -0.2852429 ,         0.1478058 , -0.80708194],       [ 1.618923  ,  0.14479114, -1.111939  ,  0.16476874,  1.1102928 ,        -1.3003356 ,  0.14524043],       [ 0.8061737 ,  0.65021497,  1.404869  ,  2.3160765 , -0.5442242 ,        -0.5231445 ,  0.90839577],       [-0.14611603, -0.8277071 ,  0.66987085,  0.09163713, -0.33766454,         2.1436663 ,  0.4740364 ],       [-0.40199128,  0.86705554, -2.1632981 , -0.3115556 , -0.98251456,        -0.10797349,  1.6352255 ],       [ 0.23678602,  0.51027703, -1.8715134 , -0.66790223,  0.21952134,         0.4172406 , -1.2710783 ],       [-0.02490104, -0.5918932 ,  1.2865447 , -0.04981803, -1.7857966 ,        -0.2095459 , -1.2845048 ],       [-0.5743803 , -0.14933696, -2.2613177 , -1.0723772 ,  2.3046598 ,        -1.5037003 ,  0.6880282 ]],float32)
+w2=tf.Variable([[ 0.8205525 ],       [ 0.41013834],       [-1.1908278 ],       [-1.5474229 ],       [ 0.8174632 ],       [-1.4407537 ],       [-0.9222677 ]], float32)
+b1=tf.Variable([-0.7341992 , -0.38519704, -0.9991661 , -0.42893964,  0.86850995,        2.714162  ,  1.475798  ], float32)
+b2=tf.Variable([-1.2979275], float32)
+print(w1.shape, b1.shape, w2.shape, b2.shape)
+#%% Training neural networks with TensorFlow
+from tensorflow import constant, float32, Variable, random
+import tensorflow as tf
+
+# Train the model
+for j in range(100):
+    # Complete the optimizer
+	opt.minimize(lambda: loss_function(w1, b1, w2, b2), 
+                 var_list=[w1, b1, w2, b2])
+
+# Make predictions with model
+model_predictions = model(w1, b1, w2, b2, test_features)
+
+# Construct the confusion matrix
+confusion_matrix(test_targets, model_predictions)
