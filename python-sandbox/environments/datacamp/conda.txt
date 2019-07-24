@@ -17,4 +17,7 @@ conda install console_shortcut
 pip --proxy 10.10.255.245:80 freeze > "C:\Users\N561507\OneDrive - MFP Michelin\data-scientist-skills\python-sandbox\environments\datacamp"\requirements.txt
 
 
+#ajout de folium (pour afficher des maps, voir http://localhost:8888/notebooks/OneDrive%20-%20MFP%20Michelin/data-scientist-skills/python-sandbox/introduction-to-datacamp-projects/notebook.ipynb)
+conda install folium -c conda-forge
 
+pip --proxy 10.10.255.245:80 freeze > "C:\Users\N561507\OneDrive - MFP Michelin\data-scientist-skills\python-sandbox\environments\datacamp"\requirements.txt
