@@ -1,0 +1,101 @@
+UNION
+
+	SELECT prime_minister AS leader, country
+	FROM prime_ministers
+	UNION
+	SELECT monarch, country
+	FROM monarchs
+	ORDER BY country;
+
+UNION ALL
+	
+	SELECT prime_minister AS leader, country
+	FROM prime_ministers
+	UNION ALL
+	SELECT monarch, country
+	FROM monarchs
+	ORDER BY country
+	LIMIT 10;
+	
+INTERSECT
+
+	SELECT country
+	FROM prime_ministers
+	INTERSECT
+	SELECT country
+	FROM presidents;
+	
+EXCEPT
+
+	SELECT monarch, country
+	FROM monarchs
+	EXCEPT
+	SELECT prime_minister, country
+	FROM prime_ministers;	
+
+SEMI JOIN
+	SELECT president, country, continent
+	FROM presidents
+	WHERE country IN
+		(SELECT name
+		FROM states
+		WHERE indep_year < 1800);	
+		
+ANTI JOIN
+
+	SELECT president, country, continent
+	FROM presidents
+	WHERE continent LIKE '%America'
+		AND country NOT IN
+		(SELECT name
+		FROM states
+		WHERE indep_year < 1800);
+
+
+Exercise - Semi-join
+	-- Select distinct fields
+	SELECT DISTINCT name
+	  -- From languages
+	  FROM languages
+	-- Where in statement
+	WHERE code IN
+	  -- Subquery
+	  (SELECT code
+	   FROM countries WHERE region = 'Middle East'
+	   )
+	-- Order by name
+	ORDER BY name;
+
+Exercise - Diagnosing problems using anti-join
+	-- 3. Select fields
+	SELECT code, name
+	  -- 4. From Countries
+	  FROM countries
+	  -- 5. Where continent is Oceania
+	  Where continent='Oceania'
+		-- 1. And code not in
+		AND code NOT IN
+		-- 2. Subquery
+		(SELECT code 
+		 FROM currencies);
+
+Exercise - 	Set theory challenge	 
+	-- Select the city name
+	SELECT name
+	  -- Alias the table where city name resides
+	  FROM cities AS c1
+	  -- Choose only records matching the result of multiple set theory clauses
+	  WHERE country_code IN
+	(
+		-- Select appropriate field from economies AS e
+		SELECT e.code
+		FROM economies AS e
+		-- Get all additional (unique) values of the field from currencies AS c2  
+		UNION
+		SELECT c2.code
+		FROM currencies AS c2
+		-- Exclude those appearing in populations AS p
+		EXCEPT
+		SELECT p.country_code
+		FROM populations AS p
+	);	 

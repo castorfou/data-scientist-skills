@@ -1,0 +1,19 @@
+GROUP BY
+		GROUP BY allows you to group a result by one or more columns, like so:
+
+		SELECT sex, count(*)
+		FROM employees
+		GROUP BY sex
+		ORDER BY count DESC;
+
+		SELECT release_year, AVG(duration) FROM films
+		GROUP BY release_year
+		;
+		
+HAVING
+	if you want to filter based on the result of an aggregate function, you need another way! That's where the HAVING clause comes in. For example,
+		SELECT release_year
+		FROM films
+		GROUP BY release_year
+		HAVING COUNT(title) > 10;		
+		

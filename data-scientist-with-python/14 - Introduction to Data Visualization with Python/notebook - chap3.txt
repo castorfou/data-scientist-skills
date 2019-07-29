@@ -1,0 +1,86 @@
+seaborn
+	import pandas as pd
+	import matplotlib.pyplot as plt
+	import seaborn as sns
+	
+	tips = sns.load_dataset('tips')
+	sns.lmplot(x = 'total_bill', y='tipt', data=tips)
+	plt.show()
+	
+hue
+	sns.lmplot(x = 'total_bill', y='tipt', data=tips, hue='sex', palette='Set1')
+	plt.show()
+	
+	# Plot a linear regression between 'weight' and 'hp', with a hue of 'origin' and palette of 'Set1'
+	sns.lmplot(x='weight',y='hp',data=auto,hue='origin',palette='Set1')
+	# Display the plot
+	plt.show()
+
+col
+	sns.lmplot(x = 'total_bill', y='tipt', data=tips, col='sex')
+	plt.show()
+	
+residplot - Plotting residuals of a regression
+	sns.residplot(x = 'age', y='fare', data=df, color='indianred')
+	plt.show()
+	
+regplot - Higher-order regressions
+
+	# Generate a scatter plot of 'weight' and 'mpg' using red circles
+	plt.scatter(auto['weight'], auto['mpg'], label='data', color='red', marker='o')
+
+	# Plot in blue a linear regression of order 1 between 'weight' and 'mpg'
+	sns.regplot(x='weight', y='mpg', data=auto, color='blue', label='order 1', scatter=None, order=1)
+
+	# Plot in green a linear regression of order 2 between 'weight' and 'mpg'
+	sns.regplot(x='weight', y='mpg', data=auto, color='green', label='order 2', scatter=None, order=2)
+
+	# Add a legend and display the plot
+	plt.legend(loc='upper right')
+	plt.show()
+
+stripplot
+	sns.stripplot(x='day',y='tip',data=tip, size=4, jitter=True)
+	plt.ylabel('tip ($)')
+	plt.show()
+	
+swarm plot
+	sns.swarmplot(x='day',y='tip',data=tip, hue='sex', orient='h')
+	plt.xlabel('tip ($)')
+	plt.show()
+
+violin plot
+	sns.violinplot(x='day',y='tip',data=tips, inner=None, color='lightgray')
+	sns.stripplot(x='day',y='tip', data=tips, size=4, jitter=True)
+	plt.ylabel('tip ($)')
+	plt.show()
+	
+jointplot
+	sns.jointplot(x='total_bill',y='tip',data=tips)
+	plt.show()
+	
+how to visualize the joint variation of two continuous random variables (i.e., two columns of a DataFrame)
+
+    kind='scatter' uses a scatter plot of the data points
+    kind='reg' uses a regression plot (default order 1)
+    kind='resid' uses a residual plot
+    kind='kde' uses a kernel density estimate of the joint distribution
+    kind='hex' uses a hexbin plot of the joint distribution
+
+	
+jointplot with KDE
+	sns.jointplot(x='total_bill',y='tip',data=tips, kind='kde')
+	plt.show()
+	
+pairplot with hue
+	sns.pairplot(tips, hue='sex')
+	plt.show()
+
+# Plot the pairwise joint distributions grouped by 'origin' along with regression lines
+sns.pairplot(auto,hue='origin',kind='reg')
+
+	
+heatmap
+	sns.heatmap(covariance)
+	
+	

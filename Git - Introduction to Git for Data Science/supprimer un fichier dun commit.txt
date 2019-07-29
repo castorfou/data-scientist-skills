@@ -1,0 +1,23 @@
+	List all commits with a given file
+
+git log --follow -- git_log.gz
+
+	Remonter de 3 commits (a faire 3 fois)
+	
+git reset --soft HEAD~1
+
+	Pour passer de staged a unstaged
+	
+git rm git_log.gz --cache
+
+	Ajouter gz dans l' .ignore list
+	
+vi .git/info/exclude
+$ cat .git/info/exclude
+# git ls-files --others --exclude-from=.git/info/exclude
+# Lines that start with '#' are comments.
+# For a project mostly in C, the following would be a good set of
+# exclude patterns (uncomment them if you want to use them):
+# *.[oa]
+# *~
+*.gz

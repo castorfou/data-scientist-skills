@@ -1,0 +1,72 @@
+Create an environment from a shared specification
+
+conda env create -n ENVNAME --file file-name.yml
+
+
+Export an environment
+
+conda env export
+conda env export -n course-env -f course-env.yml
+
+Create a new environment
+
+conda create --name recent-pd python=3.6 pandas=0.22 scipy statsmodels
+
+Switch to an environment
+
+conda activate ENVNAME
+
+To activate an environment, you simply use conda activate ENVNAME. To deactivate an environment, you use conda deactivate, which returns you to the root/base environment. 
+
+conda env list
+
+(course-env) $ conda list --name test-env 'numpy|pandas'
+# packages in environment at /home/repl/miniconda/envs/test-env:
+
+conda search -c conda-forge --override-channels --platform linux-64 | tail -n +3 | cut -d ' ' -f 1 | uniq | wc -l
+
+If a particular colleague or other recognized user may have published a package useful to you, you can search for it using the anaconda search command. For example, David Mertz, the principal author of this course, has a channel and Anaconda Cloud account called davidmertz. You can search his channel using the command below; the option --channel (or -c for short) specifies the channel to search. Particular users may have published more niche software you would like to use; for example, colleagues of yours may publish packages of special use in your field or topic area.
+
+$ conda search --channel davidmertz --override-channels --platform linux-64
+Loading channels: done
+Name                       Version                   Build  Channel
+accelerate                 2.2.0               np110py27_2  davidmertz
+accelerate                 2.2.0               np110py35_2  davidmertz
+
+
+With conda you can also use inequality comparisons to select candidate versions (still resolving dependency consistency). Maybe the bug above was fixed in 1.3.5, and you would like either the latest version available (perhaps even 1.5 or 2.0 have come out), but still avoiding versions 1.1 through 1.3.4. You could spell that as:
+
+conda install 'bar-lib>=1.3.4,<1.1'
+
+
+ For example, if you wish to install either bar-lib versions 1.0, 1.4 or 1.4.1b2, but definitely not version 1.1, 1.2 or 1.3, you could use:
+
+conda install 'bar-lib=1.0|1.4*'
+
+
+
+$ conda --help
+usage: conda [-h] [-V] command ...
+
+conda is a tool for managing and deploying applications, environments and packages.
+
+Options:
+
+positional arguments:
+  command
+    clean        Remove unused packages and caches.
+    config       Modify configuration values in .condarc. This is modeled
+                 after the git config command. Writes to the user .condarc
+                 file (/Users/dmertz/.condarc) by default.
+    create       Create a new conda environment from a list of specified
+                 packages.
+    help         Displays a list of available conda commands and their help
+                 strings.
+    info         Display information about current conda install.
+    install      Installs a list of packages into a specified conda
+                 environment.
+    [... more commands ...]
+
+optional arguments:
+  -h, --help     Show this help message and exit.
+  -V, --version  Show the conda version number and exit.

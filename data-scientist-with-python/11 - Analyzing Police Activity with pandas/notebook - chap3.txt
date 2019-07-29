@@ -1,0 +1,58 @@
+ri est un dataframe
+
+groupby sur un datetimeIndex
+
+	apple.groupby(apple.index.month).price.mean()
+		
+	The hour ranges from 0 to 23, in which:
+    0 = midnight
+    12 = noon
+    23 = 11 PM
+
+# Import matplotlib.pyplot as plt
+	import matplotlib.pyplot as plt
+	
+resampling	
+	apple.price.resample('M').mean()
+	l'index sera le dernier jour de chaque mois
+	
+concat columns
+
+	pd.concat([monthly_price, monthly_volume], axis='columns')
+	
+plot en 2 graphes avec cahcun son echelle
+
+	monthly.plot(subplots=True)
+	plt.show()
+	
+frequency table: crosstab
+
+	pd.crosstab(ri.driver_race, pd.driver_gender)
+	
+dataframe slice
+
+	table.loc['Asian':'Hispanic']
+
+bar plot
+
+	table.plot(kind='bar')
+	plt.show()
+	
+	stacking bars
+	table.plot(kind='bar', stacked=True)
+	plt.show()
+
+map - changer le type sur la base d'un doco
+
+	mapping = {'up':True, 'down':False}
+	apple['is_up'] = apple.change.map(mapping)
+	
+sort_values
+
+	search_rate.sort_values()
+	ordonne par valeur et pas par ordre alphabetique
+	
+plot bar horizontal
+
+	search_rate.sort_values().plot(kind='barh')
+	plt.show()

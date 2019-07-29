@@ -1,0 +1,223 @@
+Clique code
+	G
+		Out[1]: <networkx.classes.graph.Graph at 0x10c99ecf8>
+	from itertools import combinations
+	for n1, n2 in combinations(G.nodes(), 2): print(n1, n2)
+		0 1
+		0 2
+		0 3
+		0 4
+		0 5
+		...
+		...
+
+Exercise - Identifying triangle relationships
+
+Now that you've learned about cliques, it's time to try leveraging what you know to find structures in a network. Triangles are what you'll go for first. We may be interested in triangles because they're the simplest complex clique. Let's write a few functions; these exercises will bring you through the fundamental logic behind network algorithms.
+
+In the Twitter network, each node has an 'occupation' label associated with it, in which the Twitter user's work occupation is divided into celebrity, politician and scientist. One potential application of triangle-finding algorithms is to find out whether users that have similar occupations are more likely to be in a clique with one another.
+
+		from itertools import combinations
+
+		# Define is_in_triangle()
+		def is_in_triangle(G, n):
+			"""
+			Checks whether a node `n` in graph `G` is in a triangle relationship or not.
+
+			Returns a boolean.
+			"""
+			in_triangle = False
+
+			# Iterate over all possible triangle relationship combinations
+			for n1, n2 in combinations(G.neighbors(n),2):
+
+				# Check if an edge exists between n1 and n2
+				if G.has_edge(n1, n2):
+					in_triangle = True
+					break
+			return in_triangle
+	
+Exercise - 	Finding nodes involved in triangles
+
+NetworkX provides an API for counting the number of triangles that every node is involved in: nx.triangles(G). It returns a dictionary of nodes as the keys and number of triangles as the values. Your job in this exercise is to modify the function defined earlier to extract all of the nodes involved in a triangle relationship with a given node.
+
+		from itertools import combinations
+
+		# Write a function that identifies all nodes in a triangle relationship with a given node.
+		def nodes_in_triangle(G, n):
+			"""
+			Returns the nodes in a graph `G` that are involved in a triangle relationship with the node `n`.
+			"""
+			triangle_nodes = set([n])
+
+			# Iterate over all possible triangle relationship combinations
+			for n1, n2 in combinations(G.neighbors(n),2):
+
+				# Check if n1 and n2 have an edge between them
+				if G.has_edge(n1, n2):
+
+					# Add n1 to triangle_nodes
+					triangle_nodes.add(n1)
+
+					# Add n2 to triangle_nodes
+					triangle_nodes.add(n2)
+
+			return triangle_nodes
+
+		# Write the assertion statement
+		assert len(nodes_in_triangle(T,1)) == 35
+
+Great work! Your function correctly identified that node 1 is in a triangle relationship with 35 other nodes.
+
+Exercise - Finding open triangles
+
+Let us now move on to finding open triangles! Recall that they form the basis of friend recommendation systems; if "A" knows "B" and "A" knows "C", then it's probable that "B" also knows "C".
+
+		from itertools import combinations
+
+		# Define node_in_open_triangle()
+		def node_in_open_triangle(G, n):
+			"""
+			Checks whether pairs of neighbors of node `n` in graph `G` are in an 'open triangle' relationship with node `n`.
+			"""
+			in_open_triangle = False
+
+			# Iterate over all possible triangle relationship combinations
+			for n1, n2 in combinations(G.neighbors(n),2):
+
+				# Check if n1 and n2 do NOT have an edge between them
+				if not G.has_edge(n1, n2):
+
+					in_open_triangle = True
+
+					break
+
+			return in_open_triangle
+
+		# Compute the number of open triangles in T
+		num_open_triangles = 0
+
+		# Iterate over all the nodes in T
+		for n in T.nodes():
+
+			# Check if the current node is in an open triangle
+			if node_in_open_triangle(T, n):
+
+				# Increment num_open_triangles
+				num_open_triangles += 1
+
+		print(num_open_triangles)
+
+Excellent job! It looks like 22 nodes in graph T are in open triangles!
+
+
+Maximal cliques
+		import networkx as nx
+		G = nx.barbell_graph(m1=5, m2=1)
+		nx.find_cliques(G)
+			Out[3]: <generator object find_cliques at 0x1043f1f68>
+		list(nx.find_cliques(G))
+		Out[4]: [[4, 0, 1, 2, 3], [4, 5], [6, 8, 9, 10, 7], [6, 5]]
+
+
+Exercise - Finding all maximal cliques of size "n"
+
+Now that you've explored triangles (and open triangles), let's move on to the concept of maximal cliques. Maximal cliques are cliques that cannot be extended by adding an adjacent edge, and are a useful property of the graph when finding communities. NetworkX provides a function that allows you to identify the nodes involved in each maximal clique in a graph: nx.find_cliques(G). Play around with the function by using it on T in the IPython Shell, and then try answering the exercise.
+
+		# Define maximal_cliques()
+		def maximal_cliques(G, size):
+			"""
+			Finds all maximal cliques in graph `G` that are of size `size`.
+			"""
+			mcs = []
+			for clique in nx.find_cliques(G):
+				if len(clique) == size:
+					mcs.append(clique)
+			return mcs
+
+		# Check that there are 33 maximal cliques of size 3 in the graph T
+		assert len(maximal_cliques(T,3)) == 33
+
+Subgraphs
+	import networkx as nx
+	G = nx.erdos_renyi_graph(n=20, p=0.2)
+	G.nodes()
+		Out[3]: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+		17, 18, 19]
+	nodes = G.neighbors(8)
+	nodes
+		Out[5]: [2, 3, 4, 10]
+	nodes.append(8)
+	G_eight = G.subgraph(nodes)
+	G_eight.edges()
+		Out[8]: [(8, 2), (8, 3), (8, 4), (8, 10), (2, 10)]
+	G_eight
+		Out[9]: <networkx.classes.graph.Graph at 0x10cae39e8>
+	G
+		Out[10]: <networkx.classes.graph.Graph at 0x10cad1f60>		
+	nx.draw(G_eight, with_labels=True)
+	
+Exercise - Subgraphs I
+
+There may be times when you just want to analyze a subset of nodes in a network. To do so, you can copy them out into another graph object using G.subgraph(nodes), which returns a new graph object (of the same type as the original graph) that is comprised of the iterable of nodes that was passed in.
+
+matplotlib.pyplot has been imported for you as plt.
+
+		nodes_of_interest = [29, 38, 42]
+
+		# Define get_nodes_and_nbrs()
+		def get_nodes_and_nbrs(G, nodes_of_interest):
+			"""
+			Returns a subgraph of the graph `G` with only the `nodes_of_interest` and their neighbors.
+			"""
+			nodes_to_draw = []
+
+			# Iterate over the nodes of interest
+			for n in nodes_of_interest:
+
+				# Append the nodes of interest to nodes_to_draw
+				nodes_to_draw.append(n)
+
+				# Iterate over all the neighbors of node n
+				for nbr in G.neighbors(n):
+
+					# Append the neighbors of n to nodes_to_draw
+					nodes_to_draw.append(nbr)
+
+			return G.subgraph(nodes_to_draw)
+
+		# Extract the subgraph with the nodes of interest: T_draw
+		T_draw = get_nodes_and_nbrs(T, nodes_of_interest)
+
+		# Draw the subgraph to the screen
+		nx.draw(T_draw)
+		plt.show()
+
+		
+Exercise - Subgraphs II
+
+In the previous exercise, we gave you a list of nodes whose neighbors we asked you to extract.
+
+Let's try one more exercise in which you extract nodes that have a particular metadata property and their neighbors. This should hark back to what you've learned about using list comprehensions to find nodes. The exercise will also build your capacity to compose functions that you've already written before.
+
+		# Extract the nodes of interest: nodes
+		nodes = [n for n, d in T.nodes(data=True) if d['occupation'] == 'celebrity']
+
+		# Create the set of nodes: nodeset
+		nodeset = set(nodes)
+
+		# Iterate over nodes
+		for n in nodes:
+
+			# Compute the neighbors of n: nbrs
+			nbrs = T.neighbors(n)
+
+			# Compute the union of nodeset and nbrs: nodeset
+			nodeset = nodeset.union(nbrs)
+
+		# Compute the subgraph using nodeset: T_sub
+		T_sub = T.subgraph(nodeset)
+
+		# Draw T_sub to the screen
+		nx.draw(T_sub)
+		plt.show()		

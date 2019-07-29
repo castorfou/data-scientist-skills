@@ -1,0 +1,22 @@
+LIMIT 
+	SELECT *
+	FROM people
+	LIMIT 10;
+	
+DISTINCT
+	SELECT DISTINCT language
+	FROM films;
+	
+COUNT
+	-- nombre de lignes
+	SELECT COUNT(*)
+	FROM people;
+	
+	--count the number of non-missing values in a particular column
+	SELECT COUNT(birthdate)
+	FROM people;
+	
+COUNT DISTINCT
+	SELECT COUNT(DISTINCT birthdate)
+	FROM people;	
+	

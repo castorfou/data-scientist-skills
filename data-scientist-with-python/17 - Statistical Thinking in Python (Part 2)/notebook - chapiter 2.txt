@@ -1,0 +1,142 @@
+Bootstrapping
+● The use of resampled data to
+perform statistical inference
+
+Bootstrap sample
+● A resampled array of the data
+
+Bootstrap replicate
+● A statistic computed from a resampled array
+
+Resampling engine: np.random.choice()
+
+		import numpy as np
+		np.random.choice([1,2,3,4,5], size=5)
+		Out[2]: array([5, 3, 5, 5, 2])		
+		
+Exercise - 	Visualizing bootstrap samples
+
+		for _ in range(50):
+			# Generate bootstrap sample: bs_sample
+			bs_sample = np.random.choice(rainfall, size=len(rainfall))
+
+			# Compute and plot ECDF from bootstrap sample
+			x, y = ecdf(bs_sample)
+			_ = plt.plot(x, y, marker='.', linestyle='none',
+						 color='gray', alpha=0.1)
+
+		# Compute and plot ECDF from original data
+		x, y = ecdf(rainfall)
+		_ = plt.plot(x, y, marker='.')
+
+		# Make margins and label axes
+		plt.margins(0.02)
+		_ = plt.xlabel('yearly rainfall (mm)')
+		_ = plt.ylabel('ECDF')
+
+		# Show the plot
+		plt.show()
+		
+Bootstrap replicate function
+		def bootstrap_replicate_1d(data, func):
+			"""Generate bootstrap replicate of 1D data."""
+			bs_sample = np.random.choice(data, len(data))
+			return func(bs_sample)		
+
+Bootstrap confidence interval
+		conf_int = np.percentile(bs_replicates, [2.5, 97.5])
+			
+Exercise - Generating many bootstrap replicates
+		def draw_bs_reps(data, func, size=1):
+			"""Draw bootstrap replicates."""
+			# Initialize array of replicates: bs_replicates
+			bs_replicates = np.empty(size)
+			# Generate replicates
+			for i in range(size):
+				bs_replicates[i] = bootstrap_replicate_1d(data,func)
+			return bs_replicates
+
+In fact, it can be shown theoretically that under not-too-restrictive conditions, the value of the mean will always be Normally distributed. (This does not hold in general, just for the mean and a few other statistics.) The standard deviation of this distribution, called the standard error of the mean, or SEM, is given by the standard deviation of the data divided by the square root of the number of data points. I.e., for a data set, sem = np.std(data) / np.sqrt(len(data)). Using hacker statistics, you get this same result without the need to derive it, but you will verify this result from your bootstrap replicates.
+
+Exercise - Bootstrap replicates of the mean and the SEM
+
+		# Take 10,000 bootstrap replicates of the mean: bs_replicates
+		bs_replicates = draw_bs_reps(rainfall,np.mean,10000)
+		# Compute and print SEM
+		sem = np.std(rainfall) / np.sqrt(len(rainfall))
+		print(sem)
+		# Compute and print standard deviation of bootstrap replicates
+		bs_std = np.std(bs_replicates)
+		print(bs_std)
+		# Make a histogram of the results
+		_ = plt.hist(bs_replicates, bins=50, normed=True)
+		_ = plt.xlabel('mean annual rainfall (mm)')
+		_ = plt.ylabel('PDF')
+		# Show the plot
+		plt.show()
+
+Exercise - Confidence intervals of rainfall data
+		In [2]: np.percentile(bs_replicates,[2.5,97.5])
+		Out[2]: array([779.76992481, 820.95043233])
+
+generating a pairs bootstrap sample
+
+		np.arange(7)
+				Out[1]: array([0, 1, 2, 3, 4, 5, 6])
+		inds = np.arange(len(total_votes))
+		bs_inds = np.random.choice(inds, len(inds))
+		bs_total_votes = total_votes[bs_inds]
+		bs_dem_share = dem_share[bs_inds]
+		bs_slope, bs_intercept = np.polyfit(bs_total_votes, bs_dem_share, 1)
+		bs_slope, bs_intercept
+				Out[2]: (3.9053605692223672e-05, 40.387910131803025)
+		np.polyfit(total_votes, dem_share, 1) # fit of original
+				Out[3]: array([ 4.03707170e-05, 4.01139120e+01])
+
+Exercise - 	A function to do pairs bootstrap		
+		def draw_bs_pairs_linreg(x, y, size=1):
+			"""Perform pairs bootstrap for linear regression."""
+			# Set up array of indices to sample from: inds
+			inds = np.arange(len(x))
+			# Initialize replicates: bs_slope_reps, bs_intercept_reps
+			bs_slope_reps = np.empty(size)
+			bs_intercept_reps = np.empty(size)
+
+			# Generate replicates
+			for i in range(size):
+				bs_inds = np.random.choice(inds, size=len(inds))
+				bs_x, bs_y = x[bs_inds], y[bs_inds]
+				bs_slope_reps[i], bs_intercept_reps[i] = np.polyfit(bs_x,bs_y,1)
+			return bs_slope_reps, bs_intercept_reps
+
+Exercise - Pairs bootstrap of literacy/fertility data
+
+		# Generate replicates of slope and intercept using pairs bootstrap
+		bs_slope_reps, bs_intercept_reps = draw_bs_pairs_linreg(illiteracy,fertility,1000)
+
+		# Compute and print 95% CI for slope
+		print(np.percentile(bs_slope_reps, [2.5,97.5]))
+
+		# Plot the histogram
+		_ = plt.hist(bs_slope_reps, bins=50, normed=True)
+		_ = plt.xlabel('slope')
+		_ = plt.ylabel('PDF')
+		plt.show()
+		
+Exercise - Plotting bootstrap regressions
+		# Generate array of x-values for bootstrap lines: x
+		x = np.array([0,100])
+		# Plot the bootstrap lines
+		for i in range(100):
+			_ = plt.plot(x, 
+						 bs_slope_reps[i]*x + bs_intercept_reps[i],
+						 linewidth=0.5, alpha=0.2, color='red')
+		# Plot the data
+		_ = plt.plot(illiteracy,fertility,marker='.',linestyle='none')
+		# Label axes, set the margins, and show the plot
+		_ = plt.xlabel('illiteracy')
+		_ = plt.ylabel('fertility')
+		plt.margins(0.02)
+		plt.show()
+		
+			

@@ -1,0 +1,236 @@
+AdaBoost: Prediction
+
+    Classification:
+        Weighted majority voting.
+        In sklearn: AdaBoostClassifier.
+
+    Regression:
+        Weighted average.
+        In sklearn: AdaBoostRegressor.
+
+
+AdaBoost Classification in sklearn (Breast Cancer dataset)
+
+	# Import models and utility functions
+	from sklearn.ensemble import AdaBoostClassifier
+	from sklearn.tree import DecisionTreeClassifier
+	from sklearn.metrics import roc_auc_score
+	from sklearn.model_selection import train_test_split
+	# Set seed for reproducibility
+	SEED = 1
+	# Split data into 70% train and 30% test
+	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3,
+														stratify=y,
+														random_state=SEED)
+	# Instantiate a classification-tree 'dt'
+	dt = DecisionTreeClassifier(max_depth=1, random_state=SEED)
+	# Instantiate an AdaBoost classifier 'adab_clf'
+	adb_clf = AdaBoostClassifier(base_estimator=dt, n_estimators=100)
+	# Fit 'adb_clf' to the training set
+	adb_clf.fit(X_train, y_train)
+	# Predict the test set probabilities of positive class
+	y_pred_proba = adb_clf.predict_proba(X_test)[:,1]
+	# Evaluate test-set roc_auc_score
+	adb_clf_roc_auc_score = roc_auc_score(y_test, y_pred_proba)
+	# Print adb_clf_roc_auc_score
+	print('ROC AUC score: {:.2f}'.format(adb_clf_roc_auc_score))
+		ROC AUC score: 0.99
+
+Exercise - Define the AdaBoost classifier
+
+In the following exercises you'll revisit the Indian Liver Patient dataset which was introduced in a previous chapter. Your task is to predict whether a patient suffers from a liver disease using 10 features including Albumin, age and gender. However, this time, you'll be training an AdaBoost ensemble to perform the classification task. In addition, given that this dataset is imbalanced, you'll be using the ROC AUC score as a metric instead of accuracy.
+
+As a first step, you'll start by instantiating an AdaBoost classifier.
+
+		# Import DecisionTreeClassifier
+		from sklearn.tree import DecisionTreeClassifier
+
+		# Import AdaBoostClassifier
+		from sklearn.ensemble import AdaBoostClassifier
+
+		# Instantiate dt
+		dt = DecisionTreeClassifier(max_depth=2, random_state=1)
+
+		# Instantiate ada
+		ada = AdaBoostClassifier(base_estimator=dt, n_estimators=180, random_state=1)
+		
+Exercise - Train the AdaBoost classifier
+
+Now that you've instantiated the AdaBoost classifier ada, it's time train it. You will also predict the probabilities of obtaining the positive class in the test set. This can be done as follows:
+Once the classifier ada is trained, call the .predict_proba() method by passing X_test as a parameter and extract these probabilities by slicing all the values in the second column as follows:
+	ada.predict_proba(X_test)[:,1]
+The Indian Liver dataset is processed for you and split into 80% train and 20% test. Feature matrices X_train and X_test, as well as the arrays of labels y_train and y_test are available in your workspace. In addition, we have also loaded the instantiated model ada from the previous exercise.
+
+		# Fit ada to the training set
+		ada.fit(X_train, y_train)
+
+		# Compute the probabilities of obtaining the positive class
+		y_pred_proba = ada.predict_proba(X_test)[:,1]
+		
+Exercise - Evaluate the AdaBoost classifier
+
+Now that you're done training ada and predicting the probabilities of obtaining the positive class in the test set, it's time to evaluate ada's ROC AUC score. Recall that the ROC AUC score of a binary classifier can be determined using the roc_auc_score() function from sklearn.metrics.
+
+The arrays y_test and y_pred_proba that you computed in the previous exercise are available in your workspace.
+
+		# Import roc_auc_score
+		from sklearn.metrics import roc_auc_score
+
+		# Evaluate test-set roc_auc_score
+		ada_roc_auc = roc_auc_score(y_test, y_pred_proba)
+
+		# Print roc_auc_score
+		print('ROC AUC score: {:.2f}'.format(ada_roc_auc))
+
+Not bad! This untuned AdaBoost classifier achieved a ROC AUC score of 0.71!
+
+
+Gradient Boosted Trees: Prediction
+
+Regression:
+	y_pred = y1 + Er1 + ... + Ern
+	In sklearn: GradientBoostingRegressor
+Classification:
+	In sklearn: GradientBoostingClassifier
+	
+	#Import models and utility functions
+	from sklearn.ensemble import GradientBoostingRegressor
+	from sklearn.model_selection import train_test_split
+	from sklearn.metrics import mean_squared_error as MSE
+	# Set seed for reproducibility
+	SEED = 1
+	# Split dataset into 70% train and 30% test
+	X_train, X_test, y_train, y_test = train_test_split(X,y,
+		test_size=0.3,
+		random_state=SEED)
+	# Instantiate a GradientBoostingRegressor 'gbt'
+	gbt = GradientBoostingRegressor(n_estimators=300, max_depth=1, random_state=SEED)
+	# Fit 'gbt' to the training set
+	gbt.fit(X_train, y_train)
+	# Predict the test set labels
+	y_pred = gbt.predict(X_test)
+	# Evaluate the test set RMSE
+	rmse_test = MSE(y_test, y_pred)**(1/2)
+	# Print the test set RMSE
+	print('Test set RMSE: {:.2f}'.format(rmse_test))
+		Test set RMSE: 4.01
+
+Exercise - Define the GB regressor
+
+You'll now revisit the Bike Sharing Demand dataset that was introduced in the previous chapter. Recall that your task is to predict the bike rental demand using historical weather data from the Capital Bikeshare program in Washington, D.C.. For this purpose, you'll be using a gradient boosting regressor.
+
+As a first step, you'll start by instantiating a gradient boosting regressor which you will train in the next exercise.
+
+		# Import GradientBoostingRegressor
+		from sklearn.ensemble import GradientBoostingRegressor
+
+		# Instantiate gb
+		gb = GradientBoostingRegressor(n_estimators=200, 
+					max_depth=4,
+					random_state=2)
+			
+Exercise - 	Train the GB regressor
+
+You'll now train the gradient boosting regressor gb that you instantiated in the previous exercise and predict test set labels.
+
+The dataset is split into 80% train and 20% test. Feature matrices X_train and X_test, as well as the arrays y_train and y_test are available in your workspace. In addition, we have also loaded the model instance gb that you defined in the previous exercise.
+
+		# Fit gb to the training set
+		gb.fit(X_train, y_train)
+
+		# Predict test set labels
+		y_pred = gb.predict(X_test)
+
+Exercise - Evaluate the GB regressor
+
+Now that the test set predictions are available, you can use them to evaluate the test set Root Mean Squared Error (RMSE) of gb.
+
+y_test and predictions y_pred are available in your workspace.
+
+		# Import mean_squared_error as MSE
+		from sklearn.metrics import mean_squared_error
+
+		# Compute MSE
+		mse_test = mean_squared_error(y_test, y_pred)
+
+		# Compute RMSE
+		rmse_test = mse_test ** (1/2)
+
+		# Print RMSE
+		print('Test set RMSE of gb: {:.3f}'.format(rmse_test))	
+
+Stochastic Gradient Boosting in sklearn
+
+	# Import models and utility functions
+	from sklearn.ensemble import GradientBoostingRegressor
+	from sklearn.model_selection import train_test_split
+	from sklearn.metrics import mean_squared_error as MSE
+	# Set seed for reproducibility
+	SEED = 1
+	# Split dataset into 70% train and 30% test
+	X_train, X_test, y_train, y_test = train_test_split(X,y,
+		test_size=0.3,
+		random_state=SEED)
+	# Instantiate a stochastic GradientBoostingRegressor 'sgbt'
+	sgbt = GradientBoostingRegressor(max_depth=1,
+		subsample=0.8,
+		max_features=0.2,
+		n_estimators=300,
+		random_state=SEED)
+	# Fit 'sgbt' to the training set
+	sgbt.fit(X_train, y_train)
+	# Predict the test set labels
+	y_pred = sgbt.predict(X_test)
+	# Evaluate test set RMSE 'rmse_test'
+	rmse_test = MSE(y_test, y_pred)**(1/2)
+	# Print 'rmse_test'
+	print('Test set RMSE: {:.2f}'.format(rmse_test))
+
+	
+Exercise - Regression with SGB
+
+As in the exercises from the previous lesson, you'll be working with the Bike Sharing Demand dataset. In the following set of exercises, you'll solve this bike count regression problem using stochastic gradient boosting.
+
+		# Import GradientBoostingRegressor
+		from sklearn.ensemble import GradientBoostingRegressor
+
+		# Instantiate sgbr
+		sgbr = GradientBoostingRegressor(max_depth=4, 
+					subsample=0.9,
+					max_features=0.75,
+					n_estimators=200,                                
+					random_state=2)
+					
+Exercise - Train the SGB regressor
+
+In this exercise, you'll train the SGBR sgbr instantiated in the previous exercise and predict the test set labels.
+
+The bike sharing demand dataset is already loaded processed for you; it is split into 80% train and 20% test. The feature matrices X_train and X_test, the arrays of labels y_train and y_test, and the model instance sgbr that you defined in the previous exercise are available in your workspace.
+
+		# Fit sgbr to the training set
+		sgbr.fit(X_train, y_train)
+
+		# Predict test set labels
+		y_pred = sgbr.predict(X_test)
+		
+Exercise - Evaluate the SGB regressor
+
+You have prepared the ground to determine the test set RMSE of sgbr which you shall evaluate in this exercise.
+
+y_pred and y_test are available in your workspace.
+
+		# Import mean_squared_error as MSE
+		from sklearn.metrics import mean_squared_error
+
+		# Compute test set MSE
+		mse_test = mean_squared_error(y_test, y_pred)
+
+		# Compute test set RMSE
+		rmse_test = mse_test ** (1/2)
+
+		# Print rmse_test
+		print('Test set RMSE of sgbr: {:.3f}'.format(rmse_test))
+
+The stochastic gradient boosting regressor achieves a lower test set RMSE than the gradient boosting regressor (which was 52.065)!
+		
+		
