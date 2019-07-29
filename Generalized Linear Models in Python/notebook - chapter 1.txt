@@ -1,0 +1,81 @@
+LINEAR MODEL - ols()
+	from statsmodels.formula.api import ols
+	model = ols(formula = 'y ~ X', data = my_data).fit()
+
+GENERALIZED LINEAR MODEL - glm()
+	import statsmodels.api as sm
+	from statsmodels.formula.api import glm
+	model = glm(formula = 'y ~ X',data = my_data,family = sm.families.____).fit()
+	
+Exercise - Linear model, a special case of GLM
+
+In this exercise you will fit a linear model two ways, one using the ols() function and one using the glm() function. This will show how a linear model is a special case of a generalized linear model (GLM).
+
+		import statsmodels.api as sm
+		from statsmodels.formula.api import ols, glm
+
+		# Fit a linear model
+		model_lm = ols(formula = 'Salary ~ Experience',
+					   data = salary).fit()
+
+		# View model coefficients
+		print(model_lm.params)
+
+		# Fit a GLM
+		model_glm = glm(formula = 'Salary ~ Experience',
+						data = salary,
+						family = sm.families.Gaussian()).fit()
+
+		# View model coefficients
+		print(model_glm.params)
+
+Exercise - Linear model and a binary response variable
+
+In the video, you saw an example of fitting a linear model to a binary response variable and how things can go wrong quickly. You learned that, given the linear line fit, you can obtain fitted values y , which are not in line with the logic of the problem since the response variable takes on values 0 and 1.
+
+Using the preloaded crab dataset, you will study this effect by modeling y as a function of x using the GLM framework.
+
+		# Define model formula
+		formula = 'y ~ width'
+
+		# Define probability distribution for the response variable for 
+		# the linear (LM) and logistic (GLM) model
+		family_LM = sm.families.Gaussian()
+		family_GLM = sm.families.Binomial()
+
+		# Define and fit a linear regression model
+		model_LM = glm(formula = formula, data = crab, family = family_LM).fit()
+		print(model_LM.summary())
+
+		# Define and fit a logistic regression model
+		model_GLM = glm(formula = formula, data = crab, family = family_GLM).fit()
+		print(model_GLM.summary())
+
+Exercise - Comparing predicted values
+
+In the previous exercise, you have fitted both a linear and a GLM (logistic) regression model using crab data, predicting ywith width. In other words, you wanted to predict the probability that the female has a satellite crab nearby given her width.
+
+In this exercise, you will further examine the estimated probabilities (the output) from the two models and try to deduce if the linear fit would be suitable for the problem at hand.
+
+The usual practice is to test the model on new, unseen, data. Such dataset is called test sample.
+The test sample has been created for you and loaded in the workspace. Note that you need test values for all variables present in the model, which in this example is width.
+
+The crab dataset has been preloaded in the workspace.		
+
+
+		# View test set
+		print(test)
+
+		# Compute estimated probabilities for linear model: pred_lm
+		pred_lm = model_LM.predict(test)
+
+		# Compute estimated probabilities for GLM model: pred_glm
+		pred_glm = model_GLM.predict(test)
+
+		# Create dataframe of predictions for linear and GLM model: predictions
+		predictions = pd.DataFrame({'Pred_LM': pred_lm, 'Pred_GLM': pred_glm})
+
+		# Concatenate test sample and predictions and view the results
+		all_data = pd.concat([test, predictions], axis = 1)
+		print(all_data)
+

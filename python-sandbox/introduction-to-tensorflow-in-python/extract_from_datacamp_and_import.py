@@ -46,3 +46,6 @@ import pandas as pd
 housing = pd.DataFrame({'name': ['Raphael', 'Donatello'],'mask': ['red', 'purple'],'weapon': ['sai', 'bo staff']})
 housing.to_csv('housing_df.csv')
 !curl --upload-file ./housing_df.csv https://transfer.sh/housing_df.csv 
+
+import pandas as pd
+housing=pd.read_csv('housing_df.csv', index_col=0)

@@ -27,4 +27,8 @@ conda install pulp -c conda-forge
 
 pip --proxy 10.10.255.245:80 freeze > "C:\Users\N561507\OneDrive - MFP Michelin\data-scientist-skills\python-sandbox\environments\datacamp"\requirements.txt
 
+#ajout de statsmodel pour Generalized Linear Models in Python (7/29)
+conda install -c anaconda statsmodels 
+ 
+pip --proxy 10.10.255.245:80 freeze > "C:\Users\N561507\OneDrive - MFP Michelin\data-scientist-skills\python-sandbox\environments\datacamp"\requirements.txt
 
