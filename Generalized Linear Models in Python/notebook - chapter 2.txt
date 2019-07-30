@@ -1,0 +1,222 @@
+Exercise - Compute odds and probabilities
+
+		# Compute the odds
+		odds = 15/(60-15)
+
+		# Print the result
+		print('Odds are: ', round(odds,3))
+
+		# Compute the probability
+		probability = 15/60
+
+		# Print the result
+		print('Probability is: ', round(probability,3))
+
+		# Probability calculation
+		probability = 15/60
+
+		# Compute odds using probability calculation
+		odds_from_probs = probability/(1 - probability)
+
+		# Print the results
+		print(round(odds_from_probs, 3))
+
+Exercise - Fit logistic regression
+		
+		# Load libraries and functions
+		import statsmodels.api as sm
+		from statsmodels.formula.api import glm
+
+		# Fit logistic regression model
+		model_GLM = glm(formula = 'switch ~ arsenic',
+						data = wells,
+						family = sm.families.Binomial()).fit() 
+
+		# Print model summary
+		print(model_GLM.summary())
+		
+Exercise - Coefficients in terms of odds
+
+Previously you have fitted a logistic regression model for the probability of switching the well given the arsenic levels. In this exercise, you will see how another variable distance100 relates to the probability of switching and interpreting the coefficient values in terms of odds.
+
+Recall that the logistic regression model is in terms of log odds, so to obtain by how much would the odds multiply given a unit increase in x you would exponentiate the coefficient estimates. This is also called odds ratio.
+
+Recall that odds are a ratio of event occurring to the event not occurring. For example, if the odds of winning a game are 1/2 or 1 to 2 (1:2), it means that for every one win there are 2 losses.
+
+The dataset wells is loaded in the workspace.
+
+		# Load libraries and functions
+		import statsmodels.api as sm
+		from statsmodels.formula.api import glm
+		import numpy as np
+
+		# Fit logistic regression model
+		model_GLM = glm(formula = 'switch ~ distance100',
+						data = wells,
+						family = sm.families.Binomial()).fit() 
+
+		# Extract model coefficients
+		print('Model coefficients: \n', model_GLM.params)
+
+		# Compute the multiplicative effect on the odds
+		print('Odds: \n', np.exp(model_GLM.params))
+		
+The odds of switching the well is 1/2 for a 1-unit (100m) increase in distance, so for every one switch (household switches to the nearest safe well) there would be 2 households who would not switch to the nearest safe well.
+
+		# Define x at 1.5
+		x = 1.5
+
+		# Extract intercept & slope from the fitted model
+		intercept, slope = wells_GLM.params
+
+		# Compute and print the estimated probability
+		est_prob = np.exp(intercept + slope*x)/(1+np.exp(intercept + slope*x))
+		print('Estimated probability at x = 1.5: ', round(est_prob, 4))
+
+		# Compute the slope of the tangent line for parameter beta at x
+		slope_tan = slope * est_prob * (1 - est_prob)
+		print('The rate of change in probability: ', round(slope_tan,4))
+
+Estimated probability at x = 1.5:  0.419
+The rate of change in probability:  -0.1514
+
+So at the distance100 value of 1.5 the estimated probability is 0.419 with the rate of change in the estimated probability of negative 0.1514. This means that for every 1oo m increase in distance100 at the distance100 value of 1.5 the probability of well switch decreases by 15,14%.
+
+Exercise - Statistical significance
+
+In the video we analyzed the horseshoe crab model by predicting y with weight. In this exercise you will assess the significance of the estimated coefficients but with width as explanatory variable instead.
+
+Recall that coefficients help us determine the significance of the relationship that we are trying to model, where a positive sign increases the probability of an event as the predictor increases and vice versa.
+
+The dataset crab is loaded in the workspace.
+
+		# Import libraries and th glm function
+		import statsmodels.api as sm
+		from statsmodels.formula.api import glm
+
+		# Fit logistic regression and save as crab_GLM
+		crab_GLM = glm('y ~ width', data = crab, family = sm.families.Binomial()).fit()
+
+		# Print model summary
+		print(crab_GLM.summary())
+
+Yes, the estimate is positive meaning that the fit is upward sloping which means that width increases the chance of a satellite.
+
+Exercise - Computing Wald statistic
+
+In the previous exercise you fitted a model with width variable and assessed the relationship of the explanatory and response variable. In this exercise you will assess the significance of the width variable by computing the Wald statistic.
+
+The fitted model crab_GLM and crab dataset have been preloaded in the workspace.
+
+		# Extract coefficients
+		intercept, slope = crab_GLM.params
+
+		# Estimated covariance matrix: crab_cov
+		crab_cov = crab_GLM.cov_params()
+		print(crab_cov)
+
+		# Compute standard error (SE): std_error
+		std_error = np.sqrt(crab_cov.loc['width', 'width'])
+		print('SE: ', round(std_error, 4))
+
+		# Compute Wald statistic
+		wald_stat = slope/std_error
+		print('Wald statistic: ', round(wald_stat,4))
+
+With the Wald statistic at 4.887 we can conclude that the width variable is statistically significant if we apply the rule of thumb cut-off value of 2.
+
+Exercise - Confidence intervals
+
+Continuing from the previous exercise you will now asses the uncertainty of the coefficients by computing the confidence intervals.
+
+The model crab_GLM and crab dataset are loaded in the workspace.
+
+		# Extract and print confidence intervals
+		print(crab_GLM.conf_int())
+
+		# Compute confidence intervals for the odds
+		print(np.exp(crab_GLM.conf_int()))
+
+We can conclude that a 1 cm increase in width of a female crab has at least 35% increase odds (from lower bound) and at most it doubles the odds (from upper bound) that a satellite crab is present.
+
+Exercise - Visualize model fit using regplot()
+
+After having fitted and analyzed the model we can visualize it by plotting the observation points and the fitted logistic regression.
+
+Using the plot you can visually understand the relationship of the explanatory variable and the response for the range of values of the explanatory variable.
+
+We can use the regplot() function from the seaborn module for this. The regplot() function takes an argument logistic, which allows you to specify whether you wish to estimate the logistic regression model for the given data using True or False values. This will also produce the plot of the fit.
+
+Recall that the model that you fitted previously:
+log(y1−y)=−0.3055+0.3791∗arsenic
+
+The dataset wells is already loaded in your workspace.
+
+		# Plot distance and switch and add overlay with the logistic fit
+		sns.regplot(x = 'arsenic', y = 'switch', 
+					y_jitter = 0.03,
+					data = wells, 
+					logistic = True,
+					ci = None)
+
+		# Display the plot
+		plt.show()
+
+Exercise - Compute predictions
+
+Often, in practice, we are interested in using the fitted logistic regression to estimate the probabilities and construct confidence intervals for these estimates. Using the wells dataset and the model 'switch ~ arsenic' let's assume you have new observations wells_test which were not part of the training sample and you wish to predict the probability of switching to the nearest safe well.
+
+You will do this with the help of the .predict() method.
+
+Note that .predict() takes in several arguments:
+
+    exog - new observations (test dataset)
+    transform = True - passes the formula of the fit y ~ x to the data.
+
+If exog is not defined the probabilities are computed for the training dataset.
+
+Model wells_fit and datasets wells and wells_test are preloaded in the workspace.
+
+		# Compute predictions for the test sample wells_test and save as prediction
+		prediction = wells_fit.predict(exog = wells_test)
+
+		# Add prediction to the existing data frame wells_test and assign column name prediction
+		wells_test['prediction'] = prediction
+
+		# Examine the first 5 computed predictions
+		print(wells_test[['switch', 'arsenic', 'prediction']].head())
+		
+Great work! You have learned how to make predictions using your fitted model by computing estimated probabilities. This is a very useful tool as many research questions relate to prediction models.
+
+Exercise - Compute confusion matrix
+
+As you learned in the video the logistic regression model generates two types of predictions, a continuous valued prediction, in the form of a probability, and a class prediction which in the example of the wells dataset is a discrete category with two classes.
+
+In the previous exercise you computed the continuous values prediction in the form of a probability. In this exercise you will use those values to assign a class to each observation in your wells_test sample. Finally you will describe the model using the confusion matrix.
+
+Computed predictions prediction and wells_test are loaded in your workspace.
+
+		# Compute class predictions y_pred
+		y_prediction = np.where(prediction > cutoff, 1, 0)
+
+		# Assign actual class labels from the test sample to y_actual
+		y_actual = wells_test['switch']
+
+		# Compute and print confusion matrix using crosstab function
+		conf_mat = pd.crosstab(y_actual, y_prediction, 
+							   rownames=['Actual'], 
+							   colnames=['Predicted'], 
+							   margins = True)
+							  
+		# Print the confusion matrix
+		print(conf_mat)
+		
+
+Predicted   0    1  All
+Actual                 
+0          30   70  100
+1           9   91  100
+All        39  161  200
+
+Correct! This simple model has 129 errors by inccorectly predicting switching of the well and 50 error by incorrectly predicting not switching of the well. In chapter 4 we will see how to improve the model fit.
+

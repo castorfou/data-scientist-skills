@@ -79,3 +79,112 @@ The crab dataset has been preloaded in the workspace.
 		all_data = pd.concat([test, predictions], axis = 1)
 		print(all_data)
 
+statsmodels
+Importing statsmodels
+	import statsmodels.api as sm
+Support for formulas
+	import statsmodels.formula.api as smf
+Use glm() directly
+	from statsmodels.formula.api import glm
+
+Process of model fit
+1. Describe the model → glm()
+2. Fit the model → .fit()
+3. Summarize the model → .summary()
+4. Make model predictions → .predict()
+
+Describing the model
+FORMULA based
+	from statsmodels.formula.api import glm
+	model = glm(formula, data, family)
+ARRAY based
+	import statsmodels.api as sm
+	X = sm.add_constant(X)
+	model = sm.glm(y, X, family)
+
+Formula Argument
+
+formula = 'y ~ x1 + x2'
+C(x1) : treat x1 as categorical variable
+-1 : remove intercept
+x1:x2 : an interaction term between x1 and x2
+x1*x2 : an interaction term between x1 and x2 and the individual variables
+np.log(x1) : apply vectorized functions to model variables
+
+family = sm.families.____()
+The family functions:
+	Gaussian(link = sm.families.links.identity) → the default family
+	Binomial(link = sm.families.links.logit)
+		probit, cauchy, log, and cloglog
+	Poisson(link = sm.families.links.log)
+		identity and sqrt
+
+Regression coefficients
+
+.params prints regression coefficients
+model_GLM.params
+
+.conf_int(alpha=0.05, cols=None)
+prints confidence intervals
+model_GLM.conf_int()
+
+Predictions
+	Specify all the model variables in test data
+	.predict(test_data) computes predictions
+model_GLM.predict(test_data)
+
+Exercise - Model fitting step-by-step
+
+In the video lecture, you learned the key components for fitting a GLM in Python using the statsmodels package. In this exercise you will define the components of the GLM step by step and finally fit the model by calling the .fit() method.
+
+The dataset which you will use is on the contamination of groundwater with arsenic in Bangladesh where we want to model the household decision on switching the current well.
+The columns in the dataset are:
+
+    switch: 1 if the change of the current well occurred; 0 otherwise
+    arsenic: The level of arsenic contamination in the well
+    distance: Distance to the closest known safe well
+    education: Years of education of the head of the household
+
+Dataset wells has been preloaded in the workspace.
+
+		# Define the formula the the logistic model
+		model_formula = 'switch ~ distance100'
+
+		# Define the correct probability distribution and the link function of the response variable
+		link_function = sm.families.links.logit
+		model_family = sm.families.Binomial(link = link_function)
+
+		# Fit the model
+		wells_fit = glm(formula = model_formula, 
+						 data = wells, 
+						 family = model_family).fit()
+
+Exercise - Results of the model fit using summary()
+
+In the previous exercise you fitted a logistic regression model wells_fit using glm() and .fit(). The second step after fitting the model is to examine the model results. To do this you will use the .summary() function, which provides an overview of the model coefficients and how well they fit, along with several other statistical measures.
+
+In the lessons to come, you will learn how to interpret the model output and the details of the given statistical measures and how to interpret them.
+
+The model wells_fit has been preloaded in the workspace.
+
+		# View the results of the wells_fit model
+		print(wells_fit.summary())
+
+Exercise - Extracting parameter estimates
+
+Coefficient estimates are generally of main interest in a regression model. In the previous exercise you learned how to view the results of the model fit and hence the coefficient values along with their corresponding statistics. In this exercise you will learn how to extract the coefficients from the model object.
+
+The attribute .params contains the coefficients of the fitted model, starting with the intercept value. To compute a 95% confidence interval for the coefficients you can use the method .conf_int() of the fitted model wells_fit.
+
+Recall that the model you fitted was saved as wells_fit and as such is loaded in your workspace.
+
+		# Extract coefficients from the fitted model wells_fit
+		intercept, slope = wells_fit.params
+
+		# Print coefficients
+		print('Intercept =', intercept)
+		print('Slope =', slope)
+
+		# Extract and print confidence intervals
+		print(wells_fit.conf_int())
+

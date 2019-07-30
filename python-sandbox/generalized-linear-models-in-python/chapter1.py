@@ -79,3 +79,42 @@ predictions = pd.DataFrame({'Pred_LM': pred_lm, 'Pred_GLM': pred_glm})
 all_data = pd.concat([test, predictions], axis = 1)
 print(all_data)
 
+#%% Exercise - Model fitting step-by-step - init
+#import pandas as pd
+#wells.to_csv('wells.csv')
+#!curl --upload-file ./wells.csv https://transfer.sh/wells.csv
+#!curl -F "file=@wells.csv" https://file.io
+
+import pandas as pd
+wells=pd.read_csv('wells.csv', index_col=0)
+from statsmodels.formula.api import glm
+import statsmodels.api as sm
+
+
+#%% Exercise - Model fitting step-by-step
+# Define the formula the the logistic model
+model_formula = 'switch ~ distance100'
+
+# Define the correct probability distribution and the link function of the response variable
+link_function = sm.families.links.logit
+model_family = sm.families.Binomial(link = link_function)
+
+# Fit the model
+wells_fit = glm(formula = model_formula, 
+                 data = wells, 
+                 family = model_family).fit()
+
+#%% Exercise - Results of the model fit using summary()
+# View the results of the wells_fit model
+print(wells_fit.summary())
+
+#%% Exercise - Extracting parameter estimates
+# Extract coefficients from the fitted model wells_fit
+intercept, slope = wells_fit.params
+
+# Print coefficients
+print('Intercept =', intercept)
+print('Slope =', slope)
+
+# Extract and print confidence intervals
+print(wells_fit.conf_int())

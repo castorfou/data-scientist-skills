@@ -32,3 +32,7 @@ conda install -c anaconda statsmodels
  
 pip --proxy 10.10.255.245:80 freeze > "C:\Users\N561507\OneDrive - MFP Michelin\data-scientist-skills\python-sandbox\environments\datacamp"\requirements.txt
 
+#ajout de condas-profiling (twitter - want to explore dataset) (7/29)
+conda install -c conda-forge pandas-profiling
+
+pip --proxy 10.10.255.245:80 freeze > "C:\Users\N561507\OneDrive - MFP Michelin\data-scientist-skills\python-sandbox\environments\datacamp"\requirements.txt
