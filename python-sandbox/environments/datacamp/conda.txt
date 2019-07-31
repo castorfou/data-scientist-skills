@@ -42,3 +42,12 @@ conda remove pandas-profiling
 
 pip --proxy 10.10.255.245:80 freeze > "C:\Users\N561507\OneDrive - MFP Michelin\data-scientist-skills\python-sandbox\environments\datacamp"\requirements.txt
 
+#reinstallation de matplotlib (desinstalle par pandas profiling?) (7/31)
+conda install matplotlib
+
+pip --proxy 10.10.255.245:80 freeze > "C:\Users\N561507\OneDrive - MFP Michelin\data-scientist-skills\python-sandbox\environments\datacamp"\requirements.txt
+
+#install sklearn pour Designing Machine Learning Workflows in Python(7/31)
+conda install -c conda-forge scikit-learn
+
+pip --proxy 10.10.255.245:80 freeze > "C:\Users\N561507\OneDrive - MFP Michelin\data-scientist-skills\python-sandbox\environments\datacamp"\requirements.txt
