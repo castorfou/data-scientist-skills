@@ -30,4 +30,44 @@ Your colleague has used AdaBoostClassifier for the credit scoring dataset. You w
 
 		# Assess the accuracy of both classifiers
 		accuracies['rf'] = accuracy_score(y_test, rf_predictions)
-		
+
+Exercise - Grid search CV for model complexity
+
+In the last slide, you saw how most classifiers have one or more hyperparameters that control its complexity. You also learned to tune them using GridSearchCV(). In this exercise, you will perfect this skill. You will experiment with:
+
+    The number of trees, n_estimators, in a RandomForestClassifier.
+    The maximum depth, max_depth, of the decision trees used in an AdaBoostClassifier.
+    The number of nearest neighbors, n_neighbors, in KNeighborsClassifier.
+	
+		#%% Exercise - Grid search CV for model complexity
+		from sklearn.model_selection import GridSearchCV
+
+		# Set a range for n_estimators from 10 to 40 in steps of 10
+		param_grid = {'n_estimators': range(10, 50, 10)}
+
+		# Optimize for a RandomForestClassifier() using GridSearchCV
+		grid = GridSearchCV(RandomForestClassifier(), param_grid, cv=3)
+		grid.fit(X, y)
+		grid.best_params_
+
+		# Define a grid for n_estimators ranging from 1 to 10
+		param_grid = {'n_estimators': range(1, 11)}
+
+		# Optimize for a AdaBoostClassifier() using GridSearchCV
+		grid = GridSearchCV(AdaBoostClassifier(), param_grid, cv=3)
+		grid.fit(X, y)
+		grid.best_params_
+
+		# Define a grid for n_neighbors with values 10, 50 and 100
+		param_grid = {'n_neighbors': [10,50,100]}
+
+		# Optimize for KNeighborsClassifier() using GridSearchCV
+		grid = GridSearchCV(KNeighborsClassifier(), param_grid, cv=3)
+		grid.fit(X, y)
+		grid.best_params_
+
+
+That's right! The best-performing tree depth increases as the number of estimators grows in this case. This is in fact what tends to happen in most cases.
+
+
+	

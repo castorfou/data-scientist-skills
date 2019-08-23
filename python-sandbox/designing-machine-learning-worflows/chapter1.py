@@ -52,3 +52,69 @@ rf_predictions = rf_model.predict(X_test)
 
 # Assess the accuracy of both classifiers
 accuracies['rf'] = accuracy_score(y_test, rf_predictions)
+
+#%% Exercise - Grid search CV for model complexity
+from sklearn.model_selection import GridSearchCV
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import AdaBoostClassifier
+from sklearn.ensemble import KNeighborsClassifier
+
+
+# Set a range for n_estimators from 10 to 40 in steps of 10
+param_grid = {'n_estimators': range(10, 50, 10)}
+
+# Optimize for a RandomForestClassifier() using GridSearchCV
+grid = GridSearchCV(RandomForestClassifier(), param_grid, cv=3)
+grid.fit(X, y)
+grid.best_params_
+
+# Define a grid for n_estimators ranging from 1 to 10
+param_grid = {'n_estimators': range(1, 11)}
+
+# Optimize for a AdaBoostClassifier() using GridSearchCV
+grid = GridSearchCV(AdaBoostClassifier(), param_grid, cv=3)
+grid.fit(X, y)
+grid.best_params_
+
+# Define a grid for n_neighbors with values 10, 50 and 100
+param_grid = {'n_neighbors': [10,50,100]}
+
+# Optimize for KNeighborsClassifier() using GridSearchCV
+grid = GridSearchCV(KNeighborsClassifier(), param_grid, cv=3)
+grid.fit(X, y)
+grid.best_params_
+
+#%% Exercise - Categorical encodings - init
+from sklearn.preprocessing import LabelEncoder
+
+#%% Exercise - Categorical encodings
+# Create numeric encoding for credit_history
+credit_history_num = LabelEncoder().fit_transform(
+  credit['credit_history'])
+
+# Create a new feature matrix including the numeric encoding
+X_num = pd.concat([X, pd.Series(credit_history_num)], axis=1)
+
+# Create new feature matrix with dummies for credit_history
+X_hot = pd.concat(
+  [X, pd.get_dummies(credit['credit_history'])], axis=1)
+
+# Compare the number of features of the resulting DataFrames
+X_hot.shape[1] > X_num.shape[1]
+
+#%% Exercise - Feature transformations
+# Function computing absolute difference from column mean
+def abs_diff(x):
+    return ____(x-____)
+
+# Apply it to the credit amount and store to new column
+credit['diff'] = ____
+
+# Create a feature selector with chi2 that picks one feature
+sk = ____(chi2, ____)
+
+# Use the selector to pick between credit_amount and diff
+sk.fit(____, credit['class'])
+
+# Inspect the results
+sk.____()
