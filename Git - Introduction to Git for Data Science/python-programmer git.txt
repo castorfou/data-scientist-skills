@@ -1,6 +1,7 @@
 
 	Git global setup
 
+(to be launched in a git repository)
 git config --global user.name "Guillaume Ramelet"
 git config --global user.email "guillaume.ramelet@michelin.com"
 
