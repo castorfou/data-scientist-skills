@@ -102,19 +102,55 @@ X_hot = pd.concat(
 # Compare the number of features of the resulting DataFrames
 X_hot.shape[1] > X_num.shape[1]
 
+
+#%% Exercise - Feature transformations - init
+from sklearn.feature_selection import chi2, SelectKBest
+import numpy as np
+
 #%% Exercise - Feature transformations
 # Function computing absolute difference from column mean
 def abs_diff(x):
-    return ____(x-____)
+    return np.abs(x-np.mean(x))
 
 # Apply it to the credit amount and store to new column
-credit['diff'] = ____
+credit['diff'] = abs_diff(credit.credit_amount)
 
 # Create a feature selector with chi2 that picks one feature
-sk = ____(chi2, ____)
+sk = SelectKBest(chi2, k=1)
 
 # Use the selector to pick between credit_amount and diff
-sk.fit(____, credit['class'])
+sk.fit(credit[['credit_amount', 'diff']], credit['class'])
 
 # Inspect the results
-sk.____()
+sk.get_support()
+
+#%% Exercise - Bringing it all together - init
+from sklearn.model_selection import GridSearchCV
+from sklearn.ensemble import RandomForestClassifier as rfc
+from sklearn.model_selection import train_test_split
+from sklearn.feature_selection import chi2, SelectKBest
+import pandas as pd
+X_train=pd.read_csv('X_train.csv', index_col=0)
+y_train=pd.read_csv('y_train.csv', index_col=0)
+X_test=pd.read_csv('X_test.csv', index_col=0)
+y_test=pd.read_csv('y_test.csv', index_col=0)
+
+
+
+#%% Exercise - Bringing it all together
+
+# Find the best value for max_depth among values 2, 5 and 10
+grid_search = GridSearchCV(
+  rfc(random_state=1), param_grid={'max_depth':[2,5,10]})
+best_value = grid_search.fit(
+  X_train, y_train).best_params_['max_depth']
+
+# Using the best value from above, fit a random forest
+clf = rfc(
+  random_state=1, max_depth=best_value).fit(X_train, y_train)
+
+# Apply SelectKBest with chi2 and pick top 100 features
+vt = SelectKBest(chi2, k=100).fit(X_train, y_train)
+
+# Create a new dataset only containing the selected features
+X_train_reduced = vt.transform(X_train)
