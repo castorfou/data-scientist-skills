@@ -1,0 +1,17 @@
+Exercise - Is the source or the destination bad?
+In the previous lesson, you used the destination computer as your entity of interest. However, your cybersecurity analyst just told you that it is the infected machines that generate the bad traffic, and will therefore appear as a source, not a destination, in the flows dataset.
+
+The data flows has been preloaded, as well as the list bad of infected IDs and the feature extractor featurizer() from the previous lesson. You also have numpy available as np, AdaBoostClassifier(), and cross_val_score().
+
+		# Group by source computer, and apply the feature extractor
+		out = flows.groupby('source_computer').apply(featurize)
+
+		# Convert the iterator to a dataframe by calling list on it
+		X = pd.DataFrame(list(out), index=out.index)
+
+		# Check which sources in X.index are bad to create labels
+		y = [x in bads for x in X.index]
+
+		# Report the average accuracy of Adaboost over 3-fold CV
+		print(np.mean(cross_val_score(AdaBoostClassifier(), X, y)))
+		
