@@ -9,7 +9,6 @@ Created on Thu Sep 12 17:29:10 2019
 import numpy as np
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.model_selection import cross_val_score
-import pandas as pd
 #import pandas as pd
 #flows.to_csv('flows.csv')
 #!curl -F "file=@flows.csv" https://file.io
@@ -38,3 +37,27 @@ y = [x in bads for x in X.index]
 
 # Report the average accuracy of Adaboost over 3-fold CV
 print(np.mean(cross_val_score(AdaBoostClassifier(), X, y)))
+
+#%% Exercise - Feature engineering on grouped data
+# Create a feature counting unique protocols per source
+protocols = flows.groupby('source_computer').apply(
+  lambda df: len(set(df['protocol'])))
+
+# Convert this feature into a dataframe, naming the column
+protocols_DF = pd.DataFrame(
+  protocols, index=protocols.index, columns=['protocol'])
+
+# Now concatenate this feature with the previous dataset, X
+X_more = pd.concat([X, protocols_DF], axis=1)
+
+# Refit the classifier and report its accuracy
+print(np.mean(cross_val_score(AdaBoostClassifier(), X_more, y)))
+
+#%% Exercise - Turning a heuristic into a classifier - init
+import numpy as np
+from sklearn.metrics import accuracy_score
+
+#uploadFromDatacamp(X_train, X_test)
+
+#%% Exercise - Turning a heuristic into a classifier
+

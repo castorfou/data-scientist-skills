@@ -15,3 +15,12 @@ The data flows has been preloaded, as well as the list bad of infected IDs and t
 		# Report the average accuracy of Adaboost over 3-fold CV
 		print(np.mean(cross_val_score(AdaBoostClassifier(), X, y)))
 		
+Exercise - Feature engineering on grouped data
+You will now build on the previous exercise, by considering one additional feature: the number of unique protocols used by each source computer. Note that with grouped data, it is always possible to construct features in this manner: you can take the number of unique elements of all categorical columns, and the mean of all numeric columns as your starting point. As before, you have flows preloaded, cross_val_score() for measuring accuracy, AdaBoostClassifier(), pandas as pd and numpy as np.
+
+Weights 
+
+weights = [1.0]*len(y_train) + [0.1]*len(y_weak_train)
+
+Exercise - Turning a heuristic into a classifier
+You are surprised by the fact that heuristics can be so helpful. So you decide to treat the heuristic that "too many unique ports is suspicious" as a classifier in its own right. You achieve that by thresholding the number of unique ports per source by the average number used in bad source computers -- these are computers for which the label is True. The dataset is preloaded and split into training and test, so you have objects X_train, X_test, y_train and y_test in memory. Your imports include accuracy_score(), and numpy as np. To clarify: you won't be fitting a classifier from scikit-learn in this exercise, but instead you will define your own classification rule explicitly!
