@@ -57,7 +57,100 @@ print(np.mean(cross_val_score(AdaBoostClassifier(), X_more, y)))
 import numpy as np
 from sklearn.metrics import accuracy_score
 
-#uploadFromDatacamp(X_train, X_test)
+#uploadFromDatacamp(X_train, X_test, y_train, y_test)
+#saveFromFileIO("{'X_test.csv': 'https://file.io/AIQv4v', 'X_train.csv': 'https://file.io/kqaUY3', 'y_test.txt': 'https://file.io/cisNoL', 'y_train.txt': 'https://file.io/r5pL9X'}")
+X_train=pd.read_csv('X_train.csv', index_col=0)
+X_test=pd.read_csv('X_test.csv', index_col=0)
+y_train=loadListFromTxt('y_train.txt')
+y_test=loadListFromTxt('y_test.txt')
+
 
 #%% Exercise - Turning a heuristic into a classifier
 
+# Create a new dataset X_train_bad by subselecting bad hosts
+X_train_bad = X_train[y_train]
+
+# Calculate the average of unique_ports in bad examples
+avg_bad_ports = np.mean(X_train_bad['unique_ports'])
+
+# Label as positive sources that use more ports than that
+pred_port = X_test['unique_ports'] > avg_bad_ports
+
+# Print the accuracy of the heuristic
+print(accuracy_score(y_test, pred_port))
+
+#%%Exercise - Combining heuristics - init
+import numpy as np
+from sklearn.metrics import accuracy_score
+
+#uploadFromDatacamp(X_train, X_test, y_train, y_test)
+#saveFromFileIO("{'X_test.csv': 'https://file.io/lcjuIS', 'X_train.csv': 'https://file.io/K665Su', 'y_test.txt': 'https://file.io/o4Zg2o', 'y_train.txt': 'https://file.io/UXJui7'}")
+X_train=pd.read_csv('X_train.csv',index_col=0)
+X_test=pd.read_csv('X_test.csv',index_col=0)
+y_train=loadListFromTxt('y_train.txt')
+y_test=loadListFromTxt('y_test.txt')
+
+#%%Exercise - Combining heuristics
+# Compute the mean of average_packet for bad sources
+avg_bad_packet = np.mean(X_train[y_train]['average_packet'])
+
+# Label as positive if average_packet is lower than that
+pred_packet = X_test['average_packet'] < avg_bad_packet
+
+# Find indices where pred_port and pred_packet both True
+pred_port = X_test['unique_ports'] > avg_bad_ports
+pred_both = pred_packet & pred_port
+
+# Ports only produced an accuracy of 0.919. Is this better?
+print(accuracy_score(y_test, pred_both))
+
+#%% Exercise - Dealing with label noise - init
+import numpy as np
+from sklearn.metrics import accuracy_score
+from sklearn.naive_bayes import GaussianNB
+from uploadfromdatacamp import loadListFromTxt
+
+#uploadFromDatacamp(X_train, X_test, y_train, y_test)
+#saveFromFileIO("{'X_test.csv': 'https://file.io/AIQv4v', 'X_train.csv': 'https://file.io/kqaUY3', 'y_test.txt': 'https://file.io/cisNoL', 'y_train.txt': 'https://file.io/r5pL9X'}")
+X_train=pd.read_csv('X_train.csv',index_col=0)
+X_test=pd.read_csv('X_test.csv',index_col=0)
+y_train=loadListFromTxt('y_train.txt')
+y_test=loadListFromTxt('y_test.txt')
+#uploadFromDatacamp(X_train, X_test, y_train_noisy, y_test)
+#saveFromFileIO("{'X_test.csv': 'https://file.io/oN4jvF', 'X_train.csv': 'https://file.io/nzL4W3', 'y_test.txt': 'https://file.io/VYXSP0', 'y_train_noisy.txt': 'https://file.io/5nzj3Y'}")
+y_train_noisy=loadListFromTxt('y_train_noisy.txt')
+X_train=pd.read_csv('X_train.csv',index_col=0)
+X_test=pd.read_csv('X_test.csv',index_col=0)
+y_test=loadListFromTxt('y_test.txt')
+
+
+#%%Exercise - Dealing with label noise
+# Fit a Gaussian Naive Bayes classifier to the training data
+clf = GaussianNB().fit(X_train, y_train_noisy)
+
+# Report its accuracy on the test data
+print(accuracy_score(y_test, clf.predict(X_test)))
+
+# Assign half the weight to the first 100 noisy examples
+weights = [0.5]*100 + [1.0]*(len(y_train_noisy)-100)
+
+# Refit using weights and report accuracy. Has it improved?
+clf_weights = GaussianNB().fit(X_train, y_train_noisy, sample_weight=weights)
+print(accuracy_score(y_test, clf_weights.predict(X_test)))
+
+#%% Exercise - Reminder of performance metrics - init
+from sklearn.metrics import precision_score, f1_score
+from uploadfromdatacamp import loadNDArrayFromCsv
+(tp,fp,fn,tn)=(155, 23, 48, 24)
+#uploadFromDatacamp(y_test, preds)
+#{pandas.core.series.Series: {'y_test.csv': 'https://file.io/BXr70M'}, numpy.ndarray: {'preds.csv': 'https://file.io/Yi4jj3'}}
+#saveFromFileIO("{pandas.core.series.Series: {'y_test.csv': 'https://file.io/BXr70M'}, numpy.ndarray: {'preds.csv': 'https://file.io/Yi4jj3'}}")
+import pandas as pd
+y_test=pd.read_csv('y_test.csv', index_col=0, header=None,squeeze=True)
+preds=loadNDArrayFromCsv('preds.csv').astype(bool)
+
+#%% Exercise - Reminder of performance metrics
+
+print(f1_score(y_test, preds))
+print(precision_score(y_test, preds))
+print((tp + tn)/len(y_test))
