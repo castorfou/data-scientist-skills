@@ -18,7 +18,7 @@ import yaml
 
 #%% uploadFromDatacamp
 proxy=""
-#•to uncomment when working from Michelin
+#to uncomment when working from Michelin
 #proxy="10.225.92.1:80"
 
 def retrieve_name(var):

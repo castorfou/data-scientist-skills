@@ -104,4 +104,110 @@ Remember the credit dataset? With all the extra knowledge you now have about met
 		print(precision_score(y_test, preds))
 		print((tp + tn)/len(y_test))
 
-		
+Exercise - Real-world cost analysis
+You will still work on the credit dataset for this exercise. Recall that a "positive" in this dataset means "bad credit", i.e., a customer who defaulted on their loan, and a "negative" means a customer who continued to pay without problems. The bank manager informed you that the bank makes 10K profit on average from each "good risk" customer, but loses 150K from each "bad risk" customer. Your algorithm will be used to screen applicants, so those that are labeled as "negative" will be given a loan, and the "positive" ones will be turned down. What is the total cost of your classifier? The data is available as X_train, X_test, y_train and y_test. The functions confusion_matrix(), f1_score(), and precision_score() and RandomForestClassifier() are available.
+
+		# Fit a random forest classifier to the training data
+		clf = RandomForestClassifier(random_state=2).fit(X_train, y_train)
+
+		# Label the test data
+		preds = clf.predict(X_test)
+
+		# Get false positives/negatives from the confusion matrix
+		tp, fp, fn, tn = confusion_matrix(y_test, preds).ravel()
+
+		# Now compute the cost using the manager's advice
+		cost = fp*10 + fn*150
+
+
+Exercise - Confusion matrix calculations
+Your classifier on the credit data achieved the following statistics: 168 true positives, 19 false positives, 49 false negatives, and 25 true negatives. These numbers are preloaded in the console environment for you as tp, fp, fn and tn respectively. The following statements involve two metrics: accuracy, given by the proportion of examples classified correctly, and recall, which is the proportion of truly positive examples that were classified as positive. Which of the statements is true?
+
+		Possible Answers
+		The recall of the classifier is approximately 0.916
+		The recall of the classifier is approximately 0.63
+		The accuracy of the classifier is approximately 0.27
+	**	The recall of the classifier is approximately 0.77
+
+That's correct! Recall is given by tp/(tp+fn) and is a very useful and popular metric.
+
+
+ROC curve (Receiver Operating Characteristic)
+
+	scores = clf.predict_proba(X_test)
+	[s[1] > 0.5 for s in scores] == clf.predict(X_test)
+
+	fpr, tpr, thres = roc_curve(ground_truth,[s[1] for s in scores])
+	plt.plot(fpr, tpr)
+	plt.xlabel('False Positive Rate')
+	plt.ylabel('True Positive Rate')
+	
+	
+AUC (area under curve)
+
+	clf = AdaBoostClassifier().fit(X_train, y_train)
+	scores_ab = clf.predict_proba(X_test)
+	roc_auc_score(ground_truth, [s[1] for s in scores_ab])	
+	
+Cost minimisation
+
+	def my_scorer(y_test, y_est, cost_fp=10.0, cost_fn=1.0):
+		tn, fp, fn, tp = confusion_matrix(y_test, y_est).ravel()
+		return cost_fp*fp + cost_fn*fn
+
+	t_range = [0.0, 0.25, 0.5, 0.75, 1.0]
+	costs = [my_scorer(y_test, [s[1] > thres for s in scores]) for thres in t_range]
+	
+Exercise - Default thresholding
+You would like to confirm that the DecisionTreeClassifier() uses the same default classification threshold as mentioned in the previous lesson, namely 0.5. It seems strange to you that all classifiers should use the same threshold. Let's check! A fitted decision tree classifier clf has been preloaded for you, as have the training and test data with their usual names: X_train, X_test, y_train and y_test. You will have to extract probability scores from the classifier using the .predict_proba() method.
+
+		# Score the test data using the given classifier
+		scores = clf.predict_proba(X_test)
+
+		# Get labels from the scores using the default threshold
+		preds = [s[1] > 0.5 for s in scores]
+
+		# Use the predict method to label the test data again
+		preds_default = clf.predict(X_test)
+
+		# Compare the two sets of predictions
+		all(preds == preds_default)
+
+Exercise - Optimizing the threshold
+You heard that the default value of 0.5 maximizes accuracy in theory, but you want to test what happens in practice. So you try out a number of different threshold values, to see what accuracy you get, and hence determine the best-performing threshold value. You repeat this experiment for the F1 score. Is 0.5 the optimal threshold? Is the optimal threshold for accuracy and for the F1 score the same? Go ahead and find out! You have a scores matrix available, obtained by scoring the test data. The ground truth labels for the test data is also available as y_test. Finally, two numpy functions are preloaded, argmin() and argmax(), which retrieve the index of the minimum and maximum values in an array respectively, in addition to the metrics accuracy_score() and f1_score().
+
+		# Create a range of equally spaced threshold values
+		t_range = [0.0, 0.25, 0.5, 0.75, 1.0]
+
+		# Store the predicted labels for each value of the threshold
+		preds = [[s[1] > thr for s in scores] for thr in t_range]
+
+		# Compute the accuracy for each threshold
+		accuracies = [accuracy_score(y_test, p) for p in preds]
+
+		# Compute the F1 score for each threshold
+		f1_scores = [f1_score(y_test, p) for p in preds]
+
+		# Report the optimal threshold for accuracy, and for F1
+		print(t_range[argmax(accuracies)], t_range[argmax(f1_scores)])
+
+Exercise - Bringing it all together
+One of the engineers in your arrhythmia detection startup rushes into your office to let you know that there is a problem with the ECG sensor for overweight users. You decide to reduce the influence of examples with weight over 80 by 50%. You are also told that since your startup is targeting the fitness market and makes no medical claims, scaring an athlete unnecessarily is costlier than missing a possible case of arrhythmia. You decide to create a custom loss that makes each "false alarm" ten times costlier than missing a case of arrhythmia. Does down-weighting overweight subjects improve this custom loss? Your training data X_train, y_train and test data X_test, y_test are preloaded, as are confusion_matrix(), numpy as np, and DecisionTreeClassifier().
+
+
+		# Create a scorer assigning more cost to false positives
+		def my_scorer(y_test, y_est, cost_fp=10.0, cost_fn=1.0):
+			tn, fp, fn, tp = confusion_matrix(y_test, y_est).ravel()
+			return fp*cost_fp+fn*cost_fn
+
+		# Fit a DecisionTreeClassifier to the data and compute the loss
+		clf = DecisionTreeClassifier(random_state=2).fit(X_train, y_train)
+		print(my_scorer(y_test, clf.predict(X_test)))
+
+		# Refit with same seed, downweighting subjects weighing > 80
+		weights = [0.5 if w > 80 else 1.0 for w in X_train.weight]
+		clf_weighted = DecisionTreeClassifier(random_state=2).fit(X_train,y_train,sample_weight=weights)
+		print(my_scorer(y_test, clf_weighted.predict(X_test)))
+
+
+	

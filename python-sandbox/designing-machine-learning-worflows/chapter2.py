@@ -56,6 +56,7 @@ print(np.mean(cross_val_score(AdaBoostClassifier(), X_more, y)))
 #%% Exercise - Turning a heuristic into a classifier - init
 import numpy as np
 from sklearn.metrics import accuracy_score
+from uploadfromdatacamp import loadListFromTxt
 
 #uploadFromDatacamp(X_train, X_test, y_train, y_test)
 #saveFromFileIO("{'X_test.csv': 'https://file.io/AIQv4v', 'X_train.csv': 'https://file.io/kqaUY3', 'y_test.txt': 'https://file.io/cisNoL', 'y_train.txt': 'https://file.io/r5pL9X'}")
@@ -82,6 +83,7 @@ print(accuracy_score(y_test, pred_port))
 #%%Exercise - Combining heuristics - init
 import numpy as np
 from sklearn.metrics import accuracy_score
+from uploadfromdatacamp import loadListFromTxt
 
 #uploadFromDatacamp(X_train, X_test, y_train, y_test)
 #saveFromFileIO("{'X_test.csv': 'https://file.io/lcjuIS', 'X_train.csv': 'https://file.io/K665Su', 'y_test.txt': 'https://file.io/o4Zg2o', 'y_train.txt': 'https://file.io/UXJui7'}")
@@ -150,7 +152,127 @@ y_test=pd.read_csv('y_test.csv', index_col=0, header=None,squeeze=True)
 preds=loadNDArrayFromCsv('preds.csv').astype(bool)
 
 #%% Exercise - Reminder of performance metrics
-
 print(f1_score(y_test, preds))
 print(precision_score(y_test, preds))
 print((tp + tn)/len(y_test))
+
+#%% Exercise - Real-world cost analysis - init
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import precision_score, f1_score, confusion_matrix
+from uploadfromdatacamp import loadNDArrayFromCsv
+from uploadfromdatacamp import loadListFromTxt
+#from uploadfromdatacamp import saveFromFileIO
+
+#uploadFromDatacamp(X_train, X_test, y_train, y_test)
+#{pandas.core.frame.DataFrame: {'X_test.csv': 'https://file.io/z7L9od',  'X_train.csv': 'https://file.io/qVqpz2'}, pandas.core.series.Series: {'y_test.csv': 'https://file.io/t6vojs',  'y_train.csv': 'https://file.io/n2A02H'}}
+#saveFromFileIO("{pandas.core.frame.DataFrame: {'X_test.csv': 'https://file.io/z7L9od',  'X_train.csv': 'https://file.io/qVqpz2'}, pandas.core.series.Series: {'y_test.csv': 'https://file.io/t6vojs',  'y_train.csv': 'https://file.io/n2A02H'}}")
+import pandas as pd
+X_train=pd.read_csv('X_train.csv',index_col=0)
+X_test=pd.read_csv('X_test.csv',index_col=0)
+y_test=pd.read_csv('y_test.csv', index_col=0, header=None,squeeze=True)
+y_train=pd.read_csv('y_train.csv', index_col=0, header=None,squeeze=True)
+
+#%% Exercise - Real-world cost analysis
+
+# Fit a random forest classifier to the training data
+clf = RandomForestClassifier(random_state=2).fit(X_train, y_train)
+
+# Label the test data
+preds = clf.predict(X_test)
+
+# Get false positives/negatives from the confusion matrix
+tp, fp, fn, tn = confusion_matrix(y_test, preds).ravel()
+
+# Now compute the cost using the manager's advice
+cost = fp*10 + fn*150
+
+
+#%% Exercise - Default thresholding - init
+from sklearn.tree import DecisionTreeClassifier
+#from uploadfromdatacamp import saveFromFileIO
+
+#uploadFromDatacamp(X_train, X_test, y_train, y_test)
+#{pandas.core.frame.DataFrame: {'X_test.csv': 'https://file.io/6Rrga4',  'X_train.csv': 'https://file.io/VV8MB3'}, pandas.core.series.Series: {'y_test.csv': 'https://file.io/63mvgM',  'y_train.csv': 'https://file.io/iqMPkE'}}
+#saveFromFileIO("{pandas.core.frame.DataFrame: {'X_test.csv': 'https://file.io/6Rrga4',  'X_train.csv': 'https://file.io/VV8MB3'}, pandas.core.series.Series: {'y_test.csv': 'https://file.io/63mvgM',  'y_train.csv': 'https://file.io/iqMPkE'}}")
+import pandas as pd
+X_train=pd.read_csv('X_train.csv',index_col=0)
+X_test=pd.read_csv('X_test.csv',index_col=0)
+y_test=pd.read_csv('y_test.csv', index_col=0, header=None,squeeze=True)
+y_train=pd.read_csv('y_train.csv', index_col=0, header=None,squeeze=True)
+
+clf=DecisionTreeClassifier().fit(X_train, y_train)
+
+
+#%% Exercise - Default thresholding
+# Score the test data using the given classifier
+scores = clf.predict_proba(X_test)
+
+# Get labels from the scores using the default threshold
+preds = [s[1] > 0.5 for s in scores]
+
+# Use the predict method to label the test data again
+preds_default = clf.predict(X_test)
+
+# Compare the two sets of predictions
+all(preds == preds_default)
+
+#%% Exercise - Optimizing the threshold - init
+import numpy as np
+#from uploadfromdatacamp import saveFromFileIO
+import pandas as pd
+from uploadfromdatacamp import loadNDArrayFromCsv
+from sklearn.metrics import accuracy_score, f1_score
+from numpy import argmax, argmin
+
+#uploadFromDatacamp(scores, y_test)
+#{numpy.ndarray: {'scores.csv': 'https://file.io/c68R60'}, pandas.core.series.Series: {'y_test.csv': 'https://file.io/zjMwXn'}}
+#saveFromFileIO("{numpy.ndarray: {'scores.csv': 'https://file.io/c68R60'}, pandas.core.series.Series: {'y_test.csv': 'https://file.io/zjMwXn'}}")
+y_test=pd.read_csv('y_test.csv', index_col=0, header=None,squeeze=True)
+scores=loadNDArrayFromCsv('scores.csv')
+
+#%% Exercise - Optimizing the threshold
+# Create a range of equally spaced threshold values
+t_range = [0.0, 0.25, 0.5, 0.75, 1.0]
+
+# Store the predicted labels for each value of the threshold
+preds = [[s[1] > thr for s in scores] for thr in t_range]
+
+# Compute the accuracy for each threshold
+accuracies = [accuracy_score(y_test, p) for p in preds]
+
+# Compute the F1 score for each threshold
+f1_scores = [f1_score(y_test, p) for p in preds]
+
+# Report the optimal threshold for accuracy, and for F1
+print(t_range[argmax(accuracies)], t_range[argmax(f1_scores)])
+
+#%% Exercise - Bringing it all together - init
+import numpy as np
+#from uploadfromdatacamp import saveFromFileIO
+import pandas as pd
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import confusion_matrix
+
+#uploadFromDatacamp(X_train, X_test, y_train, y_test)
+#{pandas.core.frame.DataFrame: {'X_test.csv': 'https://file.io/TYEDSm',  'X_train.csv': 'https://file.io/g6QkrP'}, pandas.core.series.Series: {'y_test.csv': 'https://file.io/8XOOnh',  'y_train.csv': 'https://file.io/2O44ua'}}
+#saveFromFileIO("{pandas.core.frame.DataFrame: {'X_test.csv': 'https://file.io/TYEDSm',  'X_train.csv': 'https://file.io/g6QkrP'}, pandas.core.series.Series: {'y_test.csv': 'https://file.io/8XOOnh',  'y_train.csv': 'https://file.io/2O44ua'}}")
+X_train=pd.read_csv('X_train.csv',index_col=0)
+X_test=pd.read_csv('X_test.csv',index_col=0)
+y_test=pd.read_csv('y_test.csv', index_col=0, header=None,squeeze=True)
+y_train=pd.read_csv('y_train.csv', index_col=0, header=None,squeeze=True)
+
+
+#%% Exercise - Bringing it all together
+# Create a scorer assigning more cost to false positives
+def my_scorer(y_test, y_est, cost_fp=10.0, cost_fn=1.0):
+    tn, fp, fn, tp = confusion_matrix(y_test, y_est).ravel()
+    return fp*cost_fp+fn*cost_fn
+
+# Fit a DecisionTreeClassifier to the data and compute the loss
+clf = DecisionTreeClassifier(random_state=2).fit(X_train, y_train)
+print(my_scorer(y_test, clf.predict(X_test)))
+
+# Refit with same seed, downweighting subjects weighing > 80
+weights = [0.5 if w > 80 else 1.0 for w in X_train.weight]
+clf_weighted = DecisionTreeClassifier(random_state=2).fit(X_train,y_train,sample_weight=weights)
+print(my_scorer(y_test, clf_weighted.predict(X_test)))
