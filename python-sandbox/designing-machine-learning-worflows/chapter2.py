@@ -222,7 +222,7 @@ import numpy as np
 import pandas as pd
 from uploadfromdatacamp import loadNDArrayFromCsv
 from sklearn.metrics import accuracy_score, f1_score
-from numpy import argmax, argmin
+from numpy import argmax
 
 #uploadFromDatacamp(scores, y_test)
 #{numpy.ndarray: {'scores.csv': 'https://file.io/c68R60'}, pandas.core.series.Series: {'y_test.csv': 'https://file.io/zjMwXn'}}

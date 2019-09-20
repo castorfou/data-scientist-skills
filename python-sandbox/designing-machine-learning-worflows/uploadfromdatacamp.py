@@ -8,6 +8,7 @@ upload/download from datacamp
 """
 
 #%% all imports
+#to be run in datacamp
 import numpy as np
 import pandas as pd
 import inspect
@@ -17,6 +18,8 @@ import yaml
 
 
 #%% uploadFromDatacamp
+#to be run in datacamp
+
 proxy=""
 #to uncomment when working from Michelin
 #proxy="10.225.92.1:80"
@@ -84,27 +87,27 @@ def urlFromFileIO(outputCurl):
     return(d['link'])
     
 #%% saveFromFileIO
+# prend en entree un dict : type, filename, url
+#       et un prefix optionnel
+# et telecharge tout avec les bon prefix+filename    
+
 proxy="10.225.92.1:80"
 
-def saveFromFileIO(dict_urls):
+def saveFromFileIO(dict_urls, prefix=''):
     #we accept both string and dict
     curl_proxy_option='-q'
     if proxy!='':
         curl_proxy_option='-x'+proxy
-
     if (type(dict_urls)==type(str())):
         dict_urls = dict_urls.replace("'", '"')
         print(dict_urls)
         dict_urls=yaml.load(dict_urls)
-        
     print(dict_urls)
-        
-    for k, v in dict_urls.items():
-        for t, c in v.items():
-            print(t, c)
-            sortie_curl = subprocess.getoutput(['curl', curl_proxy_option, c, '--output',t])
+    for python_type, filename_url in dict_urls.items():
+        for filename, url in filename_url.items():
+            #print(prefix+filename, url)
+            sortie_curl = subprocess.getoutput(['curl', curl_proxy_option, url, '--output',prefix+filename])
             print(sortie_curl)
-            
 
 #%% loadlistfromtxt
 def loadListFromTxt(filename):
@@ -119,7 +122,6 @@ def loadNDArrayFromCsv(filename):
     return myArray
 
 #%% test uploadFromDatacamp with new dict structure
-
 def test():
     TEST_uploadFromDatacamp_test = 'je suis un test'
     TEST_uploadFromDatacamp_test2 = 'test2'
@@ -138,4 +140,9 @@ def test():
     
     #should create 2 files TEST_uploadFromDatacamp_*.{csv,txt}
     uploadFromDatacamp(TEST_uploadFromDatacamp_a,TEST_uploadFromDatacamp_b)
+    
+#%% get function from datacamp (example)
+#import inspect
+#print(inspect.getsource(my_metric))
+   
     

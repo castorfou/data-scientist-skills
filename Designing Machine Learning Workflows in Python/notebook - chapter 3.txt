@@ -1,0 +1,248 @@
+Revisiting our workflow
+
+	from sklearn.ensemble import RandomForestClassifier as rf
+	X_train, X_test, y_train, y_test = train_test_split(X, y)
+	grid_search = GridSearchCV(rf(), param_grid={'max_depth': [2, 5, 10]})
+	grid_search.fit(X_train, y_train)
+	depth = grid_search.best_params_['max_depth']
+	vt = SelectKBest(f_classif, k=3).fit(X_train, y_train)
+	clf = rf(max_depth=best_value).fit(vt.transform(X_train), y_train)
+	accuracy_score(clf.predict(vt.transform(X_test), y_test))
+	
+The power of grid search
+
+Optimize max_depth :
+	pg = {'max_depth': [2,5,10]}
+	gs = GridSearchCV(rf(),param_grid=pg)
+	gs.fit(X_train, y_train)
+	depth = gs.best_params_['max_depth']
+	
+Then optimize n_estimators :
+	pg = {'n_estimators': [10,20,30]}
+	gs = GridSearchCV(	rf(max_depth=depth),	param_grid=pg)
+	gs.fit(X_train, y_train)
+	n_est = gs.best_params_[	'n_estimators']	
+	
+Jointly max_depth and n_estimators :
+	pg = {	'max_depth': [2,5,10],
+		'n_estimators': [10,20,30]
+		}
+	gs = GridSearchCV(rf(),
+	param_grid=pg)
+	gs.fit(X_train, y_train)
+	print(gs.best_params_)
+	{'max_depth': 10, 'n_estimators': 20}
+	
+Pipelines
+	from sklearn.pipeline import Pipeline
+	pipe = Pipeline([
+			('feature_selection', SelectKBest(f_classif)),
+			('classifier', RandomForestClassifier())
+		])
+	params = dict(
+			feature_selection__k=[2, 3, 4],
+			classifier__max_depth=[5, 10, 20]
+		)
+	grid_search = GridSearchCV(pipe, param_grid=params)
+	gs = grid_search.fit(X_train, y_train).best_params_
+	{'classifier__max_depth': 20, 'feature_selection__k': 4}
+	
+Customizing your pipeline
+
+	from sklearn.metrics import roc_auc_score, make_scorer
+	auc_scorer = make_scorer(roc_auc_score)
+	grid_search = GridSearchCV(pipe, param_grid=params, scoring=auc_scorer)	
+
+	params = dict(
+			feature_selection__k=[2, 3, 4],
+			clf__max_depth=[5, 10, 20],
+			clf__n_estimators=[10, 20, 30]
+		)
+	grid_search = GridSearchCV(pipe, params, cv=10)
+
+Exercise - Your first pipeline - again!
+Back in the arrhythmia startup, your monthly review is coming up, and as part of that an expert Python programmer will be reviewing your code. You decide to tidy up by following best practices and replace your script for feature selection and random forest classification, with a pipeline. You are using a training dataset available as X_train and y_train, and a number of modules: RandomForestClassifier, SelectKBest() and f_classif() for feature selection, as well as GridSearchCV and Pipeline.
+
+		# Create pipeline with feature selector and classifier
+		pipe = Pipeline([
+			('feature_selection', SelectKBest(f_classif)),
+			('clf', RandomForestClassifier(random_state=2))])
+
+		# Create a parameter grid
+		params = {
+		   'feature_selection__k':[10, 20],
+			'clf__n_estimators':[2, 5]}
+
+		# Initialize the grid search object
+		grid_search = GridSearchCV(pipe, param_grid=params, cv=3)
+
+		# Fit it to the data and print the best value combination
+		print(grid_search.fit(X_train, y_train).best_params_)
+		
+Exercise - Custom scorers in pipelines
+You are proud of the improvement in your code quality, but just remembered that previously you had to use a custom scoring metric in order to account for the fact that false positives are costlier to your startup than false negatives. You hence want to equip your pipeline with scorers other than accuracy, including roc_auc_score(), f1_score(), and you own custom scoring function. The pipeline from the previous lesson is available as pipe, as is the parameter grid as params and the training data as X_train, y_train. You also have confusion_matrix() for the purpose of writing your own metric.
+
+		# Create a custom scorer
+		scorer = make_scorer(roc_auc_score)
+
+		# Initialize the CV object
+		gs = GridSearchCV(pipe, param_grid=params, scoring=scorer)
+
+		# Fit it to the data and print the winning combination
+		print(gs.fit(X_train, y_train).best_params_)
+
+		#now for f1_score
+		# Create a custom scorer
+		scorer = make_scorer(f1_score)
+
+		# Initialise the CV object
+		gs = GridSearchCV(pipe, param_grid=params, scoring=scorer)
+
+		# Fit it to the data and print the winning combination
+		print(gs.fit(X_train, y_train).best_params_)
+
+		#now with a custom metric my_metric()
+		# Create a custom scorer
+		scorer = make_scorer(my_metric)
+
+		# Initialise the CV object
+		gs = GridSearchCV(pipe, param_grid=params, scoring=scorer)
+
+		# Fit it to the data and print the winning combination
+		print(gs.fit(X_train, y_train).best_params_)
+
+Serializing your model
+
+Store a classifier to file:
+	import pickle
+	clf = RandomForestClassifier().fit(X_train, y_train)
+	with open('model.pkl', 'wb') as file:
+		pickle.dump(clf, file=file)
+	
+	
+Load it again from file:
+	with open('model.pkl', 'rb') as file:
+		clf2 = pickle.load(file)
+	
+Serializing your pipeline (2 objects)
+
+Development environment:
+	vt = SelectKBest(f_classif).fit(X_train, y_train)
+	clf = RandomForestClassifier().fit(vt.transform(X_train), y_train)
+	with open('vt.pkl', 'wb') as file:
+		pickle.dump(vt)
+	with open('clf.pkl', 'wb') as file:
+		pickle.dump(clf)	
+	
+Production environment:
+	with open('vt.pkl', 'rb') as file:
+		vt = pickle.load(vt)
+	with open('clf.pkl', 'rb') as file:
+		clf = pickle.load(clf)
+	clf.predict(vt.transform(X_new))
+
+(drawback: 2 objects to be deployed in production)
+
+Serializing your pipeline (1 object = better)
+	
+Development environment:
+	pipe = Pipeline([
+			('fs', SelectKBest(f_classif)),
+			('clf', RandomForestClassifier())
+		])
+	params = dict(fs__k=[2, 3, 4],
+		clf__max_depth=[5, 10, 20])
+	gs = GridSearchCV(pipe, params)
+	gs = gs.fit(X_train, y_train)
+	with open('pipe.pkl', 'wb') as file:
+		pickle.dump(gs, file)
+
+Production environment:
+	with open('pipe.pkl', 'rb') as file:
+		gs = pickle.dump(gs, file)
+		gs.predict(X_test)
+
+Custom feature transformations
+	def negate_second_column(X):
+		Z = X.copy()
+		Z[:,1] = -Z[:,1]
+		return Z
+	pipe = Pipeline([('ft', FunctionTransformer(negate_second_column)),
+		('clf', RandomForestClassifier())])
+
+Exercise 33 - Pickles
+Finally, it is time for you to push your first model to production. It is a random forest classifier which you will use as a baseline, while you are still working to develop a better alternative. You have access to the data split in training test with their usual names, X_train, X_test, y_train and y_test, as well as to the modules RandomForestClassifier() and pickle, whose methods .load() and .dump() you will need for this exercise.
+
+		# Fit a random forest to the training set
+		clf = RandomForestClassifier(random_state=42).fit(  X_train, y_train)
+
+		# Save it to a file, to be pushed to production
+		with open('model.pkl', 'wb') as file:
+			pickle.dump(clf, file=file)
+
+		# Now load the model from file in the production environment
+		with open('model.pkl', 'rb') as file:
+			clf_from_file = pickle.load(file)
+
+		# Predict the labels of the test dataset
+		preds = clf_from_file.predict(X_test)
+		
+Exercise 34 - Custom function transformers in pipelines
+At some point, you were told that the sensors might be performing poorly for obese individuals. Previously you had dealt with that using weights, but now you are thinking that this information might also be useful for feature engineering, so you decide to replace the recorded weight of an individual with an indicator of whether they are obese. You want to do this using pipelines. You have numpy available as np, RandomForestClassifier(), FunctionTransformer(), and GridSearchCV().
+
+		# Define a feature extractor to flag very large values
+		def more_than_average(X, multiplier=1.0):
+		  Z = X.copy()
+		  Z[:,1] = Z[:,1] > multiplier*np.mean(Z[:,1])
+		  return Z
+
+		# Convert your function so that it can be used in a pipeline
+		pipe = Pipeline([
+		  ('ft', FunctionTransformer(more_than_average)),
+		  ('clf', RandomForestClassifier(random_state=2))])
+
+		# Optimize the parameter multiplier using GridSearchCV
+		params = {'ft__multiplier':[1,2,3]}
+		grid_search = GridSearchCV(pipe, param_grid=params)
+		
+Detecting overfitting 
+
+Cross-validation results
+	grid_search = GridSearchCV(pipe, params, cv=3, return_train_score=True)
+	gs = grid_search.fit(X_train, y_train)
+	results = pd.DataFrame(gs.cv_results_)
+
+	results[['mean_train_score', 'std_train_score',
+		'mean_test_score', 'std_test_score']]
+
+
+	CV Training Score >> CV Test Score
+		overfitting in model fitting stage
+		reduce complexity of classifier 
+		get more training data
+		increase cv number
+	CV Test Score >> Validation Score
+		overfitting in model tuning stage
+		decrease cv number
+		decrease size of parameter grid
+		
+Exercise 35 - Challenge the champion
+Having pushed your random forest to production, you suddenly worry that a naive Bayes classifier might be better. You want to run a champion-challenger test, by comparing a naive Bayes, acting as the challenger, to exactly the model which is currently in production, which you will load from file to make sure there is no confusion. You will use the F1 score for assessment. You have the data X_train, X_test, y_train and y_test available as before and GaussianNB(), f1_score() and pickle().	
+
+		# Load the current model from disk
+		champion = pickle.load(open('model.pkl', 'rb'))
+
+		# Fit a Gaussian Naive Bayes to the training data
+		challenger = GaussianNB().fit(X_train, y_train)
+
+		# Print the F1 test scores of both champion and challenger
+		print(f1_score(y_test, champion.predict(X_test)))
+		print(f1_score(y_test, challenger.predict(X_test)))
+
+		# Write back to disk the best-performing model
+		with open('model.pkl', 'wb') as file:
+			pickle.dump(champion, file=file)	
+			
+			
+Exercise 36 - Cross-validation statistics
+You used grid search CV to tune your random forest classifier, and now want to inspect the cross-validation results to ensure you did not overfit. In particular you would like to take the difference of the mean test score for each fold from the mean training score. The dataset is available as X_train and y_train, the pipeline as pipe, and a number of modules are pre-loaded including pandas as pd and GridSearchCV().
