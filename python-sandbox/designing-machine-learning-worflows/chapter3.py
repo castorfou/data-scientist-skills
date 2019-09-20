@@ -156,6 +156,7 @@ pipe = Pipeline([
 params = {'ft__multiplier':[1,2,3]}
 grid_search = GridSearchCV(pipe, param_grid=params)
 
+print(uploadToFileIO(pipe,proxy="10.225.92.1:80"))
 
 #%%Exercise 35 - Challenge the champion - init
 from sklearn.naive_bayes import GaussianNB
@@ -198,6 +199,36 @@ with open('model.pkl', 'wb') as file:
     pickle.dump(champion, file=file)
 
 #%% Exercise 36 - Cross-validation statistics - init
-    
+
+#from datacamp
+import pickle
+from uploadfromdatacamp import saveFromFileIO
+import pandas as pd
+
+#with open('pipe.pkl', 'wb') as file:
+#    pickle.dump(pipe, file)
+#uploadToFileIO_pushto_fileio('pipe.pkl')
+
+# 'https://file.io/fRWOKA'
+url='https://file.io/fRWOKA'
+tobesaved_as='pipe.pkl'
+prefix='Chap36_'
+tobedownloaded="{pipeline:{'"+tobesaved_as+"': '"+url+"'}}"
+#saveFromFileIO(tobedownloaded, prefix=prefix, proxy="10.225.92.1:80")
+with open(prefix+tobesaved_as, 'rb') as file:
+    pipe = pickle.load(file)
+
+#uploadToFileIO(X_train,y_train)
+#{pandas.core.frame.DataFrame: {'X_train.csv': 'https://file.io/8cNkWJ'}, pandas.core.series.Series: {'y_train.csv': 'https://file.io/6R2JXV'}}
+############get files
+tobedownloaded="{pandas.core.frame.DataFrame: {'X_train.csv': 'https://file.io/8cNkWJ'}, pandas.core.series.Series: {'y_train.csv': 'https://file.io/6R2JXV'}}"
+prefix='Chap36_'
+saveFromFileIO(tobedownloaded, prefix=prefix, proxy="10.225.92.1:80")
+############load objects
+X_train=pd.read_csv(prefix+'X_train.csv',index_col=0)
+y_train=pd.read_csv(prefix+'y_train.csv', index_col=0, header=None,squeeze=True)
+
+
+   
 #%% Exercise 36 - Cross-validation statistics
     

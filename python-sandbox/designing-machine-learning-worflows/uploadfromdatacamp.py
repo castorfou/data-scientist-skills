@@ -15,85 +15,73 @@ import inspect
 import subprocess
 import json
 import yaml
+import pickle
 
-
-#%% uploadFromDatacamp
-#to be run in datacamp
-
-proxy=""
-#to uncomment when working from Michelin
-#proxy="10.225.92.1:80"
-
-def retrieve_name(var):
-    callers_local_vars = inspect.currentframe().f_back.f_back.f_locals.items()
-    return [var_name for var_name, var_val in callers_local_vars if var_val is var]
-
-def uploadFromDatacamp(*argv):
+#%% uploadToFileIO(*argv):
+    # liste des objets à envoyer
+    #print un nested dictionnaire avec {type: {filename: url_sur_fileIO}}
+    #à donner en entree de saveFromFileIO
+def uploadToFileIO(*argv, proxy=''):
     dict_urls = {}
-    curl_proxy_option='-q'
-    if proxy!='':
-        curl_proxy_option='-x'+proxy
-    array_int = np.asarray([ [1,2,3], [4,5,6], [7,8,9] ])
-    for arg in argv:  
-        if (type(arg) == type(str())):
-            #get the list of str
-            dict_str=dict_urls.get(type(arg),{})
-            if (len(retrieve_name(arg)) > 0 ):
-                #print('string ', retrieve_name(arg)[0], arg)
-                dict_str[retrieve_name(arg)[0]]=arg
-                dict_urls[type(arg)]=dict_str
-            #else:
-            #on ne fait rien avec les strings passes en direct
-                #print('direct string: ',arg)
-#        if (type(arg) == (type(pd.DataFrame()) or type(pd.Series()))):
-        if (type(arg) == (type(pd.Series())) or type(arg) == (type(pd.DataFrame()))):
-            nom_du_df = retrieve_name(arg)[0]
-            nom_du_csv=F"{nom_du_df}.csv"
-            arg.to_csv(nom_du_csv)
-            curl_command=" ".join(str(x) for x in ['curl', curl_proxy_option, '-F', "file=@"+nom_du_csv, 'https://file.io'])
-            sortie_curl = subprocess.getoutput(curl_command)
-            dict_str=dict_urls.get(type(arg),{})
-            dict_str[nom_du_csv]=urlFromFileIO(sortie_curl)
-            dict_urls[type(arg)]=dict_str
-        if (type(arg) == type(list())):
-            if (len(retrieve_name(arg)) > 0 ):
-            #on ne fait rien avec les listes passees en direct
-                nom_de_la_liste = retrieve_name(arg)[0]
-                nom_du_txt=F"{nom_de_la_liste}.txt"
-                with open(nom_du_txt, 'w') as f:
-                    f.write(json.dumps(arg))        
-                curl_command=" ".join(str(x) for x in ['curl', curl_proxy_option, '-F', "file=@"+nom_du_txt, 'https://file.io'])
-                sortie_curl = subprocess.getoutput(curl_command)
-                dict_str=dict_urls.get(type(arg),{})
-                dict_str[nom_du_txt]=urlFromFileIO(sortie_curl)
-                dict_urls[type(arg)]=dict_str
-        
-        if (type(arg) == type(array_int)):
-            nom_du_nd = retrieve_name(arg)[0]
-            nom_du_csv=F"{nom_du_nd}.csv"            
-            np.savetxt(nom_du_csv, arg, delimiter=",")
-            curl_command=" ".join(str(x) for x in ['curl', curl_proxy_option, '-F', "file=@"+nom_du_csv, 'https://file.io'])
-            sortie_curl = subprocess.getoutput(curl_command)
-            dict_str=dict_urls.get(type(arg),{})
-            dict_str[nom_du_csv]=urlFromFileIO(sortie_curl)
-            dict_urls[type(arg)]=dict_str
+    for arg in argv:
+        filename = uploadToFileIO_get_filename(arg)
+        uploadToFileIO_saveas_filename(arg, filename)
+        dict_str=dict_urls.get(type(arg),{})
+        dict_str[filename]=uploadToFileIO_pushto_fileio(filename, proxy)
+        dict_urls[type(arg)]=dict_str
     return dict_urls
 
+
+#retieve the name of the variable given in a list
+def retrieve_name(var):
+    callers_local_vars = inspect.currentframe().f_back.f_back.f_back.f_locals.items()
+    return [var_name for var_name, var_val in callers_local_vars if var_val is var]
+
+#return url from curl output (closed to json format)
 def urlFromFileIO(outputCurl):
     #extract text between {}
     outputCurl=outputCurl[outputCurl.find("{"):outputCurl.find("}")+1]
     print(outputCurl)
     d = json.loads(outputCurl)
     return(d['link'])
+
+#return appropriate filename for a given variable
+def uploadToFileIO_get_filename(variable):
+    filename=retrieve_name(variable)[0]
+    if ( type(variable) == type(pd.Series()) or type(variable) == type(pd.DataFrame()) or type(variable) == type(np.asarray([ [1,2,3], [4,5,6], [7,8,9] ])) ):
+        filename=F"{filename}.csv"
+    if (type(variable) == type(str()) or type(variable) == type(list())):
+        filename=F"{filename}.txt"
+    return filename;
+
+#save variable as a file named filename
+#no return
+def uploadToFileIO_saveas_filename(variable,filename):
+    if ( type(variable) == type(pd.Series()) or type(variable) == type(pd.DataFrame()) ):
+        variable.to_csv(filename)
+    if (type(variable) == type(np.asarray([ [1,2,3], [4,5,6], [7,8,9] ]))):
+        np.savetxt(filename, variable, delimiter=",")
+    if (type(variable) == type(str()) or type(variable) == type(list())):
+        with open(filename, 'w') as f:
+            f.write(json.dumps(variable))
+
+
+
+#upload filename to file.io and return url of this file on file.io
+#as an optionnal parameter take a proxy            
+def uploadToFileIO_pushto_fileio(filename,proxy=''):
+    curl_proxy_option='-q'
+    if proxy!='':
+        curl_proxy_option='-x'+proxy
+    curl_command=" ".join(str(x) for x in ['curl', curl_proxy_option, '-F', "file=@"+filename, 'https://file.io'])
+    sortie_curl = subprocess.getoutput(curl_command)
+    return urlFromFileIO(sortie_curl)
     
 #%% saveFromFileIO
 # prend en entree un dict : type, filename, url
 #       et un prefix optionnel
 # et telecharge tout avec les bon prefix+filename    
-
-proxy="10.225.92.1:80"
-
-def saveFromFileIO(dict_urls, prefix=''):
+def saveFromFileIO(dict_urls, prefix='', proxy=''):
     #we accept both string and dict
     curl_proxy_option='-q'
     if proxy!='':
@@ -120,29 +108,3 @@ def loadListFromTxt(filename):
 def loadNDArrayFromCsv(filename):
     myArray = np.genfromtxt(filename, delimiter=',')
     return myArray
-
-#%% test uploadFromDatacamp with new dict structure
-def test():
-    TEST_uploadFromDatacamp_test = 'je suis un test'
-    TEST_uploadFromDatacamp_test2 = 'test2'
-    TEST_uploadFromDatacamp_liste=[1,2,3]
-    TEST_uploadFromDatacamp_liste2=['test','re','3256',32]
-    TEST_uploadFromDatacamp_s = pd.Series([1, 2, 5, 7])
-    TEST_uploadFromDatacamp_X_test_test=pd.read_csv('X_test.csv',index_col=0)
-    TEST_uploadFromDatacamp_X_train_test=pd.read_csv('X_train.csv',index_col=0)
-    
-    #should create 7 files TEST_uploadFromDatacamp_*.{csv,txt}
-    uploadFromDatacamp(TEST_uploadFromDatacamp_s, TEST_uploadFromDatacamp_liste, TEST_uploadFromDatacamp_liste2, \
-                       TEST_uploadFromDatacamp_X_test_test, TEST_uploadFromDatacamp_X_train_test,TEST_uploadFromDatacamp_test, TEST_uploadFromDatacamp_test2 )
-    
-    TEST_uploadFromDatacamp_a = np.asarray([ [1,2,3], [4,5,6], [7,8,9] ])
-    TEST_uploadFromDatacamp_b = np.asarray([ [1.,2.], [4.,5.] ])
-    
-    #should create 2 files TEST_uploadFromDatacamp_*.{csv,txt}
-    uploadFromDatacamp(TEST_uploadFromDatacamp_a,TEST_uploadFromDatacamp_b)
-    
-#%% get function from datacamp (example)
-#import inspect
-#print(inspect.getsource(my_metric))
-   
-    
