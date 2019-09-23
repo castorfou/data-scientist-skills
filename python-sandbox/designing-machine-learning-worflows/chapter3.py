@@ -204,6 +204,7 @@ with open('model.pkl', 'wb') as file:
 import pickle
 from uploadfromdatacamp import saveFromFileIO
 import pandas as pd
+from sklearn.model_selection import GridSearchCV
 
 #with open('pipe.pkl', 'wb') as file:
 #    pickle.dump(pipe, file)
@@ -223,12 +224,94 @@ with open(prefix+tobesaved_as, 'rb') as file:
 ############get files
 tobedownloaded="{pandas.core.frame.DataFrame: {'X_train.csv': 'https://file.io/8cNkWJ'}, pandas.core.series.Series: {'y_train.csv': 'https://file.io/6R2JXV'}}"
 prefix='Chap36_'
-saveFromFileIO(tobedownloaded, prefix=prefix, proxy="10.225.92.1:80")
+#saveFromFileIO(tobedownloaded, prefix=prefix, proxy="10.225.92.1:80")
 ############load objects
 X_train=pd.read_csv(prefix+'X_train.csv',index_col=0)
 y_train=pd.read_csv(prefix+'y_train.csv', index_col=0, header=None,squeeze=True)
 
-
+params={'feature_selection__k': [10, 20], 'clf__n_estimators': [2, 5]}
    
 #%% Exercise 36 - Cross-validation statistics
     
+# Fit your pipeline using GridSearchCV with three folds
+grid_search = GridSearchCV(pipe, params, cv=3, return_train_score=True)
+
+# Fit the grid search
+gs = grid_search.fit(X_train, y_train)
+
+# Store the results of CV into a pandas dataframe
+results = pd.DataFrame(gs.cv_results_)
+
+# Print the difference between mean test and training scores
+print(
+  results['mean_test_score']-results['mean_train_score'])
+
+#%% Exercise 37 - Tuning the window size - init
+from sklearn.metrics import f1_score
+import numpy as np
+from sklearn.naive_bayes import GaussianNB
+
+#uploadToFileIO(arrh,X_test, y_test)
+tobedownloaded="{pandas.core.frame.DataFrame: {'X_test.csv': 'https://file.io/4ufWqq',  'arrh.csv': 'https://file.io/8U8XA8'}, pandas.core.series.Series: {'y_test.csv': 'https://file.io/6Cwgu1'}}"
+prefix='Chap37_'
+#saveFromFileIO(tobedownloaded, prefix=prefix, proxy="10.225.92.1:80")
+accuracies=[]
+t_now=400
+
+arrh=pd.read_csv(prefix+'arrh.csv',index_col=0)
+X_test=pd.read_csv(prefix+'X_test.csv',index_col=0)
+y_test=pd.read_csv(prefix+'y_test.csv', index_col=0, header=None,squeeze=True)
+
+wrange=range(10,100,10)
+
+
+#%% Exercise 37 - Tuning the window size
+
+# Loop over window sizes
+for w_size in wrange:
+
+    # Define sliding window
+    sliding = arrh.loc[t_now-w_size+1:t_now]
+
+    # Extract X and y from the sliding window
+    X, y = sliding.drop('class', 1), sliding['class']
+    
+    # Fit the classifier and store the F1 score
+    preds = GaussianNB().fit(X, y).predict(X_test)
+    accuracies.append(f1_score(y_test, preds))
+
+# Estimate the best performing window size
+optimal_window = wrange[np.argmax(accuracies)]
+
+#%% Exercise 38 - Bringing it all together - init
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.feature_selection import SelectKBest
+from sklearn.model_selection import GridSearchCV
+import numpy as np
+import pickle
+from sklearn.pipeline import Pipeline
+
+#uploadToFileIO(arrh)
+tobedownloaded="{pandas.core.frame.DataFrame: {'arrh.csv': 'https://file.io/oHzQj0'}}"
+prefix='Chap38_'
+#saveFromFileIO(tobedownloaded, prefix=prefix, proxy="10.225.92.1:80")
+arrh=pd.read_csv(prefix+'arrh.csv',index_col=0)
+
+
+#%% Exercise 38 - Bringing it all together
+
+# Create a pipeline 
+pipe = Pipeline([
+  ('ft', SelectKBest()), ('clf', RandomForestClassifier(random_state=2))])
+
+# Create a parameter grid
+grid = {'ft__k':[5, 10], 'clf__max_depth':[10, 20]}
+
+# Execute grid search CV on a dataset containing under 50s
+grid_search = GridSearchCV(pipe, param_grid=grid)
+arrh = arrh[arrh['age'] < 50]
+grid_search.fit(arrh.drop('class', 1), arrh['class'])
+
+# Push the fitted pipeline to production
+with open('pipe.pkl', 'wb') as file:
+    pickle.dump(grid_search, file)

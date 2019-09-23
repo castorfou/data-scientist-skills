@@ -246,3 +246,63 @@ Having pushed your random forest to production, you suddenly worry that a naive 
 			
 Exercise 36 - Cross-validation statistics
 You used grid search CV to tune your random forest classifier, and now want to inspect the cross-validation results to ensure you did not overfit. In particular you would like to take the difference of the mean test score for each fold from the mean training score. The dataset is available as X_train and y_train, the pipeline as pipe, and a number of modules are pre-loaded including pandas as pd and GridSearchCV().
+
+		# Fit your pipeline using GridSearchCV with three folds
+		grid_search = GridSearchCV(pipe, params, cv=3, return_train_score=True)
+
+		# Fit the grid search
+		gs = grid_search.fit(X_train, y_train)
+
+		# Store the results of CV into a pandas dataframe
+		results = pd.DataFrame(gs.cv_results_)
+
+		# Print the difference between mean test and training scores
+		print(
+		  results['mean_test_score']-results['mean_train_score'])
+  
+ Great work. The difference between training and test performance seems quite big here, and that is always a telltale sign of overfitting!
+
+Exercise 37 - Tuning the window size
+You want to check for yourself that the optimal window size for the arrhythmia dataset is 50. You have been given the dataset as a pandas data frame called arrh, and want to use a subset of the data up to time t_now. Your test data is available as X_test, y_test. You will try out a number of window sizes, ranging from 10 to 100, fit a naive Bayes classifier to each window, assess its F1 score on the test data, and then pick the best performing window size. You also have numpy available as np, and the function f1_score() has been imported already. Finally, an empty list called accuracies has been initialized for you to store the accuracies of the windows.
+
+		# Loop over window sizes
+		for w_size in wrange:
+
+			# Define sliding window
+			sliding = arrh.loc[t_now-w_size+1:t_now]
+
+			# Extract X and y from the sliding window
+			X, y = sliding.drop('class', 1), sliding['class']
+			
+			# Fit the classifier and store the F1 score
+			preds = GaussianNB().fit(X, y).predict(X_test)
+			accuracies.append(f1_score(y_test, preds))
+
+		# Estimate the best performing window size
+		optimal_window =  wrange[np.argmax(accuracies)]
+		
+Well done! You now realise that the possibility of dataset shift introduces yet another parameter to optimize: the window size. This cannot be done with Cross-Validation on historical data, but instead requires the technique shown here.
+
+Exercise 38 - Bringing it all together
+You have two concerns about your pipeline at the arrhythmia detection startup:
+
+The app was trained on patients of all ages, but is primarily being used by fitness users who tend to be young. You suspect this might be a case of domain shift, and hence want to disregard all examples above 50 years old.
+You are still concerned about overfitting, so you want to see if making the random forest classifier less complex and selecting some features might help with that.
+You will create a pipeline with a feature selection SelectKBest() step and a RandomForestClassifier, both of which have been imported. You also have access to GridSearchCV(), Pipeline, numpy as np and pickle. The data is available as arrh.
+
+		# Create a pipeline 
+		pipe = Pipeline([
+		  ('ft', SelectKBest()), ('clf', RandomForestClassifier(random_state=2))])
+
+		# Create a parameter grid
+		grid = {'ft__k':[5, 10], 'clf__max_depth':[10, 20]}
+
+		# Execute grid search CV on a dataset containing under 50s
+		grid_search = GridSearchCV(pipe, param_grid=grid)
+		arrh = arrh[arrh['age'] < 50]
+		grid_search.fit(arrh.drop('class', 1), arrh['class'])
+
+		# Push the fitted pipeline to production
+		with open('pipe.pkl', 'wb') as file:
+			pickle.dump(grid_search, file)
+			
