@@ -31,10 +31,10 @@ y_train=pd.read_csv(prefix+'y_train.csv', index_col=0, header=None,squeeze=True)
 
 #%% example of usage for pkl files
 ######################## from datacamp
+
 uploadToFileIO_pushto_fileio('model.pkl')
     
 ######################### from local
-
 from uploadfromdatacamp import saveFromFileIO
 
 ############get files
@@ -44,14 +44,12 @@ prefix='Chap35_'
 tobedownloaded="{pipeline:{'"+tobesaved_as+"': '"+url+"'}}"
 saveFromFileIO(tobedownloaded, prefix=prefix, proxy="10.225.92.1:80")
 
-
 #%% example of usage for pipeline pkl files
 ######################## from datacamp
 import pickle
 with open('pipe.pkl', 'wb') as file:
     pickle.dump(pipe, file)
 uploadToFileIO_pushto_fileio('pipe.pkl')
-
 
 ######################### from local
 ############get files
@@ -64,8 +62,6 @@ saveFromFileIO(tobedownloaded, prefix=prefix, proxy="10.225.92.1:80")
 ############load objects
 with open(prefix+tobesaved_as, 'rb') as file:
     pipe = pickle.load(file)
-
-
 
 #%% import
 from uploadfromdatacamp import *

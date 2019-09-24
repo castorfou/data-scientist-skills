@@ -1,0 +1,8 @@
+
+
+F279814@LL11LPC0LP3RA MINGW64 /d/git/datacamp-itp/data-scientist-skills/python-sandbox/designing-machine-learning-worflows (master)
+$ for f in Chap*; do mv "$f" "ZZZ_${f#Chap}"; done
+
+
+
+https://unix.stackexchange.com/questions/47367/bulk-rename-change-prefix
