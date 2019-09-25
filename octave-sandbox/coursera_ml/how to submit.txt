@@ -1,0 +1,3 @@
+apres remplacement de submitWithConfiguration.m (voir setup env.txt)
+
+submit with email guillaume.ramelet@gmail.com
