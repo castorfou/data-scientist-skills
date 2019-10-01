@@ -1,0 +1,10 @@
+PYTHON
+------
+
+sur la base de datacamp-py37
+conda create --name zoe --clone datacamp-py37
+
+GIT
+---
+
+rien à faire, sous datacamp-skills
