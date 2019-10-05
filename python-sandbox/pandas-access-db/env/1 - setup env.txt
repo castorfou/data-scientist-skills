@@ -1,0 +1,7 @@
+PYTHON -------------------------------------
+-----------------------------------------
+
+set CONDA_FORCE_32BIT=1
+conda create -n py37_32-access python=3.7
+conda activate py37_32-access
+conda install pandas pyodbc jupyter
