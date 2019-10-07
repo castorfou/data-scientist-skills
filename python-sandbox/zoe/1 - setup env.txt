@@ -3,6 +3,13 @@ PYTHON
 
 sur la base de datacamp-py37
 conda create --name zoe --clone datacamp-py37
+conda install -c conda-forge jupyterlab
+conda install -c conda-forge nodejs
+(check config npm proxy: 
+npm config set proxy http://10.225.92.1:80
+npm config set https-proxy http://10.225.92.1:80
+)
+jupyter labextension install @lckr/jupyterlab_variableinspector
 
 GIT
 ---
