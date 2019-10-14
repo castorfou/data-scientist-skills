@@ -1,0 +1,15 @@
+dezipper machine-learning-ex3.zip
+
+
+from D:\git\datacamp-itp\data-scientist-skills\octave-sandbox\coursera_ml\
+
+copy week2-linear-regression\machine-learning-ex1\ex1\lib\submitWithConfiguration.m
+
+to
+
+week4-neural-network-representation\machine-learning-ex2\ex2\lib
+
+et faire un touch sur le fichier (pour le recompiler)
+
+
+copier le start.bat d'une semaine precedente et changer les chemins
