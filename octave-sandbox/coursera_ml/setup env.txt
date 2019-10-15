@@ -1,3 +1,0 @@
-conda create --name coursera --clone datacamp-py37
-activate coursera
-conda install xlrd
