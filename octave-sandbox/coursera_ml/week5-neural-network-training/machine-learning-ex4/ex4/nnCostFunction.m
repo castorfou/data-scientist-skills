@@ -29,6 +29,9 @@ m = size(X, 1);
 J = 0;
 Theta1_grad = zeros(size(Theta1)); 
 Theta2_grad = zeros(size(Theta2));
+Delta1_grad = zeros(size(Theta1)); 
+Delta2_grad = zeros(size(Theta2));
+
 
 % ====================== YOUR CODE HERE ======================
 % Instructions: You should complete the code by working through the
@@ -93,7 +96,6 @@ output_layer_size= size(yv, 2);
 theta2_with_null_1stcolumn=Theta2(:,2:end);
 theta2_with_null_1stcolumn=[zeros(output_layer_size,1) theta2_with_null_1stcolumn];
 
-
 for t=1:m % m=5000
   x_t=X(t,:); % 1, 400
   y_t=yv(t,:); % 1, 10
@@ -108,8 +110,14 @@ for t=1:m % m=5000
   delta2 = delta3*Theta2.*sigmoidGradient([0 z_2]); % 1,26 [1,10 * 10, 26  1,26]
   delta2=delta2(2:end); % 1, 25
   
-  Theta1_grad = ( m*Theta1_grad+delta2'*a_1 +lambda*theta1_with_null_1stcolumn)/m;  % 25,401 [25,1 1,401]
-  Theta2_grad = ( m*Theta2_grad+delta3'*A_2 +lambda*theta2_with_null_1stcolumn)/m;  % 10,26 [10,1 1,26]
+  Delta1_grad=Delta1_grad+delta2'*a_1;% 25,401 [25,1 1,401]
+  Delta2_grad=Delta2_grad+delta3'*A_2;% 10,26 [10,1 1,26]
+  
+%  Theta1_grad = Theta1_grad+(delta2'*a_1 +lambda*theta1_with_null_1stcolumn)/m;  % 25,401 [25,1 1,401]
+%  Theta2_grad = Theta2_grad+(delta3'*A_2 +lambda*theta2_with_null_1stcolumn)/m;  % 10,26 [10,1 1,26]
+  Theta1_grad=Delta1_grad/m+lambda*theta1_with_null_1stcolumn/m;
+  Theta2_grad=Delta2_grad/m+lambda*theta2_with_null_1stcolumn/m;
+  
   
 endfor
 
