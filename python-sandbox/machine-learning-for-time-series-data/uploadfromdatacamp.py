@@ -60,7 +60,7 @@ def uploadToFileIO_saveas_filename(variable,filename):
     if ( type(variable) == type(pd.Series()) or type(variable) == type(pd.DataFrame()) ):
         variable.to_csv(filename)
     if (type(variable) == type(np.asarray([ [1,2,3], [4,5,6], [7,8,9] ]))):
-        np.savetxt(filename, variable, delimiter=",")
+        np.savetxt(filename, variable, fmt='%5s',delimiter=",")
     if (type(variable) == type(str()) or type(variable) == type(list())):
         with open(filename, 'w') as f:
             f.write(json.dumps(variable))

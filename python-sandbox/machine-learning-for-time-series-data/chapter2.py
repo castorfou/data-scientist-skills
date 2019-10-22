@@ -162,3 +162,211 @@ audio_rectified_smooth = audio_rectified.rolling(50).mean()
 audio_rectified_smooth.plot(figsize=(10, 5))
 plt.show()
 
+#%% Exercise - Calculating features from the envelope - init
+
+import matplotlib.pyplot as plt
+
+import pandas as pd
+import numpy as np
+import pickle
+from uploadfromdatacamp import saveFromFileIO
+from uploadfromdatacamp import loadNDArrayFromCsv
+from sklearn.svm import LinearSVC
+
+#uploadToFileIO(labels)
+tobedownloaded="{numpy.ndarray: {'labels.csv': 'https://file.io/YHcJpx'}}"
+prefix='data_from_datacamp/ZZZ_Chap25_'
+
+#saveFromFileIO(tobedownloaded, prefix=prefix, proxy="10.225.92.1:80")
+
+labels=loadNDArrayFromCsv(prefix+'labels.csv', dtype='<U8')
+model=LinearSVC()
+
+#uploadToFileIO(audio_rectified_smooth)
+tobedownloaded="{pandas.core.frame.DataFrame: {'audio_rectified_smooth.csv': 'https://file.io/yGeyEV'}}"
+prefix='data_from_datacamp/ZZZ_Chap25_'
+
+#saveFromFileIO(tobedownloaded, prefix=prefix, proxy="10.225.92.1:80")
+
+audio_rectified_smooth=pd.read_csv(prefix+'audio_rectified_smooth.csv', index_col=0)
+
+#uploadToFileIO(audio)
+tobedownloaded="{pandas.core.frame.DataFrame: {'audio.csv': 'https://file.io/tHgHiM'}}"
+prefix='data_from_datacamp/ZZZ_Chap25_'
+#saveFromFileIO(tobedownloaded, prefix=prefix, proxy="10.225.92.1:80")
+
+#%% Exercise - Calculating features from the envelope
+
+# Calculate stats
+means = np.mean(audio_rectified_smooth, axis=0)
+stds = np.std(audio_rectified_smooth, axis=0)
+maxs = np.max(audio_rectified_smooth, axis=0)
+
+# Create the X and y arrays
+X = np.column_stack([means, stds, maxs])
+y = labels.reshape([-1, 1])
+
+# Fit the model and score on testing data
+from sklearn.model_selection import cross_val_score
+percent_score = cross_val_score(model, X, y, cv=5)
+print(np.mean(percent_score))
+
+#%% Exercise - Derivative features: The tempogram - init
+
+import pandas as pd
+import numpy as np
+from uploadfromdatacamp import saveFromFileIO
+
+#uploadToFileIO(audio)
+tobedownloaded="{pandas.core.frame.DataFrame: {'audio.csv': 'https://file.io/mC0lPn'}}"
+prefix='data_from_datacamp/ZZZ_Chap26_'
+
+#saveFromFileIO(tobedownloaded, prefix=prefix, proxy="10.225.92.1:80")
+
+audio=pd.read_csv(prefix+'audio.csv',index_col=0)
+
+import librosa as lr
+sfreq=2205
+
+
+#%% Exercise - Derivative features: The tempogram
+
+# Calculate the tempo of the sounds
+tempos = []
+for col, i_audio in audio.items():
+    tempos.append(lr.beat.tempo(i_audio.values, sr=sfreq, hop_length=2**6, aggregate=None))
+
+# Convert the list to an array so you can manipulate it more easily
+tempos = np.array(tempos)
+
+# Calculate statistics of each tempo
+tempos_mean = tempos.mean(axis=-1)
+tempos_std = tempos.std(axis=-1)
+tempos_max = tempos.max(axis=-1)
+
+# Create the X and y arrays
+X = np.column_stack([means, stds, maxs, tempos_mean,tempos_std, tempos_max])
+y = labels.reshape([-1, 1])
+
+# Fit the model and score on testing data
+percent_score = cross_val_score(model, X, y, cv=5)
+print(np.mean(percent_score))
+
+
+#%% Exercise - Spectrograms of heartbeat audio - init
+
+from uploadfromdatacamp import saveFromFileIO, loadNDArrayFromCsv
+import matplotlib.pyplot as plt
+
+#uploadToFileIO(audio, time)
+tobedownloaded="{numpy.ndarray: {'audio.csv': 'https://file.io/HtFYDY','time.csv': 'https://file.io/qDvUW1'}}"
+prefix='data_from_datacamp/ZZZ_Chap27_'
+#saveFromFileIO(tobedownloaded, prefix=prefix, proxy="10.225.92.1:80")
+
+audio=loadNDArrayFromCsv(prefix+'audio.csv')
+time=loadNDArrayFromCsv(prefix+'time.csv')
+sfreq=2205
+
+#%% Exercise - Spectrograms of heartbeat audio
+
+# Import the stft function
+from librosa.core import stft
+
+# Prepare the STFT
+HOP_LENGTH = 2**4
+spec = stft(audio, hop_length=HOP_LENGTH, n_fft=2**7)
+
+from librosa.core import amplitude_to_db
+from librosa.display import specshow
+
+# Convert into decibels
+spec_db = amplitude_to_db(spec)
+
+# Compare the raw audio to the spectrogram of the audio
+fig, axs = plt.subplots(2, 1, figsize=(10, 10), sharex=True)
+axs[0].plot(time, audio)
+specshow(spec_db, sr=sfreq, x_axis='time', y_axis='hz', hop_length=HOP_LENGTH)
+plt.show()
+
+#%% Exercise - Engineering spectral features - init
+
+import numpy as np
+
+from uploadfromdatacamp import saveFromFileIO, loadNDArrayFromCsv
+import matplotlib.pyplot as plt
+
+#uploadToFileIO(spec,times_spec )
+tobedownloaded="{numpy.ndarray: {'spec.csv': 'https://file.io/GqqSoz',  'times_spec.csv': 'https://file.io/xMyQno'}}"
+prefix='data_from_datacamp/ZZZ_Chap28_'
+#saveFromFileIO(tobedownloaded, prefix=prefix, proxy="10.225.92.1:80")
+
+spec=loadNDArrayFromCsv(prefix+'spec.csv')
+times_spec=loadNDArrayFromCsv(prefix+'times_spec.csv')
+sfreq=2205
+
+
+#%% Exercise - Engineering spectral features 
+
+import librosa as lr
+
+# Calculate the spectral centroid and bandwidth for the spectrogram
+bandwidths = lr.feature.spectral_bandwidth(S=spec)[0]
+centroids = lr.feature.spectral_centroid(S=spec)[0]
+
+from librosa.core import amplitude_to_db
+from librosa.display import specshow
+
+# Convert spectrogram to decibels for visualization
+spec_db = amplitude_to_db(spec)
+
+# Display these features on top of the spectrogram
+fig, ax = plt.subplots(figsize=(10, 5))
+ax = specshow(spec_db, x_axis='time', y_axis='hz', hop_length=HOP_LENGTH)
+ax.plot(times_spec, centroids)
+ax.fill_between(times_spec, centroids - bandwidths / 2, centroids + bandwidths / 2, alpha=.5)
+ax.set(ylim=[None, 6000])
+plt.show()
+
+#%% Exercise - Combining many features in a classifier - init
+
+#dict_spectrograms={i:spectrograms[i] for i in range(len(spectrograms))}
+import numpy as np
+import pandas as pd
+from uploadfromdatacamp import saveFromFileIO, loadNDArrayFromCsv
+import librosa as lr
+
+
+#flat_spectro=np.reshape(spectrograms,(65*60,552))
+#uploadToFileIO(flat_spectro)
+tobedownloaded="{numpy.ndarray: {'flat_spectro.csv': 'https://file.io/CoxZDy'}}"
+prefix='data_from_datacamp/ZZZ_Chap29_'
+#saveFromFileIO(tobedownloaded, prefix=prefix, proxy="10.225.92.1:80")
+
+flat_spectro=loadNDArrayFromCsv(prefix+'flat_spectro.csv')
+spect=np.reshape(flat_spectro,(60,65,-1))
+
+spectrograms=[spect[i,:,:] for i in range(60)]
+
+
+#%% Exercise - Combining many features in a classifier
+
+# Loop through each spectrogram
+bandwidths = []
+centroids = []
+
+for spec in spectrograms:
+    # Calculate the mean spectral bandwidth
+    this_mean_bandwidth = np.mean(lr.feature.spectral_bandwidth(S=spec))
+    # Calculate the mean spectral centroid
+    this_mean_centroid = np.mean(lr.feature.spectral_centroid(S=spec))
+    # Collect the values
+    bandwidths.append(this_mean_bandwidth)  
+    centroids.append(this_mean_centroid)
+    
+# Create X and y arrays
+X = np.column_stack([means, stds, maxs, tempos_mean, tempos_max, tempos_std, bandwidths, centroids])
+y = labels.reshape([-1, 1])
+
+# Fit the model and score on testing data
+percent_score = cross_val_score(model, X, y, cv=5)
+print(np.mean(percent_score))    
