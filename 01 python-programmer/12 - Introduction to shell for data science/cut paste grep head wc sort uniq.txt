@@ -1,0 +1,27 @@
+cut
+	cut -d , -f 1 seasonal/*.csv
+	-d delimiter
+	-f morceaux
+
+grep
+	-v ignore cette entree
+	
+	cut -d , -f 1 seasonal/*.csv | grep -v Date | sort | uniq
+
+uniq
+	-c count les occurences
+	
+How can I repeat a command many times?
+	for filetype in gif jpg png; do echo $filetype; done
+	
+nano
+    Ctrl + K: delete a line.
+    Ctrl + U: un-delete a line.  twice to paste two copies of it.
+    Ctrl + O: save the file ('O' stands for 'output').
+    Ctrl + X: exit the editor.
+
+How can I pass filenames to scripts?
+	$@
+	sort $@ | uniq
+	bash unique-lines.sh seasonal/summer.csv seasonal/autumn.csv
+	

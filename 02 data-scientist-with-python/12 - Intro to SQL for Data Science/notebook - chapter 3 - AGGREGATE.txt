@@ -1,0 +1,27 @@
+AVG SUM MAX 
+		SELECT AVG(budget)
+		FROM films;
+
+		SELECT MAX(budget)
+		FROM films;
+
+		SELECT SUM(budget)
+		FROM films;
+
+Arithmetic
+	the following gives a result of 1:
+	SELECT (4 / 3);
+	SQL assumes that if you divide an integer by an integer, you want to get an integer back. 
+
+	If you want more precision when dividing, you can add decimal places to your numbers. For example,
+	SELECT (4.0 / 3.0) AS result;
+	gives you the result you would expect: 1.333.
+
+AS
+		SELECT MAX(budget) AS max_budget,
+			   MAX(duration) AS max_duration
+		FROM films;
+		
+		SELECT title, (gross - budget) AS net_profit FROM films;
+		
+		SELECT COUNT(deathdate)*100.0 / COUNT(*) AS percentage_dead FROM people;

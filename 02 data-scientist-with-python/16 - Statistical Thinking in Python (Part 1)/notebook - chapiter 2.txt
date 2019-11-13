@@ -1,0 +1,74 @@
+mean
+	np.mean(data)
+	#influenced by outliers
+	
+median
+	np.median(data)
+	
+	
+percentiles
+	np.percentile(df['dem_share"],[25,50,75])
+
+outliers	
+	being 2 IQR from the median is a good definition
+	IQR is between 25 to 75 percentilesbars are for extent of data or 1.5 IQR
+	
+boxplots
+	import matplotlib.pyplot as plt
+	import seaborn as sns
+	_ = sns.boxplot(x='east_west', y='dem_share',data=df_all_states)
+	_ = plt.xlabel('region')
+	_ = plt.ylabel('percent of vote for Obama')
+	plt.show()
+
+Exercise - 	Comparing percentiles to ECDF
+	# Plot the ECDF
+	_ = plt.plot(x_vers, y_vers, '.')
+	_ = plt.xlabel('petal length (cm)')
+	_ = plt.ylabel('ECDF')
+
+	# Overlay percentiles as red diamonds.
+	_ = plt.plot(ptiles_vers, percentiles/100, marker='D', color='red',
+			 linestyle='none')
+
+	# Show the plot
+	plt.show()
+	
+variance - moyenne des carres des differences entre valeur et moyenne
+	np.var(data)
+	
+standard deviation - square root of variance
+	np.std(data)
+	
+covariance - moyenne des produits des differences entre valeur et moyenne	
+pearson correlation - covariance / ( std x * std y )
+= variability of data due to codependence / independent variability
+
+scatter plot
+	_ = plt.plot(total_votes/1000, dem_share, marker='.', linestyle='none')
+	_ = plt.xlabel('total votes (thousands)')
+	_ = plt.ylabel('percent of vote for Obama')
+
+Exercise - computing the covariance
+	# Compute the covariance matrix: covariance_matrix
+	covariance_matrix=np.cov(versicolor_petal_length, versicolor_petal_width)
+	# Print covariance matrix
+	print(covariance_matrix)
+	# Extract covariance of length and width of petals: petal_cov
+	petal_cov = covariance_matrix[0,1]
+	# Print the length/width covariance
+	print(petal_cov)
+
+Exercise - 
+	def pearson_r(x, y):
+		"""Compute Pearson correlation coefficient between two arrays."""
+		# Compute correlation matrix: corr_mat
+		corr_mat = np.corrcoef(x, y)
+
+		# Return entry [0,1]
+		return corr_mat[0,1]
+	# Compute Pearson correlation coefficient for I. versicolor: r
+	r=pearson_r(versicolor_petal_length, versicolor_petal_width)
+	# Print the result
+	print(r)
+
