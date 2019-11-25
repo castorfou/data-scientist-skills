@@ -123,15 +123,15 @@ function response = getResponse(url, body)
 % try using urlread() and a secure connection
   params = {'jsonBody', body};
   [response, success] = urlread(url, 'post', params);
-
+  sprintf('responsey=%s and success=%s', response, success);
   if (success == 0)
     % urlread didn't work, try curl & the peer certificate patch
     if ispc
       % testing note: use 'jsonBody =' for a test case
-      json_command = sprintf('echo jsonBody=%s | curl -k -X POST -d @- %s', body, url);
+      json_command = sprintf('echo jsonBody=%s | curl --proxy 10.225.92.1:80 -k -X POST -d @- %s', body, url);
     else
       % it's linux/OS X, so use the other form
-      json_command = sprintf('echo ''jsonBody=%s'' | curl -k -X POST -d @- %s', body, url);
+      json_command = sprintf('echo ''jsonBody=%s'' | curl --proxy 10.225.92.1:80 -k -X POST -d @- %s', body, url);
     end
     % get the response body for the peer certificate patch method
     [code, response] = system(json_command);
