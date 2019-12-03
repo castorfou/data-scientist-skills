@@ -1,0 +1,9 @@
+https://nbdev.fast.ai/#Installing
+
+depuis anaconda prompt
+conda activate fastai
+
+(en wifi, en desactivant le proxy)
+pip install --proxy="" nbdev
+
+git clone https://github.com/castorfou/tested-nbdev.git
