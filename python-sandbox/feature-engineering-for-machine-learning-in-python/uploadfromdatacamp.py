@@ -97,6 +97,7 @@ def saveFromFileIO(dict_urls, prefix='', proxy=''):
             sortie_curl = subprocess.getoutput(['curl', curl_proxy_option, url, '--output',prefix+filename])
             print(sortie_curl)
 
+			
 #%% loadlistfromtxt
 def loadListFromTxt(filename):
     liste=[]
