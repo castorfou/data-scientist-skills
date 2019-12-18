@@ -61,6 +61,7 @@ def uploadToFileIO_saveas_filename(variable,filename):
         variable.to_csv(filename)
     if (type(variable) == type(np.asarray([ [1,2,3], [4,5,6], [7,8,9] ]))):
         np.savetxt(filename, variable, fmt='%5s',delimiter=",")
+        #variable.tofile(filename,format='%5s',sep=",")
     if (type(variable) == type(str()) or type(variable) == type(list())):
         with open(filename, 'w') as f:
             f.write(json.dumps(variable))
@@ -107,4 +108,10 @@ def loadListFromTxt(filename):
 #%% loadndarrayfromcsv
 def loadNDArrayFromCsv(filename, dtype='float32'):
     myArray = np.genfromtxt(filename, delimiter=',', dtype=dtype)
+    #myArray = np.fromfile(filename, sep=',', dtype=dtype)
     return myArray
+
+	
+def print_func(fonction):
+  lines = inspect.getsource(fonction)
+  print(lines)
