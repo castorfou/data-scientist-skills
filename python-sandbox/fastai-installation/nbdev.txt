@@ -7,3 +7,5 @@ conda activate fastai
 pip install --proxy="" nbdev
 
 git clone https://github.com/castorfou/tested-nbdev.git
+
+On essaie en WSL pour installer nbdev
