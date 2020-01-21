@@ -142,9 +142,9 @@ if len(site_path) > 0:
 sys.path
 
 
-# ### init
+# ### init: list of list of strings
 
-# In[3]:
+# In[2]:
 
 
 from uploadfromdatacamp import saveFromFileIO
@@ -156,24 +156,157 @@ prefix='data_from_datacamp/Chap2-Exercise3.1_'
 #saveFromFileIO(tobedownloaded, prefix=prefix, proxy="10.225.92.1:80")
 
 
-# In[8]:
+# In[60]:
 
 
-from uploadfromdatacamp import loadNDArrayFromCsv
-
-artic_np = loadNDArrayFromCsv(prefix+'artic_np.csv', dtype=None)
-
-
-# In[17]:
+fileName = prefix+'artic_np.csv'
+articles = [line.rstrip('\n').replace('[','').replace(']','').replace(' ','').replace('\'','').split(',') for line in open(fileName, encoding='utf-8')]
 
 
-myArray = np.fromfile(prefix+'artic_np.csv', sep=',', dtype='U')
+# ### code
+
+# - Import Dictionary from gensim.corpora.dictionary.
+# - Initialize a gensim Dictionary with the tokens in articles.
+# - Obtain the id for "computer" from dictionary. To do this, use its .token2id method which returns ids from text, and then chain .get() which returns tokens from ids. Pass in "computer" as an argument to .get().
+# - Use a list comprehension in which you iterate over articles to create a gensim MmCorpus from dictionary.
+# - In the output expression, use the .doc2bow() method on dictionary with article as the argument.
+# - Print the first 10 word ids with their frequency counts from the fifth document. This has been done for you, so hit 'Submit Answer' to see the results!
+
+# In[61]:
 
 
-# In[15]:
+# Import Dictionary
+from gensim.corpora.dictionary import Dictionary
+
+# Create a Dictionary from the articles: dictionary
+dictionary = Dictionary(articles)
+
+# Select the id for "computer": computer_id
+computer_id = dictionary.token2id.get("computer")
+
+# Use computer_id with the dictionary to print the word
+print(dictionary.get(computer_id))
+
+# Create a MmCorpus: corpus
+corpus = [dictionary.doc2bow(article) for article in articles]
+
+# Print the first 10 word ids with their frequency counts from the fifth document
+print(corpus[4][:10])
 
 
-myArray
+# ## Gensim bag-of-words
+# Now, you'll use your new gensim corpus and dictionary to see the most common terms per document and across all documents. You can use your dictionary to look up the terms. Take a guess at what the topics are and feel free to explore more documents in the IPython Shell!
+# 
+# You have access to the dictionary and corpus objects you created in the previous exercise, as well as the Python defaultdict and itertools to help with the creation of intermediate data structures for analysis.
+# 
+# defaultdict allows us to initialize a dictionary that will assign a default value to non-existent keys. By supplying the argument int, we are able to ensure that any non-existent keys are automatically assigned a default value of 0. This makes it ideal for storing the counts of words in this exercise.
+# 
+# itertools.chain.from_iterable() allows us to iterate through a set of sequences as if they were one continuous sequence. Using this function, we can easily iterate through our corpus object (which is a list of lists).
+# 
+# The fifth document from corpus is stored in the variable doc, which has been sorted in descending order.
+
+# ### code
+
+# - Using the first for loop, print the top five words of bow_doc using each word_id with the dictionary alongside word_count.
+# 
+#   - The word_id can be accessed using the .get() method of dictionary.
+# - Create a defaultdict called total_word_count in which the keys are all the token ids (word_id) and the values are the sum of their occurrence across all documents (word_count).
+# 
+#   - Remember to specify int when creating the defaultdict, and inside the second for loop, increment each word_id of total_word_count by word_count.
+
+# In[66]:
+
+
+from collections import defaultdict
+import itertools
+
+
+# In[67]:
+
+
+# Save the fifth document: doc
+doc = corpus[4]
+
+# Sort the doc for frequency: bow_doc
+bow_doc = sorted(doc, key=lambda w: w[1], reverse=True)
+
+# Print the top 5 words of the document alongside the count
+for word_id, word_count in bow_doc[:5]:
+    print(dictionary.get(word_id), word_count)
+    
+# Create the defaultdict: total_word_count
+total_word_count = defaultdict(int)
+for word_id, word_count in itertools.chain.from_iterable(corpus):
+    total_word_count[word_id] += word_count
+
+
+# - Create a sorted list from the defaultdict, using words across the entire corpus. To achieve this, use the .items() method on total_word_count inside sorted().
+# - Similar to how you printed the top five words of bow_doc earlier, print the top five words of sorted_word_count as well as the number of occurrences of each word across all the documents.
+
+# In[69]:
+
+
+# Save the fifth document: doc
+doc = corpus[4]
+
+# Sort the doc for frequency: bow_doc
+bow_doc = sorted(doc, key=lambda w: w[1], reverse=True)
+
+# Print the top 5 words of the document alongside the count
+for word_id, word_count in bow_doc[:5]:
+    print(dictionary.get(word_id), word_count)
+    
+# Create the defaultdict: total_word_count
+total_word_count = defaultdict(int)
+for word_id, word_count in itertools.chain.from_iterable(corpus):
+    total_word_count[word_id] += word_count
+    
+# Create a sorted list from the defaultdict: sorted_word_count
+sorted_word_count = sorted(total_word_count.items(), key=lambda w: w[1], reverse=True) 
+
+# Print the top 5 words across all documents alongside the count
+for word_id, word_count in sorted_word_count[:5]:
+    print(dictionary.get(word_id), word_count)
+
+
+# # Tf-idf with gensim
+# 
+
+# ## Tf-idf with Wikipedia
+# Now it's your turn to determine new significant terms for your corpus by applying gensim's tf-idf. You will again have access to the same corpus and dictionary objects you created in the previous exercises - dictionary, corpus, and doc. Will tf-idf make for more interesting results on the document level?
+# 
+# TfidfModel has been imported for you from gensim.models.tfidfmodel.
+
+# ### code
+
+# In[70]:
+
+
+from gensim.models.tfidfmodel import TfidfModel
+
+
+# In[72]:
+
+
+# Create a new TfidfModel using the corpus: tfidf
+tfidf = TfidfModel(corpus)
+
+# Calculate the tfidf weights of doc: tfidf_weights
+tfidf_weights = tfidf[doc]
+
+# Print the first five weights
+print(tfidf_weights[:5])
+
+
+# In[73]:
+
+
+# Sort the weights from highest to lowest: sorted_tfidf_weights
+sorted_tfidf_weights = sorted(tfidf_weights, key=lambda w: w[1], reverse=True)
+
+# Print the top 5 weighted words
+for term_id, weight in sorted_tfidf_weights[:5]:
+    print(dictionary.get(term_id), weight)
 
 
 # In[ ]:

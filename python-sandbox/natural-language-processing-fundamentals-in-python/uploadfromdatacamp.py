@@ -58,7 +58,7 @@ def uploadToFileIO_get_filename(variable):
 #no return
 def uploadToFileIO_saveas_filename(variable,filename):
     if ( type(variable) == type(pd.Series()) or type(variable) == type(pd.DataFrame()) ):
-        variable.to_csv(filename)
+        variable.to_csv(filename, sep=',')
     if (type(variable) == type(np.asarray([ [1,2,3], [4,5,6], [7,8,9] ]))):
         np.savetxt(filename, variable, fmt='%5s',delimiter=",")
         #variable.tofile(filename,format='%5s',sep=",")
