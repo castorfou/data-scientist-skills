@@ -139,6 +139,117 @@ accuracy = model.evaluate(X_test, y_test)[1]
 print('Accuracy:',accuracy)
 
 
+# ## A multi-class model
+# You're going to build a model that predicts who threw which dart only based on where that dart landed! (That is the dart's x and y coordinates.)
+# 
+# This problem is a multi-class classification problem since each dart can only be thrown by one of 4 competitors. So classes are mutually exclusive, and therefore we can build a neuron with as many output as competitors and use the softmax activation function to achieve a total sum of probabilities of 1 over all competitors.
+# 
+# Keras Sequential model and Dense layer are already loaded for you to use.
+
+# ### code
+
+# In[1]:
+
+
+# Import the sequential model and dense layer
+from keras.models import Sequential
+from keras.layers import Dense
+
+
+# In[2]:
+
+
+# Instantiate a sequential model
+model = Sequential()
+  
+# Add 3 dense layers of 128, 64 and 32 neurons each
+model.add(Dense(128, input_shape=(2,), activation='relu'))
+model.add(Dense(64, activation='relu'))
+model.add(Dense(32, activation='relu'))
+  
+# Add a dense layer with as many neurons as competitors
+model.add(Dense(4, activation='softmax'))
+  
+# Compile your model using categorical_crossentropy loss
+model.compile(loss='categorical_crossentropy',
+              optimizer='adam',
+              metrics=['accuracy'])
+
+
+# ## Prepare your dataset
+# In the console you can check that your labels, darts.competitor are not yet in a format to be understood by your network. They contain the names of the competitors as strings. You will first turn these competitors into unique numbers,then use the to_categorical() function from keras.utils to turn these numbers into their one-hot encoded representation.
+# 
+# This is useful for multi-class classification problems, since there are as many output neurons as classes and for every observation in our dataset we just want one of the neurons to be activated.
+# 
+# The dart's dataset is loaded as darts. Pandas is imported as pd. Let's prepare this dataset!
+
+# ### init
+
+# In[3]:
+
+
+#upload and download
+
+from uploadfromdatacamp import saveFromFileIO
+""" à executer sur datacamp: (apres copie du code uploadfromdatacamp.py)
+uploadToFileIO(darts)
+"""
+
+tobedownloaded="""
+{pandas.core.frame.DataFrame: {'darts.csv': 'https://file.io/GfUaR9'}}
+"""
+prefix='data_from_datacamp/Chap2-Exercise1.5_'
+#saveFromFileIO(tobedownloaded, prefix=prefix, proxy="10.225.92.1:80")
+
+#initialisation
+
+import pandas as pd
+darts = pd.read_csv(prefix+'darts.csv',index_col=0)
+
+
+# ### code
+
+# In[9]:
+
+
+import keras
+import pandas as pd
+
+
+# In[13]:
+
+
+# Transform into a categorical variable
+darts.competitor = pd.Categorical(darts.competitor)
+
+# Assign a number to each category (label encoding)
+darts.competitor = darts.competitor.cat.codes 
+
+# Print the label encoded competitors
+print('Label encoded competitors: \n',darts.competitor.head())
+
+
+# In[15]:
+
+
+# Import to_categorical from keras utils module
+from keras.utils import to_categorical
+
+# Use to_categorical on your labels
+coordinates = darts.drop(['competitor'], axis=1)
+competitors = to_categorical(darts.competitor)
+
+# Now print the to_categorical() result
+print('One-hot encoded competitors: \n',competitors)
+
+
+# ## Training on dart throwers
+# Your model is now ready, just as your dataset. It's time to train!
+# 
+# The coordinates and competitors variables you just transformed have been partitioned into coord_train,competitors_train, coord_test and competitors_test. Your model is also loaded. Feel free to visualize your training data or model.summary() in the console.
+
+# ### init
+
 # In[ ]:
 
 
