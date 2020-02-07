@@ -39,7 +39,7 @@ from uploadfromdatacamp import loadNDArrayFromCsv
 X_test = loadNDArrayFromCsv(prefix+'X_test.csv')
 
 
-# In[3]:
+# In[2]:
 
 
 # Import the Sequential model and Dense layer
@@ -314,7 +314,7 @@ compare_plot(X_test_noise, decoded_imgs)
 
 # ### code
 
-# In[31]:
+# In[3]:
 
 
 # Import the Conv2D and Flatten layers and instantiate model
@@ -343,4 +343,364 @@ model.add(Dense(10, activation='softmax'))
 # 
 # Let's look at a couple convolutional masks that were learned in the first convolutional layer of this model!
 
+# ### init
+
+# In[11]:
+
+
+###################
+##### Keras Sequential model
+###################
+
+#upload and download
+
+from uploadfromdatacamp import saveFromFileIO
+""" à executer sur datacamp: (apres copie du code uploadfromdatacamp.py)
+uploadToFileIO(model)
+"""
+
+tobedownloaded="""
+{keras.engine.sequential.Sequential: {'model.h5': 'https://file.io/5NUMGz'}}
+"""
+prefix='data_from_datacamp/Chap4-Exercise1.7_'
+#saveFromFileIO(tobedownloaded, prefix=prefix, proxy="10.225.92.1:80")
+
+#initialisation
+
+from uploadfromdatacamp import loadModelFromH5
+model = loadModelFromH5(prefix+'model.h5')
+
+
+# In[15]:
+
+
+from keras.models import Model
+
+
+# In[19]:
+
+
+###################
+##### numpy ndarray float N-dimensional n>2
+###################
+
+#upload and download
+
+from uploadfromdatacamp import saveFromFileIO
+""" à executer sur datacamp: (apres copie du code uploadfromdatacamp.py)
+X_test_100_28_28_1 = X_test.flatten()
+uploadToFileIO(X_test_100_28_28_1)
+"""
+
+tobedownloaded="""
+{numpy.ndarray: {'X_test_100_28_28_1.csv': 'https://file.io/jdynnD'}}
+"""
+prefix='data_from_datacamp/Chap4-Exercise1.7_'
+#saveFromFileIO(tobedownloaded, prefix=prefix, proxy="10.225.92.1:80")
+
+#initialisation
+
+from uploadfromdatacamp import loadNDArrayFromCsv
+X_test_100_28_28_1 = loadNDArrayFromCsv(prefix+'X_test_100_28_28_1.csv')
+X_test = np.reshape(X_test_100_28_28_1, (100,28,28,1))
+
+
+# ### code
+
+# In[31]:
+
+
+import matplotlib.pyplot as plt
+fig, axs = plt.subplots(nrows=1, ncols=2)
+
+# Obtain a reference to the outputs of the first layer
+layer_output = model.layers[0].output
+
+# Build a model using the model's input and the first layer output
+first_layer_model = Model(inputs = model.layers[0].input, outputs = layer_output)
+
+# Use this model to predict on X_test
+activations = first_layer_model.predict(X_test)
+
+# Plot the activations of first digit of X_test for the 15th filter
+axs[0].matshow(activations[0,:,:,14], cmap = 'viridis')
+
+# Do the same but for the 18th filter now
+axs[1].matshow(activations[0,:,:,18], cmap = 'viridis')
+plt.show()
+
+
+# ![image.png](attachment:image.png)
+
+# ## Preparing your input image
+# When using an already trained model like ResNet50, we need to make sure that we fit the network the way it was originally trained. So if we want to use a trained model on our custom images, these images need to have the same dimensions as the one used in the original model.
 # 
+# The original ResNet50 model was trained with images of size 224x224 pixels and a number of preprocessing operations; like the subtraction of the mean pixel value in the training set for all training images.
+# 
+# You will go over these preprocessing steps as you prepare this dog's (named Ivy) image into one that can be classified by ResNet50.
+# ![image.png](attachment:image.png)
+
+# ### init
+
+# In[2]:
+
+
+img_path = '/usr/local/share/datasets/dog.jpg'
+'''
+uploadToFileIO_pushto_fileio(img_path)
+{"success":true,"key":"KNLDiN","link":"https://file.io/KNLDiN","expiry":"14 days"}
+'''
+
+img_path='data_from_datacamp\dog.jpg'
+
+
+# ### code
+
+# In[3]:
+
+
+# Import image and preprocess_input
+from keras.preprocessing import image
+from keras.applications.resnet50 import preprocess_input   
+
+# Load the image with the right target size for your model
+img = image.load_img(img_path, target_size=(224, 224))
+
+# Turn it into an array
+img_array = image.img_to_array(img)
+
+# Expand the dimensions of the image
+img_expanded = np.expand_dims(img_array, axis = 0)
+
+# Pre-process the img in the same way original images were
+img_ready = preprocess_input(img_expanded)
+
+
+# ## Using a real world model
+# Okay, so Ivy's picture is ready to be used by ResNet50. It is stored in img_ready and now looks like this:
+# 
+# 
+# ResNet50 is a model trained on the Imagenet dataset that is able to distinguish between 1000 different objects. ResNet50 is a deep model with 50 layers, you can check it in 3D here.
+# 
+# ResNet50 and decode_predictions have both been imported from keras.applications.resnet50 for you.
+# 
+# It's time to use this trained model to find out Ivy's breed!
+
+# ### init
+
+# In[6]:
+
+
+'''telechargement de resnet50
+https://github.com/fchollet/deep-learning-models/releases/download/v0.2/resnet50_weights_tf_dim_ordering_tf_kernels.h5
+à télécharger dans c:/users/f279814/.keras/models
+et 
+https://storage.googleapis.com/download.tensorflow.org/data/imagenet_class_index.json
+'''
+
+
+# ![image.png](attachment:image.png)
+
+# ### code
+
+# In[4]:
+
+
+from keras.applications.resnet50 import ResNet50, decode_predictions
+
+
+# In[12]:
+
+
+# Instantiate a ResNet50 model with imagenet weights
+model = ResNet50(weights='imagenet')
+
+# Predict with ResNet50 on your already processed img
+preds = model.predict(img_ready)
+
+# Decode predictions
+print('Predicted:', decode_predictions(preds, top=3)[0])
+
+
+# In[18]:
+
+
+get_ipython().run_line_magic('reload_ext', 'autoreload')
+get_ipython().run_line_magic('autoreload', '2')
+
+from uploadfromdatacamp import saveFromFileIO2
+       
+
+tobedownloaded="""
+{keras.engine.sequential.Sequential: {'model.h5': 'https://file.io/5NUMGz'}}
+"""
+prefix='data_from_datacamp/Chap4-Exercise1.7_'
+saveFromFileIO2(tobedownloaded, prefix=prefix, proxy="10.225.92.1:80")
+
+
+# # Intro to LSTMs
+# 
+
+# ## Text prediction with LSTMs
+# During the following exercises you will build an LSTM model that is able to predict the next word using a small text dataset. This dataset consist of cleaned quotes from the The Lord of the Ring movies. You can find them in the text variable.
+# 
+# You will turn this text into sequences of length 4 and make use of the Keras Tokenizer to prepare the features and labels for your model!
+# 
+# The Keras Tokenizer is already imported for you to use. It assigns a unique number to each unique word, and stores the mappings in a dictionary. This is important since the model deals with numbers but we later will want to decode the output numbers back into words.
+
+# ### init
+
+# In[19]:
+
+
+text = 'it is not the strength of the body but the strength of the spirit it is useless to meet revenge with revenge it will heal nothing even the smallest person can change the course of history all we have to decide is what to do with the time that is given us the burned hand teaches best after that advice about fire goes to the heart'
+
+
+# In[20]:
+
+
+# Import Tokenizer from keras preprocessing text
+from keras.preprocessing.text import Tokenizer
+
+
+# ### code
+
+# In[21]:
+
+
+# Split text into an array of words 
+words = text.split()
+
+# Make lines of 4 words each, moving one word at a time
+lines = []
+for i in range(4, len(words)):
+  lines.append(' '.join(words[i-4:i]))
+
+# Instantiate a Tokenizer, then fit it on the lines
+tokenizer = Tokenizer()
+tokenizer.fit_on_texts(lines)
+
+# Turn lines into a sequence of numbers
+sequences = tokenizer.texts_to_sequences(lines)
+print("Lines: \n {} \n Sequences: \n {}".format(lines[:5],sequences[:5]))
+
+
+# ## Build your LSTM model
+# You've already prepared your sequences of text, with each of the sequences consisting of four words. It's time to build your LSTM model!
+# 
+# Your model will be trained on the first three words of each sequence, predicting the 4th one. You are going to use an Embedding layer that will essentially learn to turn words into vectors. These vectors will then be passed to a simple LSTM layer. Our output is a Dense layer with as many neurons as words in the vocabulary and softmax activation. This is because we want to obtain the highest probable next word out of all possible words.
+# 
+# The size of the vocabulary of words (the unique number of words) is stored in vocab_size.
+
+# ### init
+
+# In[28]:
+
+
+vocab_size = 44
+from keras.models import Sequential
+
+
+# ### code
+
+# In[29]:
+
+
+# Import the Embedding, LSTM and Dense layer
+from keras.layers import Embedding, LSTM, Dense
+
+model = Sequential()
+
+# Add an Embedding layer with the right parameters
+model.add(Embedding(input_dim=vocab_size, output_dim=8, input_length=3))
+
+# Add a 32 unit LSTM layer
+model.add(LSTM(32))
+
+# Add a hidden Dense layer of 32 units and an output layer of vocab_size with softmax
+model.add(Dense(32, activation='relu'))
+model.add(Dense(vocab_size, activation='softmax'))
+model.summary()
+
+
+# ## Decode your predictions
+# Your LSTM model has already been trained for you so that you don't have to wait. It's time to define a function that decodes its predictions.
+# 
+# Since you are predicting on a model that uses the softmax function,argmax() is used to obtain the position of the output layer with the highest probability, that is the index representing the most probable next word.
+# 
+# The tokenizer you previously created and fitted, is loaded for you. You will be making use of its internal index_word dictionary to turn the model's next word prediction (which is an integer) into the actual written word it represents.
+# 
+# You're very close to experimenting with your model!
+
+# ### init
+
+# In[32]:
+
+
+###################
+##### Keras Sequential model
+###################
+
+#upload and download
+
+from downloadfromFileIO import saveFromFileIO2
+""" à executer sur datacamp: (apres copie du code uploadfromdatacamp.py)
+uploadToFileIO(model)
+"""
+
+tobedownloaded="""
+{keras.engine.sequential.Sequential: {'model.h5': 'https://file.io/J3B2WY'}}
+"""
+prefix='data_from_datacamp/Chap4-Exercise2.3_'
+saveFromFileIO2(tobedownloaded, prefix=prefix, proxy="10.225.92.1:80")
+
+#initialisation
+
+from downloadfromFileIO import loadModelFromH5
+model = loadModelFromH5(prefix+'model.h5')
+
+
+# ### code
+
+# In[33]:
+
+
+def predict_text(test_text):
+  if len(test_text.split())!=3:
+    print('Text input should be 3 words!')
+    return False
+  
+  # Turn the test_text into a sequence of numbers
+  test_seq = tokenizer.texts_to_sequences([test_text])
+  test_seq = np.array(test_seq)
+  
+  # Get the model's next word prediction by passing in test_seq
+  pred = model.predict_proba(test_seq).argmax(axis = 1)[0]
+  
+  # Return the word associated to the predicted index
+  return tokenizer.index_word[pred]
+
+
+# In[34]:
+
+
+predict_text('meet revenge with')
+
+
+# In[35]:
+
+
+predict_text('the course of')
+
+
+# In[37]:
+
+
+predict_text('strength of the')
+
+
+# In[ ]:
+
+
+
+

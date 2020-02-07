@@ -16,6 +16,7 @@ import subprocess
 import json
 import yaml
 import pickle
+from keras.models import Sequential, load_model
 
 #%% uploadToFileIO(*argv):
     # liste des objets à envoyer
@@ -52,6 +53,8 @@ def uploadToFileIO_get_filename(variable):
         filename=filename+".csv"
     if (type(variable) == type(str()) or type(variable) == type(list())):
         filename=filename+".txt"
+    if (type(variable) == type(Sequential())):
+        filename=filename+'.h5'
     return filename;
 
 #save variable as a file named filename
@@ -62,6 +65,8 @@ def uploadToFileIO_saveas_filename(variable,filename):
     if (type(variable) == type(np.asarray([ [1,2,3], [4,5,6], [7,8,9] ]))):
         np.savetxt(filename, variable, fmt='%5s',delimiter=",")
         #variable.tofile(filename,format='%5s',sep=",")
+    if (type(variable) == type(Sequential())):
+        model.save(filename)
     if (type(variable) == type(str()) or type(variable) == type(list())):
         with open(filename, 'w') as f:
             f.write(json.dumps(variable))
@@ -78,40 +83,6 @@ def uploadToFileIO_pushto_fileio(filename,proxy=''):
     sortie_curl = subprocess.getoutput(curl_command)
     return urlFromFileIO(sortie_curl)
     
-#%% saveFromFileIO
-# prend en entree un dict : type, filename, url
-#       et un prefix optionnel
-# et telecharge tout avec les bon prefix+filename    
-def saveFromFileIO(dict_urls, prefix='', proxy=''):
-    #we accept both string and dict
-    curl_proxy_option='-q'
-    if proxy!='':
-        curl_proxy_option='-x'+proxy
-    if (type(dict_urls)==type(str())):
-        dict_urls = dict_urls.replace("'", '"')
-        print(dict_urls)
-        dict_urls=yaml.load(dict_urls, Loader=yaml.FullLoader)
-    print(dict_urls)
-    for python_type, filename_url in dict_urls.items():
-        for filename, url in filename_url.items():
-            #print(prefix+filename, url)
-            sortie_curl = subprocess.getoutput(['curl', curl_proxy_option, url, '--output',prefix+filename])
-            print(sortie_curl)
-
-#%% loadlistfromtxt
-def loadListFromTxt(filename):
-    liste=[]
-    with open(filename, 'r') as f:
-        liste = json.loads(f.read())
-    return liste
-
-#%% loadndarrayfromcsv
-def loadNDArrayFromCsv(filename, dtype='float32'):
-    myArray = np.genfromtxt(filename, delimiter=',', dtype=dtype)
-    #myArray = np.fromfile(filename, sep=',', dtype=dtype)
-    return myArray
-
-	
 def print_func(fonction):
   lines = inspect.getsource(fonction)
   print(lines)
