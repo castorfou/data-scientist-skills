@@ -74,12 +74,12 @@ from downloadfromFileIO import loadNDArrayFromCsv
 time_steps = loadNDArrayFromCsv(prefix+'time_steps.csv')
 
 ###################
-##### Keras Sequential model
+##### Keras model
 ###################
 
 #upload and download
 
-from downloadfromFileIO import saveFromFileIO2
+from downloadfromFileIO import saveFromFileIO
 """ à executer sur datacamp: (apres copie du code uploadfromdatacamp.py)
 uploadToFileIO(model)
 """
@@ -88,7 +88,7 @@ tobedownloaded="""
 {keras.engine.sequential.Sequential: {'model.h5': 'https://file.io/J3B2WY'}}
 """
 prefix='data_from_datacamp/Chap4-Exercise2.3_'
-saveFromFileIO2(tobedownloaded, prefix=prefix, proxy="10.225.92.1:80")
+saveFromFileIO(tobedownloaded, prefix=prefix, proxy="10.225.92.1:80")
 
 #initialisation
 

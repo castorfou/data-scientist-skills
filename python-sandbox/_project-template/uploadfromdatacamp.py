@@ -17,6 +17,7 @@ import json
 import yaml
 import pickle
 from keras.models import Sequential, load_model
+from keras.engine.training import Model
 
 #%% uploadToFileIO(*argv):
     # liste des objets à envoyer
@@ -53,7 +54,7 @@ def uploadToFileIO_get_filename(variable):
         filename=filename+".csv"
     if (type(variable) == type(str()) or type(variable) == type(list())):
         filename=filename+".txt"
-    if (type(variable) == type(Sequential())):
+    if (type(variable) == type(Sequential()) or  type(variable) == type(Model())):
         filename=filename+'.h5'
     return filename;
 
@@ -65,8 +66,8 @@ def uploadToFileIO_saveas_filename(variable,filename):
     if (type(variable) == type(np.asarray([ [1,2,3], [4,5,6], [7,8,9] ]))):
         np.savetxt(filename, variable, fmt='%5s',delimiter=",")
         #variable.tofile(filename,format='%5s',sep=",")
-    if (type(variable) == type(Sequential())):
-        model.save(filename)
+    if (type(variable) == type(Sequential()) or  type(variable) == type(Model())):
+        variable.save(filename)
     if (type(variable) == type(str()) or type(variable) == type(list())):
         with open(filename, 'w') as f:
             f.write(json.dumps(variable))
