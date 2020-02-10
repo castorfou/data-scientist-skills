@@ -144,3 +144,20 @@ prefix = saveFromFileIO(tobedownloaded, prefixToc=prefixToc, proxy="10.225.92.1:
 from downloadfromFileIO import getImage
 page_image = getImage(prefix+'page_image[172_448].csv')
 
+###################
+##### file
+###################
+
+#upload and download
+
+from downloadfromFileIO import saveFromFileIO
+""" à executer sur datacamp: (apres copie du code uploadfromdatacamp.py)
+uploadToFileIO_pushto_fileio('bricks.png')
+"""
+
+tobedownloaded="""
+{numpy.ndarray: {'bricks.png': 'https://file.io/GJ8xXK'}}
+"""
+prefixToc = '1.1'
+prefix = saveFromFileIO(tobedownloaded, prefixToc=prefixToc, proxy="10.225.92.1:80")
+
