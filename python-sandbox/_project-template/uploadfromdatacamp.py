@@ -16,17 +16,22 @@ import subprocess
 import json
 import yaml
 import pickle
-from keras.models import Sequential, load_model
-from keras.engine.training import Model
+import os
+#from keras.models import Sequential, load_model
+#from keras.engine.training import Model
 
 #%% uploadToFileIO(*argv):
     # liste des objets à envoyer
     #print un nested dictionnaire avec {type: {filename: url_sur_fileIO}}
     #à donner en entree de saveFromFileIO
-def uploadToFileIO(*argv, proxy=''):
+def uploadToFileIO(*argv, proxy='', image=False):
     dict_urls = {}
     for arg in argv:
         filename = uploadToFileIO_get_filename(arg)
+        if (image):
+            shape=get_shape(arg)
+            arg=arg.flatten()
+            filename=insertShape_inFilename(filename, shape)
         uploadToFileIO_saveas_filename(arg, filename)
         dict_str=dict_urls.get(type(arg),{})
         dict_str[filename]=uploadToFileIO_pushto_fileio(filename, proxy)
@@ -54,8 +59,8 @@ def uploadToFileIO_get_filename(variable):
         filename=filename+".csv"
     if (type(variable) == type(str()) or type(variable) == type(list())):
         filename=filename+".txt"
-    if (type(variable) == type(Sequential()) or  type(variable) == type(Model())):
-        filename=filename+'.h5'
+#    if (type(variable) == type(Sequential()) or  type(variable) == type(Model())):
+#        filename=filename+'.h5'
     return filename;
 
 #save variable as a file named filename
@@ -66,8 +71,8 @@ def uploadToFileIO_saveas_filename(variable,filename):
     if (type(variable) == type(np.asarray([ [1,2,3], [4,5,6], [7,8,9] ]))):
         np.savetxt(filename, variable, fmt='%5s',delimiter=",")
         #variable.tofile(filename,format='%5s',sep=",")
-    if (type(variable) == type(Sequential()) or  type(variable) == type(Model())):
-        variable.save(filename)
+#    if (type(variable) == type(Sequential()) or  type(variable) == type(Model())):
+#        variable.save(filename)
     if (type(variable) == type(str()) or type(variable) == type(list())):
         with open(filename, 'w') as f:
             f.write(json.dumps(variable))
@@ -87,3 +92,22 @@ def uploadToFileIO_pushto_fileio(filename,proxy=''):
 def print_func(fonction):
   lines = inspect.getsource(fonction)
   print(lines)
+
+
+def get_shape(image):
+    '''Renvoie un string contenant les dimensions de l'image X_Y_channels
+    '''
+    liste_shape = [i for i in image.shape]
+    text =''
+    for c, value in enumerate(liste_shape, 1):
+        if (c>1):
+            text=text+'_'
+        text=text+str(value)
+    return text
+    
+def insertShape_inFilename(filename, shape):
+    '''Insere shape entre crochet dans le filename (avant l'extension)
+    '''
+    filename_sansext = os.path.splitext(filename)[0]
+    filename_ext = os.path.splitext(filename)[1]
+    return filename_sansext+'['+shape+']'+filename_ext

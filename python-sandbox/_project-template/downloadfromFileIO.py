@@ -19,6 +19,7 @@ import pickle
 from keras.models import Sequential, load_model
 from simhash import Simhash
 import os
+import re
 
      
 #%% saveFromFileIO
@@ -26,7 +27,9 @@ import os
 #       et un prefix optionnel
 # et telecharge tout avec les bon prefix+filename    
 # avec un mecanisme de lock (supprimer le fichier lock pour forcer le retelechargement)
-def saveFromFileIO(dict_urls, prefix='', proxy=''):
+def saveFromFileIO(dict_urls, prefix='', proxy='', prefixToc=''):
+    if (len(prefixToc)>0):
+        prefix=getPrefixfromTOC(prefixToc)
     hash =  Simhash(dict_urls).value
     filename_lock = prefix+str(hash)+".lock"
     #si le fichier existe
@@ -50,8 +53,18 @@ def saveFromFileIO(dict_urls, prefix='', proxy=''):
                 sortie_curl = subprocess.getoutput(['curl', curl_proxy_option, url, '--output',prefix+filename])
                 print(sortie_curl)
         open(filename_lock, 'a').close()
+    return prefix
     
-            
+
+#%% getPrefixfromTOC
+def getPrefixfromTOC(prefixToc):
+    notebook_fullname = notebook_path()
+    notebook_name = os.path.basename(notebook_fullname)
+    notebook = os.path.splitext(notebook_name)[0]
+    prefix = 'data_from_datacamp/'+notebook
+    prefix=prefix+'-Exercise'+prefixToc+'_'
+    return prefix
+    
 #%% loadlistfromtxt
 def loadListFromTxt(filename):
     liste=[]
@@ -66,9 +79,57 @@ def loadNDArrayFromCsv(filename, dtype='float32'):
     return myArray
 
 
+#%% getImage
+def getImage(filename, dtype='uint8'):
+    myArray = np.genfromtxt(filename, delimiter=',', dtype=dtype)
+    entre_crochet = re.search(r"\[([A-Za-z0-9_]+)\]", filename)
+    shape_text=entre_crochet.group(1)
+    shape = tuple(int(i) for i in shape_text.split('_'))
+    return np.reshape(myArray, shape)
+
+    
+    
+    
 def loadModelFromH5(filename):
     return load_model(filename)
 	
 def print_func(fonction):
   lines = inspect.getsource(fonction)
   print(lines)
+
+  
+from notebook import notebookapp
+import urllib
+import json
+import os
+import ipykernel
+
+def notebook_path():
+    """Returns the absolute path of the Notebook or None if it cannot be determined
+    NOTE: works only when the security is token-based or there is also no password
+    """
+    connection_file = os.path.basename(ipykernel.get_connection_file())
+    kernel_id = connection_file.split('-', 1)[1].split('.')[0]
+
+    for srv in notebookapp.list_running_servers():
+        try:
+            if srv['token']=='' and not srv['password']:  # No token and no password, ahem...
+                req = urllib.request.urlopen(srv['url']+'api/sessions')
+            else:
+                req = urllib.request.urlopen(srv['url']+'api/sessions?token='+srv['token'])
+            sessions = json.load(req)
+            for sess in sessions:
+                if sess['kernel']['id'] == kernel_id:
+                    return os.path.join(srv['notebook_dir'],sess['notebook']['path'])
+        except:
+            pass  # There may be stale entries in the runtime directory 
+    return None
+    
+''' 
+get_ipython().run_line_magic('reload_ext', 'autoreload')
+get_ipython().run_line_magic('autoreload', '2')
+
+from downloadfromFileIO import getPrefixfromTOC
+
+getPrefixfromTOC('1.1')
+'''

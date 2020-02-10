@@ -1,0 +1,239 @@
+""" à executer sur datacamp: (apres copie du code uploadfromdatacamp.py)
+import inspect
+print_func(show_image)
+"""
+
+import matplotlib.pyplot as plt
+def show_image(image, title='Image', cmap_type='gray'):
+    plt.imshow(image, cmap=cmap_type)
+    plt.title(title)
+    plt.axis('off')
+    plt.show()
+
+
+
+#conda install scikit-image
+
+# Import the modules from skimage
+from skimage import data, color
+
+# Load the rocket image
+rocket = data.rocket()
+
+# Convert the image to grayscale
+gray_scaled_rocket = color.rgb2gray(rocket)
+
+# Show the original image
+show_image(rocket, 'Original RGB image')
+
+# Show the grayscale image
+show_image(gray_scaled_rocket, 'Grayscale image')
+
+import numpy as np
+import matplotlib.pyplot as plt
+flipped_seville = plt.imread('data_from_datacamp/sevilleup.jpg')
+
+# Flip the image vertically
+seville_vertical_flip = np.flipud(flipped_seville)
+
+# Flip the previous image horizontally
+seville_horizontal_flip = np.fliplr(seville_vertical_flip)
+
+# Show the resulting image
+show_image(seville_horizontal_flip, 'Seville')
+
+#upload and download
+
+from downloadfromFileIO import saveFromFileIO
+""" à executer sur datacamp: (apres copie du code uploadfromdatacamp.py)
+image_256_256_3 = image.flatten()
+uploadToFileIO(image_256_256_3)
+"""
+
+tobedownloaded="""
+{numpy.ndarray: {'image_256_256_3.csv': 'https://file.io/0e8NyX'}}
+"""
+prefixToc = '2.2'
+prefix = saveFromFileIO(tobedownloaded, prefixToc=prefixToc, proxy="10.225.92.1:80")
+
+#initialisation
+
+from downloadfromFileIO import loadNDArrayFromCsv
+image_256_256_3 = loadNDArrayFromCsv(prefix+'image_256_256_3.csv')
+image = np.reshape(image_256_256_3, (256,256,3))
+image =image.astype('uint8')
+
+
+show_image(image)
+
+# Obtain the red channel
+red_channel = image[:, :, 0]
+
+# Plot the red histogram with bins in a range of 256
+plt.hist(red_channel.ravel(), bins=256)
+
+# Set title and show
+plt.title('Red Histogram')
+plt.show()
+
+#upload and download
+
+from downloadfromFileIO import saveFromFileIO
+""" à executer sur datacamp: (apres copie du code uploadfromdatacamp.py)
+chess_pieces_image_1271_1920_3 = chess_pieces_image.flatten()
+uploadToFileIO(chess_pieces_image_1271_1920_3)
+"""
+
+tobedownloaded="""
+{numpy.ndarray: {'chess_pieces_image_1271_1920_3.csv': 'https://file.io/AZmIMy'}}
+"""
+prefixToc = '3.1'
+prefix = saveFromFileIO(tobedownloaded, prefixToc=prefixToc, proxy="10.225.92.1:80")
+
+#initialisation
+
+from downloadfromFileIO import loadNDArrayFromCsv
+chess_pieces_image_1271_1920_3 = loadNDArrayFromCsv(prefix+'chess_pieces_image_1271_1920_3.csv')
+chess_pieces_image = np.reshape(chess_pieces_image_1271_1920_3, (1271,1920,3))
+chess_pieces_image =chess_pieces_image.astype('uint8')
+
+
+
+# Import the otsu threshold function
+from skimage.filters import threshold_otsu
+
+# Make the image grayscale using rgb2gray
+chess_pieces_image_gray = color.rgb2gray(chess_pieces_image)
+
+# Obtain the optimal threshold value with otsu
+thresh = threshold_otsu(chess_pieces_image_gray)
+
+# Apply thresholding to the image
+binary = chess_pieces_image_gray > thresh
+
+# Show the image
+show_image(binary, 'Binary image')
+
+#upload and download
+
+from downloadfromFileIO import saveFromFileIO
+""" à executer sur datacamp: (apres copie du code uploadfromdatacamp.py)
+uploadToFileIO(page_image, image=True)
+"""
+
+tobedownloaded="""
+{numpy.ndarray: {'page_image[172_448].csv': 'https://file.io/Qmazrg'}}
+"""
+prefixToc = '3.2'
+prefix = saveFromFileIO(tobedownloaded, prefixToc=prefixToc, proxy="10.225.92.1:80")
+
+#initialisation
+
+from downloadfromFileIO import getImage
+page_image = getImage(prefix+'page_image[172_448].csv')
+
+
+
+show_image(page_image)
+
+# Import the otsu threshold function
+from skimage.filters import threshold_otsu
+
+# Obtain the optimal otsu global thresh value
+global_thresh = threshold_otsu(page_image)
+
+# Obtain the binary image by applying global thresholding
+binary_global = page_image > global_thresh
+
+# Show the binary image obtained
+show_image(binary_global, 'Global thresholding')
+
+# Import the local threshold function
+from skimage.filters import threshold_local
+
+# Set the block size to 35
+block_size = 35
+
+# Obtain the optimal local thresholding
+local_thresh = threshold_local(page_image, block_size, offset=10)
+
+# Obtain the binary image by applying local thresholding
+binary_local = page_image > local_thresh
+
+# Show the binary image
+show_image(binary_local, 'Local thresholding')
+
+#upload and download
+
+from downloadfromFileIO import saveFromFileIO
+""" à executer sur datacamp: (apres copie du code uploadfromdatacamp.py)
+uploadToFileIO(fruits_image, image=True)
+"""
+
+tobedownloaded="""
+{numpy.ndarray: {'fruits_image[417_626_3].csv': 'https://file.io/9djqpT'}}
+"""
+prefixToc = '3.3'
+prefix = saveFromFileIO(tobedownloaded, prefixToc=prefixToc, proxy="10.225.92.1:80")
+
+#initialisation
+
+from downloadfromFileIO import getImage
+fruits_image = getImage(prefix+'fruits_image[417_626_3].csv')
+
+
+
+show_image(fruits_image)
+
+# Import the try all function
+from skimage.filters import try_all_threshold
+
+# Import the rgb to gray convertor function 
+from skimage.color import rgb2gray
+
+# Turn the fruits image to grayscale
+grayscale = rgb2gray(fruits_image)
+
+# Use the try all method on the grayscale image
+fig, ax = try_all_threshold(grayscale, verbose=False)
+
+# Show the resulting plots
+plt.show()
+
+#upload and download
+
+from downloadfromFileIO import saveFromFileIO
+""" à executer sur datacamp: (apres copie du code uploadfromdatacamp.py)
+uploadToFileIO(tools_image, image=True)
+"""
+
+tobedownloaded="""
+{numpy.ndarray: {'tools_image[417_626_3].csv': 'https://file.io/lzpZyF'}}
+"""
+prefixToc = '3.4'
+prefix = saveFromFileIO(tobedownloaded, prefixToc=prefixToc, proxy="10.225.92.1:80")
+
+#initialisation
+
+from downloadfromFileIO import getImage
+tools_image = getImage(prefix+'tools_image[417_626_3].csv')
+show_image(tools_image)
+
+
+# Import threshold and gray convertor functions
+from skimage.filters import threshold_otsu
+from skimage.color import rgb2gray
+
+# Turn the image grayscale
+tools_image = rgb2gray(tools_image)
+
+# Obtain the optimal thresh
+thresh = threshold_otsu(tools_image)
+
+# Obtain the binary image by applying thresholding
+binary_image = tools_image > thresh
+
+# Show the resulting binary image
+show_image(binary_image, 'Binarized image')
+
+

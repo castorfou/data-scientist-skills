@@ -13,7 +13,8 @@ tobedownloaded="""
 {pandas.core.frame.DataFrame: {'df.csv': 'https://file.io/y7Rwj6'}}
 """
 prefix='data_from_datacamp/Chap1-Exercise1.1_'
-saveFromFileIO(tobedownloaded, prefix=prefix, proxy="10.225.92.1:80")
+prefixToc = '1.1'
+saveFromFileIO(tobedownloaded, proxy="10.225.92.1:80", prefixToc=prefixToc)
 
 #initialisation
 
@@ -59,19 +60,19 @@ print_func(get_recommendations)
 
 from downloadfromFileIO import saveFromFileIO
 """ à executer sur datacamp: (apres copie du code uploadfromdatacamp.py)
-uploadToFileIO(time_steps)
+uploadToFileIO(mask)
 """
 
 tobedownloaded="""
-{numpy.ndarray: {'time_steps.csv': 'https://file.io/FNc6kh}
+{numpy.ndarray: {'mask.csv': 'https://file.io/6USsXM'}}
 """
-prefix='data_from_datacamp/Chap1-Exercise3.1_'
-saveFromFileIO(tobedownloaded, prefix=prefix, proxy="10.225.92.1:80")
+prefixToc='1.1'
+prefix = saveFromFileIO(tobedownloaded, prefixToc=prefixToc, proxy="10.225.92.1:80")
 
 #initialisation
 
 from downloadfromFileIO import loadNDArrayFromCsv
-time_steps = loadNDArrayFromCsv(prefix+'time_steps.csv')
+mask = loadNDArrayFromCsv(prefix+'mask.csv')
 
 ###################
 ##### Keras model
@@ -104,18 +105,42 @@ model = loadModelFromH5(prefix+'model.h5')
 
 from downloadfromFileIO import saveFromFileIO
 """ à executer sur datacamp: (apres copie du code uploadfromdatacamp.py)
-X_test_100_28_28_1 = X_test.flatten()
-uploadToFileIO(X_test_100_28_28_1)
+image_256_256_3 = image.flatten()
+uploadToFileIO(image_256_256_3)
 """
 
 tobedownloaded="""
-{numpy.ndarray: {'X_test_100_28_28_1.csv': 'https://file.io/jdynnD'}}
+{numpy.ndarray: {'image_256_256_3.csv': 'https://file.io/0e8NyX'}}
 """
-prefix='data_from_datacamp/Chap1-Exercise3.1_'
-saveFromFileIO(tobedownloaded, prefix=prefix, proxy="10.225.92.1:80")
+prefixToc = '2.2'
+prefix = saveFromFileIO(tobedownloaded, prefixToc=prefixToc, proxy="10.225.92.1:80")
 
 #initialisation
 
 from downloadfromFileIO import loadNDArrayFromCsv
-X_test_100_28_28_1 = loadNDArrayFromCsv(prefix+'X_test_100_28_28_1.txt')
-X_test = np.reshape(X_test_100_28_28_1, (100,28,28,1))
+image_256_256_3 = loadNDArrayFromCsv(prefix+'image_256_256_3.csv')
+image = np.reshape(image_256_256_3, (256,256,3))
+image =image.astype('uint8')
+
+###################
+##### image (numpy ndarray)
+###################
+
+#upload and download
+
+from downloadfromFileIO import saveFromFileIO
+""" à executer sur datacamp: (apres copie du code uploadfromdatacamp.py)
+uploadToFileIO(page_image, image=True)
+"""
+
+tobedownloaded="""
+{numpy.ndarray: {'page_image[172_448].csv': 'https://file.io/Qmazrg'}}
+"""
+prefixToc = '3.2'
+prefix = saveFromFileIO(tobedownloaded, prefixToc=prefixToc, proxy="10.225.92.1:80")
+
+#initialisation
+
+from downloadfromFileIO import getImage
+page_image = getImage(prefix+'page_image[172_448].csv')
+
