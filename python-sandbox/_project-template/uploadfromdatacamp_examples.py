@@ -80,22 +80,21 @@ mask = loadNDArrayFromCsv(prefix+'mask.csv')
 
 #upload and download
 
-from downloadfromFileIO import saveFromFileIO2
+from downloadfromFileIO import saveFromFileIO
 """ à executer sur datacamp: (apres copie du code uploadfromdatacamp.py)
 uploadToFileIO(model)
 """
 
 tobedownloaded="""
-{keras.engine.sequential.Sequential: {'model.h5': 'https://file.io/J3B2WY'}}
+{keras.engine.sequential.Sequential: {'model.h5': 'https://file.io/E4OdhL'}}
 """
-prefix='data_from_datacamp/Chap4-Exercise2.3_'
-saveFromFileIO(tobedownloaded, prefix=prefix, proxy="10.225.92.1:80")
+prefixToc = '1.1'
+prefix = saveFromFileIO(tobedownloaded, prefixToc=prefixToc,  proxy="10.225.92.1:80")
 
 #initialisation
 
 from downloadfromFileIO import loadModelFromH5
 model = loadModelFromH5(prefix+'model.h5')
-
 
 ###################
 ##### numpy ndarray float N-dimensional n>2
