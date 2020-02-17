@@ -1,0 +1,49 @@
+https://datawookie.netlify.com/blog/2017/07/installing-spark-on-ubuntu/
+https://datawookie.netlify.com/blog/2017/07/accessing-pyspark-from-a-jupyter-notebook/
+
+###########
+## sous ubuntu
+###########
+
+	Telechargement
+	
+	Download Apache Spark™
+	Choose a Spark release: 2.4.5 (Feb 05 2020)
+	Choose a package type: Prebuilt for Apache Hadoop 2.7
+	Download Spark: spark-2.4.5-bin-hadoop2.7.tgz
+	Verify this release using the 2.4.5 signatures, checksums and project release KEYS.
+	Note that, Spark is pre-built with Scala 2.11 except version 2.4.2, which is pre-built with Scala 2.12.
+	https://www.apache.org/dyn/closer.lua/spark/spark-2.4.5/spark-2.4.5-bin-hadoop2.7.tgz
+	http://mirror.ox.ac.uk/sites/rsync.apache.org/spark/spark-2.4.5/spark-2.4.5-bin-hadoop2.7.tgz
+	
+	Installation
+
+	from /mnt/d/1 - Administratif/1 - installation PC/17 - WSL/7 - spark
+wget http://mirror.ox.ac.uk/sites/rsync.apache.org/spark/spark-2.4.5/spark-2.4.5-bin-hadoop2.7.tgz
+tar zxpvf spark-2.4.5-bin-hadoop2.7.tgz
+sudo mv spark-2.4.5-bin-hadoop2.7 /usr/local/
+sudo ln -s /usr/local/spark-2.4.5-bin-hadoop2.7/ /usr/local/spark
+cd /usr/local/spark
+
+	Also add SPARK_HOME to your environment. (.bashrc)
+	$ export SPARK_HOME=/usr/local/spark
+config add .bashrc
+config commit -m 'installation spark'
+config push
+source .bashrc
+
+	Installation JAVA
+	
+setproxy
+sudo apt update
+sudo apt upgrade
+sudo apt install default-jre 
+sudo apt install openjdk-8-jdk (il faut le jdk 1.8)
+sudo update-alternatives --config java
+	
+	Lancement Spark
+
+$SPARK_HOME/sbin/start-master.sh
+	aller sur http://127.0.0.1:8080/
+	
+$SPARK_HOME/bin/pyspark	
