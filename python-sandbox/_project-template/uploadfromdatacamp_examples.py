@@ -12,9 +12,8 @@ uploadToFileIO(df)
 tobedownloaded="""
 {pandas.core.frame.DataFrame: {'df.csv': 'https://file.io/y7Rwj6'}}
 """
-prefix='data_from_datacamp/Chap1-Exercise1.1_'
-prefixToc = '1.1'
-saveFromFileIO(tobedownloaded, proxy="10.225.92.1:80", prefixToc=prefixToc)
+prefixToc='1.1'
+prefix = saveFromFileIO(tobedownloaded, prefixToc=prefixToc, proxy="10.225.92.1:80")
 
 #initialisation
 
@@ -35,8 +34,8 @@ uploadToFileIO(y)
 tobedownloaded="""
 {pandas.core.frame.DataFrame: {'y.csv': 'https://file.io/y7Rwj6'}}
 """
-prefix='data_from_datacamp/Chap1-Exercise1.1_'
-saveFromFileIO(tobedownloaded, prefix=prefix, proxy="10.225.92.1:80")
+prefixToc='1.1'
+prefix = saveFromFileIO(tobedownloaded, prefixToc=prefixToc, proxy="10.225.92.1:80")
 
 #initialisation
 
