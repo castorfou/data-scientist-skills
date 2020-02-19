@@ -490,6 +490,122 @@ print(test[['RoofStyle', 'RoofStyle_enc']].drop_duplicates())
 
 # ![image.png](attachment:image.png)
 
+# # Missing data
+
+# ## Find missing data
+# Let's impute missing data on a real Kaggle dataset. For this purpose, you will be using a data subsample from the Kaggle "Two sigma connect: rental listing inquiries" competition.
+# 
+# Before proceeding with any imputing you need to know the number of missing values for each of the features. Moreover, if the feature has missing values, you should explore the type of this feature.
+
+# ### init
+
+# In[5]:
+
+
+###################
+##### file
+###################
+
+#upload and download
+
+from downloadfromFileIO import saveFromFileIO
+""" à executer sur datacamp: (apres copie du code uploadfromdatacamp.py)
+uploadToFileIO_pushto_fileio('twosigma_train.csv')
+"""
+
+tobedownloaded="""
+{numpy.ndarray: {'twosigma_train.csv': 'https://file.io/7dIjpV'}}
+"""
+prefixToc = '4.1'
+prefix = saveFromFileIO(tobedownloaded, prefixToc=prefixToc, proxy="10.225.92.1:80")
+
+import pandas as pd
+
+
+# ### code
+
+# In[6]:
+
+
+# Read dataframe
+twosigma = pd.read_csv(prefix+'twosigma_train.csv')
+
+# Find the number of missing values in each column
+print(twosigma.isnull().sum())
+
+
+# In[7]:
+
+
+# Look at the columns with the missing values
+print(twosigma[['building_id', 'price']].head())
+
+
+# ## Impute missing data
+# You've found that "price" and "building_id" columns have missing values in the Rental Listing Inquiries dataset. So, before passing the data to the models you need to impute these values.
+# 
+# Numerical feature "price" will be encoded with a mean value of non-missing prices.
+# 
+# Imputing categorical feature "building_id" with the most frequent category is a bad idea, because it would mean that all the apartments with a missing "building_id" are located in the most popular building. The better idea is to impute it with a new category.
+# 
+# The DataFrame rental_listings with competition data is read for you.
+
+# ### init
+
+# In[8]:
+
+
+###################
+##### Dataframe
+###################
+
+#upload and download
+
+from downloadfromFileIO import saveFromFileIO
+""" à executer sur datacamp: (apres copie du code uploadfromdatacamp.py)
+uploadToFileIO(rental_listings)
+"""
+
+tobedownloaded="""
+{pandas.core.frame.DataFrame: {'rental_listings.csv': 'https://file.io/l4yztl'}}
+"""
+prefixToc='4.2'
+prefix = saveFromFileIO(tobedownloaded, prefixToc=prefixToc, proxy="10.225.92.1:80")
+
+#initialisation
+
+import pandas as pd
+rental_listings = pd.read_csv(prefix+'rental_listings.csv',index_col=0)
+
+
+# ### code
+
+# In[9]:
+
+
+# Import SimpleImputer
+from sklearn.impute import SimpleImputer
+
+# Create mean imputer
+mean_imputer = SimpleImputer(strategy='mean')
+
+# Price imputation
+rental_listings[['price']] = mean_imputer.fit_transform(rental_listings[['price']])
+
+
+# In[11]:
+
+
+# Import SimpleImputer
+from sklearn.impute import SimpleImputer
+
+# Create constant imputer
+constant_imputer = SimpleImputer(strategy='constant', fill_value='MISSING')
+
+# building_id imputation
+rental_listings[['building_id']] = constant_imputer.fit_transform(rental_listings[['building_id']])
+
+
 # In[ ]:
 
 
