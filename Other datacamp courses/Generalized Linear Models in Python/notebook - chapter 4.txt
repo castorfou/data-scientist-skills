@@ -1,0 +1,283 @@
+Multivariable logistic regression
+	Model formula
+		logit(y) = ßo + ß1 x1 + ß2 x2 + ... + ßn xn
+	In Python
+		model = glm('y ~ x1 + x2 + x3 + x4',
+			data = my_data,
+			family = sm.families.Binomial()).fit()
+			
+Variance inflation factor (VIF)
+	Most widely used diagnostic for multicollinearity
+		Computed for each explanatory variable
+		How inflated the variance of the coefficient is
+	Suggested threshold VIF > 2.5
+	In Python
+		from statsmodels.stats.outliers_influence import variance_inflation_factor
+		
+Exercise - Fit a multivariable logistic regression
+
+Using the knowledge gained in the video you will revisit the crab dataset to fit a multivariate logistic regression model. In chapter 2 you have fitted a logistic regression with width as explanatory variable. In this exercise you will analyze the effects of adding color as additional variable.
+
+The color variable has a natural ordering from medium light, medium, medium dark and dark. As such color is an ordinal variable which in this example you will treat as a quantitative variable.
+
+The crab dataset is preloaded in the workspace. Also note that the only difference in the code from the univariate case is in the formula argument, where now you will add structure to incorporate the new variable.
+
+		# Import statsmodels
+		import statsmodels.api as sm
+		from statsmodels.formula.api import glm
+
+		# Define model formula
+		formula = 'y ~ width + color'
+
+		# Fit GLM
+		model = glm(formula, data = crab, family = sm.families.Binomial()).fit()
+
+		# Print model summary
+		print(model.summary())
+		
+Great work! You fitted your first multivariable logistic regression. From model summary note that for each one-level increase in color of the female crab, the estimated odds multiply by exp(-0.509)=0.6, i.e. the odds for dark crabs are 60% than those for medium crabs.
+
+Exercise - The effect of multicollinearity
+
+Using the crab dataset you will analyze the effects of multicollinearity. Recall that multicollinearity can have the following effects:
+
+    Coefficient is not significant, but variable is highly correlated with y.
+	Adding/removing a variable significantly changes coefficients.
+	Not logical sign of the coefficient.
+	Variables have high pairwise correlation.
+
+		# Import statsmodels
+		import statsmodels.api as sm
+		from statsmodels.formula.api import glm
+
+		# Define model formula
+		formula = 'y ~ weight + width'
+
+		# Fit GLM
+		model = glm(formula, data = crab, family = sm.families.Binomial()).fit()
+
+		# Print model summary
+		print(model.summary())
+
+Notice that the neither weight nor width are statistically significant. Recall that when we fitted univariate logistic regressions for each variable, both variables where statistically significant. There is evident presence of multicollinearity! Let's measure it in the next exercise.
+
+Exercise - Compute VIF
+
+As you learned in the video one of the most widely used diagnostic for multicollinearity is the variance inflation factor or VIF, which is computed for each explanatory variable.
+
+Recall from the video that the rule of thumb threshold is VIF at the level of 2.5, meaning if the VIF is above 2.5 you should consider there is effect of multicollinearity on your fitted model.
+
+The previously fitted model and crab dataset are preloaded in the workspace.
+
+		# Import functions
+		from statsmodels.stats.outliers_influence import variance_inflation_factor
+
+		# Get variables for which to compute VIF and add intercept term
+		X = crab[['weight', 'width', 'color']]
+		X['Intercept'] = 1
+
+		# Compute and view VIF
+		vif = pd.DataFrame()
+		vif["variables"] = X.columns
+		vif["VIF"] = [variance_inflation_factor(X.values, i) for i in range(X.shape[1])]
+
+		# View results using print
+		print(vif)
+
+With VIF well above 2.5 for weight and width means that there is multicollinearity present in the model and you can not use both variables in the model.
+
+Exercise - Checking model fit
+
+In the video you analyzed the example of an improvement in the model fit by adding additional variable on the wells data. Continuing with this data set you will see how further increase in model complexity effects deviance and model fit.
+
+The dataset wells have been preloaded in the workspace.
+
+		# Import statsmodels
+		import statsmodels.api as sm
+		from statsmodels.formula.api import glm
+
+		# Define model formula
+		formula = 'switch ~ distance100 + arsenic'
+
+		# Fit GLM
+		model_dist_ars = glm(formula, data = wells, family = sm.families.Binomial()).fit()
+
+		# Compare deviance of null and residual model
+		diff_deviance = model_dist_ars.null_deviance - model_dist_ars.deviance
+
+		# Print the computed difference in deviance
+		print(diff_deviance)
+
+Having both distance100 and arsenic in the model reduces deviance by 187 compared to the intercept only model. But what is the actual impact of additional variable arsenic? Let's see in the next exericise.
+
+Exercise - Compare two models
+
+From previous exercise you have fitted a model with distance100 and arsenic as explanatory variables. In this exercise you will analyze the impact on the model fit for each of the added variables.
+
+Recall that the models you fitted are as follows and have been preloaded in the workspace:
+
+    model_dist = 'switch ~ distance100'
+
+    model_dist_ars = 'switch ~ distance100 + arsenic
+
+The dataset wells has also been preloaded in the workspace.
+
+		# Compute the difference in adding distance100 variable
+		diff_deviance_distance = model_dist.null_deviance - model_dist.deviance
+
+		# Print the computed difference in deviance
+		print('Adding distance100 to the null model reduces deviance by: ', 
+			  round(diff_deviance_distance,3))
+
+		# Compute the difference in adding arsenic variable
+		diff_deviance_arsenic = model_dist.deviance - model_dist_ars.deviance
+
+		# Print the computed difference in deviance
+		print('Adding arsenic to the distance model reduced deviance further by: ', 
+			  round(diff_deviance_arsenic,3))
+			  
+Adding distance100 to the null model reduces deviance by 41.9 and with an addition of arsenic the deviance further reduces by 145. Having such large reduction than expected reduction by 1 we can conclude that the multivariate model has improved the model fit.
+
+Exercise - Deviance and linear transformation
+
+As you have seen in previous exercises the deviance decreased as you added a variable that improves the model fit. In this exercise you will consider the well switch data example and the model you fitted with distance variable, but you will assess what happens when there is a linear transformation of the variable.
+
+Note that the variable distance100 is the original variable distance divided by 100 to make for more meaningful representation and interpretation of the results. You can inspect the data with wells.head() to view the first 5 rows of data.
+
+The wells dataset and the model 'swicth ~ distance100' has been preloaded as model_dist
+
+		# Import functions
+		import statsmodels.api as sm
+		from statsmodels.formula.api import glm
+
+		# Fit logistic regression model as save as model_dist_1
+		model_dist_1 = glm('switch ~ distance', data = wells, family = sm.families.Binomial()).fit()
+
+		# Check the difference in deviance of model_dist_1 and model_dist
+		print('Difference in deviance is: ', round(model_dist_1.deviance - model_dist.deviance,3))
+
+Great! Note that linear transformations do not change the model error and hence the deviance remains the same. The reason being since linear transformation does not add new data information to the model.
+
+Exercise - Model matrix for continuous variables
+
+In the video you learned about the model formula, the under-the-hood workings of the dmatrix() to obtain the model matrix and how it relates to the glm() function. As you have learned the input to dmatrix() is the right hand side of the glm() formula argument. In case the variables are part of the dataframe, then you should also specify the data source via the data argument.
+
+dmatrix('x1 + x2',         data = my_data)
+
+In this exercise you will analyze and confirm the structure of your model before model fit.
+
+The dataset wells has been preloaded in the workspace.
+
+		# Import function dmatrix()
+		from patsy import dmatrix
+
+		# Construct model matrix with arsenic
+		model_matrix = dmatrix('arsenic', data = wells, return_type = 'dataframe')
+		print(model_matrix.head())
+
+		# Construct model matrix with arsenic and distance100
+		model_matrix = dmatrix('arsenic + distance100', data = wells, return_type = 'dataframe')
+		print(model_matrix.head())
+		
+		
+Exercise - Variable transformation
+
+Continuing with the wells you will practice applying variable transformation directly in the formula and model matrix setting without the need to add the transformed data to the data frame first. You will also revisit the computation of model error or deviance to see if the transformation improved the model fit.
+
+Recall the structure of dmatrix() function is the right hand side of the glm() formula argument in addition to the data argument.
+The dataset wells and the model model_ars with arsenic (original variable) have been preloaded in the workspace.
+
+		import numpy as np
+		from patsy import dmatrix
+
+		# Construct model matrix for arsenic with log transformation
+		dmatrix('np.log(arsenic)', data = wells,
+			   return_type = 'dataframe').head()
+
+		# Import statsmodels
+		import statsmodels.api as sm
+		from statsmodels.formula.api import glm
+		import numpy as np
+
+		# Define model formula
+		formula = 'switch ~ np.log(arsenic)'
+
+		# Fit GLM
+		model_log_ars = glm(formula, data = wells, 
+							 family = sm.families.Binomial()).fit()
+
+		# Print model summary
+		print(model_log_ars.summary())
+
+Yes, comparing the deviance of the model with log(arsenic) and deviance of the model with arsenic there is a reduction in deviance of 19.38, which is larger than expected 1 and hence it does improve the model fit.
+
+Exercise - Coding categorical variables
+
+In previous exercises you practiced creating model matrices for continuous variables and applying variable transformation. During this exercise you will practice the ways of coding a categorical variable.
+
+Categorical data provide a way to analyze and compare relationships given different groups or factors. Hence, choosing a reference group is important and often, depending on the study at hand, you might want to change the reference group, from the default one. One frequently used reason for changing the reference group is that the interpretation of coefficient estimates is more applicable and interesting given the study.
+
+For this exercise you will revisit the crab dataset where colorand spine are categorical variables.
+
+The dataset crab is preloaded in the workspace.
+
+		# Import function dmatrix
+		from patsy import dmatrix
+
+		# Construct and print model matrix for color as categorical variable
+		print(dmatrix('C(color)', data = crab,
+				   return_type = 'dataframe').head())
+		# Construct and print the model matrix for color with reference group 3
+		print(dmatrix('C(color, Treatment(3))', 
+				  data = crab,
+				  return_type = 'dataframe').head())
+		  
+Exercise - Modeling with categorical variable
+
+In previous exercises you have fitted a logistic regression model with color as explanatory variable along with width where you treated the color as quantitative variable. In this exercise you will treat color as a categorical variable which when you construct the model matrix will encode the color into 3 variables with 0/1 encoding.
+
+Recall that the default encoding in dmatrix() uses the first group as a reference group. To view model matrix as a dataframe an additional argument in dmatrix(), namely, return_type will be set to 'dataframe'.
+
+The color variable has a natural ordering as follows:
+1: medium light
+2: medium
+3: medium dark
+4: dark
+
+The crab dataset is preloaded in the workspace.		
+
+		# Construct model matrix
+		model_matrix = dmatrix('C(color, Treatment(4))' , data = crab, 
+							   return_type = 'dataframe')
+
+		# Print first 5 rows of model matrix dataframe
+		print(model_matrix.head())
+
+		# Fit and print the results of a glm model with the above model matrix configuration
+		model = glm('y ~ C(color, Treatment(4))', data = crab, 
+					family = sm.families.Binomial()).fit()
+
+		print(model.summary())
+
+		# Construct model matrix
+		model_matrix = dmatrix('C(color, Treatment(4)) + width' , data = crab, 
+							   return_type = 'dataframe')
+
+		# Print first 5 rows of model matrix
+		print(model_matrix.head())
+
+		# Fit and print the results of a glm model with the above model matrix configuration
+		model = glm('y ~ C(color, Treatment(4)) + width', data = crab, 
+					family = sm.families.Binomial()).fit()
+
+		print(model.summary())  
+		
+Exercise - Interaction terms
+
+In the video you learned how to include interactions in the model structure when there is one continuous and one categorical variable. In this exercise you will analyze the effects of interaction between two continuous variables.
+
+You will use centered variables instead of original values to be able to interpret the coefficient effects more easily, i.e. from the level of the mean values rather than 0 which may not be logical for the study at hand. In other words we don't want to interpret the model by assuming 0 for arsenic or distance100 variables.
+
+The model 'switch ~ distance100 + arsenic' has been preloaded as model_dist_ars in the workspace.
+Also wells dataset is preloaded.
+
