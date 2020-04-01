@@ -1,0 +1,1 @@
+["Onix", "Geodude", "Zubat", "Golem", "Vulpix", "Tauros", "Kabutops", "Omastar", "Machop", "Dugtrio"]

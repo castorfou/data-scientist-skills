@@ -1,0 +1,1 @@
+["Krabby", "Horsea", "Slowbro", "Tentacool", "Vaporeon", "Magikarp", "Poliwag", "Starmie", "Psyduck", "Squirtle"]

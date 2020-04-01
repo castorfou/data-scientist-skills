@@ -1,0 +1,1 @@
+["Pikachu", "Bulbasaur", "Koffing", "Spearow", "Vulpix", "Wigglytuff", "Zubat", "Rattata", "Psyduck", "Squirtle"]

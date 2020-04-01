@@ -159,3 +159,24 @@ tobedownloaded="""
 prefixToc = '1.1'
 prefix = saveFromFileIO(tobedownloaded, prefixToc=prefixToc, proxy="10.225.92.1:80")
 
+###################
+##### list of strings
+###################
+
+#upload and download
+
+from downloadfromFileIO import saveFromFileIO
+""" à executer sur datacamp: (apres copie du code uploadfromdatacamp.py)
+uploadToFileIO(names)
+"""
+
+tobedownloaded="""
+{list: {'names.txt': 'https://file.io/LeZM2G'}}
+"""
+prefixToc='1.1'
+prefix = saveFromFileIO(tobedownloaded, prefixToc=prefixToc, proxy="10.225.92.1:80")
+
+#initialisation
+
+from downloadfromFileIO import loadListFromTxt
+names = loadListFromTxt(prefix+'names.txt')
