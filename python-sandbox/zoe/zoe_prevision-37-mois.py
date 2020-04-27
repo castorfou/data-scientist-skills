@@ -112,7 +112,7 @@ print(extend_missing(missing_values).head())
 
 # On affiche les kms parcourus et en rouge une droite reliant les valeurs connues
 
-# In[6]:
+# In[35]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -149,8 +149,20 @@ def interpolate_and_plot(data, interpolation, title='No title'):
     
     # Now plot the interpolated values on top in red
     data_interp[new_missing].plot(ax=ax, color='r', lw=3, legend=False)
+    
+    #ne garder que 20 label de xticks
+    modulo = round(len(labels_date)/20)
+    
+    def returnModuloList(liste, index, modulo):
+        if (index % modulo ==0):
+            return liste[index]
+        else:
+            return ''
+    
+    lables_date_modulo = [returnModuloList(labels_date, index, modulo) for index in np.arange(len(labels_date))]
 
-    plt.xticks(date_enX,labels_date,rotation=60)
+    plt.xticks(date_enX,lables_date_modulo,rotation=60)
+    #ax.xaxis.set_major_locator(plt.MaxNLocator(20))
     plt.show()
 
 # Interpolate linearly
@@ -279,7 +291,7 @@ print("Cout: ",theta,computeCost(X,y,theta))
 
 # ## Descente de gradient
 
-# In[13]:
+# In[15]:
 
 
 from IPython.core.debugger import set_trace
@@ -297,14 +309,14 @@ def gradientDescent(X,y,theta,alpha,num_iters):
     return theta, J_history
 
 theta=np.array([-1,2])
-alpha=0.000001
+alpha=0.0000001
 theta, J_history = gradientDescent(X,y,theta,alpha,iterations)
 print(theta, J_history)
 
 
 # ## Vitesse de convergence SGD
 
-# In[14]:
+# In[16]:
 
 
 plt.plot(J_history[:100])
@@ -314,7 +326,7 @@ assert(J_history[-1]<J_history[0]/10)
 
 # ## On visualise la regression linéaire
 
-# In[15]:
+# In[17]:
 
 
 #on caclule les 2 points
@@ -331,7 +343,7 @@ plt.title(Title)
 
 # On conserve projection linéaire et régression linéaire.
 
-# In[16]:
+# In[18]:
 
 
 #on met les projections et regression dans un dataframe df_stockage_projection
@@ -347,7 +359,7 @@ print(df_stockage_projection.head())
 # On recharge l'historique des projections linéaire et régressions linéaire.<br>
 # On ajoute les dernières valeurs. (on ecrase les précédentes au besoin)
 
-# In[17]:
+# In[19]:
 
 
 df_historique=pd.read_csv('data/historique_predictions.csv',index_col=0,parse_dates=True)
@@ -356,7 +368,7 @@ df_historique=df_historique.reset_index().drop_duplicates(subset='date',keep='la
 df_historique.tail(5)
 
 
-# In[18]:
+# In[20]:
 
 
 df_historique.to_csv('data/historique_predictions.csv') 
@@ -364,7 +376,7 @@ df_historique.to_csv('data/historique_predictions.csv')
 
 # ## On trace les valeurs de projection linéaire et régression, ainsi que la limite.
 
-# In[19]:
+# In[41]:
 
 
 plt.figure(figsize=(15, 7))
@@ -374,7 +386,7 @@ plt.plot(df_historique.index, df_historique.Projection, label='projection linéa
 plt.plot(df_historique.index, df_historique.Regression, label='régression linéaire', color='green')
 plt.plot(df_historique.index, 22500*np.ones(len(df_historique.Regression)),color='red',linewidth=2, label='kms limit')
 
-date_enX=df_historique.index[::5] # tous les 5 jours
+date_enX=df_historique.index[::1] # tous les jours
 labels_date=date_enX.strftime('%b %d') # mois et jour
 plt.xticks(date_enX,labels_date,rotation=60)
 plt.ylabel('kms')
@@ -386,7 +398,7 @@ plt.subplot(1,2,1)
 #en noir les valeurs connues
 plt.plot(data.index[::1], data_interp[~missing_values], color='k', alpha=.6, label='kms réels')
 plt.xlabel('Date')
-date_enX=data.index[::5] # tous les 5 jours
+date_enX=data.index[::15] # tous les 15 jours
 labels_date=date_enX.strftime('%b %d') # mois et jour
 plt.ylabel(list(data.columns)[0])
 plt.title('Kilomètres en Zoé à date')
