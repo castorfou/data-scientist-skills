@@ -158,6 +158,59 @@ k = np.where(spectre == 1.0)[0]
 1.0/n*rate*k
 
 
+# # play wav
+
+# In[3]:
+
+
+# Import PyDub main class
+from pydub import AudioSegment
+from pydub.playback import play
+# Format parameter only for readability
+wav_file = AudioSegment.from_file(file="petit-duc.wav")
+type(wav_file)
+
+# Play audio file
+play(wav_file)
+
+
+# ## audio parameters
+
+# In[5]:
+
+
+#Check number of channels
+wav_file.channels
+
+
+# In[6]:
+
+
+wav_file.frame_rate
+
+
+# In[8]:
+
+
+# Find the number of bytes per sample
+# 2 means 16 bits
+wav_file.sample_width
+
+
+# In[9]:
+
+
+# Find the max amplitude
+wav_file.max
+
+
+# In[10]:
+
+
+# Duration of audio file in milliseconds
+len(wav_file)
+
+
 # In[ ]:
 
 
