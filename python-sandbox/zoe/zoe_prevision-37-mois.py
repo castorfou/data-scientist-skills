@@ -112,7 +112,7 @@ print(extend_missing(missing_values).head())
 
 # On affiche les kms parcourus et en rouge une droite reliant les valeurs connues
 
-# In[35]:
+# In[6]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -291,7 +291,7 @@ print("Cout: ",theta,computeCost(X,y,theta))
 
 # ## Descente de gradient
 
-# In[15]:
+# In[13]:
 
 
 from IPython.core.debugger import set_trace
@@ -316,7 +316,7 @@ print(theta, J_history)
 
 # ## Vitesse de convergence SGD
 
-# In[16]:
+# In[14]:
 
 
 plt.plot(J_history[:100])
@@ -326,7 +326,7 @@ assert(J_history[-1]<J_history[0]/10)
 
 # ## On visualise la regression linéaire
 
-# In[17]:
+# In[15]:
 
 
 #on caclule les 2 points
@@ -343,7 +343,7 @@ plt.title(Title)
 
 # On conserve projection linéaire et régression linéaire.
 
-# In[18]:
+# In[16]:
 
 
 #on met les projections et regression dans un dataframe df_stockage_projection
@@ -359,7 +359,7 @@ print(df_stockage_projection.head())
 # On recharge l'historique des projections linéaire et régressions linéaire.<br>
 # On ajoute les dernières valeurs. (on ecrase les précédentes au besoin)
 
-# In[19]:
+# In[17]:
 
 
 df_historique=pd.read_csv('data/historique_predictions.csv',index_col=0,parse_dates=True)
@@ -368,7 +368,7 @@ df_historique=df_historique.reset_index().drop_duplicates(subset='date',keep='la
 df_historique.tail(5)
 
 
-# In[20]:
+# In[18]:
 
 
 df_historique.to_csv('data/historique_predictions.csv') 
@@ -376,7 +376,7 @@ df_historique.to_csv('data/historique_predictions.csv')
 
 # ## On trace les valeurs de projection linéaire et régression, ainsi que la limite.
 
-# In[41]:
+# In[19]:
 
 
 plt.figure(figsize=(15, 7))

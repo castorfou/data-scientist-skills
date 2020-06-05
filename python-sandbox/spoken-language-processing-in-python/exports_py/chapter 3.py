@@ -258,7 +258,7 @@ play(louder_volume_adjusted)
 
 # ### init
 
-# In[10]:
+# In[1]:
 
 
 ###################
@@ -283,7 +283,7 @@ prefix = saveFromFileIO(tobedownloaded, prefixToc=prefixToc, proxy="")
 
 # ### code
 
-# In[16]:
+# In[2]:
 
 
 # Import AudioSegment and normalize
@@ -312,7 +312,7 @@ normalized_loud_then_quiet = normalize(loud_then_quiet)
 
 # ### init
 
-# In[19]:
+# In[3]:
 
 
 ###################
@@ -338,7 +338,7 @@ prefix = saveFromFileIO(tobedownloaded, prefixToc=prefixToc, proxy="")
 
 # ### code
 
-# In[20]:
+# In[4]:
 
 
 from pydub import AudioSegment
@@ -354,7 +354,7 @@ part_1_removed = part_1[4000:]
 part_3 = part_1_removed + part_2
 
 
-# In[21]:
+# In[5]:
 
 
 from pydub.playback import play
