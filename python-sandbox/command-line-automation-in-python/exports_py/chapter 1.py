@@ -92,6 +92,67 @@ output
 # # Automate with SList
 # 
 
+# ##  Use SList fields to parse shell output
+# A Data Scientist who you highly respect at work mentioned that IPython has a powerful data type called SList that enables a user to perform powerful operations on shell commands. In particular they mention that there were able to easily extract fields from the output of the df command. In this exercise you investigate what you can accomplish with the SList data type. You will start from this command: disk_space = !df -h
+# 
+# Using the .fields method on the df variable, select the column that shows total size of the mounted volumes.
+
+# In[1]:
+
+
+disk_space = get_ipython().getoutput('df -hl')
+
+
+# In[2]:
+
+
+disk_space
+
+
+# In[4]:
+
+
+disk_space.fields(1)
+
+
+# ## Find Python files using SLIST grep
+# A coworker has written a script that has gone haywire. You both have been working in a directory src and this is where you store your python scripts. Your coworker accidentally wrote 250 text files that have similar names to your python files. Help clean up the mess by using the SList .grep() method to filter for files only containing the pattern .py.
+# 
+# What are the names of only the Python source code files in the src directory? Remember to store the output of !ls src. The .grep() method will accept a file extension as a pattern.
+
+# In[ ]:
+
+
+src = get_ipython().getoutput('ls src')
+src.grep('.py')
+Out[3]: ['apple.py', 'banana.py', 'orange.py']
+
+
+# ## Using SList to grep
+# You get woken up in the middle of the night by a frantic phone call from a co-worker. There is a rogue process running in production that is generating hundreds of extra backup files. It was discovered when your co-worker tried to restore from backup, but found hundreds of backup files that are corrupt. You need to write a script to isolate the correct backup file.
+# 
+# Use the SList object to find all files with the number 2 in them and print out their full path so the backups can be inspected. The reason 2 is so important is this corresponds to the second day of the week Tuesday. This is the last time the backups worked properly.
+
+# ### code
+
+# In[5]:
+
+
+# Use the results of an SList object
+root = "test_dir"
+
+# Find the backups with "_2" in them
+result = slist_out.grep('_2')
+
+# Extract the filenames
+for res in result:
+	filename = res.split()[-1]
+    
+	# Create the full path
+	fullpath = os.path.join(root, filename)
+	print(f"fullpath of backup file: {fullpath}")
+
+
 # In[ ]:
 
 
