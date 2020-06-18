@@ -32,7 +32,7 @@
 
 # # **Getting started**
 
-# In[2]:
+# In[ ]:
 
 
 # Import libraries
@@ -53,7 +53,7 @@ plt.rcParams['figure.figsize'] = [8,6]
 
 # ##      **Loading the data**
 
-# In[4]:
+# In[ ]:
 
 
 # Load the data from a CSV file
@@ -63,7 +63,7 @@ data = pd.read_csv("https://raw.githubusercontent.com/datacamp/time-series-analy
 data.info()
 
 # Print the DataFrame
-print(data.head())
+data
 
 
 # ## **Creating a datetime index**
@@ -83,20 +83,20 @@ print(data.head())
 # `data.set_index()` accepts the name of the column that should become the index, and retuns a _new_ DataFrame. 
 # Specify `inplace=True` to avoid creating a copy.
 
-# In[5]:
+# In[ ]:
 
 
 # Convert the date column to datetime
-data['date']=pd.to_datetime(data['date'])
+data["date"] = pd.to_datetime(data["date"])
 
 # Set the index of the DataFrame to the date column
-data.set_index('date', inplace=True)
+data.set_index("date", inplace = True)
 
 # Print DataFrame summary
 data.info()
 
 # Print DataFrame
-print(data.head())
+data
 
 
 # # **Exploratory analysis**
@@ -106,11 +106,11 @@ print(data.head())
 # 
 # ... is the easiest kind of plotting in Python: just use `df.colum_name.plot()` !
 
-# In[6]:
+# In[ ]:
 
 
 # Plot the series
-data.value.plot()
+data.plot()
 
 
 # Notice the style of the plot: it looks different from the default `matplotlib` style. The style was set in the very first cell using `plt.style.use('seaborn')`
@@ -137,37 +137,37 @@ data.value.plot()
 # 
 # 2. aggregate `.mean()`, `.sum()`
 
-# In[7]:
+# In[ ]:
 
 
 # Resample the data to the average monthly values
-resampled_data = data.resample(rule='M').mean()
+data_monthly = data.resample("M").mean()
 
 # Print the head of data
 print(data.head())
 
 # Print the head of resampled data
-print(resampled_data.head())
+print(data_monthly.head())
 
 
 # The resampled DataFrame contains the last day of the month for every month, and the corresponding value is the average of values within that month.
 
-# In[8]:
+# In[ ]:
 
 
 # Plot resampled data
-resampled_data.value.plot()
+data_monthly.plot()
 
 
-# Looks like some sort of pattern and also a trend, but both are hard to see. 
+# *Looks* like some sort of pattern and also a trend, but both are hard to see. 
 # 
 # Restrict the data to a time range to "zoom in" on the plot:
 
-# In[11]:
+# In[ ]:
 
 
 # Plot the data from 2000 to 2003
-resampled_data['1999':'2003'].value.plot()
+data_monthly["1999":"2002"].plot()
 
 
 # The same pattern seems to be repeated every year: January has the lowest value, July &mdash; the highest, and there's an additional dip in September.
@@ -207,10 +207,10 @@ resampled_data['1999':'2003'].value.plot()
 # 
 # <br>
 # 
-# <font size = 5> larger window = less detail = more smooth</font>
+# _larger window = more averaging = less detail = more smooth_
 # 
 # 
-# ##### **Steps of rolling window smoothing:**
+# **Steps of rolling window smoothing:**
 # 
 # 1. `.rolling(n_periods)`...
 # 
@@ -218,14 +218,14 @@ resampled_data['1999':'2003'].value.plot()
 # 
 # 
 
-# In[13]:
+# In[ ]:
 
 
 # Plot the resampled data with a 6 months rolling average
-resampled_data.rolling(6).mean().plot()
+data_monthly.rolling(6).mean().plot()
 
 # Plot the resampled data with a 12 months rolling average
-resampled_data.rolling(12).mean().plot()
+data_monthly.rolling(12).mean().plot()
 
 
 # Looks like there was a general increasing trend until 2007-2008, when the value started decreasing. [What happened in 2008?..](https://en.wikipedia.org/wiki/Great_Recession)
@@ -239,7 +239,7 @@ resampled_data.rolling(12).mean().plot()
 # 
 # <font color=00AAFF>_For example:_ 
 # 
-# |date|series|weights|3 day rolling window|
+# |date|series|weights|3 day rolling windon|
 # |---|---|---|---|
 # |2020-05-01| 5 |0.3| NaN|
 # |2020-05-02| 7 |0.2| NaN|
@@ -257,7 +257,7 @@ resampled_data.rolling(12).mean().plot()
 # 
 #     
 # - **Trend**: general direction of the series (e.g. increasing)
-# - **Seasonality**: repeating patterns in data (e.g. sales around holidays..)
+# - **Sesonality**: repeating patterns in data (e.g. sales around holidays..)
 # - **Residuals**: the rest
 # 
 # `statsmodels.tsa.seasonal.seasonal_decompose()` takes a DataFrame and returns an object with attributes:
@@ -270,25 +270,25 @@ resampled_data.rolling(12).mean().plot()
 # - `.plot()`
 # which makes 4 plots:  original series + 3 its components
 
-# In[14]:
+# In[ ]:
 
 
 # import seasonal_decompose
 from statsmodels.tsa.seasonal import seasonal_decompose
 
 # Plot decomposed series
-seasonal_decompose(resampled_data).plot();
+seasonal_decompose(data_monthly).plot();
 
 
 # _Note: plotting functions in `statsmodels` both draw and return the figure, so plotting them from the last line of a cell will result in duplicate plots. Use a semicolon_ `;` _after the plot to prevent that._
 
 # ## **Don't just trust your eyes**
 # 
-# A series that exhibits a clear visible trend or seasonality probably really does have those features. Just because you cannot detect trends or seasonality, doesn't mean they aren't there!
+# A series that exhibits a clear visible trend or seasonality probably really does have those features. But if you cannot detect trend or seasonality with the naked eye, doesn't mean they aren't there!
 # 
 # <img src="https://github.com/datacamp/time-series-analysis-in-python-live-training/raw/master/assets/sine.png">
 # 
-# This data lies on a perturbed sine curve. Can you tell?
+# This data lies on a perturbed sine curve. Can you tell?..
 # 
 # _Autocorrelation_ will help us identify hidden patterns in series
 
@@ -348,26 +348,28 @@ seasonal_decompose(resampled_data).plot();
 
 
 # Import plot_acf
-
+from statsmodels.graphics.tsaplots import plot_acf
 
 # Plot ACF of data_monthly
+plot_acf(data_monthly, lags = 40); 
 
 
-# The lags are on the $x$ axis. Note that lag-0 correlation is always 1.
+# The lags are on the $x$ axis. Note that lag-0 correlation is always 0.
 # 
 # The filled band around the $x$ axis is the _confidence interval_: if the autocorrelation value is outside that range, the dependency is likely "real", but if it's inside &mdash; it's likely due to randomness.
 
 # ## **A word of warning: misinterpreting autocorrelation**
 # 
-# The autocorrelation seems to be very strong: does that mean there's a very strong dependency between past and present values that we can use for modeling? Let's take a look at the data again:
+# The autocorrelation seems to be very strong: does that mean there's very strong dependency between past and present values that we can use for modeling? Let's take a look at the data again:
 
 # In[ ]:
 
 
 # Plot data_monthly again
+data_monthly.plot()
 
 
-# The series shows a strong trend, and that's what the autocorrelation plot reflects: if the series was going up last e.g. 6 months, it will probaby continue going up for the next month or two.
+# The series shows a strong trend, and that's what autocorrelation plot reflects: if the series was going up last e.g. 6 months, it will probaby continue going up for the next month or two.
 # 
 # _Autocorrelation in series with trends reflects the trend rather than intrinsic dependencies in data._
 # 
@@ -431,22 +433,35 @@ seasonal_decompose(resampled_data).plot();
 
 
 # Difference data_monthly
-
+data_monthly_diff = data_monthly.diff()
 
 # Show differenced values
+data_monthly_diff.head()
 
+
+# Notice the first value is `NaN` because there was nothing to subtract from the first value of the original series.
 
 # In[ ]:
 
 
 # Plot differenced data
 
+data_monthly_diff.plot()
+
+
+# The trend disappeared! The series appears more stationary now.
 
 # In[ ]:
 
 
 # Plot ACF for differenced data
+plot_acf(data_monthly_diff.dropna(), lags=40);
 
+
+# We still see large autocorrelation at 12, 24, 36 etc lags, but this is due to seasonality: the data had a yearly pattern.
+# 
+# Here autocorrelation again doesn't expose anything too useful: if every January the production goes down, of course the values recorded this January will be correlated with values from last January!
+# 
 
 # ## **Dealing with seasonality**
 # 
@@ -477,25 +492,29 @@ seasonal_decompose(resampled_data).plot();
 
 
 # Plot seasonal decomposition of data_monthly again
-
+seasonal_decompose(data_monthly).plot()
 
 # Extract residuals and save
-
+data_monthly_resid = seasonal_decompose(data_monthly).resid
 
 # Print the head and tail of the residual component
+print(data_monthly_resid.head(10))
+print(data_monthly_resid.tail(10))
 
 
-# 
-# The residual component of seasonal_decompose will have the first few and last few values missing because statmodels uses rolling average to identify trends and residuals.
+# The residual component of `seasonal_decompose` will have the first few and last few values missing because `statmodels` uses rolling average to identify trends and residuals.
 
 # In[ ]:
 
 
 # Drop NaN values from residuals
-
+data_monthly_resid = data_monthly_resid.dropna()
 
 # Plot ACF of the residual component of data_monthly
+plot_acf(data_monthly_resid, lags=40)
 
+
+# The seasonal patterns have been (mostly) removed. After the data is modelled, the `.seasonal` component can be added back to the series.
 
 # 
 # ---
@@ -578,6 +597,7 @@ seasonal_decompose(resampled_data).plot();
 
 
 # Plot ACF of residuals again 
+plot_acf(data_monthly_resid.dropna(), lags = 40);
 
 
 # While the pattern is not as clear as on the idealized example, we could say that after lag 5, autocorrelation is basically non-existent.
@@ -605,9 +625,11 @@ seasonal_decompose(resampled_data).plot();
 
 
 # Import ARMA
-
+from statsmodels.tsa.arima_model import ARMA
 
 # Fit the model to data_monthly_diff
+model = ARMA(data_monthly_resid, order=(0,5))
+result = model.fit()
 
 
 # Use `result.summary()` to view information about the model fit: 
@@ -616,6 +638,7 @@ seasonal_decompose(resampled_data).plot();
 
 
 # Print summary of the model
+result.summary()
 
 
 # ### **Predicting with MA(q) model**
@@ -634,7 +657,7 @@ seasonal_decompose(resampled_data).plot();
 # In[ ]:
 
 
-# Plot predictions from "2013-01-31" to "2017-01-31"
+result.plot_predict(start="2013-01-31", end="2017-01-31");
 
 
 # It isn't a great forecast, but it also isn't bad, especially for such a simple model: it accurately predicts the direction of the change, but it underestimates the magnitude.
@@ -669,9 +692,10 @@ unemployment.plot()
 
 
 # Difference the data
-
+unemployment_diff = unemployment.diff().dropna()
 
 # Plot the differenced data
+unemployment_diff.plot()
 
 
 # ## **Autoregressive model**
@@ -731,17 +755,19 @@ unemployment.plot()
 
 # Plot ACF for unemployment_diff
 
+plot_acf(unemployment_diff, lags=40);
+
 
 # The value of autocorrelation oscillates between negative and positive, but the magnitude is decreasing
 
 # #### **Partial autocorrelation function**
 # 
-# Partial autocorrelation function is a modified autocorrelation function that takes into account dependencies betweed previous lags, and removes extraneous dependencies shown in the correlation function.
+# Partial autocorrelation function is a modified autocorrelation function that takes into account dependencies between previous lags, and removes extraneous dependencies shown in the correlation function.
 # 
 # - `statsmodels.tsa.stattools.pacf()` will return values of the PACF
 # - `statsmodels.graphics.tsaplots.plot_pacf()` will show the plot of the PACF
 # 
-# For time series that behave like an $AR(p)$ process, the PACF "stops" at a certain lag. That lag can serve as the model order.
+# For time series that behaves like an $AR(p)$ process, the PACF "stops" at a certain lag. That lag can serve as the model order.
 # 
 # Here's a PACF of a true $AR(2)$ model:
 # 
@@ -750,9 +776,10 @@ unemployment.plot()
 # In[ ]:
 
 
-# Import plot_pacf
+# Import
+from statsmodels.graphics.tsaplots import plot_pacf
 
-# Plot pacf for unemployment_diff
+plot_pacf(unemployment_diff, lags=40);
 
 
 # Unlike with the ACF plot, there's no gradual decrease after lag 1.
@@ -778,12 +805,14 @@ unemployment.plot()
 
 
 # Import ARMA
-
+from statsmodels.tsa.arima_model import ARMA
 
 # Fit the model to unemployment_diff
-
+model = ARMA(unemployment_diff, order=(1,0))
+result = model.fit()
 
 # Print the summary
+result.summary()
 
 
 # ### **Predicting with AR(p) model**
@@ -805,7 +834,7 @@ unemployment.plot()
 # In[ ]:
 
 
-# Plot predictions from "2006-03-31" to "2011-03-31"
+result.plot_predict(start="2006-03-31", end="2011-03-31");
 
 
 # ---
