@@ -1,0 +1,10 @@
+socialposts/2019/june/post1.txt
+socialposts/2019/june/post2.txt
+socialposts/2019/june/post3.txt
+socialposts/2019/june/post4.txt
+socialposts/2019/june/post5.txt
+socialposts/2019/june/post6.txt
+socialposts/2019/june/post7.txt
+socialposts/2019/june/post8.txt
+socialposts/2019/june/post9.txt
+socialposts/2019/june/post10.txt
