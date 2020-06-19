@@ -1,0 +1,4 @@
+Asset
+Bubble
+10
+Year
