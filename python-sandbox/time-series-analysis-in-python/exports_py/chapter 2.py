@@ -302,6 +302,62 @@ print('The p-value of the test on returns is: ' + str(results[1]))
 # 
 # Look again at the ACF of H&R Block's quarterly earnings, pre-loaded in the DataFrame HRB, and there is a clear seasonal component. The autocorrelation is high for lags 4,8,12,16,… because of the spike in earnings every four quarters during tax season. Apply a seasonal adjustment by taking the fourth difference (four represents the periodicity of the series). Then compute the autocorrelation of the transformed series.
 
+# ### init
+
+# In[1]:
+
+
+###################
+##### Dataframe
+###################
+
+#upload and download
+
+from downloadfromFileIO import saveFromFileIO
+""" à executer sur datacamp: (apres copie du code uploadfromdatacamp.py)
+uploadToFileIO(HRB)
+"""
+
+tobedownloaded="""
+{pandas.core.frame.DataFrame: {'HRB.csv': 'https://file.io/km11gmRW'}}
+"""
+prefixToc='4.1'
+prefix = saveFromFileIO(tobedownloaded, prefixToc=prefixToc, proxy="10.225.92.1:80")
+
+#initialisation
+
+import pandas as pd
+HRB = pd.read_csv(prefix+'HRB.csv',index_col=0)
+
+
+# ### code
+
+# In[4]:
+
+
+import matplotlib.pyplot as plt
+
+
+# In[6]:
+
+
+# Import the plot_acf module from statsmodels
+from statsmodels.graphics.tsaplots import plot_acf
+
+# Seasonally adjust quarterly earnings
+HRBsa = HRB.diff(4)
+
+# Print the first 10 rows of the seasonally adjusted series
+print(HRBsa.head(10))
+
+# Drop the NaN data in the first four rows
+HRBsa = HRBsa.dropna()
+
+# Plot the autocorrelation function of the seasonally adjusted series
+plot_acf(HRBsa)
+plt.show()
+
+
 # In[ ]:
 
 
