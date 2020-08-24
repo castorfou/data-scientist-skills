@@ -41,7 +41,7 @@ NG = pd.read_csv(prefix+'NG.csv',index_col=0)
 
 # ### code
 
-# In[2]:
+# In[4]:
 
 
 import matplotlib.pyplot as plt
@@ -151,7 +151,7 @@ print("The p-value for the ADF test is ", adf_stats[1])
 
 # ### init
 
-# In[23]:
+# In[1]:
 
 
 ###################
@@ -195,6 +195,91 @@ plt.show()
 result = adfuller(temp_NY['TAVG'])
 print("The p-value for the ADF test is ", result[1])
 
+
+# ## Getting "Warmed" Up: Look at Autocorrelations
+# Since the temperature series, temp_NY, is a random walk with drift, take first differences to make it stationary. Then compute the sample ACF and PACF. This will provide some guidance on the order of the model.
+
+# ### code
+
+# In[5]:
+
+
+# Import the modules for plotting the sample ACF and PACF
+from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
+
+# Take first difference of the temperature Series
+chg_temp = temp_NY.diff()
+chg_temp = chg_temp.dropna()
+
+# Plot the ACF and PACF on the same page
+fig, axes = plt.subplots(2,1)
+
+# Plot the ACF
+plot_acf(chg_temp, lags=20, ax=axes[0])
+
+# Plot the PACF
+plot_pacf(chg_temp, lags=20, ax=axes[1])
+plt.show()
+
+
+# ## Which ARMA Model is Best?
+# Recall from Chapter 3 that the Akaike Information Criterion (AIC) can be used to compare models with different numbers of parameters. It measures goodness-of-fit, but places a penalty on models with more parameters to discourage overfitting. Lower AIC scores are better.
+# 
+# Fit the temperature data to an AR(1), AR(2), and ARMA(1,1) and see which model is the best fit, using the AIC criterion. The AR(2) and ARMA(1,1) models have one more parameter than the AR(1) has.
+# 
+# The annual change in temperature is in a DataFrame chg_temp.
+
+# ### code
+
+# In[10]:
+
+
+# Import the module for estimating an ARMA model
+from statsmodels.tsa.arima_model import ARMA
+
+# Fit the data to an AR(1) model and print AIC:
+mod_ar1 = ARMA(chg_temp, order=(1, 0))
+res_ar1 = mod_ar1.fit()
+print("The AIC for an AR(1) is: ", res_ar1.aic)
+
+# Fit the data to an AR(2) model and print AIC:
+mod_ar2 = ARMA(chg_temp, order=(2, 0))
+res_ar2 = mod_ar2.fit()
+print("The AIC for an AR(2) is: ", res_ar2.aic)
+
+# Fit the data to an ARMA(1,1) model and print AIC:
+mod_arma11 = ARMA(chg_temp, order=(1, 1))
+res_arma11 = mod_arma11.fit()
+print("The AIC for an ARMA(1,1) is: ", res_arma11.aic)
+
+
+# ## Don't Throw Out That Winter Coat Yet
+# Finally, you will forecast the temperature over the next 30 years using an ARMA(1,1) model, including confidence bands around that estimate. Keep in mind that the estimate of the drift will have a much bigger impact on long range forecasts than the ARMA parameters.
+# 
+# Earlier, you determined that the temperature data follows a random walk and you looked at first differencing the data. In this exercise, you will use the ARIMA module on the temperature data (before differencing), which is identical to using the ARMA module on changes in temperature, followed by taking cumulative sums of these changes to get the temperature forecast.
+# 
+# The data is preloaded in a DataFrame called temp_NY.
+
+# ### code
+
+# In[11]:
+
+
+# Import the ARIMA module from statsmodels
+from statsmodels.tsa.arima_model import ARIMA
+
+# Forecast temperatures using an ARIMA(1,1,1) model
+mod = ARIMA(temp_NY, order=(1,1,1))
+res = mod.fit()
+
+# Plot the original series and the forecasted series
+res.plot_predict(start='1872-01-01', end='2046-01-01')
+plt.show()
+
+
+# ![image.png](attachment:image.png)
+
+# ![image.png](attachment:image.png)
 
 # In[ ]:
 
