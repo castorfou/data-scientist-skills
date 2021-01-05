@@ -4,3 +4,6 @@ conda install numpy pandas console_shortcut statsmodels matplotlib scikit-learn
 conda install nb_conda keras seaborn 
 conda install -c conda-forge jupyter_contrib_nbextensions
 conda install pytorch torchvision
+
+#pour exporter les données de datacamp (uploadfromdatacamp.py)
+conda install -c conda-forge simhash
