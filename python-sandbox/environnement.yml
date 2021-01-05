@@ -1,0 +1,18 @@
+name: datacamp
+channels:
+  - defaults
+dependencies:
+  - python=3.7
+  - numpy
+  - scikit-learn
+  - statsmodels
+  - console_shortcut
+  - matplotlib
+  - pandas
+  - nb_conda
+  - seaborn
+  - keras
+  - jupyter_contrib_nbextensions
+  - pytorch
+  - torchvision
+prefix: /home/explore/miniconda3/envs/datacamp
