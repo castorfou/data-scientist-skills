@@ -284,6 +284,126 @@ plt.show()
 
 
 # # The binomial distribution
+# 
+# ![image.png](attachment:image.png)
+
+# [Simulating sales deals | Python](https://campus.datacamp.com/courses/introduction-to-statistics-in-python/random-numbers-and-probability-2?ex=14)
+# 
+# > ## Simulating sales deals
+# > 
+# > Assume that Amir usually works on 3 deals per week, and overall, he wins 30% of deals he works on. Each deal has a binary outcome: it's either lost, or won, so you can model his sales deals with a binomial distribution. In this exercise, you'll help Amir simulate a year's worth of his deals so he can better understand his performance.
+# > 
+# > `numpy` is imported as `np`.
+
+# > Import `binom` from `scipy.stats` and set the random seed to 10.
+
+# In[40]:
+
+
+# Import binom from scipy.stats
+from scipy.stats import binom
+
+# Set random seed to 10
+np.random.seed(10)
+
+
+# > Simulate 1 deal worked on by Amir, who wins 30% of the deals he works on.
+
+# In[41]:
+
+
+# Simulate a single deal
+print(binom.rvs(1, 0.3, size=1))
+
+
+# > Simulate a typical week of Amir's deals, or one week of 3 deals.
+
+# In[43]:
+
+
+# Simulate 1 week of 3 deals
+print(binom.rvs(3, 0.3, size=1))
+
+
+# > -   Simulate a year's worth of Amir's deals, or 52 weeks of 3 deals each, and store in `deals`.
+# > -   Print the mean number of deals he won per week.
+
+# In[44]:
+
+
+# Simulate 52 weeks of 3 deals
+deals = binom.rvs(3, 0.3, size=52)
+
+# Print mean deals won per week
+print(np.mean(deals))
+
+
+# [Calculating binomial probabilities | Python](https://campus.datacamp.com/courses/introduction-to-statistics-in-python/random-numbers-and-probability-2?ex=15)
+# 
+# > ## Calculating binomial probabilities
+# > 
+# > Just as in the last exercise, assume that Amir wins 30% of deals. He wants to get an idea of how likely he is to close a certain number of deals each week. In this exercise, you'll calculate what the chances are of him closing different numbers of deals using the binomial distribution.
+# > 
+# > `binom` is imported from `scipy.stats`.
+
+# > What's the probability that Amir closes all 3 deals in a week? Save this as `prob_3`.
+
+# In[45]:
+
+
+# Probability of closing 3 out of 3 deals
+prob_3 = binom.pmf(3, 3, 0.3)
+
+print(prob_3)
+
+
+# > What's the probability that Amir closes 1 or fewer deals in a week? Save this as `prob_less_than_or_equal_1`.
+
+# In[46]:
+
+
+# Probability of closing <= 1 deal out of 3 deals
+prob_less_than_or_equal_1 = binom.cdf(1, 3, 0.3)
+
+print(prob_less_than_or_equal_1)
+
+
+# > What's the probability that Amir closes more than 1 deal? Save this as `prob_greater_than_1`.
+
+# In[47]:
+
+
+# Probability of closing > 1 deal out of 3 deals
+prob_greater_than_1 = 1-binom.cdf(1, 3, 0.3)
+
+print(prob_greater_than_1)
+
+
+# [How many sales will be won? | Python](https://campus.datacamp.com/courses/introduction-to-statistics-in-python/random-numbers-and-probability-2?ex=16)
+# 
+# > ## How many sales will be won?
+# > 
+# > Now Amir wants to know how many deals he can expect to close each week if his win rate changes. Luckily, you can use your binomial distribution knowledge to help him calculate the expected value in different situations. Recall from the video that the expected value of a binomial distribution can be calculated by $n \times p$.
+
+# > -   Calculate the expected number of sales out of the **3** he works on that Amir will win each week if he maintains his 30% win rate.
+# > -   Calculate the expected number of sales out of the 3 he works on that he'll win if his win rate drops to 25%.
+# > -   Calculate the expected number of sales out of the 3 he works on that he'll win if his win rate rises to 35%.
+
+# In[49]:
+
+
+# Expected number won with 30% win rate
+won_30pct = 3 * 0.3
+print(won_30pct)
+
+# Expected number won with 25% win rate
+won_25pct = 3 * 0.25
+print(won_25pct)
+
+# Expected number won with 35% win rate
+won_35pct = 3 * 0.35
+print(won_35pct)
+
 
 # In[ ]:
 
