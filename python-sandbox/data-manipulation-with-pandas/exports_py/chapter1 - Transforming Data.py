@@ -2,6 +2,28 @@
 # coding: utf-8
 
 # # Introducing DataFrames
+# 
+# ```python
+# # Exploring a DataFrame: .head()
+# dogs.head()
+# 
+# # Exploring a DataFrame: .info()
+# dogs.info()
+# 
+# # Exploring a DataFrame: .shape
+# dogs.shape
+# 
+# # Exploring a DataFrame: .describe()
+# dogs.describe()
+# 
+# # Components of a DataFrame: .values
+# dogs.values
+# 
+# # Components of a DataFrame: .columns and .index
+# dogs.columns
+# 
+# dogs.index
+# ```
 
 # [Inspecting a DataFrame | Python](https://campus.datacamp.com/courses/data-manipulation-with-pandas/transforming-data?ex=2)
 # 
@@ -346,6 +368,12 @@ print(mojave_homelessness)
 
 
 # # New columns
+# 
+# ```python
+# # Adding a new column
+# dogs["height_m"] = dogs["height_cm"] / 100
+# 
+# ```
 
 # [Adding new columns | Python](https://campus.datacamp.com/courses/data-manipulation-with-pandas/transforming-data?ex=10)
 # 
