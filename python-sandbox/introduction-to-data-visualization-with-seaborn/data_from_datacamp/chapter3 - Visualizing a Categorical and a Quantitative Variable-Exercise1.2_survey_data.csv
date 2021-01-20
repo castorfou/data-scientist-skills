@@ -1,0 +1,1011 @@
+,Music,Techno,Movies,History,Mathematics,Pets,Spiders,Loneliness,Parents' advice,Internet usage,Finances,Age,Siblings,Gender,Village - town,Interested in Math
+0,5.0,1.0,5.0,1.0,3.0,4.0,1.0,3.0,4.0,few hours a day,3.0,20.0,1.0,female,village,False
+1,4.0,1.0,5.0,1.0,5.0,5.0,1.0,2.0,2.0,few hours a day,3.0,19.0,2.0,female,city,True
+2,5.0,1.0,5.0,1.0,5.0,5.0,1.0,5.0,3.0,few hours a day,2.0,20.0,2.0,female,city,True
+3,5.0,2.0,5.0,4.0,4.0,1.0,5.0,5.0,2.0,most of the day,2.0,22.0,1.0,female,city,True
+4,5.0,2.0,5.0,3.0,2.0,1.0,1.0,3.0,3.0,few hours a day,4.0,20.0,1.0,female,village,False
+5,5.0,1.0,5.0,5.0,2.0,2.0,1.0,2.0,3.0,few hours a day,2.0,20.0,1.0,male,city,False
+6,5.0,5.0,4.0,3.0,1.0,5.0,1.0,3.0,4.0,less than an hour a day,4.0,20.0,1.0,female,village,False
+7,5.0,3.0,5.0,5.0,1.0,5.0,1.0,2.0,3.0,few hours a day,3.0,19.0,1.0,male,city,False
+8,5.0,1.0,5.0,3.0,1.0,1.0,5.0,4.0,4.0,few hours a day,2.0,18.0,1.0,female,city,False
+9,5.0,1.0,5.0,3.0,3.0,2.0,3.0,2.0,3.0,few hours a day,4.0,19.0,3.0,female,city,False
+10,5.0,4.0,5.0,3.0,2.0,5.0,2.0,2.0,4.0,less than an hour a day,2.0,19.0,2.0,female,city,False
+11,5.0,1.0,5.0,2.0,1.0,1.0,5.0,4.0,4.0,few hours a day,2.0,17.0,1.0,female,city,False
+12,5.0,1.0,5.0,4.0,1.0,2.0,1.0,5.0,4.0,few hours a day,4.0,24.0,10.0,female,city,False
+13,5.0,1.0,5.0,2.0,1.0,5.0,3.0,2.0,3.0,few hours a day,3.0,19.0,1.0,female,city,False
+14,5.0,1.0,4.0,2.0,1.0,5.0,2.0,2.0,4.0,most of the day,5.0,22.0,1.0,female,city,False
+15,1.0,1.0,5.0,5.0,3.0,1.0,1.0,4.0,4.0,few hours a day,3.0,18.0,0.0,male,city,False
+16,5.0,4.0,5.0,1.0,1.0,5.0,5.0,2.0,3.0,few hours a day,3.0,19.0,2.0,female,city,False
+17,5.0,1.0,5.0,3.0,1.0,5.0,4.0,4.0,1.0,few hours a day,1.0,20.0,1.0,female,village,False
+18,5.0,4.0,5.0,3.0,5.0,4.0,1.0,4.0,3.0,few hours a day,4.0,18.0,2.0,male,city,True
+19,5.0,3.0,3.0,2.0,3.0,1.0,4.0,2.0,2.0,few hours a day,2.0,18.0,1.0,male,city,False
+20,5.0,3.0,5.0,5.0,2.0,3.0,2.0,2.0,3.0,few hours a day,2.0,20.0,1.0,male,city,False
+21,5.0,1.0,5.0,4.0,3.0,5.0,1.0,4.0,3.0,few hours a day,2.0,24.0,1.0,male,city,False
+22,5.0,3.0,5.0,3.0,1.0,5.0,5.0,3.0,3.0,few hours a day,5.0,22.0,1.0,female,city,False
+23,5.0,1.0,5.0,2.0,2.0,5.0,3.0,3.0,2.0,few hours a day,2.0,20.0,3.0,female,city,False
+24,5.0,3.0,5.0,4.0,2.0,3.0,5.0,4.0,4.0,few hours a day,3.0,19.0,1.0,female,city,False
+25,5.0,2.0,5.0,2.0,3.0,3.0,5.0,2.0,4.0,few hours a day,2.0,20.0,1.0,female,city,False
+26,5.0,2.0,5.0,3.0,2.0,5.0,1.0,4.0,5.0,few hours a day,5.0,22.0,1.0,female,city,False
+27,4.0,4.0,5.0,2.0,1.0,5.0,5.0,3.0,4.0,few hours a day,3.0,19.0,1.0,female,city,False
+28,5.0,3.0,5.0,5.0,1.0,3.0,4.0,3.0,3.0,few hours a day,3.0,20.0,2.0,male,village,False
+29,5.0,3.0,5.0,5.0,2.0,2.0,5.0,3.0,3.0,few hours a day,4.0,19.0,2.0,female,village,False
+30,4.0,3.0,5.0,2.0,1.0,3.0,5.0,2.0,3.0,few hours a day,2.0,25.0,1.0,male,city,False
+31,4.0,1.0,4.0,4.0,2.0,1.0,2.0,2.0,3.0,less than an hour a day,4.0,22.0,1.0,female,city,False
+32,5.0,3.0,5.0,4.0,1.0,5.0,5.0,1.0,3.0,few hours a day,1.0,20.0,4.0,female,city,False
+33,5.0,1.0,4.0,5.0,2.0,5.0,4.0,3.0,4.0,few hours a day,2.0,27.0,1.0,female,city,False
+34,5.0,1.0,5.0,4.0,3.0,1.0,2.0,2.0,2.0,few hours a day,3.0,20.0,5.0,male,city,False
+35,5.0,1.0,5.0,1.0,1.0,5.0,4.0,3.0,3.0,few hours a day,3.0,19.0,1.0,female,village,False
+36,5.0,1.0,5.0,4.0,3.0,5.0,5.0,2.0,5.0,few hours a day,5.0,18.0,1.0,female,city,False
+37,5.0,1.0,4.0,3.0,3.0,3.0,,3.0,3.0,few hours a day,3.0,21.0,1.0,male,city,False
+38,5.0,4.0,5.0,3.0,3.0,5.0,5.0,4.0,4.0,few hours a day,5.0,23.0,1.0,female,village,False
+39,5.0,2.0,4.0,4.0,1.0,5.0,5.0,4.0,3.0,few hours a day,3.0,21.0,1.0,female,city,False
+40,4.0,3.0,5.0,2.0,2.0,2.0,5.0,3.0,1.0,few hours a day,3.0,26.0,1.0,female,city,False
+41,5.0,5.0,3.0,5.0,5.0,3.0,1.0,1.0,3.0,few hours a day,3.0,20.0,3.0,male,city,True
+42,5.0,3.0,5.0,2.0,5.0,5.0,5.0,3.0,2.0,few hours a day,5.0,19.0,0.0,female,city,True
+43,5.0,3.0,5.0,2.0,1.0,5.0,5.0,3.0,3.0,most of the day,3.0,20.0,1.0,female,city,False
+44,4.0,4.0,5.0,4.0,3.0,5.0,5.0,4.0,3.0,few hours a day,4.0,25.0,1.0,female,village,False
+45,5.0,3.0,5.0,5.0,5.0,4.0,5.0,4.0,1.0,most of the day,4.0,27.0,1.0,male,,True
+46,5.0,2.0,5.0,4.0,2.0,4.0,1.0,2.0,4.0,few hours a day,3.0,21.0,1.0,female,city,False
+47,5.0,2.0,5.0,2.0,2.0,5.0,1.0,2.0,3.0,few hours a day,3.0,19.0,1.0,female,city,False
+48,5.0,2.0,3.0,2.0,2.0,2.0,2.0,5.0,3.0,few hours a day,4.0,20.0,1.0,female,village,False
+49,5.0,2.0,5.0,2.0,1.0,5.0,5.0,4.0,3.0,few hours a day,4.0,20.0,1.0,female,city,False
+50,4.0,1.0,5.0,3.0,4.0,5.0,2.0,3.0,3.0,few hours a day,4.0,19.0,2.0,female,city,True
+51,5.0,3.0,5.0,2.0,5.0,4.0,5.0,2.0,4.0,less than an hour a day,5.0,19.0,1.0,female,city,True
+52,5.0,2.0,5.0,5.0,3.0,3.0,5.0,3.0,3.0,few hours a day,1.0,21.0,2.0,female,village,False
+53,5.0,2.0,5.0,3.0,1.0,1.0,5.0,3.0,4.0,less than an hour a day,3.0,18.0,4.0,female,city,False
+54,5.0,4.0,5.0,5.0,1.0,1.0,3.0,3.0,3.0,few hours a day,3.0,21.0,2.0,female,city,False
+55,5.0,5.0,5.0,4.0,2.0,5.0,5.0,3.0,2.0,few hours a day,5.0,23.0,1.0,female,village,False
+56,5.0,1.0,5.0,3.0,4.0,3.0,3.0,5.0,3.0,few hours a day,3.0,20.0,2.0,female,city,True
+57,5.0,1.0,5.0,5.0,1.0,5.0,5.0,2.0,5.0,few hours a day,5.0,21.0,1.0,female,city,False
+58,5.0,3.0,5.0,3.0,3.0,3.0,1.0,5.0,4.0,few hours a day,5.0,19.0,1.0,male,village,False
+59,5.0,4.0,5.0,4.0,1.0,1.0,2.0,3.0,3.0,few hours a day,1.0,22.0,1.0,male,city,False
+60,5.0,1.0,5.0,4.0,4.0,1.0,2.0,4.0,3.0,most of the day,5.0,23.0,1.0,male,city,True
+61,5.0,4.0,5.0,3.0,3.0,5.0,3.0,4.0,4.0,few hours a day,2.0,23.0,1.0,male,city,False
+62,5.0,5.0,5.0,5.0,4.0,1.0,5.0,1.0,4.0,few hours a day,3.0,23.0,2.0,male,city,True
+63,5.0,5.0,5.0,4.0,,3.0,,2.0,3.0,few hours a day,3.0,22.0,2.0,male,city,False
+64,5.0,2.0,5.0,1.0,1.0,5.0,5.0,1.0,4.0,most of the day,1.0,18.0,0.0,female,city,False
+65,4.0,4.0,5.0,5.0,2.0,3.0,1.0,3.0,3.0,few hours a day,1.0,17.0,1.0,male,city,False
+66,4.0,5.0,4.0,3.0,5.0,1.0,1.0,3.0,3.0,less than an hour a day,3.0,20.0,1.0,male,village,True
+67,3.0,1.0,5.0,2.0,4.0,4.0,1.0,2.0,2.0,few hours a day,3.0,24.0,0.0,female,village,True
+68,5.0,4.0,5.0,2.0,5.0,4.0,4.0,4.0,2.0,few hours a day,1.0,18.0,1.0,female,village,True
+69,5.0,1.0,5.0,2.0,1.0,4.0,1.0,3.0,4.0,most of the day,1.0,20.0,3.0,female,city,False
+70,5.0,3.0,5.0,2.0,1.0,2.0,4.0,3.0,5.0,few hours a day,3.0,17.0,1.0,male,city,False
+71,4.0,3.0,4.0,5.0,2.0,5.0,3.0,3.0,3.0,few hours a day,4.0,20.0,1.0,male,city,False
+72,5.0,1.0,5.0,3.0,1.0,2.0,5.0,5.0,3.0,few hours a day,3.0,28.0,1.0,female,city,False
+73,5.0,3.0,5.0,4.0,1.0,5.0,3.0,3.0,4.0,few hours a day,3.0,21.0,1.0,male,city,False
+74,5.0,2.0,5.0,4.0,1.0,3.0,3.0,3.0,4.0,few hours a day,5.0,22.0,1.0,male,city,False
+75,5.0,1.0,4.0,5.0,2.0,4.0,1.0,2.0,3.0,few hours a day,3.0,20.0,1.0,male,village,False
+76,4.0,1.0,4.0,2.0,1.0,3.0,1.0,2.0,4.0,few hours a day,2.0,18.0,1.0,male,city,False
+77,5.0,5.0,5.0,4.0,1.0,1.0,5.0,1.0,4.0,few hours a day,1.0,21.0,1.0,female,city,False
+78,4.0,4.0,5.0,2.0,3.0,3.0,3.0,2.0,4.0,few hours a day,4.0,24.0,1.0,female,village,False
+79,5.0,4.0,5.0,4.0,2.0,5.0,5.0,3.0,4.0,few hours a day,4.0,21.0,2.0,female,city,False
+80,5.0,3.0,5.0,5.0,1.0,5.0,3.0,3.0,3.0,few hours a day,3.0,19.0,1.0,female,city,False
+81,5.0,3.0,5.0,3.0,1.0,2.0,1.0,3.0,3.0,few hours a day,3.0,22.0,1.0,male,city,False
+82,5.0,1.0,5.0,4.0,1.0,5.0,3.0,5.0,3.0,few hours a day,3.0,18.0,1.0,female,city,False
+83,5.0,5.0,5.0,,1.0,5.0,5.0,2.0,2.0,few hours a day,3.0,22.0,2.0,female,city,False
+84,5.0,1.0,5.0,5.0,1.0,5.0,3.0,3.0,4.0,few hours a day,1.0,19.0,0.0,female,city,False
+85,5.0,4.0,5.0,4.0,5.0,1.0,2.0,3.0,2.0,most of the day,2.0,22.0,2.0,male,city,True
+86,4.0,3.0,5.0,5.0,4.0,2.0,2.0,4.0,4.0,few hours a day,2.0,24.0,3.0,male,city,True
+87,5.0,2.0,5.0,5.0,,3.0,3.0,1.0,3.0,few hours a day,2.0,18.0,3.0,female,village,False
+88,5.0,5.0,5.0,5.0,1.0,5.0,5.0,5.0,5.0,few hours a day,1.0,21.0,0.0,female,city,False
+89,5.0,1.0,5.0,3.0,1.0,2.0,2.0,3.0,4.0,few hours a day,4.0,22.0,2.0,female,village,False
+90,4.0,1.0,4.0,1.0,1.0,3.0,5.0,3.0,3.0,most of the day,1.0,19.0,3.0,female,village,False
+91,5.0,1.0,5.0,1.0,1.0,1.0,5.0,2.0,4.0,few hours a day,5.0,18.0,4.0,female,village,False
+92,5.0,1.0,5.0,4.0,3.0,3.0,1.0,4.0,4.0,few hours a day,4.0,19.0,0.0,female,city,False
+93,5.0,1.0,4.0,2.0,4.0,3.0,2.0,3.0,2.0,few hours a day,4.0,24.0,2.0,male,village,True
+94,5.0,4.0,5.0,3.0,1.0,3.0,2.0,2.0,1.0,most of the day,3.0,21.0,1.0,male,city,False
+95,5.0,2.0,5.0,4.0,1.0,4.0,4.0,4.0,2.0,few hours a day,1.0,21.0,1.0,male,city,False
+96,5.0,4.0,2.0,1.0,1.0,1.0,4.0,2.0,2.0,few hours a day,1.0,19.0,1.0,male,city,False
+97,5.0,2.0,5.0,3.0,4.0,5.0,2.0,5.0,3.0,most of the day,2.0,19.0,1.0,male,village,True
+98,3.0,3.0,3.0,1.0,1.0,1.0,5.0,5.0,1.0,few hours a day,3.0,22.0,1.0,male,village,False
+99,5.0,1.0,3.0,3.0,5.0,4.0,5.0,3.0,4.0,less than an hour a day,4.0,18.0,1.0,female,city,True
+100,5.0,2.0,5.0,3.0,2.0,2.0,4.0,3.0,4.0,few hours a day,4.0,21.0,1.0,female,city,False
+101,5.0,1.0,4.0,5.0,1.0,3.0,5.0,3.0,3.0,few hours a day,2.0,18.0,1.0,male,village,False
+102,5.0,1.0,5.0,5.0,4.0,1.0,1.0,3.0,3.0,few hours a day,3.0,20.0,0.0,female,city,True
+103,5.0,4.0,5.0,5.0,2.0,1.0,4.0,2.0,5.0,few hours a day,4.0,22.0,0.0,male,city,False
+104,4.0,3.0,4.0,5.0,2.0,2.0,1.0,1.0,4.0,few hours a day,2.0,21.0,1.0,male,village,False
+105,5.0,1.0,4.0,4.0,1.0,4.0,1.0,2.0,3.0,few hours a day,4.0,24.0,1.0,male,village,False
+106,5.0,3.0,5.0,4.0,3.0,1.0,2.0,4.0,3.0,few hours a day,4.0,19.0,1.0,male,city,False
+107,5.0,1.0,3.0,1.0,1.0,4.0,1.0,1.0,5.0,less than an hour a day,1.0,18.0,1.0,female,city,False
+108,4.0,2.0,5.0,1.0,3.0,3.0,5.0,5.0,2.0,few hours a day,1.0,17.0,1.0,female,city,False
+109,5.0,1.0,5.0,3.0,2.0,1.0,1.0,4.0,3.0,few hours a day,4.0,18.0,0.0,male,city,False
+110,5.0,4.0,4.0,3.0,2.0,3.0,4.0,3.0,3.0,few hours a day,4.0,21.0,1.0,male,city,False
+111,5.0,4.0,4.0,3.0,1.0,1.0,5.0,5.0,3.0,most of the day,2.0,22.0,1.0,female,village,False
+112,5.0,4.0,5.0,2.0,2.0,3.0,4.0,3.0,3.0,less than an hour a day,4.0,20.0,1.0,female,city,False
+113,3.0,5.0,4.0,2.0,1.0,5.0,3.0,2.0,4.0,few hours a day,2.0,21.0,1.0,female,village,False
+114,5.0,1.0,5.0,5.0,1.0,5.0,5.0,2.0,4.0,less than an hour a day,4.0,19.0,1.0,female,city,False
+115,5.0,3.0,5.0,2.0,1.0,3.0,5.0,5.0,3.0,few hours a day,3.0,17.0,0.0,female,city,False
+116,5.0,1.0,4.0,2.0,1.0,4.0,5.0,5.0,4.0,few hours a day,3.0,21.0,1.0,female,city,False
+117,5.0,1.0,4.0,2.0,5.0,5.0,3.0,4.0,4.0,few hours a day,3.0,18.0,3.0,female,village,True
+118,5.0,1.0,5.0,3.0,4.0,4.0,2.0,3.0,3.0,few hours a day,4.0,23.0,1.0,male,city,True
+119,4.0,3.0,3.0,4.0,4.0,3.0,2.0,2.0,4.0,few hours a day,5.0,16.0,1.0,female,village,True
+120,5.0,3.0,3.0,5.0,5.0,5.0,1.0,2.0,2.0,most of the day,4.0,23.0,0.0,male,city,True
+121,4.0,3.0,4.0,1.0,4.0,3.0,1.0,2.0,2.0,few hours a day,2.0,21.0,2.0,male,city,True
+122,5.0,1.0,4.0,5.0,1.0,4.0,2.0,2.0,3.0,few hours a day,4.0,23.0,0.0,female,city,False
+123,5.0,1.0,3.0,2.0,1.0,4.0,1.0,3.0,3.0,few hours a day,4.0,20.0,0.0,female,village,False
+124,4.0,1.0,4.0,4.0,1.0,4.0,1.0,2.0,3.0,few hours a day,3.0,20.0,4.0,male,city,False
+125,5.0,2.0,5.0,4.0,2.0,5.0,4.0,3.0,4.0,few hours a day,3.0,20.0,1.0,female,city,False
+126,3.0,1.0,3.0,5.0,2.0,1.0,1.0,4.0,3.0,few hours a day,4.0,20.0,2.0,female,village,False
+127,4.0,3.0,5.0,4.0,3.0,2.0,2.0,3.0,2.0,most of the day,2.0,19.0,1.0,female,city,False
+128,5.0,5.0,5.0,4.0,3.0,5.0,1.0,5.0,3.0,few hours a day,5.0,15.0,3.0,female,city,False
+129,5.0,1.0,5.0,4.0,1.0,5.0,2.0,2.0,3.0,less than an hour a day,3.0,20.0,1.0,female,village,False
+130,4.0,3.0,5.0,5.0,2.0,1.0,4.0,1.0,4.0,few hours a day,4.0,19.0,1.0,female,village,False
+131,5.0,3.0,5.0,1.0,1.0,3.0,2.0,3.0,2.0,few hours a day,4.0,18.0,2.0,male,village,False
+132,5.0,1.0,5.0,1.0,4.0,5.0,5.0,5.0,2.0,most of the day,5.0,15.0,1.0,female,village,True
+133,5.0,1.0,5.0,4.0,1.0,4.0,4.0,2.0,4.0,less than an hour a day,2.0,20.0,2.0,female,city,False
+134,5.0,4.0,5.0,3.0,1.0,4.0,5.0,5.0,1.0,few hours a day,1.0,16.0,1.0,female,village,False
+135,5.0,1.0,4.0,5.0,3.0,5.0,5.0,3.0,3.0,few hours a day,4.0,18.0,1.0,male,village,False
+136,5.0,1.0,5.0,4.0,2.0,3.0,5.0,4.0,4.0,few hours a day,3.0,21.0,1.0,male,village,False
+137,5.0,2.0,2.0,4.0,3.0,1.0,3.0,5.0,5.0,few hours a day,4.0,,,,village,False
+138,5.0,1.0,5.0,2.0,1.0,3.0,1.0,4.0,5.0,few hours a day,4.0,20.0,4.0,female,village,False
+139,5.0,3.0,5.0,1.0,2.0,5.0,3.0,4.0,4.0,few hours a day,2.0,19.0,1.0,female,village,False
+140,5.0,3.0,5.0,5.0,2.0,5.0,2.0,3.0,4.0,few hours a day,3.0,19.0,3.0,female,city,False
+141,3.0,2.0,3.0,3.0,5.0,5.0,1.0,3.0,3.0,few hours a day,1.0,19.0,1.0,female,city,True
+142,5.0,2.0,4.0,1.0,2.0,1.0,4.0,3.0,2.0,most of the day,2.0,,,male,city,False
+143,5.0,3.0,,,1.0,5.0,5.0,3.0,3.0,most of the day,2.0,20.0,1.0,female,city,False
+144,5.0,4.0,5.0,3.0,1.0,3.0,1.0,4.0,1.0,few hours a day,5.0,21.0,1.0,male,city,False
+145,1.0,3.0,4.0,2.0,1.0,2.0,5.0,3.0,3.0,few hours a day,2.0,19.0,1.0,female,village,False
+146,5.0,,5.0,5.0,1.0,4.0,1.0,3.0,2.0,few hours a day,5.0,21.0,1.0,male,city,False
+147,5.0,1.0,5.0,4.0,5.0,3.0,2.0,4.0,4.0,most of the day,4.0,18.0,2.0,male,city,True
+148,4.0,3.0,4.0,3.0,4.0,1.0,2.0,2.0,4.0,few hours a day,4.0,20.0,3.0,male,village,True
+149,2.0,1.0,3.0,2.0,5.0,1.0,1.0,3.0,3.0,few hours a day,3.0,19.0,5.0,male,city,True
+150,5.0,1.0,5.0,2.0,3.0,1.0,5.0,2.0,3.0,few hours a day,3.0,22.0,1.0,female,city,False
+151,5.0,2.0,5.0,4.0,2.0,3.0,3.0,3.0,3.0,few hours a day,4.0,20.0,1.0,male,city,False
+152,5.0,2.0,5.0,5.0,2.0,4.0,2.0,5.0,4.0,few hours a day,2.0,25.0,2.0,male,city,False
+153,2.0,3.0,3.0,5.0,1.0,1.0,5.0,4.0,4.0,few hours a day,3.0,21.0,0.0,female,city,False
+154,5.0,1.0,4.0,5.0,3.0,3.0,5.0,2.0,3.0,few hours a day,4.0,24.0,1.0,male,city,False
+155,5.0,2.0,4.0,4.0,3.0,4.0,2.0,5.0,5.0,few hours a day,5.0,19.0,1.0,female,city,False
+156,5.0,1.0,5.0,5.0,1.0,4.0,1.0,5.0,3.0,few hours a day,4.0,25.0,1.0,male,city,False
+157,5.0,1.0,5.0,3.0,2.0,2.0,2.0,2.0,4.0,most of the day,4.0,26.0,2.0,male,village,False
+158,5.0,5.0,5.0,1.0,3.0,5.0,5.0,5.0,3.0,few hours a day,2.0,15.0,2.0,female,village,False
+159,5.0,3.0,5.0,4.0,3.0,5.0,2.0,2.0,3.0,few hours a day,3.0,20.0,1.0,male,city,False
+160,5.0,3.0,5.0,4.0,5.0,1.0,1.0,3.0,2.0,few hours a day,3.0,19.0,1.0,male,city,True
+161,5.0,3.0,5.0,2.0,1.0,5.0,4.0,5.0,3.0,few hours a day,3.0,20.0,2.0,female,city,False
+162,4.0,1.0,4.0,5.0,1.0,2.0,2.0,3.0,2.0,few hours a day,4.0,21.0,0.0,male,city,False
+163,5.0,5.0,4.0,5.0,1.0,1.0,4.0,4.0,4.0,most of the day,3.0,22.0,1.0,male,city,False
+164,5.0,3.0,5.0,3.0,1.0,4.0,2.0,3.0,4.0,most of the day,2.0,20.0,1.0,male,village,False
+165,5.0,2.0,5.0,3.0,2.0,2.0,4.0,1.0,5.0,few hours a day,3.0,20.0,1.0,female,city,False
+166,5.0,1.0,4.0,2.0,2.0,1.0,4.0,3.0,4.0,few hours a day,5.0,21.0,1.0,female,city,False
+167,3.0,3.0,3.0,3.0,1.0,4.0,4.0,4.0,2.0,few hours a day,4.0,21.0,1.0,male,village,False
+168,5.0,1.0,5.0,3.0,1.0,1.0,1.0,5.0,3.0,most of the day,3.0,20.0,0.0,female,city,False
+169,5.0,1.0,5.0,4.0,1.0,4.0,5.0,4.0,3.0,few hours a day,5.0,19.0,2.0,female,village,False
+170,4.0,1.0,3.0,5.0,5.0,4.0,3.0,4.0,4.0,few hours a day,5.0,19.0,1.0,male,city,True
+171,5.0,1.0,5.0,4.0,1.0,1.0,1.0,4.0,3.0,few hours a day,3.0,20.0,0.0,male,city,False
+172,5.0,1.0,3.0,5.0,3.0,3.0,1.0,5.0,4.0,most of the day,4.0,22.0,1.0,male,village,False
+173,5.0,5.0,5.0,3.0,4.0,5.0,2.0,4.0,4.0,most of the day,3.0,21.0,1.0,male,city,True
+174,5.0,1.0,5.0,5.0,1.0,3.0,5.0,3.0,3.0,few hours a day,3.0,26.0,0.0,male,city,False
+175,5.0,2.0,4.0,1.0,1.0,5.0,3.0,3.0,3.0,few hours a day,5.0,17.0,2.0,female,city,False
+176,5.0,2.0,5.0,1.0,5.0,4.0,1.0,2.0,4.0,less than an hour a day,4.0,22.0,2.0,male,village,True
+177,5.0,1.0,5.0,3.0,1.0,5.0,1.0,3.0,3.0,few hours a day,3.0,26.0,2.0,male,city,False
+178,4.0,1.0,3.0,4.0,3.0,3.0,2.0,3.0,3.0,few hours a day,4.0,20.0,1.0,female,city,False
+179,4.0,4.0,4.0,5.0,2.0,4.0,5.0,2.0,3.0,few hours a day,5.0,22.0,1.0,male,city,False
+180,4.0,1.0,4.0,4.0,4.0,1.0,1.0,3.0,2.0,few hours a day,4.0,21.0,0.0,male,city,True
+181,5.0,3.0,4.0,4.0,2.0,2.0,1.0,2.0,4.0,few hours a day,3.0,23.0,0.0,male,city,False
+182,5.0,1.0,5.0,3.0,2.0,5.0,5.0,2.0,4.0,few hours a day,2.0,19.0,0.0,female,city,False
+183,5.0,4.0,5.0,5.0,2.0,5.0,3.0,2.0,2.0,few hours a day,4.0,20.0,1.0,male,city,False
+184,5.0,1.0,5.0,3.0,1.0,2.0,2.0,5.0,3.0,few hours a day,2.0,21.0,0.0,female,city,False
+185,3.0,3.0,5.0,2.0,5.0,5.0,3.0,2.0,3.0,less than an hour a day,3.0,19.0,2.0,female,city,True
+186,4.0,2.0,4.0,3.0,1.0,4.0,5.0,2.0,3.0,less than an hour a day,3.0,29.0,2.0,female,city,False
+187,5.0,5.0,4.0,5.0,1.0,2.0,1.0,5.0,3.0,few hours a day,2.0,22.0,1.0,female,city,False
+188,3.0,1.0,2.0,4.0,1.0,,2.0,2.0,4.0,less than an hour a day,5.0,19.0,2.0,female,village,False
+189,5.0,1.0,5.0,4.0,3.0,1.0,3.0,4.0,3.0,few hours a day,4.0,17.0,1.0,female,city,False
+190,4.0,2.0,4.0,3.0,5.0,2.0,5.0,4.0,4.0,few hours a day,4.0,16.0,1.0,female,city,True
+191,5.0,1.0,4.0,3.0,1.0,2.0,1.0,2.0,5.0,less than an hour a day,1.0,29.0,2.0,female,village,False
+192,5.0,4.0,5.0,3.0,1.0,5.0,5.0,5.0,3.0,few hours a day,5.0,18.0,2.0,female,city,False
+193,5.0,1.0,5.0,3.0,1.0,5.0,1.0,3.0,3.0,few hours a day,3.0,26.0,2.0,male,city,False
+194,5.0,1.0,5.0,2.0,1.0,1.0,3.0,3.0,4.0,few hours a day,3.0,19.0,1.0,male,city,False
+195,5.0,1.0,4.0,3.0,1.0,1.0,5.0,3.0,3.0,few hours a day,2.0,19.0,1.0,male,city,False
+196,5.0,3.0,5.0,4.0,1.0,1.0,4.0,2.0,3.0,few hours a day,4.0,20.0,0.0,female,city,False
+197,5.0,1.0,5.0,2.0,1.0,4.0,4.0,3.0,4.0,few hours a day,3.0,22.0,0.0,female,city,False
+198,5.0,2.0,3.0,4.0,1.0,4.0,5.0,1.0,2.0,few hours a day,1.0,20.0,1.0,male,village,False
+199,5.0,4.0,4.0,2.0,1.0,3.0,2.0,3.0,2.0,less than an hour a day,1.0,21.0,1.0,male,village,False
+200,4.0,2.0,5.0,3.0,1.0,5.0,1.0,5.0,2.0,most of the day,4.0,21.0,2.0,male,city,False
+201,5.0,2.0,5.0,4.0,1.0,5.0,1.0,3.0,4.0,few hours a day,2.0,18.0,0.0,,village,False
+202,5.0,4.0,5.0,2.0,1.0,4.0,4.0,3.0,2.0,few hours a day,3.0,15.0,0.0,male,city,False
+203,5.0,3.0,5.0,2.0,3.0,3.0,2.0,3.0,3.0,few hours a day,3.0,19.0,1.0,female,city,False
+204,5.0,1.0,5.0,1.0,4.0,3.0,4.0,3.0,3.0,few hours a day,3.0,24.0,1.0,female,city,True
+205,5.0,1.0,5.0,5.0,1.0,2.0,1.0,3.0,4.0,few hours a day,5.0,19.0,1.0,female,city,False
+206,5.0,1.0,5.0,5.0,4.0,3.0,3.0,3.0,2.0,few hours a day,4.0,25.0,3.0,male,village,True
+207,5.0,1.0,5.0,5.0,1.0,5.0,5.0,4.0,4.0,few hours a day,4.0,20.0,1.0,female,city,False
+208,5.0,1.0,3.0,3.0,1.0,5.0,5.0,3.0,3.0,less than an hour a day,1.0,19.0,2.0,female,village,False
+209,5.0,2.0,5.0,4.0,4.0,3.0,5.0,4.0,2.0,few hours a day,5.0,21.0,1.0,male,village,True
+210,5.0,5.0,5.0,5.0,4.0,5.0,5.0,3.0,5.0,few hours a day,3.0,23.0,2.0,male,village,True
+211,5.0,4.0,5.0,1.0,1.0,4.0,5.0,3.0,4.0,few hours a day,2.0,21.0,1.0,female,village,False
+212,5.0,2.0,5.0,5.0,5.0,1.0,4.0,2.0,3.0,most of the day,3.0,20.0,1.0,male,city,True
+213,5.0,5.0,5.0,3.0,3.0,4.0,3.0,4.0,4.0,few hours a day,5.0,20.0,1.0,female,village,False
+214,4.0,1.0,5.0,4.0,3.0,3.0,5.0,4.0,3.0,less than an hour a day,3.0,18.0,3.0,female,city,False
+215,1.0,1.0,4.0,3.0,1.0,1.0,1.0,2.0,3.0,few hours a day,1.0,27.0,2.0,male,city,False
+216,5.0,2.0,4.0,3.0,3.0,1.0,4.0,3.0,3.0,few hours a day,3.0,17.0,0.0,female,city,False
+217,5.0,2.0,5.0,2.0,2.0,5.0,5.0,3.0,1.0,few hours a day,3.0,19.0,1.0,female,village,False
+218,5.0,3.0,5.0,2.0,2.0,5.0,1.0,4.0,4.0,few hours a day,2.0,18.0,2.0,male,village,False
+219,5.0,5.0,5.0,5.0,1.0,,1.0,2.0,5.0,less than an hour a day,,26.0,1.0,male,city,False
+220,5.0,1.0,5.0,3.0,1.0,5.0,2.0,2.0,4.0,few hours a day,2.0,18.0,2.0,male,village,False
+221,5.0,4.0,5.0,3.0,4.0,4.0,2.0,2.0,2.0,few hours a day,1.0,30.0,2.0,male,city,True
+222,5.0,1.0,5.0,2.0,2.0,1.0,2.0,5.0,4.0,few hours a day,4.0,24.0,1.0,female,city,False
+223,5.0,2.0,5.0,4.0,3.0,5.0,1.0,2.0,2.0,few hours a day,4.0,20.0,0.0,female,village,False
+224,5.0,1.0,5.0,2.0,1.0,1.0,1.0,4.0,2.0,few hours a day,4.0,20.0,1.0,male,village,False
+225,5.0,2.0,5.0,3.0,4.0,3.0,4.0,3.0,3.0,few hours a day,3.0,20.0,1.0,male,village,True
+226,5.0,3.0,5.0,2.0,1.0,5.0,1.0,5.0,4.0,few hours a day,3.0,25.0,1.0,,village,False
+227,5.0,1.0,5.0,5.0,3.0,3.0,1.0,1.0,2.0,few hours a day,2.0,19.0,3.0,female,village,False
+228,4.0,2.0,5.0,3.0,3.0,5.0,1.0,3.0,4.0,few hours a day,5.0,20.0,2.0,female,village,False
+229,4.0,3.0,3.0,2.0,4.0,1.0,1.0,2.0,4.0,few hours a day,1.0,21.0,5.0,male,village,True
+230,5.0,2.0,4.0,4.0,3.0,4.0,5.0,2.0,4.0,few hours a day,3.0,19.0,1.0,female,village,False
+231,5.0,1.0,5.0,2.0,2.0,5.0,1.0,3.0,4.0,few hours a day,5.0,19.0,0.0,female,village,False
+232,5.0,3.0,5.0,1.0,4.0,1.0,2.0,5.0,3.0,few hours a day,4.0,19.0,2.0,female,village,True
+233,4.0,4.0,5.0,1.0,1.0,5.0,4.0,2.0,3.0,few hours a day,4.0,18.0,1.0,female,city,False
+234,4.0,1.0,3.0,1.0,5.0,5.0,4.0,4.0,4.0,few hours a day,5.0,18.0,1.0,female,village,True
+235,5.0,1.0,5.0,5.0,1.0,3.0,2.0,3.0,3.0,few hours a day,3.0,16.0,0.0,female,city,False
+236,1.0,1.0,5.0,5.0,3.0,5.0,1.0,2.0,4.0,less than an hour a day,3.0,19.0,0.0,female,city,False
+237,5.0,3.0,4.0,2.0,4.0,5.0,5.0,2.0,2.0,few hours a day,3.0,18.0,3.0,female,city,True
+238,5.0,1.0,5.0,2.0,2.0,3.0,4.0,2.0,2.0,few hours a day,1.0,19.0,2.0,female,city,False
+239,5.0,2.0,5.0,4.0,1.0,4.0,5.0,2.0,3.0,less than an hour a day,3.0,21.0,1.0,female,city,False
+240,3.0,2.0,3.0,3.0,2.0,3.0,3.0,3.0,2.0,few hours a day,2.0,21.0,1.0,male,city,False
+241,5.0,1.0,5.0,3.0,4.0,5.0,5.0,2.0,5.0,few hours a day,5.0,18.0,1.0,female,city,True
+242,3.0,1.0,5.0,3.0,1.0,2.0,,3.0,4.0,less than an hour a day,5.0,21.0,0.0,female,city,False
+243,,1.0,5.0,4.0,4.0,1.0,1.0,5.0,4.0,few hours a day,5.0,17.0,0.0,female,city,True
+244,5.0,2.0,5.0,1.0,1.0,5.0,5.0,2.0,3.0,most of the day,3.0,20.0,0.0,female,city,False
+245,5.0,1.0,5.0,3.0,1.0,5.0,1.0,3.0,3.0,less than an hour a day,1.0,19.0,1.0,female,city,False
+246,5.0,1.0,5.0,5.0,5.0,5.0,4.0,2.0,3.0,few hours a day,4.0,27.0,0.0,male,city,True
+247,5.0,2.0,5.0,3.0,1.0,1.0,2.0,3.0,3.0,few hours a day,3.0,22.0,2.0,female,city,False
+248,5.0,3.0,5.0,5.0,2.0,3.0,3.0,3.0,4.0,few hours a day,3.0,19.0,2.0,female,city,False
+249,5.0,2.0,5.0,4.0,1.0,5.0,5.0,3.0,4.0,no time at all,3.0,19.0,3.0,female,village,False
+250,5.0,2.0,5.0,1.0,1.0,1.0,1.0,3.0,4.0,few hours a day,4.0,20.0,0.0,female,city,False
+251,5.0,5.0,5.0,2.0,1.0,5.0,1.0,2.0,3.0,few hours a day,3.0,19.0,2.0,female,village,False
+252,5.0,2.0,5.0,3.0,1.0,5.0,4.0,5.0,3.0,few hours a day,5.0,20.0,0.0,female,village,False
+253,5.0,1.0,3.0,1.0,1.0,1.0,3.0,4.0,2.0,few hours a day,3.0,17.0,2.0,female,city,False
+254,5.0,3.0,5.0,2.0,2.0,5.0,5.0,5.0,3.0,few hours a day,3.0,23.0,2.0,female,village,False
+255,5.0,1.0,5.0,2.0,2.0,3.0,3.0,3.0,4.0,few hours a day,5.0,20.0,2.0,female,city,False
+256,5.0,1.0,3.0,3.0,1.0,1.0,5.0,1.0,3.0,few hours a day,1.0,20.0,1.0,female,city,False
+257,5.0,5.0,5.0,4.0,5.0,1.0,2.0,2.0,3.0,few hours a day,4.0,19.0,2.0,male,city,True
+258,5.0,1.0,5.0,2.0,4.0,2.0,1.0,2.0,2.0,most of the day,4.0,20.0,1.0,female,city,True
+259,2.0,1.0,3.0,5.0,1.0,1.0,1.0,3.0,3.0,few hours a day,4.0,19.0,4.0,male,village,False
+260,3.0,3.0,3.0,3.0,1.0,3.0,3.0,3.0,3.0,few hours a day,3.0,19.0,0.0,male,city,False
+261,5.0,1.0,5.0,3.0,4.0,5.0,3.0,4.0,3.0,few hours a day,2.0,18.0,1.0,female,city,True
+262,5.0,3.0,4.0,3.0,3.0,3.0,4.0,5.0,4.0,few hours a day,3.0,19.0,1.0,female,city,False
+263,5.0,3.0,5.0,1.0,3.0,3.0,4.0,1.0,3.0,few hours a day,1.0,15.0,3.0,female,city,False
+264,3.0,3.0,5.0,2.0,2.0,5.0,4.0,3.0,3.0,few hours a day,3.0,19.0,1.0,female,village,False
+265,5.0,1.0,5.0,1.0,2.0,5.0,4.0,3.0,3.0,most of the day,5.0,15.0,1.0,female,city,False
+266,5.0,1.0,5.0,3.0,4.0,4.0,3.0,4.0,4.0,few hours a day,2.0,19.0,1.0,female,city,True
+267,5.0,2.0,4.0,4.0,3.0,5.0,1.0,1.0,2.0,few hours a day,3.0,21.0,2.0,female,city,False
+268,5.0,1.0,4.0,1.0,5.0,5.0,5.0,2.0,3.0,few hours a day,4.0,19.0,2.0,female,city,True
+269,5.0,2.0,5.0,3.0,2.0,3.0,2.0,3.0,2.0,few hours a day,4.0,17.0,1.0,female,village,False
+270,5.0,2.0,5.0,3.0,1.0,5.0,5.0,3.0,3.0,few hours a day,2.0,23.0,1.0,female,city,False
+271,5.0,1.0,5.0,4.0,2.0,5.0,2.0,2.0,3.0,less than an hour a day,4.0,24.0,0.0,male,village,False
+272,5.0,1.0,5.0,3.0,3.0,5.0,2.0,3.0,3.0,less than an hour a day,4.0,19.0,1.0,female,city,False
+273,5.0,4.0,5.0,3.0,2.0,1.0,4.0,3.0,4.0,few hours a day,3.0,19.0,2.0,female,city,False
+274,5.0,2.0,4.0,5.0,1.0,4.0,4.0,2.0,2.0,few hours a day,4.0,22.0,0.0,female,city,False
+275,5.0,4.0,5.0,5.0,2.0,2.0,4.0,4.0,2.0,few hours a day,2.0,20.0,1.0,female,city,False
+276,5.0,1.0,5.0,4.0,3.0,1.0,3.0,4.0,3.0,few hours a day,1.0,21.0,2.0,female,village,False
+277,5.0,2.0,5.0,5.0,2.0,1.0,5.0,4.0,3.0,few hours a day,4.0,19.0,0.0,male,city,False
+278,5.0,3.0,5.0,4.0,3.0,5.0,1.0,3.0,4.0,few hours a day,3.0,19.0,2.0,male,village,False
+279,5.0,2.0,4.0,3.0,1.0,5.0,2.0,4.0,3.0,few hours a day,3.0,20.0,1.0,female,city,False
+280,5.0,5.0,4.0,3.0,1.0,4.0,5.0,5.0,3.0,few hours a day,3.0,18.0,1.0,female,city,False
+281,5.0,3.0,4.0,2.0,1.0,5.0,2.0,4.0,3.0,few hours a day,2.0,19.0,1.0,male,city,False
+282,5.0,1.0,3.0,1.0,1.0,5.0,5.0,3.0,3.0,less than an hour a day,4.0,20.0,2.0,female,city,False
+283,5.0,3.0,5.0,2.0,5.0,1.0,1.0,1.0,3.0,few hours a day,3.0,22.0,1.0,male,city,True
+284,1.0,1.0,5.0,2.0,4.0,4.0,3.0,1.0,3.0,most of the day,5.0,20.0,2.0,male,city,True
+285,5.0,1.0,5.0,2.0,2.0,5.0,5.0,2.0,3.0,few hours a day,4.0,20.0,2.0,female,city,False
+286,5.0,1.0,5.0,4.0,1.0,5.0,4.0,3.0,1.0,few hours a day,2.0,27.0,1.0,female,city,False
+287,5.0,3.0,5.0,4.0,1.0,4.0,5.0,3.0,3.0,few hours a day,3.0,19.0,1.0,female,city,False
+288,5.0,5.0,4.0,2.0,1.0,3.0,3.0,3.0,3.0,few hours a day,3.0,22.0,2.0,male,city,False
+289,5.0,2.0,4.0,5.0,1.0,4.0,1.0,2.0,2.0,most of the day,1.0,19.0,0.0,male,city,False
+290,4.0,1.0,5.0,4.0,1.0,2.0,1.0,4.0,4.0,few hours a day,1.0,20.0,1.0,female,city,False
+291,4.0,2.0,4.0,4.0,2.0,3.0,2.0,2.0,3.0,few hours a day,3.0,20.0,1.0,male,village,False
+292,5.0,2.0,5.0,3.0,1.0,5.0,4.0,3.0,4.0,few hours a day,4.0,21.0,1.0,female,city,False
+293,5.0,1.0,5.0,4.0,5.0,5.0,2.0,4.0,1.0,few hours a day,3.0,16.0,1.0,female,village,True
+294,5.0,1.0,3.0,5.0,1.0,5.0,5.0,4.0,2.0,less than an hour a day,3.0,19.0,1.0,female,city,False
+295,5.0,1.0,5.0,3.0,1.0,5.0,3.0,2.0,4.0,few hours a day,3.0,18.0,1.0,female,village,False
+296,5.0,5.0,5.0,4.0,4.0,4.0,1.0,1.0,3.0,few hours a day,1.0,23.0,1.0,male,city,True
+297,5.0,4.0,5.0,1.0,3.0,3.0,1.0,4.0,3.0,few hours a day,2.0,19.0,0.0,male,village,False
+298,5.0,2.0,5.0,3.0,1.0,5.0,3.0,3.0,3.0,less than an hour a day,4.0,19.0,0.0,female,city,False
+299,5.0,1.0,5.0,3.0,1.0,4.0,5.0,2.0,4.0,few hours a day,3.0,22.0,1.0,female,city,False
+300,5.0,1.0,3.0,3.0,3.0,2.0,1.0,2.0,3.0,most of the day,4.0,18.0,1.0,female,city,False
+301,4.0,1.0,5.0,5.0,2.0,3.0,1.0,2.0,4.0,few hours a day,4.0,20.0,1.0,male,city,False
+302,5.0,1.0,5.0,3.0,1.0,1.0,1.0,3.0,4.0,less than an hour a day,3.0,19.0,1.0,female,village,False
+303,4.0,1.0,5.0,4.0,5.0,5.0,4.0,4.0,4.0,few hours a day,4.0,25.0,1.0,female,city,True
+304,5.0,1.0,5.0,4.0,1.0,1.0,3.0,3.0,1.0,few hours a day,3.0,18.0,2.0,female,city,False
+305,5.0,1.0,5.0,5.0,4.0,5.0,2.0,3.0,3.0,few hours a day,2.0,20.0,0.0,female,city,True
+306,5.0,4.0,5.0,3.0,4.0,5.0,5.0,4.0,4.0,few hours a day,4.0,15.0,1.0,female,city,True
+307,5.0,1.0,5.0,2.0,5.0,1.0,5.0,5.0,4.0,few hours a day,4.0,19.0,2.0,female,city,True
+308,5.0,4.0,4.0,3.0,2.0,3.0,3.0,3.0,4.0,few hours a day,3.0,19.0,2.0,female,city,False
+309,5.0,2.0,4.0,2.0,3.0,1.0,1.0,2.0,3.0,few hours a day,3.0,16.0,0.0,female,village,False
+310,5.0,5.0,3.0,1.0,2.0,5.0,3.0,4.0,4.0,few hours a day,3.0,19.0,1.0,male,city,False
+311,5.0,2.0,5.0,5.0,3.0,2.0,5.0,3.0,4.0,few hours a day,3.0,18.0,0.0,female,city,False
+312,2.0,2.0,5.0,2.0,2.0,3.0,2.0,3.0,3.0,few hours a day,2.0,15.0,1.0,male,city,False
+313,5.0,2.0,5.0,3.0,1.0,3.0,5.0,2.0,4.0,few hours a day,3.0,20.0,1.0,female,city,False
+314,5.0,5.0,5.0,5.0,5.0,5.0,2.0,2.0,4.0,few hours a day,3.0,20.0,2.0,male,village,True
+315,5.0,1.0,4.0,4.0,1.0,1.0,5.0,3.0,4.0,few hours a day,1.0,20.0,1.0,male,city,False
+316,5.0,4.0,4.0,3.0,2.0,5.0,3.0,2.0,3.0,less than an hour a day,3.0,20.0,1.0,female,city,False
+317,5.0,4.0,5.0,1.0,3.0,5.0,1.0,3.0,4.0,few hours a day,3.0,19.0,2.0,male,city,False
+318,5.0,2.0,5.0,3.0,3.0,5.0,5.0,3.0,3.0,less than an hour a day,3.0,16.0,0.0,female,city,False
+319,5.0,3.0,5.0,3.0,1.0,3.0,5.0,1.0,5.0,few hours a day,3.0,18.0,1.0,female,city,False
+320,5.0,4.0,5.0,5.0,3.0,3.0,1.0,3.0,4.0,few hours a day,5.0,20.0,0.0,male,village,False
+321,5.0,3.0,5.0,4.0,1.0,5.0,5.0,3.0,4.0,few hours a day,2.0,16.0,0.0,female,city,False
+322,5.0,1.0,4.0,5.0,1.0,5.0,2.0,2.0,4.0,few hours a day,2.0,18.0,1.0,female,city,False
+323,5.0,1.0,3.0,2.0,3.0,5.0,4.0,4.0,3.0,few hours a day,4.0,20.0,1.0,male,village,False
+324,5.0,2.0,5.0,1.0,2.0,3.0,2.0,3.0,4.0,few hours a day,3.0,18.0,1.0,female,city,False
+325,5.0,4.0,4.0,5.0,1.0,5.0,2.0,3.0,4.0,less than an hour a day,4.0,19.0,1.0,male,village,False
+326,5.0,3.0,5.0,4.0,4.0,4.0,1.0,1.0,4.0,few hours a day,3.0,19.0,0.0,female,city,True
+327,5.0,1.0,5.0,3.0,2.0,5.0,5.0,3.0,3.0,few hours a day,5.0,20.0,1.0,female,city,False
+328,5.0,1.0,5.0,1.0,5.0,1.0,1.0,3.0,3.0,few hours a day,5.0,18.0,0.0,male,city,True
+329,5.0,3.0,5.0,3.0,2.0,4.0,2.0,5.0,3.0,few hours a day,2.0,17.0,1.0,female,city,False
+330,5.0,3.0,5.0,4.0,1.0,5.0,5.0,2.0,3.0,few hours a day,3.0,22.0,0.0,female,city,False
+331,5.0,4.0,5.0,2.0,3.0,5.0,3.0,3.0,3.0,few hours a day,3.0,17.0,1.0,male,village,False
+332,4.0,1.0,5.0,3.0,4.0,5.0,3.0,5.0,4.0,few hours a day,5.0,22.0,2.0,female,village,True
+333,5.0,2.0,4.0,5.0,3.0,5.0,3.0,3.0,5.0,few hours a day,3.0,16.0,1.0,female,city,False
+334,5.0,1.0,5.0,4.0,1.0,2.0,4.0,5.0,4.0,few hours a day,4.0,24.0,1.0,female,city,False
+335,5.0,4.0,5.0,5.0,3.0,3.0,1.0,4.0,2.0,few hours a day,3.0,17.0,1.0,male,city,False
+336,5.0,4.0,5.0,1.0,5.0,4.0,5.0,2.0,4.0,few hours a day,5.0,17.0,1.0,male,city,True
+337,5.0,5.0,5.0,3.0,4.0,5.0,3.0,2.0,1.0,few hours a day,1.0,17.0,2.0,male,city,True
+338,5.0,2.0,5.0,2.0,3.0,1.0,2.0,4.0,3.0,few hours a day,1.0,15.0,3.0,female,city,False
+339,5.0,1.0,5.0,5.0,1.0,5.0,2.0,3.0,4.0,few hours a day,2.0,18.0,2.0,female,city,False
+340,5.0,1.0,4.0,5.0,1.0,1.0,5.0,2.0,3.0,few hours a day,4.0,18.0,2.0,female,village,False
+341,5.0,5.0,5.0,3.0,1.0,2.0,5.0,5.0,2.0,most of the day,1.0,16.0,1.0,male,village,False
+342,5.0,3.0,3.0,2.0,4.0,5.0,5.0,2.0,4.0,most of the day,3.0,20.0,1.0,female,city,True
+343,5.0,1.0,4.0,2.0,1.0,5.0,3.0,3.0,4.0,less than an hour a day,3.0,29.0,2.0,female,city,False
+344,5.0,1.0,4.0,1.0,1.0,1.0,3.0,2.0,4.0,few hours a day,5.0,24.0,3.0,female,village,False
+345,4.0,3.0,4.0,3.0,3.0,4.0,1.0,3.0,3.0,less than an hour a day,4.0,18.0,0.0,female,city,False
+346,5.0,4.0,5.0,5.0,1.0,5.0,1.0,2.0,3.0,few hours a day,1.0,17.0,1.0,male,city,False
+347,5.0,2.0,5.0,2.0,2.0,1.0,2.0,4.0,3.0,most of the day,1.0,18.0,1.0,male,city,False
+348,5.0,2.0,5.0,3.0,3.0,4.0,5.0,3.0,3.0,few hours a day,2.0,16.0,1.0,male,city,False
+349,5.0,4.0,5.0,3.0,2.0,5.0,5.0,2.0,4.0,few hours a day,3.0,17.0,2.0,female,city,False
+350,2.0,2.0,5.0,2.0,2.0,3.0,1.0,2.0,3.0,most of the day,3.0,20.0,2.0,male,city,False
+351,5.0,1.0,5.0,3.0,5.0,5.0,5.0,3.0,4.0,few hours a day,4.0,16.0,1.0,female,village,True
+352,5.0,1.0,5.0,1.0,1.0,2.0,3.0,4.0,3.0,few hours a day,3.0,19.0,1.0,male,city,False
+353,5.0,1.0,5.0,4.0,2.0,3.0,3.0,4.0,4.0,few hours a day,3.0,18.0,1.0,female,city,False
+354,5.0,3.0,5.0,3.0,4.0,4.0,3.0,1.0,5.0,few hours a day,4.0,20.0,1.0,female,city,True
+355,5.0,2.0,5.0,4.0,4.0,1.0,5.0,3.0,5.0,few hours a day,4.0,19.0,1.0,male,city,True
+356,4.0,2.0,4.0,5.0,5.0,3.0,1.0,1.0,3.0,few hours a day,3.0,18.0,1.0,male,city,True
+357,5.0,3.0,4.0,1.0,3.0,5.0,5.0,3.0,4.0,few hours a day,2.0,21.0,0.0,male,city,False
+358,4.0,2.0,5.0,5.0,2.0,5.0,4.0,3.0,4.0,less than an hour a day,4.0,19.0,2.0,male,city,False
+359,5.0,2.0,5.0,5.0,1.0,5.0,5.0,3.0,3.0,few hours a day,1.0,20.0,2.0,female,city,False
+360,5.0,1.0,5.0,4.0,5.0,2.0,2.0,4.0,4.0,few hours a day,3.0,23.0,1.0,female,city,True
+361,5.0,1.0,5.0,4.0,1.0,5.0,1.0,1.0,3.0,less than an hour a day,4.0,19.0,1.0,female,village,False
+362,5.0,2.0,5.0,5.0,1.0,3.0,5.0,3.0,4.0,few hours a day,5.0,19.0,2.0,female,city,False
+363,5.0,1.0,5.0,5.0,1.0,3.0,5.0,3.0,4.0,few hours a day,5.0,19.0,2.0,female,city,False
+364,2.0,2.0,5.0,3.0,2.0,1.0,4.0,4.0,4.0,few hours a day,4.0,20.0,2.0,male,city,False
+365,5.0,2.0,5.0,5.0,1.0,1.0,1.0,2.0,3.0,few hours a day,3.0,24.0,5.0,male,village,False
+366,5.0,3.0,5.0,1.0,5.0,1.0,1.0,3.0,5.0,most of the day,4.0,19.0,1.0,male,city,True
+367,5.0,3.0,5.0,5.0,1.0,3.0,1.0,3.0,4.0,few hours a day,5.0,20.0,2.0,male,village,False
+368,5.0,,5.0,3.0,1.0,5.0,1.0,3.0,4.0,few hours a day,4.0,18.0,1.0,female,,False
+369,5.0,5.0,4.0,4.0,4.0,5.0,2.0,2.0,3.0,less than an hour a day,4.0,17.0,1.0,male,village,True
+370,5.0,1.0,5.0,4.0,2.0,5.0,5.0,2.0,3.0,few hours a day,3.0,19.0,2.0,female,village,False
+371,5.0,2.0,5.0,2.0,5.0,3.0,2.0,1.0,3.0,few hours a day,3.0,19.0,4.0,female,village,True
+372,4.0,4.0,4.0,3.0,1.0,1.0,1.0,2.0,2.0,most of the day,3.0,20.0,2.0,male,city,False
+373,5.0,1.0,5.0,5.0,1.0,1.0,2.0,4.0,3.0,most of the day,4.0,20.0,0.0,male,city,False
+374,5.0,3.0,5.0,2.0,1.0,5.0,5.0,4.0,4.0,few hours a day,1.0,21.0,1.0,female,city,False
+375,5.0,,5.0,2.0,3.0,1.0,5.0,2.0,3.0,few hours a day,4.0,20.0,2.0,female,city,False
+376,5.0,1.0,5.0,2.0,1.0,5.0,5.0,2.0,4.0,few hours a day,1.0,20.0,1.0,female,city,False
+377,5.0,1.0,5.0,3.0,5.0,4.0,1.0,4.0,3.0,few hours a day,3.0,17.0,0.0,female,village,True
+378,5.0,3.0,5.0,4.0,5.0,5.0,2.0,2.0,4.0,few hours a day,2.0,20.0,2.0,female,city,True
+379,5.0,2.0,5.0,3.0,3.0,3.0,2.0,3.0,4.0,few hours a day,3.0,25.0,2.0,male,city,False
+380,5.0,5.0,5.0,3.0,2.0,4.0,2.0,2.0,3.0,most of the day,4.0,20.0,1.0,female,city,False
+381,5.0,1.0,5.0,5.0,2.0,5.0,2.0,1.0,3.0,few hours a day,2.0,21.0,1.0,female,city,False
+382,5.0,4.0,5.0,4.0,1.0,5.0,5.0,2.0,4.0,few hours a day,2.0,21.0,0.0,female,village,False
+383,5.0,2.0,5.0,1.0,5.0,1.0,2.0,2.0,3.0,most of the day,3.0,22.0,1.0,male,city,True
+384,5.0,1.0,2.0,2.0,5.0,1.0,5.0,4.0,3.0,few hours a day,2.0,19.0,1.0,female,city,True
+385,5.0,3.0,5.0,3.0,3.0,1.0,1.0,3.0,2.0,few hours a day,2.0,25.0,1.0,male,city,False
+386,5.0,4.0,4.0,2.0,3.0,2.0,2.0,3.0,3.0,few hours a day,4.0,19.0,0.0,female,city,False
+387,5.0,2.0,5.0,2.0,2.0,5.0,1.0,3.0,3.0,few hours a day,4.0,25.0,2.0,female,city,False
+388,5.0,3.0,5.0,3.0,4.0,5.0,5.0,2.0,3.0,few hours a day,3.0,25.0,1.0,female,city,True
+389,5.0,1.0,5.0,2.0,2.0,3.0,2.0,3.0,5.0,few hours a day,4.0,21.0,0.0,female,city,False
+390,4.0,3.0,5.0,5.0,3.0,2.0,2.0,1.0,4.0,few hours a day,4.0,20.0,2.0,male,city,False
+391,4.0,1.0,4.0,4.0,4.0,2.0,3.0,3.0,4.0,few hours a day,3.0,24.0,2.0,female,city,True
+392,5.0,2.0,5.0,3.0,3.0,1.0,3.0,4.0,3.0,less than an hour a day,4.0,30.0,2.0,female,city,False
+393,5.0,1.0,5.0,5.0,1.0,3.0,1.0,3.0,3.0,few hours a day,4.0,21.0,1.0,male,city,False
+394,5.0,1.0,4.0,1.0,4.0,3.0,5.0,3.0,1.0,few hours a day,3.0,27.0,3.0,male,city,True
+395,5.0,5.0,5.0,4.0,4.0,1.0,1.0,3.0,2.0,few hours a day,3.0,21.0,1.0,male,city,True
+396,5.0,2.0,2.0,2.0,4.0,1.0,4.0,4.0,4.0,few hours a day,3.0,16.0,0.0,female,city,True
+397,5.0,1.0,5.0,1.0,4.0,5.0,2.0,3.0,4.0,most of the day,3.0,21.0,1.0,female,village,True
+398,5.0,5.0,5.0,3.0,4.0,1.0,3.0,2.0,5.0,few hours a day,3.0,20.0,1.0,female,village,True
+399,5.0,1.0,5.0,5.0,4.0,5.0,1.0,1.0,2.0,less than an hour a day,3.0,22.0,1.0,female,city,True
+400,5.0,4.0,5.0,5.0,5.0,1.0,2.0,2.0,3.0,most of the day,3.0,19.0,1.0,male,village,True
+401,5.0,1.0,4.0,2.0,1.0,1.0,1.0,2.0,4.0,few hours a day,4.0,20.0,1.0,female,village,False
+402,5.0,3.0,5.0,5.0,1.0,5.0,1.0,4.0,4.0,most of the day,3.0,25.0,1.0,male,city,False
+403,2.0,1.0,4.0,2.0,2.0,4.0,1.0,4.0,3.0,less than an hour a day,2.0,23.0,2.0,male,village,False
+404,5.0,5.0,5.0,2.0,2.0,5.0,2.0,4.0,3.0,few hours a day,5.0,20.0,2.0,female,village,False
+405,4.0,2.0,4.0,5.0,2.0,3.0,3.0,3.0,4.0,few hours a day,3.0,20.0,1.0,female,city,False
+406,5.0,4.0,5.0,1.0,1.0,1.0,1.0,1.0,3.0,less than an hour a day,4.0,21.0,1.0,female,village,False
+407,5.0,2.0,5.0,4.0,2.0,5.0,4.0,2.0,3.0,less than an hour a day,3.0,19.0,1.0,female,city,False
+408,5.0,1.0,4.0,3.0,1.0,1.0,3.0,2.0,4.0,few hours a day,2.0,21.0,1.0,female,city,False
+409,5.0,4.0,5.0,1.0,3.0,3.0,5.0,5.0,2.0,few hours a day,3.0,16.0,0.0,female,city,False
+410,5.0,1.0,5.0,3.0,4.0,5.0,1.0,2.0,3.0,few hours a day,3.0,20.0,1.0,male,village,True
+411,5.0,2.0,5.0,5.0,1.0,3.0,5.0,2.0,4.0,few hours a day,2.0,18.0,0.0,female,city,False
+412,5.0,5.0,2.0,4.0,1.0,5.0,1.0,5.0,3.0,less than an hour a day,3.0,21.0,1.0,female,city,False
+413,5.0,3.0,5.0,4.0,3.0,4.0,3.0,3.0,3.0,few hours a day,3.0,21.0,2.0,male,village,False
+414,5.0,2.0,5.0,4.0,3.0,3.0,4.0,1.0,3.0,few hours a day,3.0,18.0,2.0,male,city,False
+415,5.0,3.0,5.0,1.0,1.0,1.0,5.0,5.0,3.0,few hours a day,1.0,19.0,1.0,female,village,False
+416,4.0,4.0,,2.0,5.0,3.0,3.0,3.0,2.0,few hours a day,3.0,20.0,1.0,female,village,True
+417,5.0,1.0,5.0,4.0,5.0,5.0,4.0,5.0,3.0,most of the day,2.0,18.0,1.0,male,village,True
+418,5.0,1.0,5.0,1.0,1.0,5.0,5.0,2.0,3.0,less than an hour a day,3.0,18.0,1.0,female,village,False
+419,5.0,3.0,3.0,3.0,1.0,2.0,1.0,2.0,3.0,less than an hour a day,3.0,23.0,0.0,female,village,False
+420,5.0,1.0,5.0,5.0,1.0,2.0,3.0,2.0,4.0,few hours a day,3.0,20.0,1.0,female,village,False
+421,5.0,2.0,5.0,5.0,4.0,5.0,2.0,3.0,3.0,few hours a day,5.0,18.0,1.0,female,village,True
+422,5.0,5.0,5.0,4.0,1.0,5.0,5.0,3.0,4.0,few hours a day,4.0,28.0,1.0,female,city,False
+423,5.0,2.0,4.0,2.0,1.0,5.0,2.0,2.0,3.0,few hours a day,5.0,24.0,1.0,female,village,False
+424,5.0,5.0,5.0,3.0,1.0,5.0,5.0,3.0,3.0,few hours a day,2.0,19.0,2.0,female,city,False
+425,5.0,2.0,5.0,3.0,1.0,5.0,5.0,5.0,4.0,less than an hour a day,4.0,21.0,3.0,female,village,False
+426,5.0,1.0,4.0,1.0,1.0,1.0,5.0,1.0,2.0,less than an hour a day,3.0,22.0,1.0,female,city,False
+427,5.0,2.0,5.0,3.0,1.0,1.0,5.0,3.0,2.0,few hours a day,1.0,19.0,1.0,male,city,False
+428,5.0,3.0,5.0,2.0,2.0,5.0,4.0,4.0,4.0,few hours a day,4.0,18.0,2.0,female,city,False
+429,5.0,1.0,5.0,2.0,1.0,4.0,2.0,3.0,3.0,most of the day,3.0,21.0,0.0,female,city,False
+430,5.0,3.0,5.0,4.0,2.0,4.0,3.0,3.0,3.0,less than an hour a day,4.0,19.0,1.0,female,village,False
+431,4.0,5.0,5.0,2.0,5.0,3.0,3.0,3.0,4.0,few hours a day,5.0,19.0,2.0,male,village,True
+432,5.0,1.0,4.0,5.0,2.0,3.0,2.0,4.0,2.0,few hours a day,3.0,20.0,1.0,male,city,False
+433,5.0,2.0,5.0,3.0,5.0,1.0,1.0,3.0,3.0,few hours a day,3.0,19.0,3.0,female,city,True
+434,5.0,4.0,5.0,5.0,1.0,4.0,3.0,4.0,4.0,few hours a day,2.0,18.0,1.0,male,city,False
+435,5.0,1.0,4.0,2.0,1.0,5.0,5.0,3.0,4.0,few hours a day,2.0,18.0,1.0,female,city,False
+436,4.0,3.0,4.0,2.0,2.0,2.0,3.0,5.0,3.0,few hours a day,1.0,19.0,1.0,male,city,False
+437,5.0,4.0,5.0,1.0,1.0,1.0,5.0,3.0,3.0,few hours a day,3.0,18.0,0.0,female,city,False
+438,5.0,1.0,5.0,1.0,1.0,4.0,5.0,5.0,3.0,few hours a day,1.0,18.0,2.0,female,village,False
+439,5.0,4.0,5.0,4.0,3.0,1.0,1.0,1.0,4.0,few hours a day,4.0,19.0,1.0,male,city,False
+440,5.0,4.0,5.0,4.0,1.0,3.0,5.0,3.0,5.0,few hours a day,3.0,19.0,1.0,female,city,False
+441,5.0,1.0,5.0,1.0,2.0,5.0,1.0,3.0,3.0,few hours a day,3.0,19.0,1.0,female,city,False
+442,5.0,2.0,5.0,2.0,3.0,5.0,2.0,4.0,3.0,few hours a day,2.0,18.0,6.0,female,city,False
+443,4.0,3.0,4.0,5.0,3.0,1.0,1.0,4.0,4.0,few hours a day,3.0,18.0,3.0,female,village,False
+444,5.0,4.0,5.0,3.0,4.0,1.0,2.0,4.0,3.0,few hours a day,4.0,19.0,1.0,female,city,True
+445,5.0,1.0,5.0,4.0,1.0,5.0,5.0,2.0,4.0,few hours a day,3.0,20.0,1.0,female,city,False
+446,4.0,4.0,5.0,1.0,3.0,2.0,4.0,3.0,3.0,few hours a day,2.0,19.0,1.0,male,city,False
+447,3.0,1.0,4.0,5.0,3.0,4.0,4.0,4.0,5.0,less than an hour a day,5.0,26.0,3.0,female,village,False
+448,5.0,3.0,5.0,3.0,4.0,4.0,3.0,2.0,3.0,few hours a day,2.0,19.0,1.0,female,village,True
+449,5.0,1.0,5.0,2.0,3.0,,4.0,3.0,3.0,few hours a day,5.0,19.0,1.0,female,village,False
+450,5.0,1.0,5.0,3.0,2.0,5.0,1.0,3.0,3.0,few hours a day,1.0,22.0,1.0,male,village,False
+451,5.0,3.0,4.0,3.0,2.0,3.0,2.0,1.0,4.0,less than an hour a day,4.0,20.0,1.0,male,village,False
+452,5.0,3.0,5.0,1.0,3.0,5.0,5.0,1.0,4.0,less than an hour a day,3.0,28.0,2.0,female,city,False
+453,5.0,1.0,5.0,2.0,2.0,3.0,4.0,3.0,3.0,few hours a day,5.0,19.0,1.0,female,village,False
+454,4.0,1.0,5.0,3.0,3.0,5.0,5.0,2.0,4.0,few hours a day,4.0,21.0,0.0,female,city,False
+455,5.0,4.0,5.0,1.0,2.0,3.0,4.0,4.0,5.0,less than an hour a day,3.0,19.0,1.0,female,village,False
+456,5.0,1.0,5.0,5.0,5.0,5.0,1.0,1.0,5.0,few hours a day,5.0,22.0,2.0,male,city,True
+457,5.0,4.0,5.0,3.0,5.0,2.0,2.0,3.0,3.0,few hours a day,5.0,19.0,2.0,male,city,True
+458,5.0,5.0,1.0,5.0,1.0,1.0,1.0,1.0,5.0,few hours a day,3.0,18.0,1.0,female,village,False
+459,4.0,3.0,5.0,2.0,1.0,2.0,2.0,3.0,4.0,less than an hour a day,4.0,19.0,0.0,female,city,False
+460,5.0,1.0,5.0,4.0,1.0,5.0,1.0,2.0,3.0,few hours a day,1.0,22.0,2.0,male,city,False
+461,5.0,2.0,4.0,3.0,3.0,3.0,1.0,3.0,3.0,few hours a day,3.0,29.0,3.0,male,village,False
+462,4.0,3.0,4.0,3.0,3.0,2.0,3.0,4.0,4.0,few hours a day,4.0,,2.0,female,village,False
+463,5.0,1.0,5.0,1.0,3.0,4.0,2.0,5.0,3.0,less than an hour a day,3.0,18.0,0.0,female,city,False
+464,5.0,3.0,3.0,2.0,1.0,1.0,4.0,2.0,5.0,few hours a day,3.0,22.0,1.0,female,city,False
+465,5.0,2.0,5.0,5.0,2.0,1.0,1.0,1.0,4.0,less than an hour a day,4.0,17.0,1.0,female,city,False
+466,5.0,5.0,5.0,1.0,1.0,1.0,3.0,1.0,3.0,few hours a day,1.0,19.0,0.0,male,city,False
+467,4.0,2.0,5.0,1.0,3.0,1.0,5.0,2.0,4.0,few hours a day,4.0,20.0,1.0,female,village,False
+468,5.0,2.0,3.0,3.0,4.0,4.0,2.0,2.0,4.0,few hours a day,3.0,18.0,1.0,female,village,True
+469,5.0,4.0,5.0,3.0,3.0,1.0,1.0,4.0,2.0,most of the day,4.0,22.0,2.0,male,city,False
+470,4.0,1.0,4.0,4.0,2.0,2.0,1.0,3.0,4.0,few hours a day,5.0,19.0,1.0,female,village,False
+471,5.0,2.0,5.0,3.0,3.0,1.0,3.0,1.0,3.0,few hours a day,1.0,20.0,1.0,male,city,False
+472,3.0,1.0,3.0,2.0,5.0,2.0,1.0,5.0,3.0,few hours a day,3.0,25.0,1.0,male,village,True
+473,5.0,1.0,5.0,5.0,2.0,5.0,2.0,5.0,1.0,less than an hour a day,5.0,29.0,0.0,male,village,False
+474,5.0,5.0,5.0,3.0,5.0,5.0,3.0,2.0,4.0,few hours a day,3.0,19.0,1.0,male,village,True
+475,5.0,1.0,4.0,4.0,3.0,5.0,1.0,3.0,3.0,few hours a day,1.0,18.0,4.0,female,city,False
+476,5.0,1.0,5.0,3.0,1.0,5.0,2.0,3.0,3.0,few hours a day,3.0,20.0,2.0,female,city,False
+477,5.0,1.0,5.0,2.0,4.0,4.0,2.0,4.0,4.0,most of the day,3.0,18.0,3.0,female,city,True
+478,5.0,3.0,5.0,2.0,1.0,4.0,2.0,4.0,2.0,most of the day,3.0,30.0,3.0,male,city,False
+479,5.0,2.0,5.0,2.0,1.0,5.0,3.0,2.0,3.0,few hours a day,3.0,20.0,1.0,female,city,False
+480,5.0,4.0,5.0,3.0,3.0,5.0,2.0,3.0,4.0,few hours a day,3.0,21.0,2.0,female,city,False
+481,5.0,5.0,5.0,5.0,1.0,1.0,1.0,3.0,4.0,few hours a day,3.0,22.0,1.0,male,city,False
+482,3.0,1.0,5.0,4.0,4.0,5.0,2.0,1.0,3.0,few hours a day,4.0,22.0,2.0,male,city,True
+483,5.0,1.0,5.0,3.0,4.0,3.0,4.0,5.0,3.0,few hours a day,1.0,20.0,1.0,female,city,True
+484,5.0,2.0,5.0,4.0,4.0,1.0,5.0,3.0,3.0,few hours a day,2.0,20.0,1.0,female,city,True
+485,5.0,1.0,5.0,1.0,1.0,1.0,5.0,5.0,3.0,few hours a day,3.0,19.0,1.0,female,city,False
+486,3.0,2.0,5.0,4.0,3.0,1.0,5.0,2.0,2.0,few hours a day,2.0,28.0,1.0,female,city,False
+487,5.0,1.0,5.0,1.0,1.0,1.0,3.0,1.0,3.0,most of the day,1.0,19.0,3.0,female,village,False
+488,5.0,1.0,5.0,5.0,3.0,3.0,1.0,3.0,4.0,few hours a day,2.0,22.0,1.0,male,city,False
+489,5.0,1.0,5.0,5.0,1.0,2.0,5.0,1.0,3.0,few hours a day,4.0,20.0,2.0,female,village,False
+490,4.0,4.0,1.0,1.0,1.0,1.0,5.0,3.0,4.0,less than an hour a day,3.0,16.0,1.0,female,city,False
+491,5.0,1.0,5.0,2.0,2.0,2.0,5.0,3.0,3.0,less than an hour a day,3.0,19.0,1.0,female,city,False
+492,5.0,2.0,5.0,5.0,3.0,5.0,4.0,5.0,4.0,few hours a day,2.0,20.0,2.0,female,city,False
+493,5.0,2.0,5.0,3.0,2.0,5.0,2.0,2.0,3.0,most of the day,5.0,21.0,1.0,male,city,False
+494,5.0,1.0,5.0,2.0,4.0,1.0,1.0,3.0,4.0,few hours a day,3.0,19.0,1.0,female,city,True
+495,5.0,2.0,5.0,2.0,2.0,4.0,4.0,3.0,4.0,most of the day,4.0,20.0,2.0,female,city,False
+496,3.0,2.0,4.0,3.0,3.0,2.0,5.0,3.0,3.0,less than an hour a day,3.0,25.0,1.0,female,city,False
+497,5.0,1.0,3.0,3.0,1.0,1.0,1.0,1.0,2.0,less than an hour a day,3.0,20.0,1.0,female,city,False
+498,5.0,1.0,5.0,4.0,1.0,5.0,1.0,3.0,3.0,few hours a day,2.0,19.0,3.0,female,village,False
+499,5.0,3.0,5.0,3.0,2.0,1.0,1.0,2.0,3.0,most of the day,5.0,22.0,3.0,male,city,False
+500,5.0,4.0,5.0,4.0,3.0,5.0,2.0,4.0,4.0,few hours a day,3.0,19.0,2.0,female,city,False
+501,5.0,2.0,4.0,3.0,4.0,1.0,5.0,4.0,3.0,few hours a day,5.0,21.0,1.0,female,city,True
+502,5.0,3.0,5.0,2.0,3.0,1.0,3.0,2.0,4.0,most of the day,2.0,22.0,6.0,male,village,False
+503,5.0,5.0,5.0,4.0,5.0,3.0,4.0,3.0,3.0,few hours a day,5.0,28.0,1.0,female,city,True
+504,5.0,1.0,5.0,3.0,5.0,5.0,1.0,1.0,4.0,few hours a day,2.0,21.0,1.0,female,village,True
+505,5.0,1.0,5.0,2.0,3.0,1.0,1.0,2.0,3.0,few hours a day,2.0,20.0,3.0,male,village,False
+506,5.0,2.0,5.0,2.0,2.0,4.0,2.0,1.0,4.0,few hours a day,2.0,19.0,1.0,male,city,False
+507,5.0,1.0,4.0,3.0,2.0,3.0,5.0,4.0,3.0,few hours a day,3.0,21.0,1.0,female,village,False
+508,5.0,1.0,5.0,3.0,1.0,3.0,4.0,2.0,4.0,few hours a day,4.0,20.0,0.0,male,village,False
+509,4.0,4.0,4.0,5.0,1.0,4.0,1.0,1.0,5.0,few hours a day,4.0,16.0,1.0,female,village,False
+510,5.0,2.0,4.0,3.0,3.0,5.0,1.0,2.0,3.0,less than an hour a day,3.0,22.0,1.0,male,village,False
+511,5.0,1.0,5.0,2.0,4.0,4.0,2.0,3.0,4.0,few hours a day,4.0,19.0,2.0,male,city,True
+512,5.0,4.0,4.0,1.0,1.0,1.0,5.0,1.0,4.0,few hours a day,5.0,22.0,1.0,female,village,False
+513,5.0,3.0,4.0,2.0,5.0,4.0,1.0,3.0,3.0,most of the day,4.0,20.0,0.0,male,village,True
+514,5.0,1.0,5.0,3.0,1.0,2.0,4.0,3.0,3.0,few hours a day,4.0,22.0,0.0,male,city,False
+515,5.0,1.0,5.0,3.0,4.0,1.0,2.0,3.0,2.0,most of the day,5.0,19.0,1.0,male,city,True
+516,5.0,4.0,5.0,5.0,1.0,5.0,5.0,3.0,5.0,few hours a day,3.0,22.0,2.0,male,city,False
+517,5.0,4.0,5.0,4.0,2.0,2.0,1.0,1.0,4.0,few hours a day,3.0,17.0,1.0,female,village,False
+518,5.0,4.0,4.0,3.0,1.0,5.0,2.0,4.0,4.0,less than an hour a day,4.0,18.0,1.0,female,city,False
+519,5.0,4.0,4.0,4.0,2.0,2.0,1.0,2.0,3.0,few hours a day,1.0,19.0,1.0,male,city,False
+520,5.0,2.0,5.0,4.0,3.0,3.0,5.0,3.0,3.0,less than an hour a day,3.0,23.0,1.0,female,city,False
+521,5.0,3.0,5.0,3.0,1.0,4.0,1.0,4.0,3.0,few hours a day,1.0,20.0,0.0,female,city,False
+522,5.0,4.0,5.0,2.0,1.0,5.0,2.0,1.0,3.0,few hours a day,3.0,18.0,2.0,female,city,False
+523,5.0,3.0,5.0,2.0,,4.0,1.0,3.0,3.0,few hours a day,1.0,19.0,3.0,male,village,False
+524,5.0,1.0,5.0,3.0,3.0,5.0,2.0,3.0,4.0,less than an hour a day,4.0,19.0,4.0,female,city,False
+525,3.0,1.0,4.0,3.0,3.0,4.0,1.0,4.0,3.0,few hours a day,3.0,28.0,2.0,female,village,False
+526,5.0,1.0,5.0,4.0,5.0,5.0,1.0,2.0,4.0,few hours a day,4.0,21.0,1.0,male,village,True
+527,4.0,2.0,4.0,2.0,5.0,5.0,3.0,1.0,3.0,few hours a day,4.0,23.0,1.0,female,city,True
+528,5.0,3.0,5.0,2.0,5.0,1.0,1.0,4.0,3.0,most of the day,3.0,20.0,2.0,male,city,True
+529,5.0,1.0,4.0,5.0,1.0,3.0,1.0,3.0,3.0,few hours a day,3.0,20.0,1.0,male,city,False
+530,5.0,1.0,4.0,5.0,3.0,2.0,3.0,3.0,2.0,most of the day,4.0,28.0,2.0,female,city,False
+531,5.0,1.0,5.0,5.0,3.0,1.0,2.0,4.0,1.0,few hours a day,3.0,22.0,1.0,male,village,False
+532,5.0,4.0,5.0,5.0,1.0,1.0,2.0,2.0,4.0,few hours a day,2.0,19.0,0.0,female,city,False
+533,5.0,3.0,5.0,3.0,3.0,1.0,1.0,4.0,3.0,few hours a day,3.0,21.0,3.0,male,city,False
+534,5.0,2.0,5.0,3.0,1.0,5.0,5.0,4.0,3.0,few hours a day,3.0,21.0,1.0,female,city,False
+535,5.0,4.0,5.0,3.0,3.0,5.0,1.0,3.0,3.0,few hours a day,1.0,17.0,2.0,male,village,False
+536,5.0,5.0,5.0,3.0,1.0,5.0,5.0,1.0,3.0,few hours a day,1.0,19.0,1.0,female,city,False
+537,5.0,2.0,5.0,4.0,2.0,1.0,2.0,2.0,3.0,few hours a day,3.0,25.0,3.0,male,city,False
+538,5.0,3.0,5.0,4.0,1.0,5.0,5.0,1.0,3.0,few hours a day,4.0,20.0,1.0,female,village,False
+539,5.0,1.0,5.0,5.0,1.0,1.0,4.0,5.0,3.0,most of the day,1.0,26.0,2.0,male,city,False
+540,5.0,3.0,5.0,3.0,3.0,5.0,3.0,3.0,3.0,few hours a day,3.0,21.0,0.0,male,city,False
+541,5.0,1.0,5.0,2.0,1.0,3.0,3.0,1.0,4.0,few hours a day,2.0,20.0,2.0,female,city,False
+542,5.0,2.0,5.0,4.0,2.0,2.0,4.0,3.0,3.0,most of the day,2.0,29.0,1.0,,city,False
+543,5.0,4.0,5.0,3.0,2.0,2.0,4.0,3.0,4.0,most of the day,3.0,25.0,1.0,male,city,False
+544,5.0,1.0,5.0,3.0,1.0,5.0,1.0,5.0,4.0,few hours a day,1.0,21.0,2.0,male,city,False
+545,5.0,3.0,5.0,3.0,1.0,1.0,3.0,4.0,5.0,most of the day,3.0,20.0,3.0,male,village,False
+546,5.0,1.0,5.0,3.0,4.0,2.0,1.0,3.0,4.0,few hours a day,4.0,27.0,3.0,male,village,True
+547,5.0,1.0,5.0,5.0,1.0,4.0,1.0,1.0,4.0,few hours a day,3.0,21.0,2.0,male,village,False
+548,4.0,1.0,4.0,2.0,1.0,3.0,1.0,1.0,4.0,less than an hour a day,4.0,20.0,1.0,female,city,False
+549,5.0,4.0,4.0,2.0,1.0,2.0,2.0,3.0,3.0,less than an hour a day,3.0,,1.0,female,village,False
+550,5.0,1.0,5.0,3.0,3.0,5.0,5.0,5.0,3.0,few hours a day,1.0,17.0,3.0,female,village,False
+551,5.0,1.0,3.0,4.0,3.0,1.0,5.0,2.0,4.0,less than an hour a day,2.0,16.0,,female,village,False
+552,5.0,2.0,5.0,4.0,3.0,5.0,5.0,3.0,2.0,few hours a day,3.0,19.0,3.0,female,city,False
+553,3.0,3.0,4.0,2.0,3.0,5.0,5.0,3.0,3.0,few hours a day,2.0,18.0,1.0,female,village,False
+554,4.0,3.0,4.0,2.0,5.0,3.0,2.0,3.0,3.0,few hours a day,3.0,19.0,0.0,male,village,True
+555,5.0,2.0,4.0,1.0,1.0,3.0,1.0,4.0,2.0,few hours a day,1.0,21.0,1.0,female,village,False
+556,5.0,2.0,5.0,2.0,1.0,2.0,5.0,2.0,4.0,few hours a day,3.0,16.0,0.0,female,city,False
+557,5.0,1.0,5.0,5.0,1.0,5.0,5.0,3.0,4.0,few hours a day,4.0,20.0,2.0,female,city,False
+558,,2.0,3.0,3.0,2.0,4.0,5.0,2.0,4.0,few hours a day,2.0,19.0,2.0,female,city,False
+559,5.0,1.0,5.0,1.0,1.0,2.0,1.0,5.0,3.0,most of the day,3.0,20.0,1.0,female,village,False
+560,5.0,2.0,3.0,1.0,1.0,5.0,1.0,4.0,4.0,less than an hour a day,4.0,16.0,2.0,female,village,False
+561,5.0,4.0,4.0,4.0,2.0,3.0,2.0,3.0,4.0,less than an hour a day,5.0,20.0,1.0,male,city,False
+562,5.0,1.0,5.0,3.0,1.0,3.0,1.0,3.0,3.0,less than an hour a day,3.0,18.0,0.0,male,village,False
+563,5.0,2.0,5.0,5.0,1.0,4.0,4.0,1.0,4.0,few hours a day,1.0,20.0,1.0,male,village,False
+564,5.0,2.0,5.0,3.0,2.0,3.0,5.0,2.0,4.0,less than an hour a day,4.0,20.0,2.0,male,village,False
+565,5.0,3.0,5.0,1.0,2.0,2.0,5.0,5.0,3.0,few hours a day,3.0,16.0,2.0,female,city,False
+566,5.0,2.0,5.0,4.0,3.0,4.0,3.0,3.0,4.0,less than an hour a day,3.0,19.0,1.0,female,village,False
+567,5.0,2.0,4.0,1.0,3.0,2.0,1.0,3.0,2.0,few hours a day,2.0,19.0,1.0,male,city,False
+568,5.0,3.0,5.0,1.0,1.0,1.0,3.0,4.0,4.0,most of the day,3.0,23.0,1.0,female,city,False
+569,5.0,2.0,5.0,4.0,3.0,5.0,2.0,3.0,3.0,few hours a day,3.0,20.0,1.0,female,city,False
+570,5.0,1.0,5.0,4.0,1.0,3.0,1.0,3.0,3.0,few hours a day,3.0,23.0,4.0,male,village,False
+571,3.0,4.0,4.0,1.0,4.0,4.0,3.0,4.0,5.0,few hours a day,5.0,19.0,2.0,male,village,True
+572,5.0,1.0,4.0,2.0,3.0,5.0,2.0,2.0,4.0,few hours a day,5.0,22.0,3.0,female,city,False
+573,4.0,4.0,5.0,3.0,1.0,4.0,5.0,1.0,3.0,most of the day,1.0,17.0,3.0,male,city,False
+574,5.0,5.0,5.0,3.0,1.0,4.0,1.0,3.0,3.0,less than an hour a day,3.0,20.0,1.0,female,village,False
+575,5.0,2.0,4.0,2.0,2.0,4.0,2.0,4.0,2.0,less than an hour a day,4.0,21.0,1.0,female,city,False
+576,5.0,3.0,5.0,3.0,3.0,4.0,4.0,2.0,3.0,few hours a day,1.0,21.0,3.0,male,city,False
+577,5.0,2.0,5.0,3.0,4.0,5.0,5.0,2.0,2.0,few hours a day,3.0,19.0,1.0,female,city,True
+578,5.0,1.0,5.0,2.0,1.0,5.0,4.0,3.0,4.0,few hours a day,3.0,20.0,0.0,female,village,False
+579,5.0,5.0,5.0,5.0,5.0,2.0,2.0,4.0,3.0,most of the day,1.0,19.0,0.0,male,city,True
+580,5.0,3.0,5.0,3.0,2.0,,1.0,1.0,3.0,few hours a day,5.0,21.0,0.0,male,city,False
+581,5.0,5.0,4.0,1.0,3.0,5.0,5.0,3.0,4.0,few hours a day,4.0,22.0,1.0,female,city,False
+582,3.0,4.0,5.0,5.0,3.0,1.0,4.0,3.0,2.0,few hours a day,5.0,22.0,3.0,male,city,False
+583,5.0,1.0,5.0,5.0,2.0,4.0,1.0,3.0,4.0,most of the day,3.0,22.0,1.0,male,city,False
+584,5.0,4.0,4.0,3.0,2.0,5.0,3.0,4.0,4.0,most of the day,2.0,28.0,1.0,female,city,False
+585,5.0,4.0,4.0,2.0,1.0,3.0,3.0,3.0,4.0,less than an hour a day,3.0,21.0,1.0,male,city,False
+586,5.0,5.0,5.0,4.0,1.0,4.0,3.0,,3.0,few hours a day,2.0,21.0,2.0,male,village,False
+587,5.0,2.0,4.0,4.0,1.0,5.0,3.0,4.0,2.0,few hours a day,2.0,17.0,3.0,female,city,False
+588,5.0,1.0,5.0,3.0,1.0,3.0,5.0,2.0,3.0,less than an hour a day,2.0,21.0,1.0,female,city,False
+589,5.0,2.0,5.0,5.0,1.0,4.0,5.0,3.0,4.0,few hours a day,1.0,17.0,1.0,female,village,False
+590,5.0,1.0,5.0,4.0,5.0,4.0,1.0,3.0,4.0,few hours a day,2.0,28.0,1.0,male,city,True
+591,4.0,1.0,3.0,3.0,1.0,3.0,1.0,1.0,3.0,few hours a day,4.0,20.0,1.0,female,city,False
+592,5.0,4.0,4.0,3.0,1.0,5.0,1.0,3.0,4.0,few hours a day,3.0,19.0,0.0,female,city,False
+593,5.0,1.0,4.0,2.0,1.0,5.0,2.0,2.0,3.0,less than an hour a day,4.0,21.0,1.0,female,city,False
+594,5.0,1.0,4.0,5.0,2.0,1.0,1.0,5.0,1.0,few hours a day,2.0,23.0,1.0,male,city,False
+595,5.0,1.0,5.0,4.0,1.0,5.0,1.0,5.0,2.0,most of the day,1.0,17.0,1.0,male,village,False
+596,5.0,5.0,3.0,2.0,1.0,4.0,1.0,5.0,3.0,few hours a day,4.0,20.0,0.0,male,city,False
+597,5.0,3.0,5.0,2.0,2.0,2.0,1.0,2.0,4.0,less than an hour a day,3.0,19.0,1.0,male,city,False
+598,4.0,3.0,5.0,3.0,2.0,5.0,4.0,4.0,3.0,few hours a day,5.0,19.0,1.0,male,city,False
+599,5.0,3.0,5.0,4.0,4.0,2.0,2.0,2.0,4.0,few hours a day,2.0,19.0,1.0,male,city,True
+600,5.0,4.0,5.0,2.0,1.0,5.0,5.0,4.0,3.0,most of the day,3.0,18.0,0.0,female,city,False
+601,5.0,1.0,5.0,3.0,2.0,5.0,3.0,3.0,3.0,few hours a day,3.0,19.0,1.0,female,village,False
+602,4.0,3.0,5.0,4.0,2.0,3.0,3.0,2.0,3.0,few hours a day,5.0,22.0,1.0,male,village,False
+603,5.0,4.0,,3.0,2.0,3.0,3.0,3.0,4.0,few hours a day,3.0,21.0,1.0,female,city,False
+604,5.0,1.0,5.0,5.0,1.0,5.0,5.0,5.0,3.0,few hours a day,3.0,21.0,1.0,female,city,False
+605,5.0,1.0,5.0,3.0,2.0,5.0,5.0,1.0,4.0,less than an hour a day,3.0,21.0,1.0,male,village,False
+606,4.0,1.0,5.0,2.0,2.0,4.0,1.0,4.0,4.0,few hours a day,4.0,22.0,1.0,male,village,False
+607,3.0,1.0,4.0,4.0,1.0,5.0,2.0,2.0,5.0,less than an hour a day,3.0,19.0,1.0,female,city,False
+608,3.0,1.0,5.0,5.0,5.0,4.0,2.0,1.0,2.0,few hours a day,3.0,25.0,1.0,male,city,True
+609,4.0,4.0,3.0,5.0,5.0,3.0,1.0,3.0,4.0,few hours a day,4.0,18.0,2.0,male,city,True
+610,5.0,3.0,4.0,2.0,2.0,1.0,5.0,3.0,2.0,few hours a day,3.0,20.0,1.0,male,city,False
+611,5.0,3.0,5.0,3.0,3.0,5.0,4.0,3.0,3.0,most of the day,2.0,18.0,0.0,female,city,False
+612,5.0,5.0,3.0,4.0,3.0,2.0,3.0,1.0,4.0,most of the day,3.0,23.0,2.0,male,village,False
+613,5.0,3.0,5.0,4.0,1.0,5.0,5.0,4.0,4.0,most of the day,2.0,18.0,1.0,female,city,False
+614,5.0,5.0,5.0,3.0,1.0,5.0,1.0,3.0,2.0,few hours a day,5.0,22.0,1.0,female,village,False
+615,5.0,3.0,5.0,2.0,2.0,2.0,1.0,3.0,4.0,few hours a day,1.0,20.0,0.0,male,city,False
+616,3.0,4.0,5.0,4.0,3.0,4.0,1.0,1.0,1.0,few hours a day,3.0,19.0,1.0,male,city,False
+617,5.0,1.0,4.0,3.0,1.0,1.0,1.0,3.0,5.0,most of the day,3.0,19.0,1.0,female,city,False
+618,5.0,1.0,5.0,5.0,1.0,1.0,3.0,5.0,4.0,most of the day,3.0,23.0,0.0,female,city,False
+619,5.0,2.0,5.0,3.0,5.0,1.0,3.0,2.0,3.0,few hours a day,2.0,27.0,4.0,male,city,True
+620,5.0,2.0,5.0,4.0,1.0,2.0,3.0,4.0,2.0,most of the day,1.0,20.0,2.0,male,city,False
+621,4.0,5.0,5.0,1.0,1.0,3.0,5.0,5.0,4.0,most of the day,3.0,20.0,3.0,,city,False
+622,5.0,4.0,5.0,2.0,1.0,5.0,2.0,2.0,4.0,few hours a day,3.0,18.0,1.0,female,city,False
+623,5.0,1.0,5.0,5.0,1.0,3.0,1.0,4.0,3.0,few hours a day,1.0,21.0,3.0,male,city,False
+624,5.0,1.0,5.0,3.0,1.0,2.0,5.0,2.0,2.0,few hours a day,1.0,21.0,1.0,female,city,False
+625,5.0,2.0,5.0,2.0,3.0,5.0,5.0,1.0,3.0,few hours a day,4.0,19.0,1.0,female,city,False
+626,5.0,4.0,5.0,2.0,2.0,4.0,2.0,3.0,3.0,less than an hour a day,4.0,22.0,0.0,female,village,False
+627,5.0,2.0,5.0,3.0,3.0,1.0,3.0,3.0,3.0,less than an hour a day,5.0,20.0,1.0,female,city,False
+628,4.0,2.0,5.0,2.0,4.0,4.0,1.0,4.0,4.0,few hours a day,3.0,19.0,0.0,male,city,True
+629,5.0,3.0,5.0,2.0,1.0,5.0,3.0,3.0,4.0,few hours a day,1.0,20.0,0.0,female,city,False
+630,5.0,5.0,4.0,3.0,3.0,1.0,5.0,3.0,3.0,few hours a day,3.0,19.0,1.0,female,city,False
+631,5.0,3.0,5.0,3.0,4.0,5.0,4.0,2.0,3.0,few hours a day,2.0,18.0,1.0,female,village,True
+632,5.0,4.0,4.0,4.0,3.0,4.0,1.0,3.0,4.0,few hours a day,2.0,17.0,1.0,male,village,False
+633,5.0,1.0,5.0,1.0,1.0,3.0,1.0,1.0,3.0,less than an hour a day,2.0,21.0,2.0,male,city,False
+634,5.0,2.0,4.0,3.0,2.0,2.0,4.0,2.0,4.0,few hours a day,3.0,19.0,1.0,female,village,False
+635,4.0,1.0,4.0,4.0,1.0,2.0,3.0,3.0,4.0,less than an hour a day,3.0,25.0,1.0,female,city,False
+636,5.0,3.0,5.0,5.0,1.0,4.0,3.0,1.0,4.0,few hours a day,1.0,24.0,2.0,male,village,False
+637,5.0,2.0,,4.0,5.0,5.0,1.0,2.0,3.0,less than an hour a day,2.0,29.0,1.0,male,village,True
+638,5.0,1.0,4.0,4.0,1.0,5.0,3.0,3.0,3.0,few hours a day,2.0,21.0,1.0,female,city,False
+639,5.0,1.0,5.0,2.0,3.0,1.0,3.0,5.0,3.0,few hours a day,3.0,18.0,1.0,male,city,False
+640,5.0,1.0,5.0,4.0,3.0,4.0,5.0,3.0,5.0,few hours a day,2.0,21.0,3.0,female,city,False
+641,5.0,3.0,5.0,2.0,2.0,3.0,2.0,4.0,3.0,most of the day,4.0,17.0,2.0,male,city,False
+642,4.0,3.0,4.0,3.0,4.0,5.0,1.0,5.0,4.0,most of the day,4.0,22.0,0.0,male,city,True
+643,5.0,2.0,5.0,4.0,2.0,5.0,2.0,2.0,4.0,few hours a day,4.0,18.0,2.0,female,village,False
+644,4.0,1.0,5.0,3.0,4.0,5.0,4.0,2.0,5.0,few hours a day,4.0,18.0,3.0,female,village,True
+645,5.0,5.0,4.0,5.0,3.0,5.0,1.0,3.0,4.0,few hours a day,4.0,23.0,1.0,male,village,False
+646,4.0,2.0,5.0,2.0,1.0,1.0,2.0,1.0,3.0,few hours a day,3.0,22.0,1.0,male,city,False
+647,5.0,1.0,5.0,5.0,1.0,5.0,3.0,3.0,3.0,most of the day,3.0,21.0,0.0,female,village,False
+648,5.0,2.0,5.0,2.0,2.0,2.0,4.0,2.0,3.0,few hours a day,3.0,23.0,3.0,female,city,False
+649,5.0,2.0,5.0,3.0,1.0,5.0,5.0,4.0,3.0,few hours a day,2.0,17.0,1.0,female,city,False
+650,5.0,3.0,5.0,3.0,4.0,5.0,2.0,4.0,2.0,few hours a day,3.0,20.0,1.0,male,city,True
+651,5.0,4.0,5.0,5.0,1.0,2.0,1.0,2.0,3.0,few hours a day,5.0,22.0,1.0,male,city,False
+652,4.0,1.0,5.0,3.0,4.0,1.0,4.0,5.0,4.0,few hours a day,4.0,21.0,0.0,male,city,True
+653,5.0,1.0,5.0,3.0,1.0,5.0,2.0,3.0,4.0,few hours a day,5.0,22.0,0.0,female,village,False
+654,4.0,3.0,4.0,4.0,3.0,4.0,4.0,3.0,3.0,few hours a day,4.0,24.0,2.0,male,village,False
+655,5.0,4.0,5.0,1.0,3.0,1.0,4.0,4.0,4.0,few hours a day,3.0,19.0,1.0,female,village,False
+656,5.0,1.0,5.0,5.0,5.0,5.0,5.0,3.0,,few hours a day,3.0,18.0,1.0,female,city,True
+657,5.0,1.0,5.0,1.0,1.0,3.0,4.0,3.0,3.0,most of the day,3.0,24.0,1.0,female,city,False
+658,5.0,4.0,5.0,1.0,5.0,4.0,1.0,1.0,3.0,few hours a day,4.0,22.0,3.0,male,city,True
+659,5.0,1.0,2.0,2.0,3.0,2.0,1.0,5.0,3.0,few hours a day,4.0,20.0,1.0,male,village,False
+660,5.0,1.0,5.0,5.0,2.0,1.0,2.0,5.0,4.0,less than an hour a day,5.0,20.0,1.0,female,city,False
+661,5.0,2.0,3.0,4.0,2.0,4.0,2.0,2.0,3.0,few hours a day,2.0,19.0,1.0,female,city,False
+662,5.0,2.0,4.0,3.0,4.0,5.0,4.0,2.0,2.0,few hours a day,4.0,21.0,1.0,female,city,True
+663,5.0,2.0,4.0,4.0,3.0,1.0,2.0,3.0,3.0,no time at all,3.0,25.0,1.0,male,city,False
+664,5.0,1.0,5.0,3.0,1.0,2.0,2.0,2.0,4.0,few hours a day,4.0,28.0,1.0,female,village,False
+665,5.0,4.0,5.0,4.0,1.0,5.0,3.0,3.0,3.0,few hours a day,3.0,20.0,1.0,female,city,False
+666,5.0,1.0,4.0,3.0,1.0,5.0,2.0,5.0,3.0,few hours a day,2.0,20.0,2.0,female,city,False
+667,5.0,1.0,3.0,5.0,2.0,4.0,2.0,2.0,3.0,few hours a day,4.0,23.0,1.0,male,city,False
+668,5.0,1.0,4.0,2.0,4.0,2.0,2.0,4.0,2.0,few hours a day,3.0,27.0,1.0,male,city,True
+669,4.0,4.0,4.0,4.0,2.0,3.0,2.0,3.0,3.0,few hours a day,4.0,21.0,1.0,male,village,False
+670,5.0,2.0,3.0,3.0,2.0,4.0,1.0,3.0,3.0,few hours a day,3.0,23.0,1.0,female,city,False
+671,5.0,4.0,4.0,3.0,3.0,5.0,2.0,3.0,4.0,few hours a day,3.0,22.0,2.0,female,city,False
+672,3.0,1.0,4.0,3.0,1.0,5.0,5.0,3.0,3.0,few hours a day,4.0,28.0,1.0,female,city,False
+673,4.0,1.0,4.0,3.0,1.0,5.0,4.0,4.0,3.0,less than an hour a day,4.0,22.0,2.0,female,city,False
+674,5.0,1.0,4.0,1.0,3.0,3.0,1.0,2.0,4.0,less than an hour a day,3.0,18.0,1.0,male,city,False
+675,5.0,3.0,5.0,3.0,2.0,2.0,4.0,3.0,4.0,most of the day,3.0,25.0,1.0,female,city,False
+676,5.0,2.0,5.0,3.0,1.0,3.0,3.0,2.0,3.0,few hours a day,3.0,20.0,2.0,female,city,False
+677,4.0,1.0,5.0,5.0,4.0,5.0,1.0,1.0,3.0,few hours a day,2.0,28.0,1.0,female,city,True
+678,5.0,1.0,3.0,5.0,2.0,5.0,3.0,4.0,4.0,few hours a day,3.0,23.0,1.0,female,city,False
+679,5.0,3.0,5.0,3.0,1.0,5.0,1.0,3.0,4.0,few hours a day,4.0,21.0,0.0,female,city,False
+680,5.0,5.0,5.0,4.0,3.0,5.0,5.0,3.0,3.0,few hours a day,3.0,25.0,1.0,female,city,False
+681,5.0,4.0,4.0,3.0,2.0,3.0,5.0,3.0,3.0,few hours a day,3.0,28.0,1.0,female,city,False
+682,4.0,5.0,5.0,3.0,4.0,5.0,2.0,3.0,3.0,few hours a day,1.0,19.0,4.0,male,village,True
+683,5.0,1.0,5.0,4.0,1.0,5.0,,3.0,4.0,less than an hour a day,3.0,30.0,1.0,female,village,False
+684,5.0,1.0,5.0,2.0,3.0,3.0,3.0,2.0,3.0,few hours a day,2.0,28.0,1.0,female,village,False
+685,5.0,3.0,5.0,3.0,2.0,5.0,4.0,4.0,4.0,few hours a day,3.0,19.0,0.0,female,village,False
+686,2.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,less than an hour a day,3.0,21.0,1.0,male,city,False
+687,5.0,1.0,5.0,3.0,1.0,2.0,5.0,3.0,5.0,few hours a day,3.0,19.0,1.0,male,city,False
+688,5.0,1.0,5.0,3.0,3.0,1.0,5.0,4.0,4.0,few hours a day,4.0,18.0,2.0,female,city,False
+689,5.0,3.0,5.0,5.0,3.0,5.0,1.0,3.0,3.0,few hours a day,4.0,18.0,1.0,male,city,False
+690,5.0,3.0,5.0,4.0,3.0,2.0,4.0,3.0,3.0,few hours a day,3.0,18.0,1.0,male,city,False
+691,5.0,2.0,5.0,3.0,1.0,3.0,5.0,4.0,3.0,less than an hour a day,2.0,17.0,0.0,female,city,False
+692,5.0,2.0,5.0,5.0,3.0,3.0,1.0,1.0,3.0,few hours a day,3.0,21.0,1.0,male,city,False
+693,5.0,4.0,4.0,2.0,1.0,3.0,2.0,5.0,3.0,few hours a day,3.0,18.0,1.0,female,village,False
+694,5.0,4.0,5.0,5.0,5.0,1.0,3.0,5.0,3.0,few hours a day,3.0,21.0,4.0,male,city,True
+695,5.0,3.0,4.0,4.0,2.0,5.0,5.0,3.0,3.0,few hours a day,3.0,23.0,0.0,female,city,False
+696,5.0,3.0,5.0,3.0,2.0,3.0,1.0,4.0,3.0,less than an hour a day,3.0,18.0,1.0,female,city,False
+697,5.0,1.0,5.0,2.0,4.0,1.0,5.0,4.0,3.0,most of the day,2.0,20.0,1.0,female,city,True
+698,5.0,2.0,5.0,3.0,1.0,2.0,2.0,5.0,5.0,most of the day,1.0,19.0,0.0,female,city,False
+699,5.0,2.0,5.0,2.0,1.0,1.0,2.0,3.0,3.0,few hours a day,2.0,20.0,1.0,female,city,False
+700,5.0,1.0,5.0,3.0,1.0,5.0,2.0,2.0,3.0,few hours a day,4.0,26.0,3.0,female,village,False
+701,5.0,5.0,5.0,5.0,3.0,5.0,3.0,3.0,4.0,few hours a day,4.0,21.0,1.0,female,city,False
+702,5.0,1.0,4.0,5.0,5.0,2.0,4.0,5.0,3.0,most of the day,3.0,19.0,2.0,male,city,True
+703,4.0,1.0,5.0,3.0,1.0,5.0,1.0,1.0,3.0,few hours a day,1.0,23.0,1.0,male,city,False
+704,5.0,2.0,5.0,2.0,1.0,4.0,5.0,3.0,3.0,less than an hour a day,3.0,21.0,2.0,female,village,False
+705,5.0,3.0,5.0,4.0,4.0,5.0,1.0,1.0,4.0,few hours a day,3.0,22.0,1.0,female,village,True
+706,5.0,3.0,4.0,2.0,1.0,1.0,1.0,2.0,3.0,few hours a day,1.0,18.0,2.0,male,city,False
+707,5.0,2.0,3.0,2.0,3.0,2.0,1.0,5.0,4.0,few hours a day,4.0,21.0,1.0,female,village,False
+708,5.0,4.0,5.0,2.0,3.0,5.0,1.0,3.0,2.0,few hours a day,3.0,23.0,1.0,male,city,False
+709,5.0,2.0,5.0,2.0,1.0,3.0,1.0,3.0,3.0,less than an hour a day,2.0,17.0,0.0,female,city,False
+710,4.0,1.0,5.0,3.0,5.0,2.0,2.0,1.0,4.0,few hours a day,4.0,20.0,1.0,female,city,True
+711,4.0,1.0,3.0,3.0,1.0,5.0,2.0,4.0,3.0,few hours a day,4.0,22.0,1.0,female,village,False
+712,5.0,1.0,5.0,1.0,1.0,3.0,5.0,1.0,4.0,few hours a day,3.0,20.0,1.0,female,village,False
+713,5.0,2.0,3.0,5.0,1.0,3.0,5.0,3.0,3.0,most of the day,1.0,19.0,2.0,female,village,False
+714,5.0,3.0,5.0,3.0,3.0,5.0,4.0,2.0,4.0,less than an hour a day,5.0,25.0,0.0,female,village,False
+715,4.0,1.0,5.0,4.0,2.0,5.0,2.0,2.0,3.0,few hours a day,3.0,29.0,1.0,male,village,False
+716,5.0,3.0,4.0,5.0,5.0,2.0,3.0,3.0,4.0,less than an hour a day,5.0,29.0,2.0,male,village,True
+717,5.0,1.0,5.0,3.0,3.0,5.0,3.0,3.0,3.0,few hours a day,3.0,17.0,1.0,female,city,False
+718,5.0,,5.0,3.0,1.0,4.0,5.0,4.0,3.0,less than an hour a day,3.0,17.0,1.0,female,city,False
+719,4.0,3.0,5.0,3.0,4.0,3.0,2.0,1.0,3.0,few hours a day,2.0,19.0,2.0,male,city,True
+720,4.0,2.0,5.0,5.0,2.0,1.0,1.0,3.0,4.0,few hours a day,4.0,18.0,2.0,female,city,False
+721,5.0,1.0,4.0,1.0,3.0,1.0,3.0,3.0,5.0,less than an hour a day,4.0,20.0,3.0,female,city,False
+722,5.0,2.0,5.0,3.0,2.0,1.0,2.0,3.0,4.0,few hours a day,3.0,21.0,0.0,female,city,False
+723,5.0,1.0,5.0,5.0,3.0,1.0,5.0,3.0,4.0,few hours a day,,18.0,1.0,female,city,False
+724,4.0,2.0,5.0,2.0,2.0,2.0,5.0,3.0,3.0,few hours a day,3.0,19.0,1.0,female,city,False
+725,5.0,3.0,5.0,5.0,1.0,3.0,1.0,2.0,3.0,few hours a day,1.0,19.0,0.0,male,village,False
+726,5.0,4.0,5.0,2.0,1.0,5.0,3.0,5.0,3.0,less than an hour a day,2.0,20.0,2.0,male,city,False
+727,5.0,5.0,3.0,1.0,3.0,1.0,3.0,1.0,3.0,less than an hour a day,3.0,19.0,1.0,male,village,False
+728,5.0,3.0,5.0,5.0,5.0,5.0,5.0,3.0,3.0,few hours a day,1.0,18.0,1.0,female,village,True
+729,5.0,3.0,,4.0,4.0,5.0,2.0,3.0,4.0,few hours a day,3.0,18.0,1.0,male,city,True
+730,5.0,1.0,5.0,5.0,1.0,5.0,2.0,3.0,2.0,few hours a day,,16.0,1.0,female,village,False
+731,5.0,2.0,5.0,4.0,4.0,1.0,1.0,4.0,4.0,few hours a day,4.0,18.0,1.0,female,city,True
+732,5.0,2.0,4.0,5.0,3.0,1.0,2.0,2.0,3.0,few hours a day,3.0,19.0,0.0,female,village,False
+733,4.0,1.0,5.0,5.0,5.0,5.0,2.0,3.0,3.0,most of the day,3.0,24.0,2.0,female,village,True
+734,5.0,1.0,4.0,3.0,5.0,1.0,1.0,1.0,5.0,less than an hour a day,5.0,19.0,3.0,female,city,True
+735,2.0,1.0,3.0,4.0,3.0,3.0,3.0,2.0,5.0,no time at all,5.0,,1.0,female,village,False
+736,4.0,2.0,5.0,5.0,2.0,4.0,3.0,3.0,3.0,few hours a day,2.0,20.0,1.0,female,city,False
+737,5.0,3.0,5.0,4.0,1.0,5.0,3.0,4.0,3.0,most of the day,3.0,21.0,0.0,female,city,False
+738,5.0,,5.0,1.0,4.0,4.0,1.0,2.0,3.0,few hours a day,2.0,23.0,2.0,male,city,True
+739,5.0,3.0,5.0,5.0,5.0,4.0,2.0,1.0,3.0,few hours a day,4.0,23.0,0.0,male,city,True
+740,4.0,2.0,5.0,4.0,3.0,4.0,3.0,2.0,4.0,less than an hour a day,3.0,17.0,1.0,male,city,False
+741,5.0,1.0,5.0,5.0,5.0,1.0,1.0,4.0,5.0,few hours a day,3.0,18.0,3.0,female,city,True
+742,5.0,5.0,5.0,3.0,4.0,1.0,2.0,1.0,1.0,few hours a day,1.0,26.0,5.0,male,village,True
+743,2.0,1.0,1.0,1.0,3.0,2.0,1.0,3.0,4.0,few hours a day,1.0,22.0,0.0,male,city,False
+744,5.0,,5.0,3.0,1.0,3.0,1.0,4.0,2.0,less than an hour a day,2.0,22.0,2.0,male,city,False
+745,5.0,5.0,4.0,4.0,4.0,4.0,3.0,2.0,3.0,most of the day,3.0,25.0,2.0,male,village,True
+746,5.0,2.0,5.0,1.0,5.0,4.0,5.0,3.0,4.0,few hours a day,3.0,21.0,1.0,female,city,True
+747,5.0,3.0,5.0,5.0,1.0,1.0,1.0,2.0,4.0,few hours a day,4.0,18.0,2.0,female,city,False
+748,5.0,3.0,5.0,3.0,2.0,5.0,5.0,3.0,3.0,less than an hour a day,3.0,15.0,2.0,female,city,False
+749,5.0,1.0,5.0,4.0,1.0,4.0,3.0,3.0,3.0,few hours a day,3.0,17.0,0.0,male,city,False
+750,5.0,1.0,4.0,4.0,4.0,1.0,1.0,2.0,3.0,less than an hour a day,4.0,22.0,6.0,female,city,True
+751,5.0,2.0,5.0,2.0,1.0,1.0,1.0,3.0,4.0,few hours a day,4.0,21.0,1.0,female,city,False
+752,5.0,4.0,4.0,3.0,3.0,1.0,2.0,2.0,4.0,few hours a day,1.0,21.0,3.0,female,village,False
+753,5.0,1.0,5.0,4.0,1.0,5.0,2.0,2.0,3.0,few hours a day,2.0,19.0,3.0,female,village,False
+754,4.0,3.0,4.0,3.0,4.0,2.0,2.0,1.0,1.0,few hours a day,1.0,26.0,1.0,male,city,True
+755,5.0,1.0,5.0,3.0,4.0,5.0,1.0,3.0,3.0,few hours a day,3.0,26.0,1.0,female,city,True
+756,5.0,4.0,5.0,5.0,3.0,5.0,1.0,2.0,4.0,few hours a day,4.0,25.0,2.0,male,city,False
+757,5.0,5.0,5.0,2.0,1.0,4.0,2.0,3.0,3.0,few hours a day,4.0,19.0,3.0,female,village,False
+758,5.0,5.0,5.0,2.0,3.0,4.0,2.0,3.0,3.0,few hours a day,3.0,20.0,1.0,male,village,False
+759,5.0,2.0,5.0,5.0,4.0,5.0,2.0,4.0,4.0,few hours a day,4.0,18.0,0.0,male,village,True
+760,5.0,3.0,5.0,4.0,3.0,1.0,3.0,2.0,3.0,few hours a day,4.0,25.0,1.0,female,city,False
+761,5.0,2.0,5.0,2.0,3.0,2.0,1.0,1.0,2.0,few hours a day,1.0,23.0,1.0,male,city,False
+762,5.0,3.0,5.0,5.0,3.0,5.0,1.0,1.0,4.0,less than an hour a day,2.0,24.0,1.0,male,city,False
+763,5.0,3.0,5.0,5.0,1.0,5.0,3.0,3.0,4.0,few hours a day,3.0,20.0,3.0,male,village,False
+764,5.0,1.0,5.0,3.0,2.0,2.0,5.0,2.0,4.0,less than an hour a day,4.0,19.0,2.0,female,village,False
+765,5.0,2.0,5.0,2.0,3.0,3.0,1.0,4.0,3.0,few hours a day,4.0,18.0,1.0,male,village,False
+766,5.0,4.0,5.0,4.0,3.0,4.0,4.0,2.0,5.0,most of the day,4.0,25.0,2.0,female,city,False
+767,1.0,2.0,4.0,3.0,3.0,3.0,3.0,1.0,3.0,few hours a day,3.0,22.0,2.0,male,city,False
+768,4.0,3.0,4.0,3.0,2.0,4.0,4.0,3.0,2.0,few hours a day,2.0,26.0,1.0,male,city,False
+769,3.0,3.0,5.0,4.0,4.0,4.0,2.0,3.0,3.0,less than an hour a day,4.0,19.0,0.0,female,city,True
+770,1.0,1.0,4.0,1.0,2.0,2.0,5.0,1.0,2.0,less than an hour a day,3.0,16.0,2.0,female,city,False
+771,5.0,1.0,5.0,3.0,3.0,1.0,1.0,3.0,3.0,few hours a day,4.0,18.0,0.0,male,city,False
+772,5.0,1.0,5.0,3.0,1.0,4.0,4.0,2.0,3.0,few hours a day,3.0,20.0,1.0,female,city,False
+773,5.0,2.0,5.0,3.0,3.0,4.0,5.0,4.0,3.0,less than an hour a day,3.0,17.0,0.0,female,city,False
+774,3.0,1.0,4.0,4.0,2.0,1.0,2.0,2.0,4.0,most of the day,2.0,20.0,0.0,female,city,False
+775,5.0,5.0,5.0,3.0,2.0,5.0,3.0,5.0,5.0,few hours a day,1.0,19.0,3.0,female,city,False
+776,5.0,5.0,5.0,5.0,1.0,3.0,1.0,5.0,5.0,few hours a day,4.0,25.0,1.0,male,village,False
+777,5.0,3.0,5.0,2.0,1.0,1.0,1.0,5.0,3.0,few hours a day,3.0,19.0,1.0,male,city,False
+778,5.0,1.0,5.0,2.0,2.0,5.0,5.0,2.0,3.0,few hours a day,2.0,18.0,0.0,female,city,False
+779,5.0,3.0,5.0,5.0,2.0,5.0,5.0,1.0,3.0,less than an hour a day,2.0,17.0,0.0,female,village,False
+780,5.0,4.0,5.0,5.0,4.0,5.0,1.0,3.0,3.0,few hours a day,3.0,18.0,1.0,male,city,True
+781,4.0,2.0,4.0,5.0,1.0,5.0,1.0,3.0,3.0,less than an hour a day,2.0,20.0,1.0,female,city,False
+782,5.0,2.0,5.0,2.0,3.0,5.0,2.0,3.0,4.0,most of the day,4.0,17.0,3.0,female,village,False
+783,5.0,4.0,5.0,5.0,2.0,5.0,1.0,3.0,3.0,few hours a day,4.0,21.0,1.0,male,village,False
+784,4.0,4.0,5.0,4.0,2.0,1.0,2.0,3.0,4.0,few hours a day,2.0,19.0,1.0,male,city,False
+785,4.0,1.0,5.0,5.0,1.0,4.0,1.0,3.0,2.0,few hours a day,2.0,19.0,0.0,male,city,False
+786,5.0,3.0,4.0,4.0,2.0,1.0,1.0,2.0,4.0,few hours a day,3.0,19.0,0.0,male,city,False
+787,5.0,3.0,5.0,5.0,3.0,2.0,1.0,2.0,4.0,few hours a day,2.0,16.0,1.0,male,city,False
+788,5.0,1.0,4.0,2.0,1.0,1.0,1.0,3.0,3.0,less than an hour a day,4.0,18.0,2.0,female,city,False
+789,5.0,4.0,5.0,3.0,1.0,5.0,3.0,1.0,4.0,most of the day,2.0,19.0,3.0,male,village,False
+790,5.0,4.0,5.0,3.0,3.0,1.0,2.0,5.0,2.0,few hours a day,4.0,20.0,,female,village,False
+791,5.0,3.0,5.0,3.0,1.0,1.0,2.0,3.0,3.0,few hours a day,1.0,19.0,1.0,female,city,False
+792,5.0,3.0,3.0,4.0,1.0,3.0,1.0,2.0,4.0,less than an hour a day,3.0,21.0,1.0,male,village,False
+793,2.0,4.0,5.0,3.0,4.0,2.0,1.0,3.0,5.0,few hours a day,4.0,24.0,2.0,male,city,True
+794,4.0,1.0,5.0,2.0,1.0,5.0,1.0,1.0,3.0,less than an hour a day,5.0,23.0,1.0,male,city,False
+795,5.0,1.0,4.0,4.0,4.0,5.0,5.0,3.0,4.0,most of the day,5.0,30.0,0.0,female,city,True
+796,3.0,2.0,3.0,3.0,4.0,4.0,5.0,2.0,4.0,less than an hour a day,4.0,27.0,3.0,male,city,True
+797,5.0,3.0,5.0,2.0,2.0,1.0,1.0,5.0,3.0,few hours a day,3.0,19.0,1.0,male,city,False
+798,5.0,2.0,5.0,5.0,2.0,1.0,3.0,3.0,3.0,few hours a day,3.0,18.0,2.0,female,city,False
+799,5.0,2.0,5.0,4.0,4.0,5.0,3.0,4.0,3.0,few hours a day,4.0,18.0,2.0,male,city,True
+800,5.0,1.0,5.0,1.0,4.0,1.0,3.0,2.0,3.0,few hours a day,5.0,17.0,2.0,male,city,True
+801,4.0,4.0,5.0,2.0,1.0,2.0,1.0,3.0,1.0,less than an hour a day,1.0,30.0,1.0,female,village,False
+802,5.0,4.0,5.0,3.0,1.0,4.0,5.0,1.0,3.0,few hours a day,4.0,19.0,0.0,female,city,False
+803,5.0,1.0,5.0,3.0,1.0,3.0,5.0,3.0,4.0,most of the day,3.0,27.0,5.0,female,village,False
+804,5.0,2.0,5.0,1.0,1.0,5.0,5.0,2.0,4.0,most of the day,1.0,21.0,1.0,female,village,False
+805,5.0,3.0,2.0,5.0,1.0,4.0,5.0,3.0,4.0,few hours a day,3.0,17.0,3.0,female,city,False
+806,1.0,1.0,5.0,5.0,1.0,5.0,1.0,2.0,3.0,few hours a day,3.0,20.0,1.0,male,city,False
+807,3.0,1.0,5.0,3.0,1.0,5.0,4.0,3.0,2.0,few hours a day,3.0,20.0,0.0,male,city,False
+808,5.0,3.0,5.0,2.0,1.0,1.0,2.0,2.0,3.0,few hours a day,2.0,20.0,1.0,male,city,False
+809,4.0,1.0,4.0,4.0,1.0,1.0,1.0,1.0,2.0,most of the day,2.0,18.0,0.0,male,city,False
+810,5.0,1.0,5.0,4.0,1.0,5.0,5.0,2.0,3.0,few hours a day,1.0,20.0,1.0,male,city,False
+811,5.0,1.0,4.0,4.0,2.0,5.0,3.0,4.0,4.0,few hours a day,4.0,20.0,1.0,male,city,False
+812,5.0,1.0,5.0,5.0,1.0,4.0,1.0,2.0,2.0,few hours a day,1.0,17.0,1.0,female,city,False
+813,5.0,1.0,5.0,3.0,1.0,5.0,1.0,1.0,2.0,few hours a day,1.0,19.0,1.0,male,city,False
+814,5.0,5.0,5.0,3.0,3.0,5.0,5.0,5.0,1.0,few hours a day,2.0,20.0,1.0,female,city,False
+815,5.0,2.0,5.0,4.0,4.0,5.0,1.0,1.0,3.0,few hours a day,3.0,20.0,1.0,male,city,True
+816,5.0,3.0,5.0,5.0,3.0,5.0,5.0,1.0,4.0,few hours a day,2.0,21.0,0.0,male,city,False
+817,3.0,1.0,3.0,1.0,1.0,2.0,1.0,5.0,5.0,most of the day,3.0,23.0,0.0,male,city,False
+818,4.0,4.0,3.0,4.0,1.0,4.0,1.0,2.0,3.0,few hours a day,2.0,24.0,2.0,male,village,False
+819,5.0,2.0,4.0,3.0,3.0,5.0,2.0,1.0,3.0,less than an hour a day,4.0,17.0,0.0,female,city,False
+820,5.0,1.0,5.0,2.0,3.0,1.0,4.0,2.0,4.0,few hours a day,2.0,18.0,1.0,female,city,False
+821,5.0,1.0,5.0,5.0,1.0,5.0,3.0,4.0,3.0,few hours a day,1.0,17.0,1.0,male,city,False
+822,5.0,1.0,3.0,4.0,1.0,4.0,3.0,3.0,1.0,few hours a day,4.0,19.0,1.0,female,city,False
+823,5.0,3.0,4.0,4.0,1.0,1.0,2.0,5.0,2.0,few hours a day,2.0,21.0,0.0,male,city,False
+824,5.0,1.0,5.0,5.0,1.0,5.0,1.0,1.0,3.0,most of the day,4.0,29.0,1.0,female,city,False
+825,4.0,1.0,5.0,2.0,2.0,5.0,2.0,3.0,3.0,few hours a day,2.0,21.0,1.0,female,city,False
+826,5.0,1.0,5.0,4.0,1.0,1.0,4.0,3.0,3.0,few hours a day,1.0,20.0,1.0,female,village,False
+827,5.0,1.0,4.0,2.0,1.0,2.0,2.0,2.0,4.0,few hours a day,1.0,20.0,1.0,female,city,False
+828,1.0,4.0,5.0,2.0,3.0,2.0,2.0,2.0,3.0,few hours a day,4.0,19.0,1.0,male,village,False
+829,5.0,1.0,5.0,3.0,2.0,2.0,4.0,5.0,5.0,few hours a day,3.0,20.0,0.0,female,city,False
+830,5.0,2.0,5.0,4.0,5.0,5.0,5.0,3.0,4.0,most of the day,2.0,21.0,1.0,female,city,True
+831,5.0,3.0,5.0,4.0,3.0,3.0,3.0,3.0,4.0,few hours a day,3.0,17.0,2.0,female,village,False
+832,5.0,1.0,3.0,3.0,1.0,2.0,5.0,2.0,3.0,few hours a day,1.0,20.0,1.0,female,village,False
+833,3.0,2.0,5.0,3.0,2.0,1.0,2.0,3.0,3.0,few hours a day,4.0,19.0,1.0,male,city,False
+834,4.0,2.0,5.0,2.0,1.0,3.0,4.0,2.0,4.0,less than an hour a day,2.0,21.0,1.0,male,city,False
+835,4.0,1.0,5.0,4.0,4.0,1.0,3.0,3.0,3.0,few hours a day,3.0,19.0,0.0,male,city,True
+836,5.0,1.0,5.0,2.0,1.0,4.0,1.0,1.0,2.0,few hours a day,1.0,19.0,0.0,male,city,False
+837,5.0,1.0,4.0,3.0,4.0,3.0,2.0,1.0,4.0,few hours a day,2.0,20.0,3.0,male,city,True
+838,5.0,2.0,5.0,2.0,1.0,5.0,5.0,1.0,1.0,few hours a day,3.0,21.0,0.0,female,city,False
+839,4.0,1.0,5.0,2.0,1.0,5.0,2.0,2.0,3.0,few hours a day,2.0,23.0,1.0,female,city,False
+840,5.0,1.0,4.0,1.0,3.0,3.0,2.0,2.0,4.0,most of the day,4.0,24.0,1.0,female,city,False
+841,5.0,5.0,3.0,3.0,1.0,1.0,4.0,5.0,5.0,few hours a day,1.0,19.0,3.0,male,city,False
+842,,2.0,5.0,5.0,2.0,4.0,5.0,1.0,1.0,few hours a day,3.0,24.0,2.0,female,village,False
+843,5.0,3.0,5.0,5.0,1.0,5.0,5.0,3.0,3.0,few hours a day,4.0,20.0,1.0,female,city,False
+844,5.0,4.0,5.0,5.0,5.0,4.0,1.0,2.0,4.0,few hours a day,2.0,30.0,2.0,male,city,True
+845,4.0,1.0,5.0,5.0,2.0,4.0,3.0,3.0,3.0,most of the day,1.0,20.0,1.0,female,city,False
+846,5.0,5.0,5.0,2.0,2.0,5.0,5.0,4.0,4.0,few hours a day,4.0,23.0,4.0,female,city,False
+847,5.0,1.0,5.0,3.0,1.0,5.0,4.0,5.0,1.0,few hours a day,1.0,19.0,1.0,female,city,False
+848,5.0,2.0,3.0,1.0,1.0,2.0,1.0,1.0,2.0,few hours a day,3.0,19.0,4.0,male,city,False
+849,3.0,1.0,5.0,1.0,5.0,4.0,4.0,5.0,2.0,most of the day,2.0,22.0,2.0,female,village,True
+850,4.0,1.0,5.0,2.0,1.0,5.0,5.0,2.0,4.0,few hours a day,5.0,17.0,0.0,female,city,False
+851,5.0,5.0,5.0,4.0,5.0,3.0,1.0,3.0,5.0,few hours a day,1.0,20.0,2.0,male,city,True
+852,5.0,3.0,5.0,4.0,3.0,5.0,2.0,1.0,4.0,few hours a day,4.0,19.0,2.0,male,village,False
+853,5.0,1.0,5.0,3.0,3.0,5.0,1.0,3.0,5.0,few hours a day,4.0,30.0,4.0,female,village,False
+854,5.0,1.0,4.0,2.0,3.0,3.0,5.0,3.0,4.0,few hours a day,2.0,27.0,0.0,male,city,False
+855,5.0,4.0,5.0,4.0,4.0,3.0,4.0,3.0,4.0,few hours a day,3.0,19.0,1.0,male,city,True
+856,5.0,3.0,5.0,4.0,4.0,5.0,4.0,2.0,3.0,few hours a day,2.0,17.0,1.0,female,city,True
+857,5.0,5.0,5.0,2.0,1.0,5.0,2.0,2.0,4.0,most of the day,4.0,20.0,1.0,male,village,False
+858,3.0,1.0,5.0,5.0,2.0,1.0,1.0,5.0,3.0,few hours a day,4.0,20.0,2.0,male,village,False
+859,5.0,4.0,5.0,3.0,2.0,5.0,2.0,3.0,3.0,few hours a day,2.0,20.0,1.0,male,city,False
+860,5.0,5.0,5.0,3.0,1.0,4.0,3.0,1.0,3.0,few hours a day,2.0,20.0,2.0,male,city,False
+861,5.0,2.0,5.0,4.0,2.0,5.0,5.0,2.0,2.0,few hours a day,1.0,18.0,1.0,female,city,False
+862,5.0,4.0,5.0,3.0,4.0,5.0,1.0,2.0,4.0,few hours a day,2.0,21.0,2.0,male,city,True
+863,5.0,5.0,5.0,3.0,1.0,5.0,2.0,3.0,3.0,few hours a day,3.0,21.0,1.0,male,village,False
+864,5.0,3.0,5.0,4.0,3.0,3.0,4.0,4.0,3.0,few hours a day,2.0,20.0,1.0,male,village,False
+865,4.0,2.0,5.0,2.0,3.0,3.0,4.0,2.0,2.0,less than an hour a day,4.0,17.0,2.0,female,city,False
+866,4.0,1.0,3.0,5.0,2.0,3.0,1.0,3.0,2.0,most of the day,1.0,23.0,1.0,male,city,False
+867,5.0,1.0,5.0,4.0,3.0,5.0,5.0,2.0,4.0,few hours a day,4.0,25.0,1.0,female,city,False
+868,5.0,2.0,4.0,2.0,2.0,4.0,1.0,2.0,4.0,few hours a day,4.0,18.0,0.0,male,village,False
+869,5.0,1.0,5.0,5.0,1.0,5.0,3.0,4.0,2.0,few hours a day,5.0,18.0,1.0,female,city,False
+870,5.0,4.0,5.0,2.0,3.0,2.0,4.0,1.0,3.0,few hours a day,4.0,25.0,1.0,female,city,False
+871,5.0,3.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,most of the day,1.0,21.0,1.0,male,village,True
+872,5.0,4.0,5.0,2.0,1.0,2.0,2.0,3.0,3.0,few hours a day,3.0,20.0,1.0,male,village,False
+873,4.0,4.0,5.0,3.0,2.0,2.0,2.0,2.0,3.0,few hours a day,3.0,21.0,0.0,male,city,False
+874,5.0,3.0,5.0,3.0,1.0,4.0,2.0,2.0,4.0,few hours a day,4.0,18.0,1.0,female,city,False
+875,5.0,4.0,5.0,1.0,1.0,5.0,1.0,3.0,3.0,few hours a day,1.0,20.0,2.0,female,village,False
+876,5.0,3.0,5.0,2.0,5.0,4.0,2.0,4.0,3.0,few hours a day,5.0,19.0,1.0,male,city,True
+877,5.0,1.0,5.0,4.0,3.0,2.0,1.0,3.0,5.0,few hours a day,4.0,22.0,2.0,male,city,False
+878,4.0,4.0,5.0,2.0,4.0,4.0,2.0,2.0,4.0,less than an hour a day,4.0,26.0,3.0,male,city,True
+879,4.0,5.0,5.0,2.0,4.0,5.0,1.0,2.0,3.0,less than an hour a day,2.0,23.0,0.0,male,city,True
+880,5.0,4.0,5.0,3.0,1.0,4.0,2.0,2.0,4.0,few hours a day,4.0,18.0,1.0,female,city,False
+881,5.0,1.0,5.0,5.0,1.0,5.0,4.0,3.0,2.0,few hours a day,4.0,18.0,1.0,female,city,False
+882,5.0,4.0,5.0,3.0,1.0,1.0,1.0,3.0,4.0,few hours a day,2.0,16.0,1.0,female,city,False
+883,5.0,3.0,5.0,4.0,1.0,1.0,1.0,4.0,4.0,few hours a day,4.0,19.0,2.0,female,village,False
+884,5.0,4.0,5.0,3.0,4.0,5.0,5.0,4.0,3.0,few hours a day,1.0,19.0,1.0,female,city,True
+885,3.0,3.0,4.0,3.0,2.0,5.0,1.0,2.0,4.0,few hours a day,2.0,23.0,0.0,female,city,False
+886,5.0,2.0,5.0,1.0,4.0,1.0,1.0,2.0,2.0,few hours a day,2.0,21.0,1.0,male,city,True
+887,4.0,3.0,2.0,2.0,3.0,3.0,3.0,3.0,3.0,less than an hour a day,4.0,19.0,1.0,male,city,False
+888,5.0,2.0,5.0,4.0,1.0,5.0,3.0,2.0,4.0,less than an hour a day,2.0,20.0,1.0,female,city,False
+889,5.0,2.0,5.0,5.0,1.0,1.0,4.0,4.0,2.0,few hours a day,1.0,22.0,1.0,female,city,False
+890,5.0,4.0,5.0,1.0,4.0,3.0,2.0,3.0,3.0,few hours a day,3.0,20.0,1.0,male,city,True
+891,5.0,3.0,5.0,4.0,2.0,4.0,3.0,3.0,3.0,few hours a day,3.0,21.0,2.0,male,village,False
+892,5.0,1.0,5.0,3.0,4.0,2.0,3.0,2.0,3.0,few hours a day,3.0,19.0,1.0,male,city,True
+893,5.0,3.0,2.0,2.0,3.0,2.0,2.0,3.0,3.0,less than an hour a day,4.0,17.0,0.0,female,village,False
+894,5.0,1.0,5.0,2.0,1.0,4.0,3.0,2.0,4.0,few hours a day,4.0,19.0,2.0,female,city,False
+895,4.0,3.0,4.0,2.0,1.0,4.0,3.0,3.0,3.0,few hours a day,3.0,16.0,1.0,male,village,False
+896,5.0,1.0,5.0,4.0,1.0,3.0,2.0,2.0,3.0,few hours a day,4.0,22.0,1.0,male,village,False
+897,5.0,2.0,4.0,2.0,4.0,3.0,2.0,2.0,3.0,few hours a day,2.0,23.0,2.0,male,city,True
+898,5.0,1.0,5.0,4.0,1.0,3.0,2.0,2.0,3.0,less than an hour a day,3.0,28.0,2.0,female,village,False
+899,5.0,1.0,3.0,4.0,3.0,5.0,1.0,3.0,3.0,few hours a day,2.0,20.0,2.0,male,city,False
+900,5.0,1.0,4.0,2.0,2.0,3.0,2.0,3.0,4.0,few hours a day,3.0,21.0,1.0,male,city,False
+901,4.0,1.0,5.0,4.0,1.0,5.0,5.0,2.0,4.0,less than an hour a day,4.0,22.0,1.0,female,city,False
+902,5.0,2.0,5.0,4.0,3.0,3.0,4.0,2.0,3.0,few hours a day,2.0,,,male,city,False
+903,5.0,1.0,3.0,5.0,5.0,3.0,1.0,2.0,4.0,few hours a day,4.0,19.0,1.0,male,city,True
+904,3.0,1.0,5.0,3.0,2.0,1.0,1.0,2.0,4.0,few hours a day,3.0,24.0,1.0,female,city,False
+905,5.0,3.0,5.0,5.0,1.0,2.0,1.0,1.0,3.0,few hours a day,4.0,23.0,1.0,male,city,False
+906,5.0,5.0,5.0,5.0,1.0,1.0,3.0,3.0,4.0,less than an hour a day,2.0,21.0,2.0,female,city,False
+907,5.0,1.0,4.0,2.0,2.0,2.0,3.0,3.0,1.0,most of the day,1.0,22.0,1.0,female,city,False
+908,5.0,3.0,5.0,2.0,2.0,2.0,3.0,4.0,4.0,few hours a day,3.0,18.0,1.0,male,city,False
+909,5.0,2.0,3.0,3.0,2.0,3.0,2.0,5.0,5.0,less than an hour a day,4.0,28.0,2.0,female,city,False
+910,5.0,1.0,5.0,5.0,4.0,1.0,1.0,2.0,4.0,few hours a day,4.0,18.0,0.0,female,city,True
+911,5.0,1.0,4.0,5.0,5.0,5.0,1.0,4.0,4.0,few hours a day,4.0,23.0,1.0,female,village,True
+912,5.0,3.0,4.0,4.0,3.0,4.0,,3.0,4.0,less than an hour a day,4.0,22.0,1.0,female,village,False
+913,5.0,3.0,5.0,4.0,3.0,2.0,5.0,4.0,3.0,few hours a day,4.0,21.0,1.0,female,city,False
+914,5.0,2.0,5.0,5.0,3.0,3.0,1.0,5.0,2.0,few hours a day,1.0,20.0,1.0,female,city,False
+915,4.0,4.0,5.0,1.0,2.0,5.0,4.0,3.0,4.0,few hours a day,5.0,18.0,1.0,female,city,False
+916,4.0,1.0,5.0,4.0,1.0,4.0,1.0,4.0,3.0,few hours a day,1.0,21.0,1.0,male,city,False
+917,5.0,3.0,5.0,3.0,3.0,3.0,1.0,2.0,2.0,few hours a day,2.0,20.0,1.0,male,village,False
+918,4.0,1.0,5.0,5.0,2.0,4.0,1.0,4.0,3.0,most of the day,4.0,21.0,1.0,female,village,False
+919,5.0,1.0,5.0,5.0,2.0,1.0,2.0,3.0,4.0,few hours a day,2.0,21.0,1.0,female,city,False
+920,4.0,1.0,3.0,3.0,1.0,1.0,3.0,1.0,3.0,few hours a day,3.0,20.0,2.0,female,city,False
+921,5.0,3.0,4.0,2.0,3.0,4.0,2.0,2.0,1.0,few hours a day,4.0,17.0,0.0,male,city,False
+922,5.0,4.0,5.0,2.0,3.0,5.0,5.0,3.0,3.0,few hours a day,3.0,20.0,1.0,female,city,False
+923,5.0,3.0,5.0,3.0,1.0,3.0,4.0,4.0,4.0,few hours a day,2.0,23.0,3.0,female,city,False
+924,5.0,1.0,5.0,3.0,1.0,5.0,1.0,1.0,4.0,few hours a day,4.0,19.0,0.0,female,city,False
+925,5.0,2.0,5.0,3.0,1.0,5.0,4.0,2.0,5.0,few hours a day,5.0,20.0,0.0,female,city,False
+926,5.0,1.0,5.0,2.0,3.0,1.0,1.0,2.0,3.0,few hours a day,4.0,22.0,1.0,male,city,False
+927,5.0,3.0,5.0,1.0,1.0,5.0,1.0,3.0,4.0,few hours a day,4.0,19.0,1.0,female,city,False
+928,5.0,3.0,5.0,3.0,1.0,5.0,5.0,3.0,2.0,few hours a day,4.0,19.0,0.0,female,city,False
+929,3.0,3.0,3.0,4.0,3.0,3.0,2.0,1.0,3.0,few hours a day,3.0,27.0,1.0,female,city,False
+930,5.0,3.0,5.0,3.0,1.0,1.0,5.0,5.0,3.0,few hours a day,3.0,18.0,5.0,female,city,False
+931,5.0,2.0,5.0,1.0,2.0,3.0,1.0,4.0,4.0,most of the day,4.0,18.0,2.0,male,city,False
+932,5.0,4.0,5.0,1.0,3.0,2.0,5.0,2.0,4.0,few hours a day,5.0,20.0,1.0,female,city,False
+933,5.0,1.0,5.0,4.0,2.0,5.0,5.0,4.0,3.0,few hours a day,3.0,17.0,3.0,female,city,False
+934,5.0,4.0,5.0,2.0,2.0,4.0,4.0,2.0,3.0,few hours a day,2.0,19.0,0.0,,city,False
+935,5.0,1.0,5.0,3.0,1.0,5.0,5.0,3.0,3.0,few hours a day,3.0,16.0,1.0,female,city,False
+936,4.0,3.0,4.0,2.0,2.0,2.0,5.0,4.0,3.0,few hours a day,2.0,21.0,0.0,female,city,False
+937,5.0,2.0,5.0,3.0,5.0,5.0,3.0,5.0,2.0,few hours a day,5.0,18.0,4.0,female,village,True
+938,5.0,5.0,5.0,4.0,5.0,5.0,3.0,5.0,5.0,few hours a day,1.0,19.0,0.0,female,city,True
+939,4.0,4.0,5.0,2.0,3.0,4.0,5.0,2.0,4.0,few hours a day,3.0,20.0,0.0,female,city,False
+940,5.0,5.0,,4.0,3.0,4.0,3.0,2.0,4.0,few hours a day,2.0,16.0,4.0,male,city,False
+941,5.0,1.0,5.0,2.0,2.0,2.0,2.0,5.0,1.0,few hours a day,1.0,18.0,3.0,female,village,False
+942,5.0,5.0,5.0,4.0,1.0,5.0,1.0,5.0,3.0,most of the day,4.0,24.0,0.0,male,village,False
+943,4.0,2.0,5.0,3.0,4.0,5.0,2.0,2.0,3.0,less than an hour a day,2.0,22.0,2.0,female,city,True
+944,5.0,2.0,5.0,4.0,2.0,5.0,5.0,2.0,4.0,few hours a day,3.0,19.0,1.0,female,village,False
+945,5.0,1.0,3.0,4.0,5.0,5.0,1.0,1.0,3.0,few hours a day,1.0,22.0,1.0,male,city,True
+946,5.0,2.0,5.0,3.0,1.0,1.0,4.0,4.0,3.0,few hours a day,1.0,22.0,0.0,male,city,False
+947,5.0,1.0,4.0,2.0,1.0,3.0,3.0,4.0,3.0,few hours a day,3.0,16.0,1.0,female,village,False
+948,5.0,2.0,5.0,4.0,5.0,5.0,4.0,2.0,4.0,few hours a day,4.0,18.0,1.0,female,village,True
+949,5.0,2.0,5.0,1.0,2.0,5.0,1.0,3.0,3.0,most of the day,3.0,18.0,3.0,female,city,False
+950,5.0,3.0,5.0,4.0,1.0,5.0,5.0,5.0,3.0,most of the day,5.0,15.0,0.0,male,village,False
+951,4.0,5.0,5.0,1.0,3.0,1.0,3.0,4.0,1.0,most of the day,1.0,26.0,3.0,male,city,False
+952,5.0,4.0,4.0,3.0,5.0,2.0,2.0,2.0,4.0,few hours a day,5.0,19.0,1.0,male,city,True
+953,5.0,1.0,5.0,4.0,3.0,4.0,5.0,3.0,3.0,few hours a day,4.0,20.0,1.0,female,city,False
+954,5.0,4.0,4.0,2.0,4.0,4.0,3.0,2.0,4.0,few hours a day,3.0,20.0,0.0,female,city,True
+955,5.0,1.0,4.0,5.0,5.0,5.0,2.0,2.0,3.0,few hours a day,3.0,19.0,1.0,female,city,True
+956,5.0,1.0,5.0,3.0,2.0,4.0,1.0,4.0,3.0,most of the day,3.0,20.0,2.0,male,city,False
+957,5.0,2.0,4.0,3.0,1.0,1.0,3.0,3.0,4.0,few hours a day,3.0,20.0,5.0,male,city,False
+958,5.0,4.0,4.0,3.0,1.0,5.0,5.0,3.0,4.0,few hours a day,2.0,22.0,2.0,female,city,False
+959,4.0,1.0,4.0,4.0,3.0,4.0,5.0,4.0,4.0,few hours a day,2.0,24.0,1.0,female,city,False
+960,5.0,1.0,5.0,5.0,3.0,1.0,3.0,1.0,3.0,few hours a day,3.0,,,female,city,False
+961,5.0,4.0,5.0,5.0,5.0,5.0,1.0,3.0,3.0,few hours a day,5.0,20.0,3.0,male,village,True
+962,5.0,1.0,3.0,5.0,3.0,1.0,1.0,4.0,4.0,less than an hour a day,5.0,21.0,1.0,female,village,False
+963,4.0,4.0,5.0,5.0,1.0,3.0,1.0,1.0,1.0,most of the day,4.0,23.0,0.0,male,city,False
+964,5.0,2.0,3.0,3.0,2.0,4.0,3.0,3.0,3.0,few hours a day,4.0,21.0,3.0,male,city,False
+965,5.0,4.0,5.0,5.0,1.0,1.0,5.0,5.0,3.0,few hours a day,3.0,17.0,2.0,female,city,False
+966,5.0,1.0,5.0,5.0,1.0,5.0,1.0,1.0,1.0,less than an hour a day,1.0,19.0,1.0,female,city,False
+967,5.0,2.0,5.0,5.0,5.0,4.0,1.0,2.0,4.0,few hours a day,4.0,18.0,1.0,male,city,True
+968,5.0,3.0,5.0,2.0,5.0,4.0,1.0,2.0,3.0,few hours a day,3.0,19.0,2.0,male,city,True
+969,5.0,1.0,5.0,3.0,3.0,1.0,2.0,1.0,2.0,few hours a day,2.0,19.0,2.0,male,village,False
+970,5.0,1.0,5.0,2.0,4.0,3.0,2.0,5.0,3.0,few hours a day,1.0,22.0,1.0,male,city,True
+971,5.0,3.0,4.0,3.0,3.0,3.0,3.0,2.0,4.0,few hours a day,4.0,18.0,1.0,male,city,False
+972,5.0,2.0,5.0,3.0,3.0,5.0,5.0,2.0,4.0,less than an hour a day,3.0,19.0,0.0,female,city,False
+973,5.0,1.0,4.0,2.0,1.0,4.0,2.0,2.0,3.0,most of the day,4.0,20.0,2.0,female,city,False
+974,5.0,2.0,5.0,3.0,5.0,3.0,3.0,1.0,1.0,few hours a day,3.0,21.0,0.0,female,city,True
+975,5.0,5.0,5.0,5.0,1.0,5.0,5.0,1.0,2.0,most of the day,3.0,23.0,1.0,female,village,False
+976,5.0,2.0,5.0,2.0,4.0,2.0,4.0,2.0,4.0,few hours a day,4.0,19.0,1.0,female,city,True
+977,5.0,4.0,5.0,2.0,3.0,3.0,2.0,2.0,2.0,few hours a day,2.0,19.0,1.0,male,village,False
+978,5.0,1.0,5.0,5.0,2.0,4.0,4.0,4.0,4.0,few hours a day,2.0,21.0,2.0,female,city,False
+979,5.0,2.0,5.0,5.0,3.0,4.0,4.0,2.0,3.0,few hours a day,3.0,19.0,0.0,male,city,False
+980,5.0,1.0,5.0,5.0,1.0,3.0,5.0,2.0,4.0,less than an hour a day,1.0,18.0,2.0,female,city,False
+981,5.0,1.0,5.0,5.0,1.0,1.0,5.0,4.0,2.0,most of the day,5.0,19.0,1.0,female,village,False
+982,5.0,1.0,4.0,1.0,3.0,4.0,1.0,3.0,4.0,few hours a day,2.0,18.0,2.0,male,city,False
+983,5.0,2.0,5.0,2.0,1.0,4.0,5.0,2.0,3.0,few hours a day,2.0,22.0,2.0,female,village,False
+984,5.0,1.0,4.0,1.0,1.0,4.0,5.0,3.0,1.0,most of the day,4.0,21.0,1.0,female,city,False
+985,5.0,1.0,5.0,4.0,1.0,2.0,4.0,3.0,1.0,few hours a day,5.0,20.0,1.0,female,city,False
+986,4.0,4.0,4.0,5.0,5.0,1.0,1.0,3.0,3.0,few hours a day,1.0,19.0,3.0,female,city,True
+987,4.0,1.0,4.0,5.0,2.0,2.0,2.0,4.0,2.0,few hours a day,3.0,20.0,1.0,male,city,False
+988,5.0,,5.0,5.0,4.0,1.0,1.0,5.0,3.0,few hours a day,1.0,19.0,0.0,male,city,True
+989,5.0,5.0,3.0,5.0,1.0,1.0,1.0,5.0,3.0,most of the day,3.0,30.0,2.0,female,village,False
+990,5.0,1.0,5.0,3.0,1.0,1.0,1.0,2.0,2.0,few hours a day,1.0,29.0,1.0,male,city,False
+991,5.0,2.0,5.0,4.0,1.0,5.0,3.0,2.0,1.0,most of the day,3.0,21.0,0.0,male,city,False
+992,4.0,5.0,4.0,5.0,5.0,1.0,5.0,3.0,3.0,most of the day,1.0,30.0,1.0,male,city,True
+993,5.0,2.0,5.0,1.0,1.0,2.0,3.0,4.0,3.0,few hours a day,4.0,21.0,0.0,female,city,False
+994,5.0,1.0,5.0,5.0,1.0,5.0,4.0,3.0,4.0,few hours a day,3.0,20.0,0.0,female,city,False
+995,5.0,5.0,5.0,3.0,4.0,5.0,1.0,4.0,4.0,few hours a day,4.0,18.0,0.0,female,city,True
+996,5.0,1.0,3.0,4.0,1.0,2.0,2.0,2.0,4.0,few hours a day,3.0,20.0,0.0,male,,False
+997,5.0,1.0,4.0,1.0,2.0,5.0,4.0,2.0,,less than an hour a day,3.0,19.0,1.0,female,,False
+998,5.0,5.0,5.0,3.0,5.0,1.0,1.0,2.0,3.0,few hours a day,4.0,28.0,1.0,male,city,True
+999,5.0,5.0,4.0,4.0,5.0,1.0,2.0,3.0,3.0,few hours a day,3.0,19.0,1.0,male,city,True
+1000,5.0,3.0,5.0,3.0,1.0,5.0,1.0,3.0,2.0,few hours a day,1.0,16.0,1.0,female,city,False
+1001,5.0,3.0,3.0,3.0,1.0,4.0,1.0,2.0,2.0,few hours a day,2.0,18.0,2.0,female,city,False
+1002,5.0,3.0,3.0,2.0,1.0,2.0,1.0,3.0,2.0,few hours a day,4.0,22.0,1.0,male,city,False
+1003,4.0,4.0,5.0,3.0,1.0,5.0,4.0,3.0,4.0,few hours a day,3.0,20.0,1.0,female,city,False
+1004,5.0,5.0,5.0,3.0,2.0,4.0,3.0,3.0,2.0,few hours a day,4.0,22.0,1.0,male,city,False
+1005,5.0,3.0,5.0,4.0,1.0,4.0,2.0,4.0,4.0,few hours a day,3.0,20.0,1.0,female,city,False
+1006,4.0,4.0,5.0,4.0,5.0,5.0,1.0,1.0,4.0,less than an hour a day,3.0,27.0,5.0,male,village,True
+1007,4.0,1.0,4.0,2.0,3.0,5.0,2.0,4.0,4.0,most of the day,1.0,18.0,0.0,female,city,False
+1008,5.0,2.0,5.0,3.0,1.0,4.0,3.0,3.0,3.0,most of the day,3.0,25.0,1.0,female,city,False
+1009,5.0,3.0,5.0,2.0,2.0,5.0,1.0,3.0,3.0,few hours a day,5.0,21.0,1.0,male,village,False
