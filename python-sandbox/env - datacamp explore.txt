@@ -7,3 +7,5 @@ conda install pytorch torchvision
 
 #pour exporter les données de datacamp (uploadfromdatacamp.py)
 conda install -c conda-forge simhash
+
+conda install pymc3 arviz=0.11.0 -c conda-forge
