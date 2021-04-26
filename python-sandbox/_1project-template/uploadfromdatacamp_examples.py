@@ -13,7 +13,7 @@ tobedownloaded="""
 {pandas.core.frame.DataFrame: {'df.csv': 'https://file.io/y7Rwj6'}}
 """
 prefixToc='1.1'
-prefix = saveFromFileIO(tobedownloaded, prefixToc=prefixToc, proxy="10.225.92.1:80")
+prefix = saveFromFileIO(tobedownloaded, prefixToc=prefixToc)
 
 #initialisation
 
@@ -66,7 +66,7 @@ tobedownloaded="""
 {numpy.ndarray: {'mask.csv': 'https://file.io/6USsXM'}}
 """
 prefixToc='1.1'
-prefix = saveFromFileIO(tobedownloaded, prefixToc=prefixToc, proxy="10.225.92.1:80")
+prefix = saveFromFileIO(tobedownloaded, prefixToc=prefixToc)
 
 #initialisation
 
@@ -157,7 +157,7 @@ tobedownloaded="""
 {numpy.ndarray: {'bricks.png': 'https://file.io/GJ8xXK'}}
 """
 prefixToc = '1.1'
-prefix = saveFromFileIO(tobedownloaded, prefixToc=prefixToc, proxy="10.225.92.1:80")
+prefix = saveFromFileIO(tobedownloaded, prefixToc=prefixToc)
 
 ###################
 ##### liste de mots (list)
@@ -174,11 +174,13 @@ tobedownloaded="""
 {list: {'words.txt': 'https://file.io/JEWojpBH'}}
 """
 prefixToc='1.1'
-prefix = saveFromFileIO(tobedownloaded, prefixToc=prefixToc, proxy="10.225.92.1:80")
+prefix = saveFromFileIO(tobedownloaded, prefixToc=prefixToc)
 
 #initialisation
 
 import pandas as pd
 from downloadfromFileIO import loadListFromTxt
 words = loadListFromTxt(prefix+'words.txt')
+
+
 
