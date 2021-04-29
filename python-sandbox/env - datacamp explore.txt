@@ -11,3 +11,5 @@ conda install -c conda-forge simhash
 conda install pymc3 arviz=0.11.0 -c conda-forge
 
 pip install empiricaldist
+
+conda install missingno
