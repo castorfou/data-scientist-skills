@@ -13,3 +13,5 @@ conda install pymc3 arviz=0.11.0 -c conda-forge
 pip install empiricaldist
 
 conda install missingno
+conda install -c conda-forge fuzzywuzzy
+conda install -c conda-forge recordlinkage
