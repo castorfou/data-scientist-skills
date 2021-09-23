@@ -1,0 +1,29 @@
+,Rank,Company,Revenue,employees,Industry,age
+0,1,Walmart,523964,"2,300,000",Tech,44
+1,2,Sinopec Group,407009,"71,200",Tech,56
+3,4,China National Petroleum,379130,"123,000",Tech,33
+4,5,Royal Dutch Shell,352106,"260,000",Tech,70
+5,6,Saudi Aramco,329784,"64,500",Tech,72
+6,7,Volkswagen,282760,"203,000",Tech,65
+11,12,Apple,260174,"19,500",Tech,29
+12,13,CVS Health,256776,"51,900",Tech,29
+13,14,Berkshire Hathaway,254616,"40,400",Tech,40
+14,15,UnitedHealth Group,242155,"182,000",Tech,35
+15,16,McKesson,231051,"155,400",Tech,26
+25,26,Hon Hai Precision Industry,172869,"262,700",Tech,42
+26,27,Trafigura Group,171474,"140,800",Tech,39
+27,28,EXOR Group,162754,"14,600",Tech,77
+28,29,Alphabet,161857,"56,000",Tech,35
+30,31,Ford Motor,155900,"10,015",Tech,61
+31,32,Cigna,153566,"209,000",Tech,65
+32,33,Costco Wholesale,152703,"164,000",Tech,27
+33,34,AXA,148984,"397,800",Tech,10
+40,41,Walgreens Boots Alliance,136866,"43,800",Tech,34
+41,42,Mitsubishi,135940,"95,000",Tech,80
+42,43,Bank of China,135091,"49,000",Tech,4
+43,44,Verizon Communications,131868,"346,415",Tech,72
+44,45,China Life Insurance,131244,"263,000",Tech,29
+45,46,Allianz,130359,"102,700",Tech,9
+46,47,Microsoft,125843,98000,Tech,40
+77,78,China Communications Construction,95096,"69,000",Tech,17
+78,79,China Resources,94758,"42,680",Tech,75
