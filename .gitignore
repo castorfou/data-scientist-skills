@@ -1,2 +1,9 @@
 *.mp3
-__pycache__
+# .*\.(exe|war|ear|apk|ipa|cab|rpm|mp4|ogg|iso|class|avi|wmv|mov|deb|bar|zip|gz|mkv|mp3|rar|tar|torrent|7z)$.
+*.exe
+*.mp4
+*.zip
+*.gz
+*.rar
+*.tar
+*.7z
