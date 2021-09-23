@@ -15,3 +15,5 @@ pip install empiricaldist
 conda install missingno
 conda install -c conda-forge fuzzywuzzy
 conda install -c conda-forge recordlinkage
+conda install plotly
+conda install yapf
