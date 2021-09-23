@@ -28,6 +28,23 @@
 # ```
 # ![image.png](attachment:image.png)
 
+# ```python
+# # scatterplots and line plots with graph_objects
+# 
+# import plotly.graph_objects as go
+# 
+# fig = go.Figure(go.Scatter(
+#     x=penguins['Body Mass (g)'],
+#     y=penguins['Flipper Length (mm)'],
+#     mode='markers'))
+# 
+# fig = go.Figure(go.Scatter(
+#     x=msft_stock['Date'],
+#     y=msft_stock['Opening Stock Price'],
+#     mode='lines'))
+# 
+# ```
+
 # In[ ]:
 
 

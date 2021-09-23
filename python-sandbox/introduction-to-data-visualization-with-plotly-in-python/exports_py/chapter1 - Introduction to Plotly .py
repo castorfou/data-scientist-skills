@@ -37,6 +37,8 @@ fig.show()
 
 # ![image.png](attachment:image.png)
 
+# ![image.png](attachment:image.png)
+
 # ## Fixing a Plotly figure
 # > 
 # > Your colleague had started a project to create a visualization of sales for the first three months of 2020. However, she then left for some annual leave - but the boss wants the visualization now!
@@ -102,6 +104,8 @@ fig = px.bar(data_frame=weekly_temps, x='day', y='temp')
 fig.show()
 
 
+# ![image.png](attachment:image.png)
+
 # ```python
 # # histogram
 # fig = px.histogram(data_frame=penguins, 
@@ -110,13 +114,15 @@ fig.show()
 # fig.show()
 # ```
 
+# ![image.png](attachment:image.png)
+
 # ```python
 # # boxplot
 # fig = px.box(data_frame=penguins,
 #              y="Flipper Length (mm)")
 # fig.show()
 # ```
-# 
+# ![image.png](attachment:image.png)
 
 # ## Student scores bar graph
 # > 
@@ -325,6 +331,8 @@ fig = px.bar(data_frame=student_scores,
 fig.show()
 
 
+# ![image.png](attachment:image.png)
+
 # In[30]:
 
 
@@ -337,6 +345,8 @@ fig = px.bar(data_frame=weekly_temps,
              color_continuous_scale='inferno')
 fig.show()
 
+
+# ![image.png](attachment:image.png)
 
 # Many builtin scales available: https://plotly.com/python/builtin-colorscales/
 
@@ -353,6 +363,8 @@ fig = px.bar(data_frame=weekly_temps,
              color='temp')
 fig.show()
 
+
+# ![image.png](attachment:image.png)
 
 # ## Coloring student scores bar graph
 # > 
