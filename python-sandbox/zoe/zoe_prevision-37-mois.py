@@ -7,7 +7,7 @@
 # 1st step is to copy to <br> 
 # `D:\git\data-scientist-skills\python-sandbox\zoe\data`
 
-# In[29]:
+# In[1]:
 
 
 get_ipython().run_line_magic('reload_ext', 'autoreload')
@@ -16,7 +16,7 @@ get_ipython().run_line_magic('autoreload', '2')
 
 # On copie le fichier kilometrage de onedrive dans le rep de travail.
 
-# In[30]:
+# In[2]:
 
 
 filename="kilométrage.xlsx"
@@ -64,7 +64,7 @@ print(datetime.datetime.now())
 
 # Load kilometrage in dataframe, avec la colonne de date en index
 
-# In[31]:
+# In[3]:
 
 
 import pandas as pd
@@ -77,7 +77,7 @@ data.tail()
 # Créer un range de data entre le 1er jour et aujourd'hui <br>
 # En faire un index (sans compléter les valeurs)
 
-# In[32]:
+# In[4]:
 
 
 to_date_rng = pd.date_range(start='09/27/2019', end = pd.datetime.today(), freq='D')
@@ -89,7 +89,7 @@ data=data.reindex(to_date_rng)
 # Plot curve : on visualise les kms effectivement faits, en rouge les données manquantes extrapolées linéairement
 Pour une question de piquets et intervalles, on doit "etendre" la détection des valeurs manquantes aux bornes inf et sup.
 False, False, True, False --> False, True, True, True
-# In[33]:
+# In[5]:
 
 
 def extend_missing(missing):
@@ -112,7 +112,7 @@ print(extend_missing(missing_values).head())
 
 # On affiche les kms parcourus et en rouge une droite reliant les valeurs connues
 
-# In[34]:
+# In[6]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -173,7 +173,7 @@ interpolate_and_plot(data, interpolation_type, title='Kilomètres en Zoé à dat
 data_interp = data.interpolate(interpolation_type)
 
 
-# In[35]:
+# In[7]:
 
 
 data_interp[~missing_values].index
@@ -181,7 +181,7 @@ data_interp[~missing_values].index
 
 # Create a datetime range for 37 months, and a dataset on 37 months
 
-# In[36]:
+# In[8]:
 
 
 date_rng = pd.date_range(start='09/27/2019', end='09/27/2022', freq='D')
@@ -194,7 +194,7 @@ plt.show()
 # # Plot data with linear projection
 # Plot a line between 1st day and today, with a linear projection to last day of lease.
 
-# In[37]:
+# In[9]:
 
 
 from datetime import date
@@ -238,7 +238,7 @@ plt.show()
 # Projected kms
 # if > limit, estimation of extra kms and at which date
 
-# In[38]:
+# In[10]:
 
 
 print("Projection linéaire sur 37 mois : %3.1f kms."%data_line.kms[-1])
@@ -252,7 +252,7 @@ if (data_line.kms[-1] > 22500):
 
 # Essayer de faire une animation de type SGD vu dans http://localhost:8889/notebooks/lesson2-sgd.ipynb (fastai lesson 2)
 
-# In[39]:
+# In[11]:
 
 
 x=(data_interp.index-pd.Timestamp('2019-09-27')).days
@@ -272,7 +272,7 @@ alpha = 0.01;
 
 # ## Fonction de coût
 
-# In[40]:
+# In[12]:
 
 
 def computeCost(X,y,theta):
@@ -291,7 +291,7 @@ print("Cout: ",theta,computeCost(X,y,theta))
 
 # ## Descente de gradient
 
-# In[41]:
+# In[13]:
 
 
 from IPython.core.debugger import set_trace
@@ -316,7 +316,7 @@ print(theta, J_history)
 
 # ## Vitesse de convergence SGD
 
-# In[42]:
+# In[14]:
 
 
 plt.plot(J_history[:100])
@@ -326,7 +326,7 @@ assert(J_history[-1]<J_history[0]/10)
 
 # ## On visualise la regression linéaire
 
-# In[43]:
+# In[15]:
 
 
 #on caclule les 2 points
@@ -343,7 +343,7 @@ plt.title(Title)
 
 # On conserve projection linéaire et régression linéaire.
 
-# In[44]:
+# In[16]:
 
 
 #on met les projections et regression dans un dataframe df_stockage_projection
@@ -359,7 +359,7 @@ print(df_stockage_projection.head())
 # On recharge l'historique des projections linéaire et régressions linéaire.<br>
 # On ajoute les dernières valeurs. (on ecrase les précédentes au besoin)
 
-# In[45]:
+# In[17]:
 
 
 df_historique=pd.read_csv('data/historique_predictions.csv',index_col=0,parse_dates=True)
@@ -368,7 +368,7 @@ df_historique=df_historique.reset_index().drop_duplicates(subset='date',keep='la
 df_historique.tail(5)
 
 
-# In[46]:
+# In[18]:
 
 
 df_historique.to_csv('data/historique_predictions.csv') 
@@ -376,7 +376,7 @@ df_historique.to_csv('data/historique_predictions.csv')
 
 # ## On trace les valeurs de projection linéaire et régression, ainsi que la limite.
 
-# In[47]:
+# In[19]:
 
 
 plt.figure(figsize=(15, 7))
